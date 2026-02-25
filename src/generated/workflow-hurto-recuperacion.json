@@ -1,15 +1,15 @@
 {
   "version": {
-    "id": "730f368a-19f9-4d03-9150-c2f80731b0d4",
-    "slug": "be8081a37e2y",
-    "org_id": "PLACEHOLDER_ORG_ID",
-    "use_case_id": "836aab1a-5130-49c3-ac36-dc5a6bcc8407",
+    "id": "03557e35-af3a-469a-9558-4f2c0e9df2b8",
+    "slug": "bbidyy5sw4cn",
+    "org_id": "00000000-0000-0000-0000-000000000000",
+    "use_case_id": "1824c319-54cf-44e3-aa56-01f8b32d5c35",
     "version_number": 1,
     "name": "Version 1",
     "is_published": false,
     "is_live": false,
     "source_version_id": null,
-    "timestamp": "2026-02-25T20:30:26.638Z",
+    "timestamp": "2026-02-25T21:41:24.144Z",
     "published_at": null,
     "is_deleted": false,
     "description": "Workflow para formulario de incidencia: Hurto con Recuperacion",
@@ -20,21 +20,22 @@
   },
   "nodes": [
     {
-      "id": "815a4dd4-3800-4d74-991d-93ea53d701d6",
-      "persistent_id": "e56db5a7-cd2c-41f7-9126-355462d2dca1",
-      "slug": "6g1jplrkd08m",
-      "org_id": "PLACEHOLDER_ORG_ID",
-      "use_case_id": "836aab1a-5130-49c3-ac36-dc5a6bcc8407",
+      "id": "8dbd1908-fe03-435c-9ee0-7099821d35b0",
+      "persistent_id": "fd0196ba-ceca-4218-9be6-8fc4d7e303dc",
+      "slug": "tvzmgdw38at3",
+      "org_id": "00000000-0000-0000-0000-000000000000",
+      "use_case_id": "1824c319-54cf-44e3-aa56-01f8b32d5c35",
       "parent_id": null,
-      "version_id": "730f368a-19f9-4d03-9150-c2f80731b0d4",
+      "version_id": "03557e35-af3a-469a-9558-4f2c0e9df2b8",
       "type": "action",
       "name": "Incidencia Trigger",
       "is_complete": true,
       "node_output_id": null,
       "sort_index": 0,
-      "timestamp": "2026-02-25T20:30:26.638Z",
+      "timestamp": "2026-02-25T21:41:24.144Z",
       "is_deleted": false,
       "configuration": {
+        "enhanced_security": false,
         "auth_type": "api_key"
       },
       "staging_configuration": {},
@@ -44,10 +45,10 @@
       "node_component_id": null,
       "node_component_input_mapping": [],
       "node_output": {
-        "id": "110bf4d1-4c05-4fbc-8523-db97e8a4f4c8",
+        "id": "1d286339-5046-44da-9541-5155bf5d723b",
         "run_id": null,
-        "node_id": "e56db5a7-cd2c-41f7-9126-355462d2dca1",
-        "node_persistent_id": "e56db5a7-cd2c-41f7-9126-355462d2dca1",
+        "node_id": "fd0196ba-ceca-4218-9be6-8fc4d7e303dc",
+        "node_persistent_id": "fd0196ba-ceca-4218-9be6-8fc4d7e303dc",
         "event_id": "01929b66-a335-7514-a159-cae2fe715286",
         "session_id": null,
         "chat_session_id": null,
@@ -69,10 +70,15 @@
         "flat_data": {},
         "is_multiple": false,
         "error": null,
+        "llm_model": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "input": null,
         "status": null,
         "scope": "",
         "data_deleted": false,
-        "timestamp": "2026-02-25T20:30:26.638Z"
+        "timestamp": "2026-02-25T21:41:24.144Z"
       },
       "integration_id": "01926a93-064a-7a00-81b2-8ab78d5907e0",
       "event_id": "01929b66-a335-7514-a159-cae2fe715286",
@@ -85,6 +91,9 @@
         "group": "built-in",
         "icon": "/integrations/webhook.svg",
         "description": "Connect your agents to external systems via REST APIs",
+        "docs_url": "https://docs.happyrobot.ai/integrations/webhook",
+        "website_url": "https://docs.happyrobot.ai/integrations/webhook",
+        "is_top": true,
         "requires_credentials": false,
         "agent_specific": false
       },
@@ -96,32 +105,46 @@
         "description": "Listen to a new GET, POST or PUT request.",
         "is_instant": true,
         "has_cron_trigger": false,
+        "activity_name": "",
+        "task_queue": "",
         "timeout_seconds": 10,
         "retry_policy": {
           "InitialInterval": 0,
           "MaximumAttempts": 2,
           "BackoffCoefficient": 2
-        }
+        },
+        "wait_for_signal_seconds": 0,
+        "key_for_sleep": null,
+        "coming_soon": false
       }
     },
     {
-      "id": "35242260-058e-4b44-a1e2-e62cb47483ee",
-      "persistent_id": "07e0ba05-a183-442f-82a7-769e880d3c36",
-      "slug": "sfld640auth0",
-      "org_id": "PLACEHOLDER_ORG_ID",
-      "use_case_id": "836aab1a-5130-49c3-ac36-dc5a6bcc8407",
-      "parent_id": "815a4dd4-3800-4d74-991d-93ea53d701d6",
-      "version_id": "730f368a-19f9-4d03-9150-c2f80731b0d4",
+      "id": "6e7ff5e6-3da1-40db-ba72-6b166e5f9f21",
+      "persistent_id": "7119334d-04b9-4f0d-8e7b-9018b978ac98",
+      "slug": "z633zsftf71t",
+      "org_id": "00000000-0000-0000-0000-000000000000",
+      "use_case_id": "1824c319-54cf-44e3-aa56-01f8b32d5c35",
+      "parent_id": "8dbd1908-fe03-435c-9ee0-7099821d35b0",
+      "version_id": "03557e35-af3a-469a-9558-4f2c0e9df2b8",
       "type": "action",
       "name": "Agente Incidencia - Hurto con Recuperacion",
       "is_complete": false,
       "node_output_id": null,
       "sort_index": 0,
-      "timestamp": "2026-02-25T20:30:26.638Z",
+      "timestamp": "2026-02-25T21:41:24.144Z",
       "is_deleted": false,
       "configuration": {
-        "channel": "chatbot",
         "agent": {
+          "name": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "Asistente Prosegur - Hurto con Recuperacion"
+                }
+              ]
+            }
+          ],
           "languages": [
             {
               "type": "static",
@@ -130,25 +153,19 @@
                 "name": "Spanish"
               }
             }
-          ],
-          "model": {
-            "type": "static",
-            "static": {
-              "id": "claude-sonnet-4-5-20250514",
-              "name": "Claude Sonnet 4.5"
-            }
-          }
+          ]
         },
-        "media_processing": {
-          "transcription": {
-            "enabled": true
+        "transcription_context": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
           }
-        },
-        "idle_timeout_minutes": 5,
-        "reminders": {
-          "count": 2,
-          "interval_minutes": 2
-        }
+        ],
+        "keyterms": []
       },
       "staging_configuration": {},
       "development_configuration": {},
@@ -156,29 +173,61 @@
       "outbound_retry_configuration": {},
       "node_component_id": null,
       "node_component_input_mapping": [],
-      "node_output": null
+      "node_output": null,
+      "integration_id": "0192e48a-81d8-71cb-93dc-efd8ad63d86b",
+      "event_id": "0192e5dc-090a-7f57-87a0-76308ed6ef28",
+      "trigger_interval": null,
+      "multi_event_behavior": "parallel",
+      "hidden_fields": [],
+      "integration": {
+        "id": "0192e48a-81d8-71cb-93dc-efd8ad63d86b",
+        "name": "AI Agent",
+        "group": "built-in",
+        "icon": "/integrations/ai-agent.svg",
+        "description": "Create AI-powered conversational agents",
+        "docs_url": "https://docs.happyrobot.ai/integrations/ai-agent",
+        "website_url": "https://docs.happyrobot.ai/integrations/ai-agent",
+        "is_top": true,
+        "requires_credentials": false,
+        "agent_specific": true
+      },
+      "event": {
+        "id": "0192e5dc-090a-7f57-87a0-76308ed6ef28",
+        "name": "Outbound Voice Agent",
+        "integration_id": "0192e48a-81d8-71cb-93dc-efd8ad63d86b",
+        "type": 1,
+        "description": "Create outbound call",
+        "is_instant": false,
+        "has_cron_trigger": false,
+        "activity_name": "OutboundVoiceAgent",
+        "task_queue": "",
+        "timeout_seconds": 600,
+        "retry_policy": {
+          "InitialInterval": 0,
+          "MaximumAttempts": 1,
+          "BackoffCoefficient": 2
+        },
+        "wait_for_signal_seconds": 0,
+        "key_for_sleep": null,
+        "coming_soon": false
+      }
     },
     {
-      "id": "a734905d-0c2a-4270-959d-2875f6af60b8",
-      "persistent_id": "a4d9be33-d2f9-4198-bf19-8c0d67fd10d2",
-      "slug": "u7phd6y0sjax",
-      "org_id": "PLACEHOLDER_ORG_ID",
-      "use_case_id": "836aab1a-5130-49c3-ac36-dc5a6bcc8407",
-      "parent_id": "35242260-058e-4b44-a1e2-e62cb47483ee",
-      "version_id": "730f368a-19f9-4d03-9150-c2f80731b0d4",
+      "id": "0d978f0c-5338-4bce-b4dd-9d521e6b17a2",
+      "persistent_id": "0562b02f-3059-4bb7-b5ba-4ca103944c28",
+      "slug": "3dltlwrmytoc",
+      "org_id": "00000000-0000-0000-0000-000000000000",
+      "use_case_id": "1824c319-54cf-44e3-aa56-01f8b32d5c35",
+      "parent_id": "6e7ff5e6-3da1-40db-ba72-6b166e5f9f21",
+      "version_id": "03557e35-af3a-469a-9558-4f2c0e9df2b8",
       "type": "prompt",
       "name": "Prompt",
       "is_complete": false,
       "node_output_id": null,
       "sort_index": -1,
-      "timestamp": "2026-02-25T20:30:26.638Z",
+      "timestamp": "2026-02-25T21:41:24.144Z",
       "is_deleted": false,
-      "configuration": {
-        "initial_message": {
-          "type": "static",
-          "static": "Hola, soy tu asistente para registrar la incidencia de tipo \"Hurto con Recuperacion\". Cuéntame qué ha ocurrido, con todos los detalles que recuerdes."
-        }
-      },
+      "configuration": {},
       "staging_configuration": {},
       "development_configuration": {},
       "retry_configuration": {},
@@ -194,8 +243,8 @@
               "text": "Rol"
             }
           ],
-          "index_node_id": "bd4cb76d61f67d8d",
-          "index_node_hash": "945e4795416f7d274a0c0527aa3aa50cd94254d0fa9163b4d0e83a025ace0d6b"
+          "index_node_id": "3b83ea200e80ac63",
+          "index_node_hash": "3b83ea200e80ac63d0aa56f7cca6fd1f0986a3a8ef27ce39785960eec1903b84"
         },
         {
           "type": "p",
@@ -204,8 +253,8 @@
               "text": "Eres un asistente de IA para vigilantes de seguridad de Prosegur."
             }
           ],
-          "index_node_id": "6bffae688751227c",
-          "index_node_hash": "1726c8935f86d244ae82789e1086126b7c045d6430ef91ec248a83ac0edec747"
+          "index_node_id": "0fc59ce083ee676d",
+          "index_node_hash": "0fc59ce083ee676dfb884ddc110627b42fe9cceafeb2e242310d72a65ed8b498"
         },
         {
           "type": "p",
@@ -214,8 +263,8 @@
               "text": "Tu objetivo es ayudar al vigilante a completar un formulario de incidencia de tipo \"Hurto con Recuperacion\" (familia: \"Hurto\") mediante conversación natural."
             }
           ],
-          "index_node_id": "bcc6fcbfaa9f9b8a",
-          "index_node_hash": "67874f7d25036398d513694c512c469e1bdba8da6b31b29411cd0aa1cc6e0e10"
+          "index_node_id": "278542a94d740ac8",
+          "index_node_hash": "278542a94d740ac8a5112df9e18cc4ab325ad7406b6dd86ba09ce87c69acc811"
         },
         {
           "type": "p",
@@ -238,8 +287,8 @@
               "text": ". Las notas de voz se transcriben automáticamente. Acepta ambos formatos sin comentarios."
             }
           ],
-          "index_node_id": "5f57baab3500cf9c",
-          "index_node_hash": "8d429c737342c6456337d9d59eaad13b513927af88d44487ccbc2d40177ff026"
+          "index_node_id": "ae02691b90ff1d98",
+          "index_node_hash": "ae02691b90ff1d980ab1febb07faea73513fd2beb0be3144cf25ba298d9695df"
         },
         {
           "type": "h1",
@@ -248,8 +297,8 @@
               "text": "Instrucciones Generales"
             }
           ],
-          "index_node_id": "f032f3f506793f40",
-          "index_node_hash": "367a192fad15aefe9ffb952ba724242862e44e1ec9771b9d33df39dca3208e1f"
+          "index_node_id": "88eb0dcab357c2bd",
+          "index_node_hash": "88eb0dcab357c2bd306c81bcf63a5f517937b7fc7ab8d7eac2aa885fde7cbcde"
         },
         {
           "type": "p",
@@ -262,8 +311,8 @@
               "text": ": Pide al vigilante que narre lo ocurrido libremente. No hagas preguntas todavía."
             }
           ],
-          "index_node_id": "d73f2b7ec6025941",
-          "index_node_hash": "97e4c14fd8f930ed16e79d1b0528293c92cccf6c96a7e6d4e376b0dbb148071f",
+          "index_node_id": "096c0c3e75312a71",
+          "index_node_hash": "096c0c3e75312a71315fd9dd796e065760cea0ae257bb0dc9102498a205bf6a9",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -278,8 +327,8 @@
               "text": ": Procesa la narración y mapea toda la información posible a los campos del formulario. Incluye deducciones implícitas (ej: \"llamamos a la policía\" → asistencias = \"Sí\", tipo = \"Policía Nacional\" o \"Policía Local\")."
             }
           ],
-          "index_node_id": "e0985563ee36fec5",
-          "index_node_hash": "5c1ec30ef3b0702d172cb544bb4f5a2df89aae3a240f4314652a2cca79244e5e",
+          "index_node_id": "b95189a312cd98f6",
+          "index_node_hash": "b95189a312cd98f67bf5d65da5c95c8ab4275ec545e7eb966421cdc8df6743f9",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -294,8 +343,8 @@
               "text": ": Solo pregunta por campos OBLIGATORIOS que NO hayan sido mencionados ni deducidos."
             }
           ],
-          "index_node_id": "22c8e521cf4f00ab",
-          "index_node_hash": "7f727e88e037dd14c9ecfea032bca3293c7ea541d2110aa49a7c47b7e28da5fe",
+          "index_node_id": "47abdbb3649cdd50",
+          "index_node_hash": "47abdbb3649cdd50b967c90c573119c595c9fa93327f0acd943d764fede3b755",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -310,8 +359,8 @@
               "text": ": Sé natural y breve. Máximo 2-3 frases por mensaje."
             }
           ],
-          "index_node_id": "7543dd31a3a555c7",
-          "index_node_hash": "72f680205b8cbe0a9377f55d34a567c9e693b4f2e33296e219966b591157db23",
+          "index_node_id": "76d358b0bf670b00",
+          "index_node_hash": "76d358b0bf670b00c50bae1898075499bc8fa7a998d24171ea883247929e14f1",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -326,8 +375,8 @@
               "text": ": No acumules múltiples preguntas. Si faltan varios campos, pregunta el más importante primero."
             }
           ],
-          "index_node_id": "e043862f1c467ca1",
-          "index_node_hash": "255c5222d060d3ad4392de33ab417e0a4b516fb6c39757ee3407b7174935a244",
+          "index_node_id": "5568857ee0b6a402",
+          "index_node_hash": "5568857ee0b6a402505236591d5bb67d95cb25b58335d93696566fdbff9fd11c",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -342,8 +391,8 @@
               "text": ": Solo pregúntalos si son claramente relevantes por el contexto de lo narrado."
             }
           ],
-          "index_node_id": "28e627e6c03b01a3",
-          "index_node_hash": "16420e835a3f2fef3b283dab474985652c5f298b2afbe928f1b2477c5455b8c8",
+          "index_node_id": "6d8199689258c8ef",
+          "index_node_hash": "6d8199689258c8efb6e0631244d50a43cda64a82e5f1aa87ede58aea89fbf8cb",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -358,8 +407,8 @@
               "text": ": Mapea la respuesta del vigilante a la opción más cercana de la lista. Si no hay coincidencia clara, ofrece las opciones disponibles."
             }
           ],
-          "index_node_id": "ae15972439151b91",
-          "index_node_hash": "2c9f887d12d839b1678a87e9110f7a33105753c65b7792a28c045026ae6f8197",
+          "index_node_id": "3a0bbd0ad4ae2c5f",
+          "index_node_hash": "3a0bbd0ad4ae2c5fed0a85df7396a2d9220404fffad367dbf81dad044fa0144c",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -374,8 +423,8 @@
               "text": ": Si un campo permite selección múltiple, acepta varias respuestas separadas."
             }
           ],
-          "index_node_id": "2fc8bad318f1e7cd",
-          "index_node_hash": "bdd6f37e48f28fbe05b4b91870c74b60c7cc0d0a1ccfad9a4a7545bfbacaee85",
+          "index_node_id": "cb5734f9c3ff21d2",
+          "index_node_hash": "cb5734f9c3ff21d22c819ff576b13ef790dbffe11ebc26cf2ed1865052199f5c",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -390,8 +439,8 @@
               "text": ": Cuando deduzcas una respuesta de la narración, NO preguntes por ese campo. Considéralo respondido."
             }
           ],
-          "index_node_id": "34df376a43766ee3",
-          "index_node_hash": "5d8beba24a5b5096f0e3d091f42ecdae1870f76f1b53bdc5bc41429857706668",
+          "index_node_id": "541bed7828eccdbd",
+          "index_node_hash": "541bed7828eccdbdf2b1277b35ce781d0f8c7f4066d7870bb9daff72c29fce0d",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -406,8 +455,8 @@
               "text": ": Si una respuesta activa campos condicionales adicionales, inclúyelos en tu seguimiento."
             }
           ],
-          "index_node_id": "659d4ddad0a142df",
-          "index_node_hash": "f7ece86d40f2c77132218fd8512f4e20eb4ffeed34d063e1226a86d0b07d1713",
+          "index_node_id": "b3ab300eec556f1e",
+          "index_node_hash": "b3ab300eec556f1e7da6ae229d2fa9ac9eef2fdc95f71fcbadd24402b0f4e779",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -422,8 +471,8 @@
               "text": ": Cuando tengas toda la información obligatoria (y la opcional relevante), informa al vigilante que vas a enviar los datos y usa la herramienta \"finalizar_formulario\"."
             }
           ],
-          "index_node_id": "fde12a3649b8d856",
-          "index_node_hash": "6be20f9203796d419fdd7d3986a08f63075ee748155f7d3f6fce98c119e0d4b9",
+          "index_node_id": "d7706f2442551568",
+          "index_node_hash": "d7706f2442551568f9e49da11877e36a129892104c856ef8c55bff8be54a8834",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -438,8 +487,8 @@
               "text": ": Ignora los campos de tipo \"Adjunto\" (tipo 5). El vigilante los añadirá manualmente."
             }
           ],
-          "index_node_id": "3c48042a0cef1efd",
-          "index_node_hash": "d59f3d27c1955e7f9b0a424d8e71eef9593e0810a88ddf0cbb8aa8b11d7b69bf",
+          "index_node_id": "42dfb7b1853c333a",
+          "index_node_hash": "42dfb7b1853c333a7209fec0f3cdab4c85697aac8a90aed8c4d353acd0cc1046",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -454,8 +503,8 @@
               "text": ": Para campos de fecha/hora, usa formato ISO 8601 (YYYY-MM-DDTHH:mm:ss). Si el vigilante dice \"hoy a las 3\", calcula la fecha completa."
             }
           ],
-          "index_node_id": "a2c8a66e660d6066",
-          "index_node_hash": "de91cfeb757062ce5436510190a6b9dba2941f5914a0d939c8a32d0eac499bfd",
+          "index_node_id": "5c1a0674ce7faabf",
+          "index_node_hash": "5c1a0674ce7faabf3cbb5bcd01325934c2ab0117ab40f2297d7041cf2e02c1dd",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -470,8 +519,8 @@
               "text": ": Para campos numéricos, extrae solo el número. Si dice \"unos 50 euros\", el valor es \"50\"."
             }
           ],
-          "index_node_id": "b855a0bc2b9f4b30",
-          "index_node_hash": "a47fad7bdb268e1a61623a9d168d2610a187bc89df81bd28fa0db2d65fec0f93",
+          "index_node_id": "718fdeda013daeae",
+          "index_node_hash": "718fdeda013daeaeeffcdee85a9ad5d7e9b50de25ce4c63bd11b1a8c21e6f035",
           "indent": 1,
           "listStyleType": "decimal"
         },
@@ -482,8 +531,8 @@
               "text": "Campos del Formulario"
             }
           ],
-          "index_node_id": "15248be1ecef1738",
-          "index_node_hash": "c985e78220eb6de2d0763418beff0a8153c2b4f1b5e33660ba7ee3b9ad2404a3"
+          "index_node_id": "168cc10cc521ebe2",
+          "index_node_hash": "168cc10cc521ebe2713e69d663603a40a957f2f5bd0a7fa6e68b6e54563802a2"
         },
         {
           "type": "h2",
@@ -492,8 +541,8 @@
               "text": "Sección 1: Cuándo y Dónde"
             }
           ],
-          "index_node_id": "51ba7cd23f3b5774",
-          "index_node_hash": "acacff4f0557e7c8f67ab5fa7f2b8ff1299c3dd43b0752c1afdc8fd544e1ccac"
+          "index_node_id": "293072ce904e8450",
+          "index_node_hash": "293072ce904e84504c2e4d218ab4cac6d592adeea1ea678a83b9a4928739e0db"
         },
         {
           "type": "p",
@@ -510,8 +559,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "ad47c06f6e91a183",
-          "index_node_hash": "0e79173a89b7fd57a7ca899de0ee7438210d43e653357b6485eec9249f0e3385",
+          "index_node_id": "8be8f4fa3c5fda37",
+          "index_node_hash": "8be8f4fa3c5fda37e07c732f239bf26996501a62918def79934e30e7ad76bdbd",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -526,8 +575,8 @@
               "code": true
             }
           ],
-          "index_node_id": "131e3d61b59f7f0a",
-          "index_node_hash": "977f25ef5b75b3b00c7a53fa17b319e52b4a12dd1fd91641f462bcc894203665"
+          "index_node_id": "00450c79c80bce90",
+          "index_node_hash": "00450c79c80bce90928bb1bb69bea6aa937a8f5d46dc0ead89f2c68a2e0be004"
         },
         {
           "type": "p",
@@ -544,8 +593,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "2c1ce37943fd899b",
-          "index_node_hash": "be109420f9764302ee25084508e6d5f2ee7dafa0fceeb749b7b77a7ac1c91f72",
+          "index_node_id": "688dd2d8c1dbfe4b",
+          "index_node_hash": "688dd2d8c1dbfe4b29d830f37c83dc95861d4eaf17dba3df7fae78419a512f3d",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -560,8 +609,8 @@
               "code": true
             }
           ],
-          "index_node_id": "4717b65799bebc9e",
-          "index_node_hash": "d6bb50b1da76a133665ee7c569046bad94209734e8df2ccf180b7852a75e7b70"
+          "index_node_id": "d635d8b2c54ecb3f",
+          "index_node_hash": "d635d8b2c54ecb3f0828c9b05045e4177d94f846d419fcb46cd08280c2ddda6d"
         },
         {
           "type": "p",
@@ -630,8 +679,8 @@
               "code": true
             }
           ],
-          "index_node_id": "e0f8106289d155b5",
-          "index_node_hash": "ac2db693a6584975fcc3a5e428da5fcdb48fc66fdf659837279065b9007a04ef"
+          "index_node_id": "01fcbd8c55c3223c",
+          "index_node_hash": "01fcbd8c55c3223c51b2d4415f0c4203b2c00561818665209b323f094065d478"
         },
         {
           "type": "h2",
@@ -640,8 +689,8 @@
               "text": "Sección 2: Qué ha Ocurrido"
             }
           ],
-          "index_node_id": "4a13a9051d644a2a",
-          "index_node_hash": "5465d3dfa2f150e7e23f25f4112a026f8d2099bde5af310a0ace5d6a7d33decf"
+          "index_node_id": "4561d7eff05a9aea",
+          "index_node_hash": "4561d7eff05a9aea208331f9de213150b663b798c6ddfb2b1e7d0d0c3245a03d"
         },
         {
           "type": "p",
@@ -658,8 +707,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "819626b2d1880f1b",
-          "index_node_hash": "02441ade49ce5978bef0b693d14e0e4e45d0cdbded906d0ed34c1c04bfece4d7",
+          "index_node_id": "e9000049cea06460",
+          "index_node_hash": "e9000049cea06460cab676462781ef50bd06b32451efd5d2d7a7ce491eb3fa08",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -674,8 +723,8 @@
               "code": true
             }
           ],
-          "index_node_id": "6248a352f5fc4b22",
-          "index_node_hash": "9111406c2899dbbb73d27df44829a4aaefe2734f1c1fb19f0724c877c09f60c7"
+          "index_node_id": "c8e100e2bac089c0",
+          "index_node_hash": "c8e100e2bac089c0c393141b95864d9eb25dce2db8bd8e77e18b35e646b7fe0a"
         },
         {
           "type": "p",
@@ -716,8 +765,8 @@
               "code": true
             }
           ],
-          "index_node_id": "c3eb28f086c137d8",
-          "index_node_hash": "b80721290bfb4873753e02bbe4b64667028f03fd9fd6d353a0c25a3cbfc67c9f"
+          "index_node_id": "1b2dc4a4a73ab35b",
+          "index_node_hash": "1b2dc4a4a73ab35ba22bd7084a095d8a1b5f2ee29b9df401219fc9167f52d72a"
         },
         {
           "type": "p",
@@ -734,8 +783,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "8320a6c17d204088",
-          "index_node_hash": "642b62981bf65cf7a9de14a390449d419800247389b1b53aa5e26bf875eb5cba",
+          "index_node_id": "b1522a9401fb7f05",
+          "index_node_hash": "b1522a9401fb7f05285e377f0693b2daccc15795ab56a66a2d257bbf5a1f36cc",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -750,8 +799,8 @@
               "code": true
             }
           ],
-          "index_node_id": "55b9e70a547f42a8",
-          "index_node_hash": "81d70b9595b64ae4abc175480055d771d0497df80bf602b2029a9c3eaa3223f1"
+          "index_node_id": "886effeec5047e13",
+          "index_node_hash": "886effeec5047e13ebbbc6b649205071dd08da52fcad80567a580a1707858d3d"
         },
         {
           "type": "p",
@@ -778,8 +827,8 @@
               "code": true
             }
           ],
-          "index_node_id": "80c5a16a2c878c52",
-          "index_node_hash": "5bccaa184bf67c3cd43c40674b17cdf9d7e1b1d20ccc672d75e89823ba2a16d7"
+          "index_node_id": "b2d52428b06b1cdd",
+          "index_node_hash": "b2d52428b06b1cdd3dfe22bd498532965d91490b65072dcf5e6b4e74b2df84b3"
         },
         {
           "type": "p",
@@ -796,8 +845,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "dde6ab2626d99c88",
-          "index_node_hash": "cc04de86df99b4a17ba7bb425771f015e9a5e19dced58ff4d111ab51458d7723",
+          "index_node_id": "0cfb1f770eb89966",
+          "index_node_hash": "0cfb1f770eb8996664091f1476b92b32b94fa0667c7f7fef33994249538a435f",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -812,8 +861,8 @@
               "code": true
             }
           ],
-          "index_node_id": "5b430355ddfa1c4a",
-          "index_node_hash": "57aac365c800cbef58a7450a4b478f7a2d202d7feed75a71738edd960817f82a"
+          "index_node_id": "88314248d3c04b84",
+          "index_node_hash": "88314248d3c04b8486e9e851d883fba65c3faf496de56d4712d467a3ed5181ee"
         },
         {
           "type": "p",
@@ -826,8 +875,8 @@
               "text": " — Sí/No"
             }
           ],
-          "index_node_id": "afa3e531e3dbedc8",
-          "index_node_hash": "6668b14664920d5b1cc94c461a9efecdc6db62078cf626b5b86aaa4909a0480a",
+          "index_node_id": "f55eadc52ccb5fec",
+          "index_node_hash": "f55eadc52ccb5fec4cc59c5c08efb2ed46e20def415f7aeb8e3679c95dc4f0f9",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -842,8 +891,8 @@
               "code": true
             }
           ],
-          "index_node_id": "caceacdfc9cb5d5e",
-          "index_node_hash": "03e4bf54f7745d9f7854f6bccb6a092c59f2f9136e66dacd399c8c1010ae5714"
+          "index_node_id": "9e05780bed4bb455",
+          "index_node_hash": "9e05780bed4bb455bee96e7561cc51c04a231c67adbabd4082de41d6a4171253"
         },
         {
           "type": "p",
@@ -863,8 +912,8 @@
               "code": true
             }
           ],
-          "index_node_id": "f5da937d2280bdeb",
-          "index_node_hash": "fc6a7ee53f17355ae6b321a1a3fe1328d15971ef87d1cbc3fa8b8733091c5749"
+          "index_node_id": "1cd7de2b1419b9c5",
+          "index_node_hash": "1cd7de2b1419b9c5f379ed3808aa2943ea64278e595ec70279e12964a45ed3c1"
         },
         {
           "type": "h2",
@@ -873,8 +922,8 @@
               "text": "Sección 3: Cómo ha Ocurrido (Modus Operandi)"
             }
           ],
-          "index_node_id": "d69fb4d3d80b76f0",
-          "index_node_hash": "110e3ba5f89cdffff50cbc55342bffff367643404a3ecc86c330a94216e4a693"
+          "index_node_id": "4ee669074c825e7c",
+          "index_node_hash": "4ee669074c825e7cc5f6ee381ee6aa6bfce69279e96aad2772580cbdacdb38be"
         },
         {
           "type": "p",
@@ -891,8 +940,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "384a628a0f77af5d",
-          "index_node_hash": "8a423a66c7e86a975cf222ef0d93ccf8e2affecf6e50c41360bf1c89a81f3150",
+          "index_node_id": "8e31a9a08668c677",
+          "index_node_hash": "8e31a9a08668c6779db4ef6f4d73440b46984b5f098f17d180fbd13f13bc83fe",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -907,8 +956,8 @@
               "code": true
             }
           ],
-          "index_node_id": "efc5cdc6c4b40536",
-          "index_node_hash": "a507faabefc861f7f1f4bbbbe43ca359418a27c19b6191da94d646e75fdc4949"
+          "index_node_id": "277ec7550a579523",
+          "index_node_hash": "277ec7550a5795233d73617ba24b549ed3d6060679a52e7183274fadb8f58419"
         },
         {
           "type": "p",
@@ -935,8 +984,8 @@
               "code": true
             }
           ],
-          "index_node_id": "b80d73beb166aded",
-          "index_node_hash": "6c175c6ba979a55d30b3cdbc65184f98da0be88d85c9c322aacf20f3e26614a0"
+          "index_node_id": "69eb187b6bf3271c",
+          "index_node_hash": "69eb187b6bf3271c075f4e7661113150f746854bc3bf7b173acdf2dae93a5cdb"
         },
         {
           "type": "p",
@@ -949,8 +998,8 @@
               "text": " — Sí/No"
             }
           ],
-          "index_node_id": "6fa9f7f8f7fa8133",
-          "index_node_hash": "5e8b7c149bc673aa3c700088f36f66edd3c6a769286bfff75f493e165eb87a9f",
+          "index_node_id": "d9edc61e77c56a5b",
+          "index_node_hash": "d9edc61e77c56a5bd4c52f040ed64231839ea082433d7d5400313051ce73f9e1",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -965,8 +1014,8 @@
               "code": true
             }
           ],
-          "index_node_id": "fb27b80497544ef9",
-          "index_node_hash": "cc279ee267ad728dfc9c1c91cb8ac22606b69f8a3db00020fcd35d77ec075839"
+          "index_node_id": "eed0a202e22645c5",
+          "index_node_hash": "eed0a202e22645c5ca61c6537893188f492c51c1ed33bbea067ff1ba47b40ba4"
         },
         {
           "type": "p",
@@ -986,8 +1035,8 @@
               "code": true
             }
           ],
-          "index_node_id": "df8907e52366e184",
-          "index_node_hash": "3c9b241957570a19bdf5a7d0fc9945a8b861b1aebfa858e98d287c06d5668348"
+          "index_node_id": "9963b43993818b45",
+          "index_node_hash": "9963b43993818b45ef825fe1b49571590bd4e2c21e740be5e4142a38699e28f2"
         },
         {
           "type": "p",
@@ -1004,8 +1053,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "36dc311b2b6c3f04",
-          "index_node_hash": "6dc5431602e043982fa2029cdf7b73250140ccab9fee0a49bb9b86be294383ef",
+          "index_node_id": "47a535c292d6aa18",
+          "index_node_hash": "47a535c292d6aa18877c2b567d59f2201123c58b62f528a9be211823eeeb030c",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1020,8 +1069,8 @@
               "code": true
             }
           ],
-          "index_node_id": "35c368bce378cf75",
-          "index_node_hash": "cd48665c2e7454e42561cdb8c2ab8a252b22c0b9414c8fec4611279f29d78b9d"
+          "index_node_id": "f4449b15a4744543",
+          "index_node_hash": "f4449b15a47445430eea38e095d402c12bdc6a7670e88d06f9bb1f1dc9dc758c"
         },
         {
           "type": "p",
@@ -1062,8 +1111,8 @@
               "code": true
             }
           ],
-          "index_node_id": "db262928c1a37267",
-          "index_node_hash": "eefb450f223af1f4822c8d090bcb33e7aa455fbb307fdbfb0b9513c522a0b0fc"
+          "index_node_id": "53486b01f85631c9",
+          "index_node_hash": "53486b01f85631c98c1c03642316d49d1cd3c8251780507b535b2ee95cc33b33"
         },
         {
           "type": "p",
@@ -1080,8 +1129,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "4390f9bfb96779b5",
-          "index_node_hash": "5f36f8edc28b03112c36381718e7ba382e8486077f75f81d08740a9488e4f89b",
+          "index_node_id": "09e9fabf66bcefa3",
+          "index_node_hash": "09e9fabf66bcefa3eb5fb684fa09a55aa565c8dfc3f0fc913ed5e6f21d2d86e0",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1096,8 +1145,8 @@
               "code": true
             }
           ],
-          "index_node_id": "ec58eac1f80fec8a",
-          "index_node_hash": "effda8001a7a81dd3e0a9ae70bcbc64947d3c1a902c78683cc9ea9bb0942a666"
+          "index_node_id": "a44237d478fa8ecd",
+          "index_node_hash": "a44237d478fa8ecde1497cf3b299eae4ff07ddf8953b34e7f7855cdc614c5568"
         },
         {
           "type": "p",
@@ -1131,8 +1180,8 @@
               "code": true
             }
           ],
-          "index_node_id": "a1ef6af53e0bc10e",
-          "index_node_hash": "e41968cac107477bf2cc1ad89e0e1968192b2dfaaeec1be8c18f0f5c0bcae94b"
+          "index_node_id": "3fe0329400c1b7c1",
+          "index_node_hash": "3fe0329400c1b7c11e967c0ffbeaa7f4dd8dc466a3076f1a2bd505f831684005"
         },
         {
           "type": "h2",
@@ -1141,8 +1190,8 @@
               "text": "Sección 4: Asistencias y Comunicaciones"
             }
           ],
-          "index_node_id": "a1168471cef4d5d6",
-          "index_node_hash": "d1c270bbdbfc4431fafd02b248eb265b2b31565461d4cb73b2a477d034c9edab"
+          "index_node_id": "45165e9157962b41",
+          "index_node_hash": "45165e9157962b41b29ec92336f016cdeb06587c8fd51b46b56cb72965317e68"
         },
         {
           "type": "p",
@@ -1159,8 +1208,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "67d8e0f9f2e30332",
-          "index_node_hash": "3e2aaf909fd41238eb7beaba57bc13de4cc2f70c2bc46ed05fc7177dfe75850c",
+          "index_node_id": "3a19a1403c023710",
+          "index_node_hash": "3a19a1403c023710e597a085101212b13f200c80d515c24a5713a131cd1f5540",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1175,8 +1224,8 @@
               "code": true
             }
           ],
-          "index_node_id": "cda3514c04ae85e6",
-          "index_node_hash": "26c985749c7265dc96a067e11440263e1a6cf8bb8a23285c5ec0cad9fbd11608"
+          "index_node_id": "f192d8ab0e59efca",
+          "index_node_hash": "f192d8ab0e59efcaeb66e122b09a13f0e1f0cb60bfe4be847f523f0dbc2d0e9f"
         },
         {
           "type": "p",
@@ -1196,8 +1245,8 @@
               "code": true
             }
           ],
-          "index_node_id": "9637ed4018c413df",
-          "index_node_hash": "99a4c0b06b28c6195dd69c6ca35def9d1e50ee2b452b91086f93d762ff0c9f05"
+          "index_node_id": "07a10ceb5c16f18c",
+          "index_node_hash": "07a10ceb5c16f18ce4df3eb94d2ddf162bf9ac2060ad54043141577439551cff"
         },
         {
           "type": "p",
@@ -1210,8 +1259,8 @@
               "text": " — Sí/No"
             }
           ],
-          "index_node_id": "47eabc9d962506fa",
-          "index_node_hash": "2a0876ddc2653752f350ebdd364e77c09f8b1d9373e6f1df7f4bba79a5bc4ef1",
+          "index_node_id": "e49fc7d7189fcff8",
+          "index_node_hash": "e49fc7d7189fcff8f9bd0f9d97213f3052a272690aaa0061a3304022c5e36ac9",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1226,8 +1275,8 @@
               "code": true
             }
           ],
-          "index_node_id": "cfc47c4fd3af3c3a",
-          "index_node_hash": "0979261ca0a0933a2f4d68bc2cfd687fc2b44a4cd1e4bc3895a49b1cbbe3f43d"
+          "index_node_id": "7b9db7831fb820fe",
+          "index_node_hash": "7b9db7831fb820fee4617a2d9234698ce27641498c765b11f7ccdbc1c79c30ce"
         },
         {
           "type": "p",
@@ -1247,8 +1296,8 @@
               "code": true
             }
           ],
-          "index_node_id": "81239dbf26d2a559",
-          "index_node_hash": "a5776371edf6b2af61bcb19ac291661db843d74f1f864c24f2dc13a55be6fdc2"
+          "index_node_id": "21fcd64c547e49fb",
+          "index_node_hash": "21fcd64c547e49fb493ea3add5e5a517ab699e0fdc03bc584ad30ab859173138"
         },
         {
           "type": "p",
@@ -1261,8 +1310,8 @@
               "text": " — Sí/No"
             }
           ],
-          "index_node_id": "bebd8a16ff62a7b0",
-          "index_node_hash": "476f22151980f45492ca86ee1e7b417e586dff6dab845d042114052aafbd2ec4",
+          "index_node_id": "9ba7f8d51e7b352b",
+          "index_node_hash": "9ba7f8d51e7b352bbce41aaecca40c086fafb688ba016896ddf9a8f6cf666cb4",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1277,8 +1326,8 @@
               "code": true
             }
           ],
-          "index_node_id": "c11d0306d2624411",
-          "index_node_hash": "08cb0b9a00cb45b031347bda402f65f83349cdeaae056f101137e9182cd53eda"
+          "index_node_id": "f886c60e6f7405c7",
+          "index_node_hash": "f886c60e6f7405c75dcdb77cbb2e16f23927488c9176edd717cc88551d5a71f7"
         },
         {
           "type": "p",
@@ -1298,8 +1347,8 @@
               "code": true
             }
           ],
-          "index_node_id": "e1453000b9bfc877",
-          "index_node_hash": "4728ce52f7d5866ab0b2269c0f1e58b9208c464d28226215cb8d6bb419f30b2e"
+          "index_node_id": "041d1037f9ece449",
+          "index_node_hash": "041d1037f9ece449dcff896f0ee17fe6409002bb224f42bf6af1ff82021c8776"
         },
         {
           "type": "h2",
@@ -1308,8 +1357,8 @@
               "text": "Sección 5: Resultado y Denuncia"
             }
           ],
-          "index_node_id": "a50bceb1aa690051",
-          "index_node_hash": "abfbdf45467072b59739faf244da79d7e03493515fddd4d64f9cc342c579cb45"
+          "index_node_id": "b61c5f4960640275",
+          "index_node_hash": "b61c5f4960640275b2a1c8ced1d0f832e0ac51a5efe74aaf4e44146520bacb75"
         },
         {
           "type": "p",
@@ -1326,8 +1375,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "5a6543418c893741",
-          "index_node_hash": "fc8bcb9a59ac465f444ffa776ae40ab0c54ad7b8f62d859fb24c496ece8474c8",
+          "index_node_id": "5fc287773bb13ae0",
+          "index_node_hash": "5fc287773bb13ae0b131cf0acc12dc6321d689f59ae6ad327aee55508de0486e",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1342,8 +1391,8 @@
               "code": true
             }
           ],
-          "index_node_id": "a82430109639ba68",
-          "index_node_hash": "d12c55ebd3f4f854ce3d2cbd183c0c179c8b5a04f8a5a30681fa4599a9bedda2"
+          "index_node_id": "2d0f9b30c8d589c2",
+          "index_node_hash": "2d0f9b30c8d589c293f0ef8fd01e29b0aecd843048dce9e354397f84667465ad"
         },
         {
           "type": "p",
@@ -1363,8 +1412,8 @@
               "code": true
             }
           ],
-          "index_node_id": "1a7c6aa62cc0fa32",
-          "index_node_hash": "0b4cdca85c36bbbde9de49398b26bc85dcc746fff685c03c6f8a497e50ab8680"
+          "index_node_id": "38e57d183132b926",
+          "index_node_hash": "38e57d183132b926596598e65268c38f87bdd1dc4e79a026807ef3fa40b2cdc1"
         },
         {
           "type": "p",
@@ -1377,8 +1426,8 @@
               "text": " — Texto libre"
             }
           ],
-          "index_node_id": "6ddc56bb635c7078",
-          "index_node_hash": "ed6b62217ef62e4320c45dd618d97f028341b6e67259ca18a797b6958763d7f3",
+          "index_node_id": "c613810be15159b3",
+          "index_node_hash": "c613810be15159b398472207ab1a79214bcd4888f206381dfb3670f97846a7de",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1393,8 +1442,8 @@
               "code": true
             }
           ],
-          "index_node_id": "a532ea5ba05668df",
-          "index_node_hash": "b57d3ae5070bf7ee08af06b738212a94655466d35baf416c3a2e071f639eaa03"
+          "index_node_id": "6ea35ef9b73b8816",
+          "index_node_hash": "6ea35ef9b73b88166bf9e56f8d5e3dd0a15c53ac2982cd2c4b46fc21618c02c8"
         },
         {
           "type": "p",
@@ -1407,8 +1456,8 @@
               "text": " — Texto libre"
             }
           ],
-          "index_node_id": "f6510bb1026d16e7",
-          "index_node_hash": "d13593bc0708bd75e0b709760240423ec8b48333942cff657860db05c3968b89",
+          "index_node_id": "75a0c8ec7757141b",
+          "index_node_hash": "75a0c8ec7757141b498b08236d1e589dbb12dc9966cf5304f722fca28dc003f9",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1423,8 +1472,8 @@
               "code": true
             }
           ],
-          "index_node_id": "139ff913e59c1cdc",
-          "index_node_hash": "27c3615b642d99556da0a2ce12b58610c2ad19693424cd2efe739a35e068e6f3"
+          "index_node_id": "65a77711825447a4",
+          "index_node_hash": "65a77711825447a469a98e9fc8965ab2c4a0433d748558c2d5fe91329cdab454"
         },
         {
           "type": "h2",
@@ -1433,8 +1482,8 @@
               "text": "Sección 6: Adjuntos"
             }
           ],
-          "index_node_id": "8e55a87795a52a62",
-          "index_node_hash": "17a3d3fa2016daee4ddacb382dba7724c9951b05a5eeefe8aef15e9b7a4deac9"
+          "index_node_id": "34f5e71616421a56",
+          "index_node_hash": "34f5e71616421a56aa1c8d91a65aef787455a6872ffffebcf6fbfa9f72616857"
         },
         {
           "type": "h1",
@@ -1443,8 +1492,8 @@
               "text": "Reglas de Bifurcación"
             }
           ],
-          "index_node_id": "fbaaf2862e656830",
-          "index_node_hash": "efcd42c970351592bdbf0eab78745bb28ccc6ee10c95e8ffdf68355917925cd9"
+          "index_node_id": "53f89df418e612e0",
+          "index_node_hash": "53f89df418e612e0eb52a37963fcfcbb2550924db2daf7eaf101c0ef2be8e1e9"
         },
         {
           "type": "p",
@@ -1453,8 +1502,8 @@
               "text": "Algunos campos activan preguntas adicionales según la respuesta del vigilante:"
             }
           ],
-          "index_node_id": "f922cfb187f47c19",
-          "index_node_hash": "fbe128518304524c774d64f47a8874239bf9ba0be7a6b496b751ecf9e676d056"
+          "index_node_id": "bb863bd02935a3dd",
+          "index_node_hash": "bb863bd02935a3ddb48abd743a570b4b740262124ee4d581824dbd227ec300a6"
         },
         {
           "type": "h1",
@@ -1463,8 +1512,8 @@
               "text": "Mapeo de Respuestas Implícitas"
             }
           ],
-          "index_node_id": "2c3b3c15cc0c4fca",
-          "index_node_hash": "59beca6b71e1ff35bfdca0f804aee61ca89c04fe32bc4f6c00071d29a92bd28a"
+          "index_node_id": "571befbc8d18dba2",
+          "index_node_hash": "571befbc8d18dba2d4f80b6370796b6951d940580e81cbeaf116079aa95b8634"
         },
         {
           "type": "p",
@@ -1473,8 +1522,8 @@
               "text": "Cuando el vigilante use estas expresiones, mapea automáticamente a los campos correspondientes:"
             }
           ],
-          "index_node_id": "2f1c037c5dd27bff",
-          "index_node_hash": "e558364c8f2e92d40cf3a567f4928464138ae84f2942e5116c64233a8434baf0"
+          "index_node_id": "64ba7ed6e320c726",
+          "index_node_hash": "64ba7ed6e320c7267ab158542c009777cc8a55b73d945de6af22863891160f1a"
         },
         {
           "type": "h2",
@@ -1483,8 +1532,8 @@
               "text": "Asistencias y Fuerzas de Seguridad"
             }
           ],
-          "index_node_id": "4ed97b93af69b1d3",
-          "index_node_hash": "9c4b1f539634a25ce568027bc684daa85e05cc03f944d8213edc261da4a563b6"
+          "index_node_id": "9f2153a8d597c7a0",
+          "index_node_hash": "9f2153a8d597c7a07b7591750061ba13fcd26b195bac22c594c860f4f4f7e2de"
         },
         {
           "type": "p",
@@ -1493,8 +1542,8 @@
               "text": "\"policía\" / \"agentes\" → Asistencias: \"Policía Nacional\" o \"Policía Local\" (según contexto)"
             }
           ],
-          "index_node_id": "12a63a0c78ee7681",
-          "index_node_hash": "b72b33eb5ba0fa9c40b0e2210bce6c3d55804b1935c21b96d41381833c2667ea",
+          "index_node_id": "dc6a1a7d6ecee1b6",
+          "index_node_hash": "dc6a1a7d6ecee1b65ea8b457b7e074bc17b1d49382a6497ffe2881ba48d17b20",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1505,8 +1554,8 @@
               "text": "\"guardia civil\" → Asistencias: \"Guardia Civil\""
             }
           ],
-          "index_node_id": "65e384b8b655f84d",
-          "index_node_hash": "0bef2ec79e3b4c5a5a02edfcf4427a606d9a917694b0b9da56098c4ae115f413",
+          "index_node_id": "62f96471493aaaab",
+          "index_node_hash": "62f96471493aaaab40f281d68c61fd176cfd994b4d1e51afbbf6783dd52c31b2",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1517,8 +1566,8 @@
               "text": "\"ambulancia\" / \"sanitarios\" / \"SAMUR\" / \"médicos\" → Asistencias: \"Asistencia sanitaria\""
             }
           ],
-          "index_node_id": "6c4f82381f7c73af",
-          "index_node_hash": "b0bc0cec5642deddeb83bdcfaf34a4e1105120df622db167e50c726943da82b9",
+          "index_node_id": "cba2336433589e46",
+          "index_node_hash": "cba2336433589e460157bf5f6c231a3c241fb1dbb8e38246380fe0c77e08228b",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1529,8 +1578,8 @@
               "text": "\"bomberos\" → Asistencias: \"Bomberos\""
             }
           ],
-          "index_node_id": "268958a0c94b30a4",
-          "index_node_hash": "e01ec50e68686d18e42c79593abc1d59052f9b01050f2a7d93a48c837f5b1076",
+          "index_node_id": "ff086d9fb50c3323",
+          "index_node_hash": "ff086d9fb50c3323cf0cc1a84f7028ab6b19cb4ce564b963d7db99b24906144f",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1541,8 +1590,8 @@
               "text": "\"protección civil\" → Asistencias: \"Protección Civil\""
             }
           ],
-          "index_node_id": "a774935cfb0a1c77",
-          "index_node_hash": "9c5adcaeb9c192c26f2acca00358e6ccce575e359d61191204d5542d4dc5feaf",
+          "index_node_id": "95d9fe912085b8e3",
+          "index_node_hash": "95d9fe912085b8e301fc72cb1196d99162fc21b1ea6fa9f4a0f635d5416adbb0",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1553,8 +1602,8 @@
               "text": "\"llamamos a...\" / \"avisamos a...\" → ¿Se avisaron asistencias?: \"Sí\""
             }
           ],
-          "index_node_id": "81c6c1dfcfa7d851",
-          "index_node_hash": "19017d1a0212d69ca45fe96e7d0c227512b9f5287625901fb25ae66bc942105f",
+          "index_node_id": "55cca71c3f2b7fe0",
+          "index_node_hash": "55cca71c3f2b7fe0cab2c7fd3c2ed0dea93b05b4c7088d8ae3a1a2d5a57c7c33",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1565,8 +1614,8 @@
               "text": "Resultado / Detención"
             }
           ],
-          "index_node_id": "c947d74a9a85334c",
-          "index_node_hash": "fff4123be94724ab3a653e857bda968f9d377613bb2d256b1ffc7f42830f03bf"
+          "index_node_id": "566d70a000bfd2da",
+          "index_node_hash": "566d70a000bfd2da87420c9bbf9fe53bee819280c116c505c27a8c8a76defb93"
         },
         {
           "type": "p",
@@ -1575,8 +1624,8 @@
               "text": "\"lo detuvimos\" / \"detenido\" / \"lo pillamos\" → Resultado: \"A disposición de FFCCS\" o \"Detención\""
             }
           ],
-          "index_node_id": "07384c51e36f69c0",
-          "index_node_hash": "7b81838872060341c2e5d2856185db2cf636af1f5216e69dd8eb298130cc80af",
+          "index_node_id": "61c16c8c37c3cbd1",
+          "index_node_hash": "61c16c8c37c3cbd1ac6aeba230ceb43e5445878d6adc44da7f43fc7815c4df51",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1587,8 +1636,8 @@
               "text": "\"huyó\" / \"se escapó\" / \"se fue corriendo\" → Resultado: \"Huida sin recuperación de efectos\" (o \"con recuperación\" si se recuperó lo robado)"
             }
           ],
-          "index_node_id": "606cc5e7892e9de9",
-          "index_node_hash": "5f151df087657435f6aecd26e678407e18bd97f83de5b3ea1ef070a55032777e",
+          "index_node_id": "bb3dd678661fe78b",
+          "index_node_hash": "bb3dd678661fe78bf802fc28f30ef728f18e7fc5455443e6975a00d610788423",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1599,8 +1648,8 @@
               "text": "\"devolvió el producto\" / \"soltó la mercancía\" → Resultado: \"Devuelve el producto\""
             }
           ],
-          "index_node_id": "5a35bce918f29b48",
-          "index_node_hash": "4dd4f7e61f4f0ceccb7dfdd594decf585401b70265bb3f12e521bfdef4033581",
+          "index_node_id": "7cf4c366d7028b34",
+          "index_node_hash": "7cf4c366d7028b3477091e14137cd242acd57923c862bfd90700888f263a3323",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1611,8 +1660,8 @@
               "text": "Detección"
             }
           ],
-          "index_node_id": "a8ebea7152753471",
-          "index_node_hash": "1e640883b9d1c55df0dc2e29a0f3e14df495bb44a14c159586af9e7b112289c3"
+          "index_node_id": "da264d5540c8e309",
+          "index_node_hash": "da264d5540c8e3093ed52ff6351b3360593d78db963cad3f3c790c57cb3cf4c6"
         },
         {
           "type": "p",
@@ -1621,8 +1670,8 @@
               "text": "\"cámaras\" / \"CCTV\" / \"monitor\" → Detectado mediante: \"CCTV\""
             }
           ],
-          "index_node_id": "5130dd76ede44c4d",
-          "index_node_hash": "6be04b17e42cdfc06bc8ba8fb40d4de765294b2ec753278c5c0d792d59528a94",
+          "index_node_id": "90c57116910aa68d",
+          "index_node_hash": "90c57116910aa68d0bab5770ff111a4ead2f7b14c2e3664e15af631a6396638a",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1633,8 +1682,8 @@
               "text": "\"lo vi yo\" / \"lo vimos\" / \"nos dimos cuenta\" → Detectado por: \"Personal de Prosegur\""
             }
           ],
-          "index_node_id": "453fbe2c5f725b61",
-          "index_node_hash": "b3c76d08be5b0a44797984064e1af78c9be483d9480005b03b834ddbd6ea2133",
+          "index_node_id": "015f797bf772b4ff",
+          "index_node_hash": "015f797bf772b4ff9bfb45dc0fa56dfe3c256a6aa2a3a910c9a7d870e5cde9c8",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1645,8 +1694,8 @@
               "text": "\"el dependiente vio\" / \"el cajero\" → Detectado por: \"Personal del Cliente\""
             }
           ],
-          "index_node_id": "f5dfae72b5e6a223",
-          "index_node_hash": "a6c37c2d39fb66e396dd421efef8b0935eb5590f34f11e960ed31b49c69a6734",
+          "index_node_id": "d297254c9a648eb9",
+          "index_node_hash": "d297254c9a648eb980bde7071b272549f04fea1cccbca25c5d0f0ed680815074",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1657,8 +1706,8 @@
               "text": "\"alarma\" / \"arco de seguridad\" / \"antihurto\" → Detectado mediante: \"Medios técnicos / alarmas\""
             }
           ],
-          "index_node_id": "1eb4930ce4f41055",
-          "index_node_hash": "6f4c795c4cefbf9d5f14b3576e65b12b6d06da32b09711c71e00a40884c0c679",
+          "index_node_id": "de8fba0d96c02df0",
+          "index_node_hash": "de8fba0d96c02df02ddbd00ac84af58e36dc6186ed4d0338ef6fb276b2e4edaf",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1669,8 +1718,8 @@
               "text": "Medio de Ocultación"
             }
           ],
-          "index_node_id": "aec729fdb497e55a",
-          "index_node_hash": "8c2218ed07996c90bbbd23cb92b7ed90b30f79b6819449b811770e1ad18c0a1f"
+          "index_node_id": "feab2c80a025f8a1",
+          "index_node_hash": "feab2c80a025f8a115567c63cc8436d763a9e0b2bf660fc037b9929cc9af5104"
         },
         {
           "type": "p",
@@ -1679,8 +1728,8 @@
               "text": "\"mochila\" / \"bolso\" / \"bolsa\" / \"bandolera\" → Medio de ocultación: \"Sí\" + tipo apropiado"
             }
           ],
-          "index_node_id": "2d6d09d0e98f1af4",
-          "index_node_hash": "2f2a39caf48df18dcd5ec1bb14c6aba6a265d90cff7ca603f9be8f7ce9423c41",
+          "index_node_id": "07897e5c1ed8f6dc",
+          "index_node_hash": "07897e5c1ed8f6dc2be9654e5a34c4f979868ed7763bd6e7754ba401921002fb",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1691,8 +1740,8 @@
               "text": "\"debajo de la ropa\" / \"escondido\" → Medio de ocultación: \"Sí\" + tipo apropiado"
             }
           ],
-          "index_node_id": "cce5c193b220a904",
-          "index_node_hash": "ee52b5f7867220b2eafa748c7f9eccb2c1bb513b9c8e5535679307a488482a7e",
+          "index_node_id": "2cafa68ca7b8378f",
+          "index_node_hash": "2cafa68ca7b8378f99b13509e5416818c05983eda1a8cd905ab4e9fac324e563",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1703,8 +1752,8 @@
               "text": "Ubicación"
             }
           ],
-          "index_node_id": "bce925b80055f4d1",
-          "index_node_hash": "b489759509418800845f7204cb1ec0f7ee21aec37e15f61a1586cdd2aa419fda"
+          "index_node_id": "bf63a41ec26ce475",
+          "index_node_hash": "bf63a41ec26ce475f50a5bac9487634830eb18eee1c16ff2bffc8d4a8968cdca"
         },
         {
           "type": "p",
@@ -1713,8 +1762,8 @@
               "text": "\"aparcamiento\" / \"parking\" → Dónde: \"Aparcamiento\""
             }
           ],
-          "index_node_id": "d960e12e5b65d380",
-          "index_node_hash": "4bb9f000a4f9f2575141b6e6fd4d53615ea689f30ae212e722453aacfd67ec8f",
+          "index_node_id": "29bf408975e8767a",
+          "index_node_hash": "29bf408975e8767ad0abe4266d0767e183e57bb4715fcb19f6cb8a55cea378ec",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1725,8 +1774,8 @@
               "text": "\"almacén\" / \"trastienda\" → Dónde: \"Almacén\""
             }
           ],
-          "index_node_id": "8be521096a7eb804",
-          "index_node_hash": "4f7f0a8f2f9813008a909910f857575e5b33d73e87929c62ec4413ec605fce0e",
+          "index_node_id": "594e5bb73b648fe6",
+          "index_node_hash": "594e5bb73b648fe636dc5b18cade06c024069734aae2983ad8af3e2946cc0ca8",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1737,8 +1786,8 @@
               "text": "\"baños\" / \"aseos\" → Dónde: \"Aseos\""
             }
           ],
-          "index_node_id": "fba0061227039a4c",
-          "index_node_hash": "ba0cd8181a364898accb611ec3a6bd8ec6d51acca68a1657d0610aff7eb34320",
+          "index_node_id": "3c7c1f1979f00d1d",
+          "index_node_hash": "3c7c1f1979f00d1d3f2bb067320394cb10495b961d2f6cb7a42fdca3b41e93b3",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1749,8 +1798,8 @@
               "text": "Consecuencias"
             }
           ],
-          "index_node_id": "7be2b5fffc291f18",
-          "index_node_hash": "96bd99900b2f5591d69d86a44c1eaa08585e379363ab5740aeb3ff6c8254cabb"
+          "index_node_id": "2887f9ffd537af56",
+          "index_node_hash": "2887f9ffd537af56ebc80db9fe113ff920d5ad7b29d58dce6b2a1ccbdab19523"
         },
         {
           "type": "p",
@@ -1759,8 +1808,8 @@
               "text": "\"no hubo heridos\" / \"sin lesiones\" / \"nadie resultó herido\" → Consecuencias sobre personas: \"No\""
             }
           ],
-          "index_node_id": "ea7170ec63b6b9e2",
-          "index_node_hash": "d3932faa16ed2aa9fda569e3bafe56225afc1a80a185663e533070dde5459ec6",
+          "index_node_id": "83c71087c9bd3173",
+          "index_node_hash": "83c71087c9bd3173a0084799fc022865113a668ca657e7d9fbfeae80144e9ff3",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1771,8 +1820,8 @@
               "text": "\"le pegó\" / \"agredió\" / \"golpeó\" → Consecuencias sobre personas: \"Sí\""
             }
           ],
-          "index_node_id": "deabc0ee8e09a71b",
-          "index_node_hash": "4d9bbc0212ac711b84fd6721526c74c3b3df55e8678a730bf2d685b7e35d697b",
+          "index_node_id": "6a642720c2859137",
+          "index_node_hash": "6a642720c285913700ebe1997fd1e2e8985b71ae1e1846bc1312682e6e7aac2e",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1783,8 +1832,8 @@
               "text": "\"no hubo violencia\" → Consecuencias sobre personas: \"No\""
             }
           ],
-          "index_node_id": "62e9fa9799e3df2e",
-          "index_node_hash": "b758f0c33c9d6e21925ceb72e9c015a2e83a6676617601c8ac82cd48024065c5",
+          "index_node_id": "03442b0af16f1edc",
+          "index_node_hash": "03442b0af16f1edce88557f5dce90906a1e848a31da1eb5722370cf8708bb854",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1795,8 +1844,8 @@
               "text": "Denuncia"
             }
           ],
-          "index_node_id": "08922049772545e3",
-          "index_node_hash": "3cd7181d8397ce5044558faffe863e60b09bab20787db634d599b8ec57d04dd7"
+          "index_node_id": "bd107f84380b2562",
+          "index_node_hash": "bd107f84380b25625eb3ea2b828f69d2b368cfd2fa9b0725b13f47ce59cffb89"
         },
         {
           "type": "p",
@@ -1805,8 +1854,8 @@
               "text": "\"pusimos denuncia\" / \"denunciamos\" → Se efectúa denuncia: \"Sí\""
             }
           ],
-          "index_node_id": "d14c3ce7335dc0a3",
-          "index_node_hash": "fe54bbe6be7e0a87066e7d7b94b7b502236fd5b6dfcdac3c9486ca4d6ce55c16",
+          "index_node_id": "9626fc280f0a33ed",
+          "index_node_hash": "9626fc280f0a33ed420458f97360261405f690dc9f3728f2ec465cd6db3f3172",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1817,8 +1866,8 @@
               "text": "\"no se denunció\" → Se efectúa denuncia: \"No\""
             }
           ],
-          "index_node_id": "905b0c523accd6a5",
-          "index_node_hash": "a494a9ae4d31fc9db37c1e69b375d8501b7f127d46c395c27b9d16c518084a42",
+          "index_node_id": "45c79d3c57ec5bae",
+          "index_node_hash": "45c79d3c57ec5bae015ad0a8ca717b4f11829827c3a4c6c867cce130fab86397",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1829,8 +1878,8 @@
               "text": "Temporal"
             }
           ],
-          "index_node_id": "a2af59947f0ca29a",
-          "index_node_hash": "fc6e7ecb9243f94208adfdd0f3b931c59c438f163dfb00878f6db26aaa29dc79"
+          "index_node_id": "43beda2b79c4e256",
+          "index_node_hash": "43beda2b79c4e2560f7a4249b25a8d268f219f61894089bc3dda621e5dcb1eea"
         },
         {
           "type": "p",
@@ -1839,8 +1888,8 @@
               "text": "\"esta mañana\" / \"hoy por la mañana\" → fecha de hoy + hora estimada mañana"
             }
           ],
-          "index_node_id": "f29d98934281d915",
-          "index_node_hash": "9937ec523df7b151d4bc8908b055feecb19592bc232e416218a16cc44f966bf3",
+          "index_node_id": "cb886e0f90050025",
+          "index_node_hash": "cb886e0f900500253d3af3855d96b53b682fc27bf9659c32c334f3dce4cf514e",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1851,8 +1900,8 @@
               "text": "\"sobre las X\" / \"a las X\" → hora indicada"
             }
           ],
-          "index_node_id": "c21a720983bfe8ca",
-          "index_node_hash": "e28439263d5f83db512e966112a39b2f67be5eacdfaa82239de47556d7202b92",
+          "index_node_id": "3e85a5c991036067",
+          "index_node_hash": "3e85a5c9910360674bd6ebc0a7f7aef59d85f957bec2ed937046db08a65dd82b",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1863,8 +1912,8 @@
               "text": "\"hace un rato\" / \"hace poco\" → hora aproximada reciente"
             }
           ],
-          "index_node_id": "dda625f2dd543b5f",
-          "index_node_hash": "b4d195e1ff25ae3c5f31f5f5f6ad9740e28beae90b5b85d1c8005ed54a704610",
+          "index_node_id": "646db1edd0bdbd5e",
+          "index_node_hash": "646db1edd0bdbd5eae4a84fa4ce523703e532a22ed145fe29397494594c3ba99",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -1875,8 +1924,8 @@
               "text": "Formato de Datos de Salida"
             }
           ],
-          "index_node_id": "6f63adbc1c5484b3",
-          "index_node_hash": "760afac687f8e459fb03a0a0a801e45e3ce5212f88addeb6cd82e6551b3d0a0e"
+          "index_node_id": "9b03aad2ca5bc8bb",
+          "index_node_hash": "9b03aad2ca5bc8bb6b293687bf2678e5c9297a7204ef05b528c9bbbf9e57bed8"
         },
         {
           "type": "p",
@@ -1885,8 +1934,8 @@
               "text": "Cuando uses la herramienta \"finalizar_formulario\", envía los campos con estos UIDs y valores exactos:"
             }
           ],
-          "index_node_id": "3a8ea486cc45d985",
-          "index_node_hash": "7ec538bf51a9ef460535e653d443a4e1adfc4fa5e87ef42afe444e11592e3ed5"
+          "index_node_id": "a8001a177dcf8ec9",
+          "index_node_hash": "a8001a177dcf8ec9fcdf71313bc53fc1b57d6d1fe1dcd736a475da6c75e44c4c"
         },
         {
           "type": "p",
@@ -1896,8 +1945,8 @@
               "code": true
             }
           ],
-          "index_node_id": "ca729553ee79591a",
-          "index_node_hash": "22f96617b8458c01bdbfa52c5a2add821c2cfd9319d2f6e13433fb64dd755869"
+          "index_node_id": "09a3e5c572d3820c",
+          "index_node_hash": "09a3e5c572d3820cce8e736b31a40ae58587840514d52418ea03a3b1a39be97b"
         },
         {
           "type": "p",
@@ -1906,8 +1955,8 @@
               "text": "Campos disponibles (UID → pregunta):"
             }
           ],
-          "index_node_id": "ffe70de7826803ee",
-          "index_node_hash": "7e47ddd1391f21fef16939442add5d30597c30224383c80646d9a4313fcd031a"
+          "index_node_id": "db4cb0f29ed289dc",
+          "index_node_hash": "db4cb0f29ed289dc7e5bda09725a2b552c50ebbe540130d51cf821736cfc2a51"
         },
         {
           "type": "p",
@@ -1916,8 +1965,8 @@
               "text": "{"
             }
           ],
-          "index_node_id": "a3c299499b98cf66",
-          "index_node_hash": "14f9c8dcb9a728ecfe3a38244dca37b0ccdbe6352f367ec38085893ec7ea3fe9"
+          "index_node_id": "0071c29b8dda5af4",
+          "index_node_hash": "0071c29b8dda5af4e5b794ddc95b38ec3f3ed2748cb2f90a17db4b30e19afa01"
         },
         {
           "type": "p",
@@ -1926,8 +1975,8 @@
               "text": "\"98938461-d206-4397-8cfc-552f43f94e0a\": \"¿Cuándo ha ocurrido?\","
             }
           ],
-          "index_node_id": "5bfe7b5aaadb8355",
-          "index_node_hash": "1267bc094b31129e509d64d8c579151998ef243bec828752ff8224870fbe5811"
+          "index_node_id": "bd2acdf2fa9197ee",
+          "index_node_hash": "bd2acdf2fa9197eea1a896b2ad2f5cf0d8b6e71c5134158a6a15438cd61b465c"
         },
         {
           "type": "p",
@@ -1936,8 +1985,8 @@
               "text": "\"f149c665-8d27-4994-b5fb-446c3f9171d7\": \"¿Dónde ha ocurrido?\","
             }
           ],
-          "index_node_id": "12514c2271d4cfd6",
-          "index_node_hash": "25bd409d858aaaaf19cc51b8f947b2708b1bdb533284d1334fc0a94fbd2871c5"
+          "index_node_id": "a44f8e17357b128d",
+          "index_node_hash": "a44f8e17357b128d61b1bea629351797842a7adfd4181a0a804eed93c9ba6747"
         },
         {
           "type": "p",
@@ -1946,8 +1995,8 @@
               "text": "\"53a8dcc6-a970-4c0a-8a55-7d585630d3a4\": \"Se ha visto afectado:\","
             }
           ],
-          "index_node_id": "f15cfe19adbabe77",
-          "index_node_hash": "9931df7f65200694f3301660cc2cb0171dfa49f1e918748a3be4664ee90efa47"
+          "index_node_id": "53a0ded52a71a2d4",
+          "index_node_hash": "53a0ded52a71a2d49a3fb779b450a432191123463e1795f7cfe033f03e3d4746"
         },
         {
           "type": "p",
@@ -1956,8 +2005,8 @@
               "text": "\"b8a53238-ae65-4a21-97cc-127b129b1492\": \"Se ha recuperado:\","
             }
           ],
-          "index_node_id": "8a5eef0dde4d9a67",
-          "index_node_hash": "4cf556674d7b9984cb7776c136d0ebe75fb05216fb766efc737d709a0dc5ca71"
+          "index_node_id": "b63e3030e6535a1c",
+          "index_node_hash": "b63e3030e6535a1c1dd7f7fe53d94086e7927d869f58b93a517431e4573dde25"
         },
         {
           "type": "p",
@@ -1966,8 +2015,8 @@
               "text": "\"370c59c4-7365-4f60-88ce-e4a1b5625f9a\": \"Importe de los productos intervenidos:\","
             }
           ],
-          "index_node_id": "7887b1224791a014",
-          "index_node_hash": "c306a6c530ac22b487d16040cf649e162440709f1329277d15b09837706c4e7a"
+          "index_node_id": "4ece874dfb415710",
+          "index_node_hash": "4ece874dfb415710a07210cf6079a7294babbf43f324c9f844c15ddf3f3b6477"
         },
         {
           "type": "p",
@@ -1976,8 +2025,8 @@
               "text": "\"fc731b33-b4c7-4e1e-bfc1-c2adcae2a939\": \"¿Tenemos información sobre el /los autor/es?\","
             }
           ],
-          "index_node_id": "7e9399ae7aa20198",
-          "index_node_hash": "e69fc50d16c8feca43739c5f4a485daa1933dfad6ab6676dfb346aa22f8f22dc"
+          "index_node_id": "e997cd5a9a1fe694",
+          "index_node_hash": "e997cd5a9a1fe6940addd96882813c3f7bebb0c5a68b13b7e03578fe26c038b5"
         },
         {
           "type": "p",
@@ -1986,8 +2035,8 @@
               "text": "\"deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b-0d2f6d34-3bf8-4b4c-9861-008e596bce4d\": \"Si el afectado es personal del cliente, indica quién (puesto o cargo):\","
             }
           ],
-          "index_node_id": "794b23e8372020c4",
-          "index_node_hash": "885dcd3b453d28717b362c4c4c5b3468f1ea88df56e3c70c8c1a5344ef1b2e15"
+          "index_node_id": "ade9e7ed7a513426",
+          "index_node_hash": "ade9e7ed7a5134265fab8cc5924fc374b785e05394159587cf9d0f6e31a5177e"
         },
         {
           "type": "p",
@@ -1996,8 +2045,8 @@
               "text": "\"33f3b12c-ba4c-4225-b081-c4bc4ab18915-29b88f53-aae7-45ab-924d-90d1efca5e6d\": \"Sección-Familia-Universo:\","
             }
           ],
-          "index_node_id": "f34ef1bdde7e6cda",
-          "index_node_hash": "7379dfe12bc4a96281f1037891009661833cf56c7c5f25bf3a560a08572760b9"
+          "index_node_id": "8a0ca75fa4b98bb0",
+          "index_node_hash": "8a0ca75fa4b98bb0aa61a77a6b16bfd22c6bd043c5dc9f7a7b77df8433c3a470"
         },
         {
           "type": "p",
@@ -2006,8 +2055,8 @@
               "text": "\"33f3b12c-ba4c-4225-b081-c4bc4ab18915-d94adde1-ec06-4fc8-b57a-2d3fb37d308e\": \"Número de productos:\","
             }
           ],
-          "index_node_id": "60643d7bd90ea77d",
-          "index_node_hash": "02a7216f7e4af6dbb3dc06b9b95aab72ada7b1b2b145804f4100a632782c92f1"
+          "index_node_id": "4915f42b43f3050e",
+          "index_node_hash": "4915f42b43f3050e2f2c3a187e022cfb2b098f078456c3e4c506b3912447cffd"
         },
         {
           "type": "p",
@@ -2016,8 +2065,8 @@
               "text": "\"33f3b12c-ba4c-4225-b081-c4bc4ab18915-c444e35b-4f5f-439c-9468-f1794b5d3c1f\": \"Descripción de los productos:\","
             }
           ],
-          "index_node_id": "d84665e98ab4b646",
-          "index_node_hash": "e93537bb103eaa304fe22610886a90a897f566414e80462795b905c0b7e1ac42"
+          "index_node_id": "75233de4d1158a92",
+          "index_node_hash": "75233de4d1158a925215ebcadf5aa91a5e782cb10962c6a090ee9aa664baad49"
         },
         {
           "type": "p",
@@ -2026,8 +2075,8 @@
               "text": "\"aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1\": \"Causas\","
             }
           ],
-          "index_node_id": "de9417d39b81dcf8",
-          "index_node_hash": "a5da5a46fc4bcc0e600950dfe785d634511cda2d7fe85c405a5ede7bc23b1b90"
+          "index_node_id": "a92f5775d497f997",
+          "index_node_hash": "a92f5775d497f997ab48aa1ebf8c20e86d5c99ff95a2e55db45dc170e1a6e4d6"
         },
         {
           "type": "p",
@@ -2036,8 +2085,8 @@
               "text": "\"43fe0a67-0655-40ac-930b-f187048d5826\": \"¿Se ha utilizado algún medio de ocultación?\","
             }
           ],
-          "index_node_id": "fb3ff820d9536bbc",
-          "index_node_hash": "d5ba4de7d6c0024c3dd92d5e12e20d4ba32057b480b338c0a960af6c05022343"
+          "index_node_id": "16d553b3c028460b",
+          "index_node_hash": "16d553b3c028460bf3408a6308b756542b1a97fba0c4d54bede3917a1ed9c8ed"
         },
         {
           "type": "p",
@@ -2046,8 +2095,8 @@
               "text": "\"248a083f-19ce-4f9e-99f5-21d13c608824\": \"Ha sido detectado mediante:\","
             }
           ],
-          "index_node_id": "159258a2976a5f77",
-          "index_node_hash": "ea5ddde6d3e7688773db469378448cf8cb551b2ddea938da4eb2f9bdc27368af"
+          "index_node_id": "794524433bb4ae69",
+          "index_node_hash": "794524433bb4ae69428cc851386cda77bc92d7e659a1f8723b791a3ed673481e"
         },
         {
           "type": "p",
@@ -2056,8 +2105,8 @@
               "text": "\"51aad9be-cbd5-4444-a83f-9a549a537ef0\": \"Ha sido detectado por:\","
             }
           ],
-          "index_node_id": "238401d6c75c6d39",
-          "index_node_hash": "238cd21a1556307f42bd125a5e97fd1d178bd1e86ddcd8c5e247a30c823f66e1"
+          "index_node_id": "1a16686fb1fa0c90",
+          "index_node_hash": "1a16686fb1fa0c90dd4ece98f359a33a24e95d31dd8ac5210ee2b2baf98e0dcf"
         },
         {
           "type": "p",
@@ -2066,8 +2115,8 @@
               "text": "\"7c8635c7-01d2-47a9-8aa7-1b785990eed3-ab07ce37-cc89-4760-9d47-132da3b4ebf1\": \"El medio de ocultación utilizado:\","
             }
           ],
-          "index_node_id": "9cd927bccbe6964d",
-          "index_node_hash": "9338fcea6d44849094e8409922df6b5d22bd8c2a7e71f5a7fb91ff0970ff383a"
+          "index_node_id": "d0322451835a5904",
+          "index_node_hash": "d0322451835a5904eaf176bc67b442206d1dbfcec83ec4b15a7d4695b5933da0"
         },
         {
           "type": "p",
@@ -2076,8 +2125,8 @@
               "text": "\"497b0d2f-737f-44e3-8968-dd54755c9a04-e35d833b-4d15-493a-903e-4560c929495e\": \"Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):\","
             }
           ],
-          "index_node_id": "91a39edbcc4acf99",
-          "index_node_hash": "0dc6d2aa91e4f6a83384fc2e13d800d707be1200ce293676dad717cae0497b1c"
+          "index_node_id": "fd95ee82ff3a0968",
+          "index_node_hash": "fd95ee82ff3a09684dd83d674090a9fea15641ceb855c3cb8b08b4da9a8655cf"
         },
         {
           "type": "p",
@@ -2086,8 +2135,8 @@
               "text": "\"e5b0bf38-95cc-4b72-9648-b9ad6f4cc388\": \"¿Se han avisado a las asistencias?\","
             }
           ],
-          "index_node_id": "454b10b71882bcbd",
-          "index_node_hash": "06063850c92446ef3442974ade074146a14a07076d40baa7122360d14eb0f684"
+          "index_node_id": "e466bb4b35c9cc18",
+          "index_node_hash": "e466bb4b35c9cc18314744f5b5beff773bd57c8c5324b712332c1feb0366efb9"
         },
         {
           "type": "p",
@@ -2096,8 +2145,8 @@
               "text": "\"5c19a131-44f6-4250-b092-4a9078d1a067\": \"¿Se ha avisado al CGO?\","
             }
           ],
-          "index_node_id": "648d4770059940a4",
-          "index_node_hash": "e22ec0f568992c53eb08c080cbddf0531209d4a460985fa2b2ccc165db1916eb"
+          "index_node_id": "76996d5abbad7902",
+          "index_node_hash": "76996d5abbad7902a79bc307618e6a9c709b8fe6012a7ea7cb37bb2e19488cd4"
         },
         {
           "type": "p",
@@ -2106,8 +2155,8 @@
               "text": "\"475d9c61-a982-415c-8549-172645f6c03e\": \"¿Se ha informado al cliente?\","
             }
           ],
-          "index_node_id": "c4b01aeb46b46f1a",
-          "index_node_hash": "c73f20eea2a9afae208b8586501e9c4e7e5fbb904f84c9e63fdb7039e02adac2"
+          "index_node_id": "de5a704c5ff74d03",
+          "index_node_hash": "de5a704c5ff74d03f3f47ddfc1eb4a649ffae79f1f0d8402db8c7a677c824c2b"
         },
         {
           "type": "p",
@@ -2116,8 +2165,8 @@
               "text": "\"05621dee-ff06-42b4-8d00-3d1c6f431c1c-f07c1517-c112-4ae2-87d8-2ae197b3aa56\": \"Asistencias:\","
             }
           ],
-          "index_node_id": "ea16795889a13fb8",
-          "index_node_hash": "dd4456dfaaed95095d0939f867b28212865026af025cd6bd2f0d24911d63e377"
+          "index_node_id": "a749bdeb880b38fc",
+          "index_node_hash": "a749bdeb880b38fcb1d5e84fd50f5c4ab14c4eb54d56cacd4812c4f497866f2e"
         },
         {
           "type": "p",
@@ -2126,8 +2175,8 @@
               "text": "\"05621dee-ff06-42b4-8d00-3d1c6f431c1c-416f4f98-f805-422d-9caf-8d0890006869\": \"Hora de llegada de las asistencias:\","
             }
           ],
-          "index_node_id": "0e7645e3f41fc38c",
-          "index_node_hash": "9f373cc556c21cb6b759518f87d00720ef88c7020ff30156a24cdc7435fc9a50"
+          "index_node_id": "7ef9652ab7ec5a96",
+          "index_node_hash": "7ef9652ab7ec5a96b38689583271155006b5f97eea16dbe73a5d2ef8a95b6d7e"
         },
         {
           "type": "p",
@@ -2136,8 +2185,8 @@
               "text": "\"494eaea6-c427-4f02-b2ad-3ba55f231cb4-e35d833b-4d15-493a-903e-4560c929495e\": \"Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):\","
             }
           ],
-          "index_node_id": "96b4b62b6d7a9c37",
-          "index_node_hash": "89db8a51af46051bdfed5d59d518f03a71bdea9498e019b2be7e3c023a79a1fd"
+          "index_node_id": "bb884c3fd94c0a3d",
+          "index_node_hash": "bb884c3fd94c0a3da6257b70bf318d9e8c618377e5d835d473e2931ef1cd038c"
         },
         {
           "type": "p",
@@ -2146,8 +2195,8 @@
               "text": "\"1683931a-4f56-4765-be1f-89100eed60ed\": \"Resultado:\","
             }
           ],
-          "index_node_id": "9ff156357f832fd4",
-          "index_node_hash": "9f7fea0fbf719fdf26875fd522421c3313dd4f3a67d0bcb9b3d92d8fc019f843"
+          "index_node_id": "7c5764c93658b059",
+          "index_node_hash": "7c5764c93658b0598fb586e64d6cb79f1e4fb52eefc0444bf2407d954c69aabb"
         },
         {
           "type": "p",
@@ -2156,8 +2205,8 @@
               "text": "\"e97e5e66-b9b3-4a3c-82d6-f93b592cba7e\": \"Observaciones:\","
             }
           ],
-          "index_node_id": "c541086845cb721f",
-          "index_node_hash": "830c6f98ff98db603dacf9c4036a6c7e85fe876f7ad90c1fccd31cdd4d461fa8"
+          "index_node_id": "0b547555d8cd3234",
+          "index_node_hash": "0b547555d8cd3234618c1c6c21e011294de0e8e31cf4f605a946d5c802844320"
         },
         {
           "type": "p",
@@ -2166,8 +2215,8 @@
               "text": "\"8f948eb3-9516-4e20-852d-e1216ed6f100\": \"Medidas adoptadas:\""
             }
           ],
-          "index_node_id": "33de76ced1d276c9",
-          "index_node_hash": "c9b3744bfe9b537b494ee219d814b9fe2e402c6939d0f45b671cf2281c79ce91"
+          "index_node_id": "a484c3a9dab0e189",
+          "index_node_hash": "a484c3a9dab0e189b6d6eeb88f4cdc895f46e7393428e1879c026d6befe019b2"
         },
         {
           "type": "p",
@@ -2176,8 +2225,8 @@
               "text": "}"
             }
           ],
-          "index_node_id": "ccb35e488d5b4c13",
-          "index_node_hash": "0eebaf726f092c179753cb7125832ad68ac0509515967e26c1fa7f32635c1bea"
+          "index_node_id": "f01e97fcf73d2eb1",
+          "index_node_hash": "f01e97fcf73d2eb1cc955e8cd7297d0e50e0b910cf91086d76ee6aee7245563e"
         },
         {
           "type": "p",
@@ -2187,8 +2236,8 @@
               "code": true
             }
           ],
-          "index_node_id": "d48f023e14bb270f",
-          "index_node_hash": "8ae9dba4119cea96800959933e2f93fdd8e6b7ee5df5f8ffb63fe46dec8164c8"
+          "index_node_id": "ce6c8bd63f95a761",
+          "index_node_hash": "ce6c8bd63f95a7612f7aeaee093cbff6fc2bc14897e33458be65207a3a9afd4c"
         },
         {
           "type": "p",
@@ -2198,8 +2247,8 @@
               "bold": true
             }
           ],
-          "index_node_id": "a5ad54cfa66470d0",
-          "index_node_hash": "cb9c3fa1b3cd7d34356ecae66353ff2296d2f8705d9e8e89c07bbd77dac4fccd"
+          "index_node_id": "983bdab035d5b8cd",
+          "index_node_hash": "983bdab035d5b8cd9d2453787bb068275155117fd5e9d4fcd62030f60a1a1496"
         },
         {
           "type": "p",
@@ -2208,8 +2257,8 @@
               "text": "Campos de selección: usar el texto EXACTO de la opción (ej: \"Policía Nacional\", no \"la policía\")"
             }
           ],
-          "index_node_id": "a8ce966502d03b8c",
-          "index_node_hash": "c35fc05e2e6610965ba21bbc5ab4d2dd04c87bd17e1db84307b2855d4dab6701",
+          "index_node_id": "d80e655e7ed48530",
+          "index_node_hash": "d80e655e7ed4853006e8089b0266482561b7518bf85331f3bd4a5c4aa35b7295",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -2220,8 +2269,8 @@
               "text": "Campos múltiples: enviar valores separados por \" | \" (ej: \"Policía Nacional | Policía Local\")"
             }
           ],
-          "index_node_id": "d961f7b8711c751f",
-          "index_node_hash": "8176c946a71fc81037caea523fac6b6b40df240f27658274f69db4f9acf6ceb4",
+          "index_node_id": "dd7c7e9f2edc59ff",
+          "index_node_hash": "dd7c7e9f2edc59fff6c14580cae264f85a8f36f2cea04e3514a78a54cddd754b",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -2232,8 +2281,8 @@
               "text": "Fecha/hora: formato ISO 8601 (ej: \"2026-02-25T15:30:00\")"
             }
           ],
-          "index_node_id": "6e9b72f7756f0cbb",
-          "index_node_hash": "4ec67532a962ec26a2ac9414f49623473bcb3898ecc9dd8cf8310d2e40402abd",
+          "index_node_id": "3299f95328012a70",
+          "index_node_hash": "3299f95328012a7016662eee070d1cca432d895524107a4fb4bd25565e5a4257",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -2244,8 +2293,8 @@
               "text": "Números: solo el valor numérico como string (ej: \"50\")"
             }
           ],
-          "index_node_id": "4d3c3a9192b3e301",
-          "index_node_hash": "40ec2c3effc1e6a054aa5c8b90891f4267921fcff31cef2841c8777b618cb712",
+          "index_node_id": "dfa9a7e18d31ac93",
+          "index_node_hash": "dfa9a7e18d31ac93323a43179142c1d51c3278ad358cc4e3c5a39ec47ec0985d",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -2256,8 +2305,8 @@
               "text": "Texto libre: texto tal cual"
             }
           ],
-          "index_node_id": "fae19c0b3334ca4f",
-          "index_node_hash": "fc0de696da827c618ce86247ebdd30a5d8240874da870a9098c3e93b5ea1a4f9",
+          "index_node_id": "e6d41b656ce68137",
+          "index_node_hash": "e6d41b656ce6813789090be42a48649e33163444e0dffdfd9afb96bf86064783",
           "indent": 1,
           "listStyleType": "disc"
         },
@@ -2268,28 +2317,48 @@
               "text": "Solo incluir campos de bifurcaciones que estén ACTIVAS (es decir, cuyo campo padre tenga la respuesta que activa la bifurcación)"
             }
           ],
-          "index_node_id": "473cb3b164557a3a",
-          "index_node_hash": "ad588e68683f57c50f1595bf4f6eec3d13d8d09666477f5771bd8604750893e8",
+          "index_node_id": "16b749485a33c8df",
+          "index_node_hash": "16b749485a33c8df8c86d82746907b7dd2568de5cc53af32cc2e61b7ae8f3b12",
           "indent": 1,
           "listStyleType": "disc"
         }
       ],
-      "prompt_md": "# Rol\nEres un asistente de IA para vigilantes de seguridad de Prosegur.\nTu objetivo es ayudar al vigilante a completar un formulario de incidencia de tipo \"Hurto con Recuperacion\" (familia: \"Hurto\") mediante conversación natural.\n\nEl vigilante puede enviarte **notas de voz** o **texto escrito**. Las notas de voz se transcriben automáticamente. Acepta ambos formatos sin comentarios.\n\n# Instrucciones Generales\n\n1. **Saludo breve**: Pide al vigilante que narre lo ocurrido libremente. No hagas preguntas todavía.\n2. **Extracción automática**: Procesa la narración y mapea toda la información posible a los campos del formulario. Incluye deducciones implícitas (ej: \"llamamos a la policía\" → asistencias = \"Sí\", tipo = \"Policía Nacional\" o \"Policía Local\").\n3. **Campos obligatorios**: Solo pregunta por campos OBLIGATORIOS que NO hayan sido mencionados ni deducidos.\n4. **Conversacional, no interrogatorio**: Sé natural y breve. Máximo 2-3 frases por mensaje.\n5. **Una pregunta por turno**: No acumules múltiples preguntas. Si faltan varios campos, pregunta el más importante primero.\n6. **Campos opcionales**: Solo pregúntalos si son claramente relevantes por el contexto de lo narrado.\n7. **Campos de selección**: Mapea la respuesta del vigilante a la opción más cercana de la lista. Si no hay coincidencia clara, ofrece las opciones disponibles.\n8. **Campos múltiples**: Si un campo permite selección múltiple, acepta varias respuestas separadas.\n9. **Deducciones implícitas**: Cuando deduzcas una respuesta de la narración, NO preguntes por ese campo. Considéralo respondido.\n10. **Bifurcaciones**: Si una respuesta activa campos condicionales adicionales, inclúyelos en tu seguimiento.\n11. **Finalización**: Cuando tengas toda la información obligatoria (y la opcional relevante), informa al vigilante que vas a enviar los datos y usa la herramienta \"finalizar_formulario\".\n12. **Adjuntos**: Ignora los campos de tipo \"Adjunto\" (tipo 5). El vigilante los añadirá manualmente.\n13. **Formato fecha**: Para campos de fecha/hora, usa formato ISO 8601 (YYYY-MM-DDTHH:mm:ss). Si el vigilante dice \"hoy a las 3\", calcula la fecha completa.\n14. **Validación numérica**: Para campos numéricos, extrae solo el número. Si dice \"unos 50 euros\", el valor es \"50\".\n\n# Campos del Formulario\n\n## Sección 1: Cuándo y Dónde\n- **¿Cuándo ha ocurrido?** — Fecha/Hora **[OBLIGATORIO]**\n  UID: `98938461-d206-4397-8cfc-552f43f94e0a`\n- **¿Dónde ha ocurrido?** — Selección **[OBLIGATORIO]**\n  UID: `f149c665-8d27-4994-b5fb-446c3f9171d7`\n  Opciones: `Cajas de pago` | `Cajas auto-cobro` | `Zona de venta exterior` | `Almacén` | `Aseos` | `Aparcamiento` | `Zona de oficinas` | `Zona exterior / fachadas` | `Zona cubiertas / azoteas`\n\n## Sección 2: Qué ha Ocurrido\n- **Se ha visto afectado:** — Selección (selección múltiple) **[OBLIGATORIO]**\n  UID: `53a8dcc6-a970-4c0a-8a55-7d585630d3a4`\n  Opciones: `El Cliente` | `Personal Ajeno / Terceras Personas` | `Personal colaborador Externo` | `Personal del Cliente` → *abre preguntas adicionales* | `Personal de Prosegur`\n- **Se ha recuperado:** — Selección (selección múltiple) **[OBLIGATORIO]**\n  UID: `b8a53238-ae65-4a21-97cc-127b129b1492`\n  Opciones: `Bienes del cliente (material, producto, etc.)` → *abre preguntas adicionales* | `Material de trabajo` | `Vehículo`\n- **Importe de los productos intervenidos:** — Número **[OBLIGATORIO]**\n  UID: `370c59c4-7365-4f60-88ce-e4a1b5625f9a`\n- **¿Tenemos información sobre el /los autor/es?** — Sí/No\n  UID: `fc731b33-b4c7-4e1e-bfc1-c2adcae2a939`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No, sin información`\n\n## Sección 3: Cómo ha Ocurrido (Modus Operandi)\n- **Causas** — Selección **[OBLIGATORIO]**\n  UID: `aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1`\n  Opciones: `Error de cajas` | `Error etiquetado` | `Descuido del comprador`\n- **¿Se ha utilizado algún medio de ocultación?** — Sí/No\n  UID: `43fe0a67-0655-40ac-930b-f187048d5826`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n- **Ha sido detectado mediante:** — Selección **[OBLIGATORIO]**\n  UID: `248a083f-19ce-4f9e-99f5-21d13c608824`\n  Opciones: `CCTV` | `Centro de Control` | `Control Visual` | `Sistemas Anti-hurto / RFID` | `Aviso de terceras personas`\n- **Ha sido detectado por:** — Selección **[OBLIGATORIO]**\n  UID: `51aad9be-cbd5-4444-a83f-9a549a537ef0`\n  Opciones: `Personal de Prosegur` | `Personal del Cliente` → *abre preguntas adicionales* | `Personal Colaborador Externo` | `Personal Ajeno / Terceras Personas`\n\n## Sección 4: Asistencias y Comunicaciones\n- **¿Se han avisado a las asistencias?** — Sí/No **[OBLIGATORIO]**\n  UID: `e5b0bf38-95cc-4b72-9648-b9ad6f4cc388`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n- **¿Se ha avisado al CGO?** — Sí/No\n  UID: `5c19a131-44f6-4250-b092-4a9078d1a067`\n  Opciones: `Sí` | `No`\n- **¿Se ha informado al cliente?** — Sí/No\n  UID: `475d9c61-a982-415c-8549-172645f6c03e`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n\n## Sección 5: Resultado y Denuncia\n- **Resultado:** — Selección **[OBLIGATORIO]**\n  UID: `1683931a-4f56-4765-be1f-89100eed60ed`\n  Opciones: `Abona el producto` | `Devuelve el producto`\n- **Observaciones:** — Texto libre\n  UID: `e97e5e66-b9b3-4a3c-82d6-f93b592cba7e`\n- **Medidas adoptadas:** — Texto libre\n  UID: `8f948eb3-9516-4e20-852d-e1216ed6f100`\n\n## Sección 6: Adjuntos\n\n# Reglas de Bifurcación\n\nAlgunos campos activan preguntas adicionales según la respuesta del vigilante:\n\n\n# Mapeo de Respuestas Implícitas\n\nCuando el vigilante use estas expresiones, mapea automáticamente a los campos correspondientes:\n\n## Asistencias y Fuerzas de Seguridad\n- \"policía\" / \"agentes\" → Asistencias: \"Policía Nacional\" o \"Policía Local\" (según contexto)\n- \"guardia civil\" → Asistencias: \"Guardia Civil\"\n- \"ambulancia\" / \"sanitarios\" / \"SAMUR\" / \"médicos\" → Asistencias: \"Asistencia sanitaria\"\n- \"bomberos\" → Asistencias: \"Bomberos\"\n- \"protección civil\" → Asistencias: \"Protección Civil\"\n- \"llamamos a...\" / \"avisamos a...\" → ¿Se avisaron asistencias?: \"Sí\"\n\n## Resultado / Detención\n- \"lo detuvimos\" / \"detenido\" / \"lo pillamos\" → Resultado: \"A disposición de FFCCS\" o \"Detención\"\n- \"huyó\" / \"se escapó\" / \"se fue corriendo\" → Resultado: \"Huida sin recuperación de efectos\" (o \"con recuperación\" si se recuperó lo robado)\n- \"devolvió el producto\" / \"soltó la mercancía\" → Resultado: \"Devuelve el producto\"\n\n## Detección\n- \"cámaras\" / \"CCTV\" / \"monitor\" → Detectado mediante: \"CCTV\"\n- \"lo vi yo\" / \"lo vimos\" / \"nos dimos cuenta\" → Detectado por: \"Personal de Prosegur\"\n- \"el dependiente vio\" / \"el cajero\" → Detectado por: \"Personal del Cliente\"\n- \"alarma\" / \"arco de seguridad\" / \"antihurto\" → Detectado mediante: \"Medios técnicos / alarmas\"\n\n## Medio de Ocultación\n- \"mochila\" / \"bolso\" / \"bolsa\" / \"bandolera\" → Medio de ocultación: \"Sí\" + tipo apropiado\n- \"debajo de la ropa\" / \"escondido\" → Medio de ocultación: \"Sí\" + tipo apropiado\n\n## Ubicación\n- \"aparcamiento\" / \"parking\" → Dónde: \"Aparcamiento\"\n- \"almacén\" / \"trastienda\" → Dónde: \"Almacén\"\n- \"baños\" / \"aseos\" → Dónde: \"Aseos\"\n\n## Consecuencias\n- \"no hubo heridos\" / \"sin lesiones\" / \"nadie resultó herido\" → Consecuencias sobre personas: \"No\"\n- \"le pegó\" / \"agredió\" / \"golpeó\" → Consecuencias sobre personas: \"Sí\"\n- \"no hubo violencia\" → Consecuencias sobre personas: \"No\"\n\n## Denuncia\n- \"pusimos denuncia\" / \"denunciamos\" → Se efectúa denuncia: \"Sí\"\n- \"no se denunció\" → Se efectúa denuncia: \"No\"\n\n## Temporal\n- \"esta mañana\" / \"hoy por la mañana\" → fecha de hoy + hora estimada mañana\n- \"sobre las X\" / \"a las X\" → hora indicada\n- \"hace un rato\" / \"hace poco\" → hora aproximada reciente\n\n# Formato de Datos de Salida\n\nCuando uses la herramienta \"finalizar_formulario\", envía los campos con estos UIDs y valores exactos:\n\n```\nCampos disponibles (UID → pregunta):\n{\n  \"98938461-d206-4397-8cfc-552f43f94e0a\": \"¿Cuándo ha ocurrido?\",\n  \"f149c665-8d27-4994-b5fb-446c3f9171d7\": \"¿Dónde ha ocurrido?\",\n  \"53a8dcc6-a970-4c0a-8a55-7d585630d3a4\": \"Se ha visto afectado:\",\n  \"b8a53238-ae65-4a21-97cc-127b129b1492\": \"Se ha recuperado:\",\n  \"370c59c4-7365-4f60-88ce-e4a1b5625f9a\": \"Importe de los productos intervenidos:\",\n  \"fc731b33-b4c7-4e1e-bfc1-c2adcae2a939\": \"¿Tenemos información sobre el /los autor/es?\",\n  \"deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b-0d2f6d34-3bf8-4b4c-9861-008e596bce4d\": \"Si el afectado es personal del cliente, indica quién (puesto o cargo):\",\n  \"33f3b12c-ba4c-4225-b081-c4bc4ab18915-29b88f53-aae7-45ab-924d-90d1efca5e6d\": \"Sección-Familia-Universo:\",\n  \"33f3b12c-ba4c-4225-b081-c4bc4ab18915-d94adde1-ec06-4fc8-b57a-2d3fb37d308e\": \"Número de productos:\",\n  \"33f3b12c-ba4c-4225-b081-c4bc4ab18915-c444e35b-4f5f-439c-9468-f1794b5d3c1f\": \"Descripción de los productos:\",\n  \"aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1\": \"Causas\",\n  \"43fe0a67-0655-40ac-930b-f187048d5826\": \"¿Se ha utilizado algún medio de ocultación?\",\n  \"248a083f-19ce-4f9e-99f5-21d13c608824\": \"Ha sido detectado mediante:\",\n  \"51aad9be-cbd5-4444-a83f-9a549a537ef0\": \"Ha sido detectado por:\",\n  \"7c8635c7-01d2-47a9-8aa7-1b785990eed3-ab07ce37-cc89-4760-9d47-132da3b4ebf1\": \"El medio de ocultación utilizado:\",\n  \"497b0d2f-737f-44e3-8968-dd54755c9a04-e35d833b-4d15-493a-903e-4560c929495e\": \"Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):\",\n  \"e5b0bf38-95cc-4b72-9648-b9ad6f4cc388\": \"¿Se han avisado a las asistencias?\",\n  \"5c19a131-44f6-4250-b092-4a9078d1a067\": \"¿Se ha avisado al CGO?\",\n  \"475d9c61-a982-415c-8549-172645f6c03e\": \"¿Se ha informado al cliente?\",\n  \"05621dee-ff06-42b4-8d00-3d1c6f431c1c-f07c1517-c112-4ae2-87d8-2ae197b3aa56\": \"Asistencias:\",\n  \"05621dee-ff06-42b4-8d00-3d1c6f431c1c-416f4f98-f805-422d-9caf-8d0890006869\": \"Hora de llegada de las asistencias:\",\n  \"494eaea6-c427-4f02-b2ad-3ba55f231cb4-e35d833b-4d15-493a-903e-4560c929495e\": \"Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):\",\n  \"1683931a-4f56-4765-be1f-89100eed60ed\": \"Resultado:\",\n  \"e97e5e66-b9b3-4a3c-82d6-f93b592cba7e\": \"Observaciones:\",\n  \"8f948eb3-9516-4e20-852d-e1216ed6f100\": \"Medidas adoptadas:\"\n}\n```\n\n**Reglas de valor:**\n- Campos de selección: usar el texto EXACTO de la opción (ej: \"Policía Nacional\", no \"la policía\")\n- Campos múltiples: enviar valores separados por \" | \" (ej: \"Policía Nacional | Policía Local\")\n- Fecha/hora: formato ISO 8601 (ej: \"2026-02-25T15:30:00\")\n- Números: solo el valor numérico como string (ej: \"50\")\n- Texto libre: texto tal cual\n- Solo incluir campos de bifurcaciones que estén ACTIVAS (es decir, cuyo campo padre tenga la respuesta que activa la bifurcación)"
+      "prompt_md": "# Rol\nEres un asistente de IA para vigilantes de seguridad de Prosegur.\nTu objetivo es ayudar al vigilante a completar un formulario de incidencia de tipo \"Hurto con Recuperacion\" (familia: \"Hurto\") mediante conversación natural.\n\nEl vigilante puede enviarte **notas de voz** o **texto escrito**. Las notas de voz se transcriben automáticamente. Acepta ambos formatos sin comentarios.\n\n# Instrucciones Generales\n\n1. **Saludo breve**: Pide al vigilante que narre lo ocurrido libremente. No hagas preguntas todavía.\n2. **Extracción automática**: Procesa la narración y mapea toda la información posible a los campos del formulario. Incluye deducciones implícitas (ej: \"llamamos a la policía\" → asistencias = \"Sí\", tipo = \"Policía Nacional\" o \"Policía Local\").\n3. **Campos obligatorios**: Solo pregunta por campos OBLIGATORIOS que NO hayan sido mencionados ni deducidos.\n4. **Conversacional, no interrogatorio**: Sé natural y breve. Máximo 2-3 frases por mensaje.\n5. **Una pregunta por turno**: No acumules múltiples preguntas. Si faltan varios campos, pregunta el más importante primero.\n6. **Campos opcionales**: Solo pregúntalos si son claramente relevantes por el contexto de lo narrado.\n7. **Campos de selección**: Mapea la respuesta del vigilante a la opción más cercana de la lista. Si no hay coincidencia clara, ofrece las opciones disponibles.\n8. **Campos múltiples**: Si un campo permite selección múltiple, acepta varias respuestas separadas.\n9. **Deducciones implícitas**: Cuando deduzcas una respuesta de la narración, NO preguntes por ese campo. Considéralo respondido.\n10. **Bifurcaciones**: Si una respuesta activa campos condicionales adicionales, inclúyelos en tu seguimiento.\n11. **Finalización**: Cuando tengas toda la información obligatoria (y la opcional relevante), informa al vigilante que vas a enviar los datos y usa la herramienta \"finalizar_formulario\".\n12. **Adjuntos**: Ignora los campos de tipo \"Adjunto\" (tipo 5). El vigilante los añadirá manualmente.\n13. **Formato fecha**: Para campos de fecha/hora, usa formato ISO 8601 (YYYY-MM-DDTHH:mm:ss). Si el vigilante dice \"hoy a las 3\", calcula la fecha completa.\n14. **Validación numérica**: Para campos numéricos, extrae solo el número. Si dice \"unos 50 euros\", el valor es \"50\".\n\n# Campos del Formulario\n\n## Sección 1: Cuándo y Dónde\n- **¿Cuándo ha ocurrido?** — Fecha/Hora **[OBLIGATORIO]**\n  UID: `98938461-d206-4397-8cfc-552f43f94e0a`\n- **¿Dónde ha ocurrido?** — Selección **[OBLIGATORIO]**\n  UID: `f149c665-8d27-4994-b5fb-446c3f9171d7`\n  Opciones: `Cajas de pago` | `Cajas auto-cobro` | `Zona de venta exterior` | `Almacén` | `Aseos` | `Aparcamiento` | `Zona de oficinas` | `Zona exterior / fachadas` | `Zona cubiertas / azoteas`\n\n## Sección 2: Qué ha Ocurrido\n- **Se ha visto afectado:** — Selección (selección múltiple) **[OBLIGATORIO]**\n  UID: `53a8dcc6-a970-4c0a-8a55-7d585630d3a4`\n  Opciones: `El Cliente` | `Personal Ajeno / Terceras Personas` | `Personal colaborador Externo` | `Personal del Cliente` → *abre preguntas adicionales* | `Personal de Prosegur`\n- **Se ha recuperado:** — Selección (selección múltiple) **[OBLIGATORIO]**\n  UID: `b8a53238-ae65-4a21-97cc-127b129b1492`\n  Opciones: `Bienes del cliente (material, producto, etc.)` → *abre preguntas adicionales* | `Material de trabajo` | `Vehículo`\n- **Importe de los productos intervenidos:** — Número **[OBLIGATORIO]**\n  UID: `370c59c4-7365-4f60-88ce-e4a1b5625f9a`\n- **¿Tenemos información sobre el /los autor/es?** — Sí/No\n  UID: `fc731b33-b4c7-4e1e-bfc1-c2adcae2a939`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No, sin información`\n\n## Sección 3: Cómo ha Ocurrido (Modus Operandi)\n- **Causas** — Selección **[OBLIGATORIO]**\n  UID: `aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1`\n  Opciones: `Error de cajas` | `Error etiquetado` | `Descuido del comprador`\n- **¿Se ha utilizado algún medio de ocultación?** — Sí/No\n  UID: `43fe0a67-0655-40ac-930b-f187048d5826`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n- **Ha sido detectado mediante:** — Selección **[OBLIGATORIO]**\n  UID: `248a083f-19ce-4f9e-99f5-21d13c608824`\n  Opciones: `CCTV` | `Centro de Control` | `Control Visual` | `Sistemas Anti-hurto / RFID` | `Aviso de terceras personas`\n- **Ha sido detectado por:** — Selección **[OBLIGATORIO]**\n  UID: `51aad9be-cbd5-4444-a83f-9a549a537ef0`\n  Opciones: `Personal de Prosegur` | `Personal del Cliente` → *abre preguntas adicionales* | `Personal Colaborador Externo` | `Personal Ajeno / Terceras Personas`\n\n## Sección 4: Asistencias y Comunicaciones\n- **¿Se han avisado a las asistencias?** — Sí/No **[OBLIGATORIO]**\n  UID: `e5b0bf38-95cc-4b72-9648-b9ad6f4cc388`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n- **¿Se ha avisado al CGO?** — Sí/No\n  UID: `5c19a131-44f6-4250-b092-4a9078d1a067`\n  Opciones: `Sí` | `No`\n- **¿Se ha informado al cliente?** — Sí/No\n  UID: `475d9c61-a982-415c-8549-172645f6c03e`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n\n## Sección 5: Resultado y Denuncia\n- **Resultado:** — Selección **[OBLIGATORIO]**\n  UID: `1683931a-4f56-4765-be1f-89100eed60ed`\n  Opciones: `Abona el producto` | `Devuelve el producto`\n- **Observaciones:** — Texto libre\n  UID: `e97e5e66-b9b3-4a3c-82d6-f93b592cba7e`\n- **Medidas adoptadas:** — Texto libre\n  UID: `8f948eb3-9516-4e20-852d-e1216ed6f100`\n\n## Sección 6: Adjuntos\n\n# Reglas de Bifurcación\n\nAlgunos campos activan preguntas adicionales según la respuesta del vigilante:\n\n\n# Mapeo de Respuestas Implícitas\n\nCuando el vigilante use estas expresiones, mapea automáticamente a los campos correspondientes:\n\n## Asistencias y Fuerzas de Seguridad\n- \"policía\" / \"agentes\" → Asistencias: \"Policía Nacional\" o \"Policía Local\" (según contexto)\n- \"guardia civil\" → Asistencias: \"Guardia Civil\"\n- \"ambulancia\" / \"sanitarios\" / \"SAMUR\" / \"médicos\" → Asistencias: \"Asistencia sanitaria\"\n- \"bomberos\" → Asistencias: \"Bomberos\"\n- \"protección civil\" → Asistencias: \"Protección Civil\"\n- \"llamamos a...\" / \"avisamos a...\" → ¿Se avisaron asistencias?: \"Sí\"\n\n## Resultado / Detención\n- \"lo detuvimos\" / \"detenido\" / \"lo pillamos\" → Resultado: \"A disposición de FFCCS\" o \"Detención\"\n- \"huyó\" / \"se escapó\" / \"se fue corriendo\" → Resultado: \"Huida sin recuperación de efectos\" (o \"con recuperación\" si se recuperó lo robado)\n- \"devolvió el producto\" / \"soltó la mercancía\" → Resultado: \"Devuelve el producto\"\n\n## Detección\n- \"cámaras\" / \"CCTV\" / \"monitor\" → Detectado mediante: \"CCTV\"\n- \"lo vi yo\" / \"lo vimos\" / \"nos dimos cuenta\" → Detectado por: \"Personal de Prosegur\"\n- \"el dependiente vio\" / \"el cajero\" → Detectado por: \"Personal del Cliente\"\n- \"alarma\" / \"arco de seguridad\" / \"antihurto\" → Detectado mediante: \"Medios técnicos / alarmas\"\n\n## Medio de Ocultación\n- \"mochila\" / \"bolso\" / \"bolsa\" / \"bandolera\" → Medio de ocultación: \"Sí\" + tipo apropiado\n- \"debajo de la ropa\" / \"escondido\" → Medio de ocultación: \"Sí\" + tipo apropiado\n\n## Ubicación\n- \"aparcamiento\" / \"parking\" → Dónde: \"Aparcamiento\"\n- \"almacén\" / \"trastienda\" → Dónde: \"Almacén\"\n- \"baños\" / \"aseos\" → Dónde: \"Aseos\"\n\n## Consecuencias\n- \"no hubo heridos\" / \"sin lesiones\" / \"nadie resultó herido\" → Consecuencias sobre personas: \"No\"\n- \"le pegó\" / \"agredió\" / \"golpeó\" → Consecuencias sobre personas: \"Sí\"\n- \"no hubo violencia\" → Consecuencias sobre personas: \"No\"\n\n## Denuncia\n- \"pusimos denuncia\" / \"denunciamos\" → Se efectúa denuncia: \"Sí\"\n- \"no se denunció\" → Se efectúa denuncia: \"No\"\n\n## Temporal\n- \"esta mañana\" / \"hoy por la mañana\" → fecha de hoy + hora estimada mañana\n- \"sobre las X\" / \"a las X\" → hora indicada\n- \"hace un rato\" / \"hace poco\" → hora aproximada reciente\n\n# Formato de Datos de Salida\n\nCuando uses la herramienta \"finalizar_formulario\", envía los campos con estos UIDs y valores exactos:\n\n```\nCampos disponibles (UID → pregunta):\n{\n  \"98938461-d206-4397-8cfc-552f43f94e0a\": \"¿Cuándo ha ocurrido?\",\n  \"f149c665-8d27-4994-b5fb-446c3f9171d7\": \"¿Dónde ha ocurrido?\",\n  \"53a8dcc6-a970-4c0a-8a55-7d585630d3a4\": \"Se ha visto afectado:\",\n  \"b8a53238-ae65-4a21-97cc-127b129b1492\": \"Se ha recuperado:\",\n  \"370c59c4-7365-4f60-88ce-e4a1b5625f9a\": \"Importe de los productos intervenidos:\",\n  \"fc731b33-b4c7-4e1e-bfc1-c2adcae2a939\": \"¿Tenemos información sobre el /los autor/es?\",\n  \"deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b-0d2f6d34-3bf8-4b4c-9861-008e596bce4d\": \"Si el afectado es personal del cliente, indica quién (puesto o cargo):\",\n  \"33f3b12c-ba4c-4225-b081-c4bc4ab18915-29b88f53-aae7-45ab-924d-90d1efca5e6d\": \"Sección-Familia-Universo:\",\n  \"33f3b12c-ba4c-4225-b081-c4bc4ab18915-d94adde1-ec06-4fc8-b57a-2d3fb37d308e\": \"Número de productos:\",\n  \"33f3b12c-ba4c-4225-b081-c4bc4ab18915-c444e35b-4f5f-439c-9468-f1794b5d3c1f\": \"Descripción de los productos:\",\n  \"aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1\": \"Causas\",\n  \"43fe0a67-0655-40ac-930b-f187048d5826\": \"¿Se ha utilizado algún medio de ocultación?\",\n  \"248a083f-19ce-4f9e-99f5-21d13c608824\": \"Ha sido detectado mediante:\",\n  \"51aad9be-cbd5-4444-a83f-9a549a537ef0\": \"Ha sido detectado por:\",\n  \"7c8635c7-01d2-47a9-8aa7-1b785990eed3-ab07ce37-cc89-4760-9d47-132da3b4ebf1\": \"El medio de ocultación utilizado:\",\n  \"497b0d2f-737f-44e3-8968-dd54755c9a04-e35d833b-4d15-493a-903e-4560c929495e\": \"Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):\",\n  \"e5b0bf38-95cc-4b72-9648-b9ad6f4cc388\": \"¿Se han avisado a las asistencias?\",\n  \"5c19a131-44f6-4250-b092-4a9078d1a067\": \"¿Se ha avisado al CGO?\",\n  \"475d9c61-a982-415c-8549-172645f6c03e\": \"¿Se ha informado al cliente?\",\n  \"05621dee-ff06-42b4-8d00-3d1c6f431c1c-f07c1517-c112-4ae2-87d8-2ae197b3aa56\": \"Asistencias:\",\n  \"05621dee-ff06-42b4-8d00-3d1c6f431c1c-416f4f98-f805-422d-9caf-8d0890006869\": \"Hora de llegada de las asistencias:\",\n  \"494eaea6-c427-4f02-b2ad-3ba55f231cb4-e35d833b-4d15-493a-903e-4560c929495e\": \"Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):\",\n  \"1683931a-4f56-4765-be1f-89100eed60ed\": \"Resultado:\",\n  \"e97e5e66-b9b3-4a3c-82d6-f93b592cba7e\": \"Observaciones:\",\n  \"8f948eb3-9516-4e20-852d-e1216ed6f100\": \"Medidas adoptadas:\"\n}\n```\n\n**Reglas de valor:**\n- Campos de selección: usar el texto EXACTO de la opción (ej: \"Policía Nacional\", no \"la policía\")\n- Campos múltiples: enviar valores separados por \" | \" (ej: \"Policía Nacional | Policía Local\")\n- Fecha/hora: formato ISO 8601 (ej: \"2026-02-25T15:30:00\")\n- Números: solo el valor numérico como string (ej: \"50\")\n- Texto libre: texto tal cual\n- Solo incluir campos de bifurcaciones que estén ACTIVAS (es decir, cuyo campo padre tenga la respuesta que activa la bifurcación)",
+      "initial_message": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Hola, soy tu asistente para registrar la incidencia de tipo \"Hurto con Recuperacion\". Cuéntame qué ha ocurrido, con todos los detalles que recuerdes."
+            }
+          ]
+        }
+      ],
+      "model": {
+        "type": "static",
+        "static": {
+          "id": "claude-sonnet-4-5-20250514",
+          "name": "Claude Sonnet 4.5"
+        }
+      },
+      "inbound_prompt": null,
+      "inbound_prompt_md": null,
+      "receiving_initial_message": null
     },
     {
-      "id": "f8f2bf0e-098e-4618-a9c3-f125047458dd",
-      "persistent_id": "59160f4a-0699-421a-a63a-48b972bc7014",
-      "slug": "7izoqpbq6gml",
-      "org_id": "PLACEHOLDER_ORG_ID",
-      "use_case_id": "836aab1a-5130-49c3-ac36-dc5a6bcc8407",
-      "parent_id": "a734905d-0c2a-4270-959d-2875f6af60b8",
-      "version_id": "730f368a-19f9-4d03-9150-c2f80731b0d4",
+      "id": "a47006c4-b942-46d0-b3a5-c74200f09bc8",
+      "persistent_id": "7ebb9119-00d8-4f61-a936-0018b62ec6b5",
+      "slug": "w8trvh4iy0gb",
+      "org_id": "00000000-0000-0000-0000-000000000000",
+      "use_case_id": "1824c319-54cf-44e3-aa56-01f8b32d5c35",
+      "parent_id": "0d978f0c-5338-4bce-b4dd-9d521e6b17a2",
+      "version_id": "03557e35-af3a-469a-9558-4f2c0e9df2b8",
       "type": "tool",
       "name": "consultar_estado_formulario",
       "is_complete": true,
       "node_output_id": null,
       "sort_index": 0,
-      "timestamp": "2026-02-25T20:30:26.638Z",
+      "timestamp": "2026-02-25T21:41:24.144Z",
       "is_deleted": false,
       "configuration": {},
       "staging_configuration": {},
@@ -2325,24 +2394,24 @@
           "example": "Me faltan algunos datos. Déjame preguntarte un par de cosas más."
         },
         "parameters": [],
-        "tool_index_id": "tool:67d47285-bcac-458a-8928-de562d69731f",
-        "tool_index_hash": "fb9cb80c525a48dd8c9805c50ea303ff"
+        "tool_index_id": "tool:7ebb9119-00d8-4f61-a936-0018b62ec6b5",
+        "tool_index_hash": "d2b7e9668053a67148c50c36c5a71f4a7d38f914d9fa72f737c5deec907bf572"
       }
     },
     {
-      "id": "304e650c-e683-4833-bd3b-2444a24099ef",
-      "persistent_id": "eb8c8eae-f144-4a47-a07c-3b1c9ce1e4e1",
-      "slug": "sv7o8cp43svs",
-      "org_id": "PLACEHOLDER_ORG_ID",
-      "use_case_id": "836aab1a-5130-49c3-ac36-dc5a6bcc8407",
-      "parent_id": "a734905d-0c2a-4270-959d-2875f6af60b8",
-      "version_id": "730f368a-19f9-4d03-9150-c2f80731b0d4",
+      "id": "77d93da8-6625-4858-889c-15bd33a5b251",
+      "persistent_id": "a7c3328c-4da7-4339-a07c-78f6cb903ad3",
+      "slug": "27783e4vje97",
+      "org_id": "00000000-0000-0000-0000-000000000000",
+      "use_case_id": "1824c319-54cf-44e3-aa56-01f8b32d5c35",
+      "parent_id": "0d978f0c-5338-4bce-b4dd-9d521e6b17a2",
+      "version_id": "03557e35-af3a-469a-9558-4f2c0e9df2b8",
       "type": "tool",
       "name": "finalizar_formulario",
       "is_complete": true,
       "node_output_id": null,
       "sort_index": 0,
-      "timestamp": "2026-02-25T20:30:26.638Z",
+      "timestamp": "2026-02-25T21:41:24.144Z",
       "is_deleted": false,
       "configuration": {},
       "staging_configuration": {},
@@ -2729,230 +2798,1964 @@
             ]
           }
         ],
-        "tool_index_id": "tool:75a908b5-eb70-4687-a543-2c0fa0f38033",
-        "tool_index_hash": "acad4ab90fa4475eac1cb238d23cc307"
+        "tool_index_id": "tool:a7c3328c-4da7-4339-a07c-78f6cb903ad3",
+        "tool_index_hash": "146fb8e2609efb871dc6f404f5e89336a8b0c1c235b859e15fab6ee3cf715b21"
       }
     },
     {
-      "id": "232f3742-b305-48f1-a6f5-defe3c9b0ed1",
-      "persistent_id": "464efef5-84f9-44a7-88bf-9ba7c4264709",
-      "slug": "taok71l4op3d",
-      "org_id": "PLACEHOLDER_ORG_ID",
-      "use_case_id": "836aab1a-5130-49c3-ac36-dc5a6bcc8407",
-      "parent_id": "35242260-058e-4b44-a1e2-e62cb47483ee",
-      "version_id": "730f368a-19f9-4d03-9150-c2f80731b0d4",
+      "id": "855638e6-8ece-46b9-92ef-b7d5c5da8300",
+      "persistent_id": "278592a9-f6b3-45da-8ea1-22521e95a674",
+      "slug": "v64h1ri38y2y",
+      "org_id": "00000000-0000-0000-0000-000000000000",
+      "use_case_id": "1824c319-54cf-44e3-aa56-01f8b32d5c35",
+      "parent_id": "6e7ff5e6-3da1-40db-ba72-6b166e5f9f21",
+      "version_id": "03557e35-af3a-469a-9558-4f2c0e9df2b8",
       "type": "action",
-      "name": "Extraer y Enviar Datos",
+      "name": "Extraer Datos de Conversación",
       "is_complete": false,
       "node_output_id": null,
       "sort_index": 0,
-      "timestamp": "2026-02-25T20:30:26.638Z",
+      "timestamp": "2026-02-25T21:41:24.144Z",
       "is_deleted": false,
       "configuration": {
-        "prompt": "Extrae todos los campos del formulario de incidencia de la transcripción de la conversación.\n\nCampos a extraer:\n- cuando_ha_ocurrido: ¿Cuándo ha ocurrido? (Fecha/Hora) [OBLIGATORIO]\n- donde_ha_ocurrido: ¿Dónde ha ocurrido? (Selección) [OBLIGATORIO] Opciones: Cajas de pago, Cajas auto-cobro, Zona de venta exterior, Almacén, Aseos, Aparcamiento, Zona de oficinas, Zona exterior / fachadas, Zona cubiertas / azoteas\n- se_ha_visto_afectado: Se ha visto afectado: (Selección) [OBLIGATORIO] Opciones: El Cliente, Personal Ajeno / Terceras Personas, Personal colaborador Externo, Personal del Cliente, Personal de Prosegur\n- se_ha_recuperado: Se ha recuperado: (Selección) [OBLIGATORIO] Opciones: Bienes del cliente (material, producto, etc.), Material de trabajo, Vehículo\n- importe_de_los_productos_intervenidos: Importe de los productos intervenidos: (Número) [OBLIGATORIO]\n- tenemos_informacion_sobre_el_los_autores: ¿Tenemos información sobre el /los autor/es? (Sí/No) Opciones: Sí, No, sin información\n- si_el_afectado_es_personal_del_cliente_indica_quien_puesto_o: Si el afectado es personal del cliente, indica quién (puesto o cargo): (Texto libre)\n- seccion-familia-universo: Sección-Familia-Universo: (Selección) [OBLIGATORIO] Opciones: (AG) Agua, (C) Ciclismo, (CO) Colectivos, (FM) Fitnes Material, (FT) FIitnes Textil, (G) Golf, (M) Montaña, (N) Naturaleza, (R) Roler, (RU) Runnig, (SA) Salud y Aventura, (T) Tenis, (TA) Taller\n- numero_de_productos: Número de productos: (Número) [OBLIGATORIO]\n- descripcion_de_los_productos: Descripción de los productos: (Texto libre)\n- causas: Causas (Selección) [OBLIGATORIO] Opciones: Error de cajas, Error etiquetado, Descuido del comprador\n- se_ha_utilizado_algun_medio_de_ocultacion: ¿Se ha utilizado algún medio de ocultación? (Sí/No) Opciones: Sí, No\n- ha_sido_detectado_mediante: Ha sido detectado mediante: (Selección) [OBLIGATORIO] Opciones: CCTV, Centro de Control, Control Visual, Sistemas Anti-hurto / RFID, Aviso de terceras personas\n- ha_sido_detectado_por: Ha sido detectado por: (Selección) [OBLIGATORIO] Opciones: Personal de Prosegur, Personal del Cliente, Personal Colaborador Externo, Personal Ajeno / Terceras Personas\n- el_medio_de_ocultacion_utilizado: El medio de ocultación utilizado: (Selección) [OBLIGATORIO] Opciones: Bandolera / Mochila / bolso, Bolsa de establecimiento comercial, Bolso forrado de aluminio, Carro de bebé, Carro de la compra, Entre pertenencias, Caja regalo\n- si_quien_lo_ha_detectado_es_personal_del_cliente_indica_quie: Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo): (Texto libre)\n- se_han_avisado_a_las_asistencias: ¿Se han avisado a las asistencias? (Sí/No) [OBLIGATORIO] Opciones: Sí, No\n- se_ha_avisado_al_cgo: ¿Se ha avisado al CGO? (Sí/No) Opciones: Sí, No\n- se_ha_informado_al_cliente: ¿Se ha informado al cliente? (Sí/No) Opciones: Sí, No\n- asistencias: Asistencias: (Selección) [OBLIGATORIO] Opciones: Asistencia sanitaria, Bomberos, Ertzaintza, Guardia Civil, Mossos d'esquadra, Policía Local, Policía Nacional, Policía Foral de Navarra\n- hora_de_llegada_de_las_asistencias: Hora de llegada de las asistencias: (Fecha/Hora) [OBLIGATORIO]\n- si_se_ha_informado_a_personal_del_cliente_indica_a_quien_pue: Si se ha informado  a personal del cliente, indica a quién (puesto o cargo): (Texto libre)\n- resultado: Resultado: (Selección) [OBLIGATORIO] Opciones: Abona el producto, Devuelve el producto\n- observaciones: Observaciones: (Texto libre)\n- medidas_adoptadas: Medidas adoptadas: (Texto libre)\n\nReglas:\n- Para campos de selección, usa el texto EXACTO de la opción\n- Para campos múltiples, separa valores con \" | \"\n- Para fecha/hora, usa formato ISO 8601 (YYYY-MM-DDTHH:mm:ss)\n- Para números, solo el valor numérico como string\n- Si un campo no fue mencionado, omítelo (no pongas null ni vacío)\n- Incluye deducciones implícitas (ej: \"llamamos a la policía\" → asistencias = \"Sí\")",
-        "input": "transcript",
-        "schema": {
-          "type": "object",
-          "properties": {
-            "cuando_ha_ocurrido": {
-              "type": "string",
-              "description": "¿Cuándo ha ocurrido?"
-            },
-            "donde_ha_ocurrido": {
-              "type": "string",
-              "description": "¿Dónde ha ocurrido?",
-              "enum": [
-                "Cajas de pago",
-                "Cajas auto-cobro",
-                "Zona de venta exterior",
-                "Almacén",
-                "Aseos",
-                "Aparcamiento",
-                "Zona de oficinas",
-                "Zona exterior / fachadas",
-                "Zona cubiertas / azoteas"
-              ]
-            },
-            "se_ha_visto_afectado": {
-              "type": "string",
-              "description": "Se ha visto afectado:",
-              "enum": [
-                "El Cliente",
-                "Personal Ajeno / Terceras Personas",
-                "Personal colaborador Externo",
-                "Personal del Cliente",
-                "Personal de Prosegur"
-              ]
-            },
-            "se_ha_recuperado": {
-              "type": "string",
-              "description": "Se ha recuperado:",
-              "enum": [
-                "Bienes del cliente (material, producto, etc.)",
-                "Material de trabajo",
-                "Vehículo"
-              ]
-            },
-            "importe_de_los_productos_intervenidos": {
-              "type": "string",
-              "description": "Importe de los productos intervenidos:"
-            },
-            "tenemos_informacion_sobre_el_los_autores": {
-              "type": "string",
-              "description": "¿Tenemos información sobre el /los autor/es?",
-              "enum": [
-                "Sí",
-                "No, sin información"
-              ]
-            },
-            "si_el_afectado_es_personal_del_cliente_indica_quien_puesto_o": {
-              "type": "string",
-              "description": "Si el afectado es personal del cliente, indica quién (puesto o cargo):"
-            },
-            "seccion-familia-universo": {
-              "type": "string",
-              "description": "Sección-Familia-Universo:",
-              "enum": [
-                "(AG) Agua",
-                "(C) Ciclismo",
-                "(CO) Colectivos",
-                "(FM) Fitnes Material",
-                "(FT) FIitnes Textil",
-                "(G) Golf",
-                "(M) Montaña",
-                "(N) Naturaleza",
-                "(R) Roler",
-                "(RU) Runnig",
-                "(SA) Salud y Aventura",
-                "(T) Tenis",
-                "(TA) Taller"
-              ]
-            },
-            "numero_de_productos": {
-              "type": "string",
-              "description": "Número de productos:"
-            },
-            "descripcion_de_los_productos": {
-              "type": "string",
-              "description": "Descripción de los productos:"
-            },
-            "causas": {
-              "type": "string",
-              "description": "Causas",
-              "enum": [
-                "Error de cajas",
-                "Error etiquetado",
-                "Descuido del comprador"
-              ]
-            },
-            "se_ha_utilizado_algun_medio_de_ocultacion": {
-              "type": "string",
-              "description": "¿Se ha utilizado algún medio de ocultación?",
-              "enum": [
-                "Sí",
-                "No"
-              ]
-            },
-            "ha_sido_detectado_mediante": {
-              "type": "string",
-              "description": "Ha sido detectado mediante:",
-              "enum": [
-                "CCTV",
-                "Centro de Control",
-                "Control Visual",
-                "Sistemas Anti-hurto / RFID",
-                "Aviso de terceras personas"
-              ]
-            },
-            "ha_sido_detectado_por": {
-              "type": "string",
-              "description": "Ha sido detectado por:",
-              "enum": [
-                "Personal de Prosegur",
-                "Personal del Cliente",
-                "Personal Colaborador Externo",
-                "Personal Ajeno / Terceras Personas"
-              ]
-            },
-            "el_medio_de_ocultacion_utilizado": {
-              "type": "string",
-              "description": "El medio de ocultación utilizado:",
-              "enum": [
-                "Bandolera / Mochila / bolso",
-                "Bolsa de establecimiento comercial",
-                "Bolso forrado de aluminio",
-                "Carro de bebé",
-                "Carro de la compra",
-                "Entre pertenencias",
-                "Caja regalo"
-              ]
-            },
-            "si_quien_lo_ha_detectado_es_personal_del_cliente_indica_quie": {
-              "type": "string",
-              "description": "Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):"
-            },
-            "se_han_avisado_a_las_asistencias": {
-              "type": "string",
-              "description": "¿Se han avisado a las asistencias?",
-              "enum": [
-                "Sí",
-                "No"
-              ]
-            },
-            "se_ha_avisado_al_cgo": {
-              "type": "string",
-              "description": "¿Se ha avisado al CGO?",
-              "enum": [
-                "Sí",
-                "No"
-              ]
-            },
-            "se_ha_informado_al_cliente": {
-              "type": "string",
-              "description": "¿Se ha informado al cliente?",
-              "enum": [
-                "Sí",
-                "No"
-              ]
-            },
-            "asistencias": {
-              "type": "string",
-              "description": "Asistencias:",
-              "enum": [
-                "Asistencia sanitaria",
-                "Bomberos",
-                "Ertzaintza",
-                "Guardia Civil",
-                "Mossos d'esquadra",
-                "Policía Local",
-                "Policía Nacional",
-                "Policía Foral de Navarra"
-              ]
-            },
-            "hora_de_llegada_de_las_asistencias": {
-              "type": "string",
-              "description": "Hora de llegada de las asistencias:"
-            },
-            "si_se_ha_informado_a_personal_del_cliente_indica_a_quien_pue": {
-              "type": "string",
-              "description": "Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):"
-            },
-            "resultado": {
-              "type": "string",
-              "description": "Resultado:",
-              "enum": [
-                "Abona el producto",
-                "Devuelve el producto"
-              ]
-            },
-            "observaciones": {
-              "type": "string",
-              "description": "Observaciones:"
-            },
-            "medidas_adoptadas": {
-              "type": "string",
-              "description": "Medidas adoptadas:"
-            }
+        "prompt": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Extrae todos los campos del formulario de incidencia de la transcripción de la conversación."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Campos a extraer:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- cuando_ha_ocurrido: ¿Cuándo ha ocurrido? (Fecha/Hora) [OBLIGATORIO]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- donde_ha_ocurrido: ¿Dónde ha ocurrido? (Selección) [OBLIGATORIO] Opciones: Cajas de pago, Cajas auto-cobro, Zona de venta exterior, Almacén, Aseos, Aparcamiento, Zona de oficinas, Zona exterior / fachadas, Zona cubiertas / azoteas"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- se_ha_visto_afectado: Se ha visto afectado: (Selección) [OBLIGATORIO] Opciones: El Cliente, Personal Ajeno / Terceras Personas, Personal colaborador Externo, Personal del Cliente, Personal de Prosegur"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- se_ha_recuperado: Se ha recuperado: (Selección) [OBLIGATORIO] Opciones: Bienes del cliente (material, producto, etc.), Material de trabajo, Vehículo"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- importe_de_los_productos_intervenidos: Importe de los productos intervenidos: (Número) [OBLIGATORIO]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- tenemos_informacion_sobre_el_los_autores: ¿Tenemos información sobre el /los autor/es? (Sí/No) Opciones: Sí, No, sin información"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- si_el_afectado_es_personal_del_cliente_indica_quien_puesto_o: Si el afectado es personal del cliente, indica quién (puesto o cargo): (Texto libre)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- seccion-familia-universo: Sección-Familia-Universo: (Selección) [OBLIGATORIO] Opciones: (AG) Agua, (C) Ciclismo, (CO) Colectivos, (FM) Fitnes Material, (FT) FIitnes Textil, (G) Golf, (M) Montaña, (N) Naturaleza, (R) Roler, (RU) Runnig, (SA) Salud y Aventura, (T) Tenis, (TA) Taller"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- numero_de_productos: Número de productos: (Número) [OBLIGATORIO]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- descripcion_de_los_productos: Descripción de los productos: (Texto libre)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- causas: Causas (Selección) [OBLIGATORIO] Opciones: Error de cajas, Error etiquetado, Descuido del comprador"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- se_ha_utilizado_algun_medio_de_ocultacion: ¿Se ha utilizado algún medio de ocultación? (Sí/No) Opciones: Sí, No"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- ha_sido_detectado_mediante: Ha sido detectado mediante: (Selección) [OBLIGATORIO] Opciones: CCTV, Centro de Control, Control Visual, Sistemas Anti-hurto / RFID, Aviso de terceras personas"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- ha_sido_detectado_por: Ha sido detectado por: (Selección) [OBLIGATORIO] Opciones: Personal de Prosegur, Personal del Cliente, Personal Colaborador Externo, Personal Ajeno / Terceras Personas"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- el_medio_de_ocultacion_utilizado: El medio de ocultación utilizado: (Selección) [OBLIGATORIO] Opciones: Bandolera / Mochila / bolso, Bolsa de establecimiento comercial, Bolso forrado de aluminio, Carro de bebé, Carro de la compra, Entre pertenencias, Caja regalo"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- si_quien_lo_ha_detectado_es_personal_del_cliente_indica_quie: Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo): (Texto libre)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- se_han_avisado_a_las_asistencias: ¿Se han avisado a las asistencias? (Sí/No) [OBLIGATORIO] Opciones: Sí, No"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- se_ha_avisado_al_cgo: ¿Se ha avisado al CGO? (Sí/No) Opciones: Sí, No"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- se_ha_informado_al_cliente: ¿Se ha informado al cliente? (Sí/No) Opciones: Sí, No"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- asistencias: Asistencias: (Selección) [OBLIGATORIO] Opciones: Asistencia sanitaria, Bomberos, Ertzaintza, Guardia Civil, Mossos d'esquadra, Policía Local, Policía Nacional, Policía Foral de Navarra"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- hora_de_llegada_de_las_asistencias: Hora de llegada de las asistencias: (Fecha/Hora) [OBLIGATORIO]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- si_se_ha_informado_a_personal_del_cliente_indica_a_quien_pue: Si se ha informado  a personal del cliente, indica a quién (puesto o cargo): (Texto libre)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- resultado: Resultado: (Selección) [OBLIGATORIO] Opciones: Abona el producto, Devuelve el producto"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- observaciones: Observaciones: (Texto libre)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- medidas_adoptadas: Medidas adoptadas: (Texto libre)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Reglas:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- Para campos de selección, usa el texto EXACTO de la opción"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- Para campos múltiples, separa valores con \" | \""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- Para fecha/hora, usa formato ISO 8601 (YYYY-MM-DDTHH:mm:ss)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- Para números, solo el valor numérico como string"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- Si un campo no fue mencionado, omítelo (no pongas null ni vacío)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "- Incluye deducciones implícitas (ej: \"llamamos a la policía\" → asistencias = \"Sí\")"
+              }
+            ]
+          }
+        ],
+        "input": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": ""
+              },
+              {
+                "type": "variable",
+                "text": "",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "group_id": "7119334d-04b9-4f0d-8e7b-9018b978ac98",
+                "variable_id": "transcript"
+              },
+              {
+                "text": ""
+              }
+            ]
+          }
+        ],
+        "parameters": [],
+        "json_schema": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "{"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "  \"type\": \"object\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "  \"properties\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"cuando_ha_ocurrido\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"¿Cuándo ha ocurrido?\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"donde_ha_ocurrido\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"¿Dónde ha ocurrido?\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Cajas de pago\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Cajas auto-cobro\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Zona de venta exterior\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Almacén\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Aseos\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Aparcamiento\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Zona de oficinas\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Zona exterior / fachadas\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Zona cubiertas / azoteas\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"se_ha_visto_afectado\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Se ha visto afectado:\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"El Cliente\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Personal Ajeno / Terceras Personas\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Personal colaborador Externo\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Personal del Cliente\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Personal de Prosegur\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"se_ha_recuperado\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Se ha recuperado:\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Bienes del cliente (material, producto, etc.)\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Material de trabajo\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Vehículo\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"importe_de_los_productos_intervenidos\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Importe de los productos intervenidos:\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"tenemos_informacion_sobre_el_los_autores\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"¿Tenemos información sobre el /los autor/es?\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Sí\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"No, sin información\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"si_el_afectado_es_personal_del_cliente_indica_quien_puesto_o\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Si el afectado es personal del cliente, indica quién (puesto o cargo):\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"seccion-familia-universo\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Sección-Familia-Universo:\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(AG) Agua\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(C) Ciclismo\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(CO) Colectivos\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(FM) Fitnes Material\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(FT) FIitnes Textil\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(G) Golf\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(M) Montaña\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(N) Naturaleza\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(R) Roler\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(RU) Runnig\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(SA) Salud y Aventura\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(T) Tenis\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"(TA) Taller\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"numero_de_productos\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Número de productos:\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"descripcion_de_los_productos\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Descripción de los productos:\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"causas\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Causas\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Error de cajas\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Error etiquetado\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Descuido del comprador\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"se_ha_utilizado_algun_medio_de_ocultacion\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"¿Se ha utilizado algún medio de ocultación?\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Sí\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"No\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"ha_sido_detectado_mediante\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Ha sido detectado mediante:\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"CCTV\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Centro de Control\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Control Visual\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Sistemas Anti-hurto / RFID\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Aviso de terceras personas\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"ha_sido_detectado_por\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Ha sido detectado por:\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Personal de Prosegur\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Personal del Cliente\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Personal Colaborador Externo\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Personal Ajeno / Terceras Personas\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"el_medio_de_ocultacion_utilizado\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"El medio de ocultación utilizado:\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Bandolera / Mochila / bolso\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Bolsa de establecimiento comercial\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Bolso forrado de aluminio\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Carro de bebé\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Carro de la compra\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Entre pertenencias\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Caja regalo\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"si_quien_lo_ha_detectado_es_personal_del_cliente_indica_quie\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"se_han_avisado_a_las_asistencias\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"¿Se han avisado a las asistencias?\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Sí\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"No\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"se_ha_avisado_al_cgo\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"¿Se ha avisado al CGO?\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Sí\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"No\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"se_ha_informado_al_cliente\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"¿Se ha informado al cliente?\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Sí\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"No\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"asistencias\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Asistencias:\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Asistencia sanitaria\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Bomberos\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Ertzaintza\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Guardia Civil\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Mossos d'esquadra\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Policía Local\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Policía Nacional\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Policía Foral de Navarra\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"hora_de_llegada_de_las_asistencias\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Hora de llegada de las asistencias:\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"si_se_ha_informado_a_personal_del_cliente_indica_a_quien_pue\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"resultado\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Resultado:\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"enum\": ["
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Abona el producto\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "        \"Devuelve el producto\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      ]"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"observaciones\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Observaciones:\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    },"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    \"medidas_adoptadas\": {"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"type\": \"string\","
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "      \"description\": \"Medidas adoptadas:\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "    }"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "  }"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "}"
+              }
+            ]
+          }
+        ],
+        "model": {
+          "type": "static",
+          "static": {
+            "id": "claude-sonnet-4-5-20250514",
+            "name": "Claude Sonnet 4.5"
           }
         }
       },
@@ -2962,44 +4765,44 @@
       "outbound_retry_configuration": {},
       "node_component_id": null,
       "node_component_input_mapping": [],
-      "node_output": null
-    },
-    {
-      "id": "775ee801-4df1-44dc-ab0b-6591e65ba2a1",
-      "persistent_id": "7225486a-9cd3-4757-af8d-a838ee0f43e0",
-      "slug": "m2vnune6t7qi",
-      "org_id": "PLACEHOLDER_ORG_ID",
-      "use_case_id": "836aab1a-5130-49c3-ac36-dc5a6bcc8407",
-      "parent_id": "232f3742-b305-48f1-a6f5-defe3c9b0ed1",
-      "version_id": "730f368a-19f9-4d03-9150-c2f80731b0d4",
-      "type": "action",
-      "name": "Enviar a Backend",
-      "is_complete": false,
-      "node_output_id": null,
-      "sort_index": 0,
-      "timestamp": "2026-02-25T20:30:26.638Z",
-      "is_deleted": false,
-      "configuration": {
-        "url": "http://localhost:3000/api/webhooks/happyrobot/complete",
-        "method": "POST",
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "body": {
-          "form_id": "hurto-recuperacion",
-          "incident_family": "Hurto",
-          "incident_type": "Hurto con Recuperacion",
-          "extracted_data": "{{extracted_data}}",
-          "transcript": "{{transcript}}"
-        }
+      "node_output": null,
+      "integration_id": "01926a90-7f9e-785e-891c-51338a7aa70c",
+      "event_id": "01926f30-36a3-7394-8f73-eeead5d7f948",
+      "trigger_interval": null,
+      "multi_event_behavior": "parallel",
+      "hidden_fields": [],
+      "integration": {
+        "id": "01926a90-7f9e-785e-891c-51338a7aa70c",
+        "name": "AI",
+        "group": "built-in",
+        "icon": "/integrations/ai.svg",
+        "description": "Use AI to process, extract, and classify data",
+        "docs_url": "https://docs.happyrobot.ai/integrations/ai",
+        "website_url": "https://docs.happyrobot.ai/integrations/ai",
+        "is_top": true,
+        "requires_credentials": false,
+        "agent_specific": false
       },
-      "staging_configuration": {},
-      "development_configuration": {},
-      "retry_configuration": {},
-      "outbound_retry_configuration": {},
-      "node_component_id": null,
-      "node_component_input_mapping": [],
-      "node_output": null
+      "event": {
+        "id": "01926f30-36a3-7394-8f73-eeead5d7f948",
+        "name": "Extract",
+        "integration_id": "01926a90-7f9e-785e-891c-51338a7aa70c",
+        "type": 1,
+        "description": "Extract structured data using AI.",
+        "is_instant": false,
+        "has_cron_trigger": false,
+        "activity_name": "extract",
+        "task_queue": "",
+        "timeout_seconds": 120,
+        "retry_policy": {
+          "InitialInterval": 0,
+          "MaximumAttempts": 2,
+          "BackoffCoefficient": 2
+        },
+        "wait_for_signal_seconds": 0,
+        "key_for_sleep": null,
+        "coming_soon": false
+      }
     }
   ],
   "edges": [],
