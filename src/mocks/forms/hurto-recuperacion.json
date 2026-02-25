@@ -1,0 +1,505 @@
+[
+    {
+        "SectionGuid": "9d79ed29-aa4b-4911-949b-e973d5337d57",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "98938461-d206-4397-8cfc-552f43f94e0a",
+                "Question": "¿Cuándo ha ocurrido?",
+                "FieldType": "1",
+                "Mandatory": true
+            },
+            {
+                "FieldGuid": "f149c665-8d27-4994-b5fb-446c3f9171d7",
+                "Question": "¿Dónde ha ocurrido?",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Cajas de pago"
+                    },
+                    {
+                        "Value": "Cajas auto-cobro"
+                    },
+                    {
+                        "Value": "Zona de venta exterior"
+                    },
+                    {
+                        "Value": "Almacén"
+                    },
+                    {
+                        "Value": "Aseos"
+                    },
+                    {
+                        "Value": "Aparcamiento"
+                    },
+                    {
+                        "Value": "Zona de oficinas"
+                    },
+                    {
+                        "Value": "Zona exterior / fachadas"
+                    },
+                    {
+                        "Value": "Zona cubiertas / azoteas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "53a8dcc6-a970-4c0a-8a55-7d585630d3a4",
+                "Question": "Se ha visto afectado:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "El Cliente"
+                    },
+                    {
+                        "Value": "Personal Ajeno / Terceras Personas"
+                    },
+                    {
+                        "Value": "Personal colaborador Externo"
+                    },
+                    {
+                        "Value": "Personal del Cliente",
+                        "ForkGuid": "deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b"
+                    },
+                    {
+                        "Value": "Personal de Prosegur"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "b8a53238-ae65-4a21-97cc-127b129b1492",
+                "Question": "Se ha recuperado:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Bienes del cliente (material, producto, etc.)",
+                        "ForkGuid": "33f3b12c-ba4c-4225-b081-c4bc4ab18915"
+                    },
+                    {
+                        "Value": "Material de trabajo"
+                    },
+                    {
+                        "Value": "Vehículo"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "370c59c4-7365-4f60-88ce-e4a1b5625f9a",
+                "Question": "Importe de los productos intervenidos:",
+                "FieldType": "6",
+                "Mandatory": true
+            },
+            {
+                "FieldGuid": "fc731b33-b4c7-4e1e-bfc1-c2adcae2a939",
+                "Question": "¿Tenemos información sobre el /los autor/es?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "ce80cd88-56e1-4d10-9304-064245eab808"
+                    },
+                    {
+                        "Value": "No, sin información"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b",
+        "SectionParentGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "0d2f6d34-3bf8-4b4c-9861-008e596bce4d",
+                "Question": "Si el afectado es personal del cliente, indica quién (puesto o cargo):",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "33f3b12c-ba4c-4225-b081-c4bc4ab18915",
+        "SectionParentGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "29b88f53-aae7-45ab-924d-90d1efca5e6d",
+                "Question": "Sección-Familia-Universo:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "(AG) Agua"
+                    },
+                    {
+                        "Value": "(C) Ciclismo"
+                    },
+                    {
+                        "Value": "(CO) Colectivos"
+                    },
+                    {
+                        "Value": "(FM) Fitnes Material"
+                    },
+                    {
+                        "Value": "(FT) FIitnes Textil"
+                    },
+                    {
+                        "Value": "(G) Golf"
+                    },
+                    {
+                        "Value": "(M) Montaña"
+                    },
+                    {
+                        "Value": "(N) Naturaleza"
+                    },
+                    {
+                        "Value": "(R) Roler"
+                    },
+                    {
+                        "Value": "(RU) Runnig"
+                    },
+                    {
+                        "Value": "(SA) Salud y Aventura"
+                    },
+                    {
+                        "Value": "(T) Tenis"
+                    },
+                    {
+                        "Value": "(TA) Taller"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "d94adde1-ec06-4fc8-b57a-2d3fb37d308e",
+                "Question": "Número de productos:",
+                "FieldType": "6",
+                "Mandatory": true
+            },
+            {
+                "FieldGuid": "c444e35b-4f5f-439c-9468-f1794b5d3c1f",
+                "Question": "Descripción de los productos:",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "2e587f4f-f137-4842-85e2-cffcd8698d7b",
+        "SectionParentGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "580558df-ab05-450c-a487-be6819bca543",
+                "Question": "¿Has tenido que realizar alguna maniobra de primeros auxilios?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "6c08bee6-edd9-42b4-8ef8-df70c7eeb21b"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "ce80cd88-56e1-4d10-9304-064245eab808",
+        "SectionParentGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109"
+    },
+    {
+        "SectionGuid": "6c08bee6-edd9-42b4-8ef8-df70c7eeb21b",
+        "SectionParentGuid": "2e587f4f-f137-4842-85e2-cffcd8698d7b"
+    },
+    {
+        "SectionGuid": "c7189a34-4be7-4e55-9e98-54c18febb9b6",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1",
+                "Question": "Causas",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Error de cajas"
+                    },
+                    {
+                        "Value": "Error etiquetado"
+                    },
+                    {
+                        "Value": "Descuido del comprador"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "43fe0a67-0655-40ac-930b-f187048d5826",
+                "Question": "¿Se ha utilizado algún medio de ocultación?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "7c8635c7-01d2-47a9-8aa7-1b785990eed3"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "248a083f-19ce-4f9e-99f5-21d13c608824",
+                "Question": "Ha sido detectado mediante:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "CCTV"
+                    },
+                    {
+                        "Value": "Centro de Control"
+                    },
+                    {
+                        "Value": "Control Visual"
+                    },
+                    {
+                        "Value": "Sistemas Anti-hurto / RFID"
+                    },
+                    {
+                        "Value": "Aviso de terceras personas"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "51aad9be-cbd5-4444-a83f-9a549a537ef0",
+                "Question": "Ha sido detectado por:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Personal de Prosegur"
+                    },
+                    {
+                        "Value": "Personal del Cliente",
+                        "ForkGuid": "497b0d2f-737f-44e3-8968-dd54755c9a04"
+                    },
+                    {
+                        "Value": "Personal Colaborador Externo"
+                    },
+                    {
+                        "Value": "Personal Ajeno / Terceras Personas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "7c8635c7-01d2-47a9-8aa7-1b785990eed3",
+        "SectionParentGuid": "c7189a34-4be7-4e55-9e98-54c18febb9b6",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "ab07ce37-cc89-4760-9d47-132da3b4ebf1",
+                "Question": "El medio de ocultación utilizado:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Bandolera / Mochila / bolso"
+                    },
+                    {
+                        "Value": "Bolsa de establecimiento comercial"
+                    },
+                    {
+                        "Value": "Bolso forrado de aluminio"
+                    },
+                    {
+                        "Value": "Carro de bebé"
+                    },
+                    {
+                        "Value": "Carro de la compra"
+                    },
+                    {
+                        "Value": "Entre pertenencias"
+                    },
+                    {
+                        "Value": "Caja regalo"
+                    }
+                ],
+                "Multiple": true
+            }
+        ]
+    },
+    {
+        "SectionGuid": "497b0d2f-737f-44e3-8968-dd54755c9a04",
+        "SectionParentGuid": "c7189a34-4be7-4e55-9e98-54c18febb9b6",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "e35d833b-4d15-493a-903e-4560c929495e",
+                "Question": "Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "331fb9d3-3a2a-4e27-94f4-78a4f36cda22",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "e5b0bf38-95cc-4b72-9648-b9ad6f4cc388",
+                "Question": "¿Se han avisado a las asistencias?",
+                "FieldType": "3",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "05621dee-ff06-42b4-8d00-3d1c6f431c1c"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "5c19a131-44f6-4250-b092-4a9078d1a067",
+                "Question": "¿Se ha avisado al CGO?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "475d9c61-a982-415c-8549-172645f6c03e",
+                "Question": "¿Se ha informado al cliente?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "494eaea6-c427-4f02-b2ad-3ba55f231cb4"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "05621dee-ff06-42b4-8d00-3d1c6f431c1c",
+        "SectionParentGuid": "331fb9d3-3a2a-4e27-94f4-78a4f36cda22",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "f07c1517-c112-4ae2-87d8-2ae197b3aa56",
+                "Question": "Asistencias:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Asistencia sanitaria"
+                    },
+                    {
+                        "Value": "Bomberos"
+                    },
+                    {
+                        "Value": "Ertzaintza"
+                    },
+                    {
+                        "Value": "Guardia Civil"
+                    },
+                    {
+                        "Value": "Mossos d'esquadra"
+                    },
+                    {
+                        "Value": "Policía Local"
+                    },
+                    {
+                        "Value": "Policía Nacional"
+                    },
+                    {
+                        "Value": "Policía Foral de Navarra"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "416f4f98-f805-422d-9caf-8d0890006869",
+                "Question": "Hora de llegada de las asistencias:",
+                "FieldType": "1",
+                "Mandatory": true
+            }
+        ]
+    },
+    {
+        "SectionGuid": "494eaea6-c427-4f02-b2ad-3ba55f231cb4",
+        "SectionParentGuid": "331fb9d3-3a2a-4e27-94f4-78a4f36cda22",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "e35d833b-4d15-493a-903e-4560c929495e",
+                "Question": "Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "3599c5ec-690d-4198-ac02-82f0c440a9bf",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "1683931a-4f56-4765-be1f-89100eed60ed",
+                "Question": "Resultado:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Abona el producto"
+                    },
+                    {
+                        "Value": "Devuelve el producto"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "e97e5e66-b9b3-4a3c-82d6-f93b592cba7e",
+                "Question": "Observaciones:",
+                "FieldType": "4"
+            },
+            {
+                "FieldGuid": "8f948eb3-9516-4e20-852d-e1216ed6f100",
+                "Question": "Medidas adoptadas:",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1",
+        "SectionParentGuid": "3599c5ec-690d-4198-ac02-82f0c440a9bf",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "addbddb7-1074-4940-8c00-d11af92317af",
+                "Question": "Nº de la denuncia:",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "500dd646-025f-4cba-8219-d39fc8e87b04",
+        "SectionParentGuid": "7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1"
+    },
+    {
+        "SectionGuid": "8fdef39d-ccc9-46a7-b625-8f0f4f88664e",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "b1d059c6-b00c-433e-bdc5-4d6afab21d6f",
+                "Question": "Adjunto",
+                "FieldType": "5"
+            }
+        ]
+    }
+]

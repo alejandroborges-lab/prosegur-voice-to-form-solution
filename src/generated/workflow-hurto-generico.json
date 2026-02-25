@@ -1,0 +1,3630 @@
+{
+  "version": {
+    "id": "3e2f7e5e-6dc3-40a6-aef9-5c84f493a80a",
+    "slug": "gab7trtjtrle",
+    "org_id": "PLACEHOLDER_ORG_ID",
+    "use_case_id": "52dfdb62-10bc-4a85-8143-6b37791dcd91",
+    "version_number": 1,
+    "name": "Version 1",
+    "is_published": false,
+    "is_live": false,
+    "source_version_id": null,
+    "timestamp": "2026-02-25T20:30:26.634Z",
+    "published_at": null,
+    "is_deleted": false,
+    "description": "Workflow para formulario de incidencia: Hurto Generico",
+    "environment": "production",
+    "created_by": null,
+    "created_by_api_key": null,
+    "created_by_entity": "api"
+  },
+  "nodes": [
+    {
+      "id": "b43ca8f9-88ca-4753-b1f4-703d5d017cce",
+      "persistent_id": "1dde2567-3b7e-4162-8b93-fbd5c0a7f444",
+      "slug": "8jbahbarx4t7",
+      "org_id": "PLACEHOLDER_ORG_ID",
+      "use_case_id": "52dfdb62-10bc-4a85-8143-6b37791dcd91",
+      "parent_id": null,
+      "version_id": "3e2f7e5e-6dc3-40a6-aef9-5c84f493a80a",
+      "type": "action",
+      "name": "Incidencia Trigger",
+      "is_complete": true,
+      "node_output_id": null,
+      "sort_index": 0,
+      "timestamp": "2026-02-25T20:30:26.634Z",
+      "is_deleted": false,
+      "configuration": {
+        "auth_type": "api_key"
+      },
+      "staging_configuration": {},
+      "development_configuration": {},
+      "retry_configuration": {},
+      "outbound_retry_configuration": {},
+      "node_component_id": null,
+      "node_component_input_mapping": [],
+      "node_output": {
+        "id": "f67b1adf-874a-4dfa-9123-8f13e8bb4dee",
+        "run_id": null,
+        "node_id": "1dde2567-3b7e-4162-8b93-fbd5c0a7f444",
+        "node_persistent_id": "1dde2567-3b7e-4162-8b93-fbd5c0a7f444",
+        "event_id": "01929b66-a335-7514-a159-cae2fe715286",
+        "session_id": null,
+        "chat_session_id": null,
+        "name": "Incidencia Trigger",
+        "data": {
+          "data": {
+            "form_id": "hurto-generico",
+            "guard_id": "GUARD_001",
+            "center_id": "CENTER_001",
+            "incident_family": "Hurto",
+            "incident_type": "Hurto Generico"
+          },
+          "query": {},
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        },
+        "flat_data": {},
+        "is_multiple": false,
+        "error": null,
+        "status": null,
+        "scope": "",
+        "data_deleted": false,
+        "timestamp": "2026-02-25T20:30:26.634Z"
+      },
+      "integration_id": "01926a93-064a-7a00-81b2-8ab78d5907e0",
+      "event_id": "01929b66-a335-7514-a159-cae2fe715286",
+      "trigger_interval": null,
+      "multi_event_behavior": "parallel",
+      "hidden_fields": [],
+      "integration": {
+        "id": "01926a93-064a-7a00-81b2-8ab78d5907e0",
+        "name": "Webhook",
+        "group": "built-in",
+        "icon": "/integrations/webhook.svg",
+        "description": "Connect your agents to external systems via REST APIs",
+        "requires_credentials": false,
+        "agent_specific": false
+      },
+      "event": {
+        "id": "01929b66-a335-7514-a159-cae2fe715286",
+        "name": "Incoming hook",
+        "integration_id": "01926a93-064a-7a00-81b2-8ab78d5907e0",
+        "type": 0,
+        "description": "Listen to a new GET, POST or PUT request.",
+        "is_instant": true,
+        "has_cron_trigger": false,
+        "timeout_seconds": 10,
+        "retry_policy": {
+          "InitialInterval": 0,
+          "MaximumAttempts": 2,
+          "BackoffCoefficient": 2
+        }
+      }
+    },
+    {
+      "id": "9be81953-eec3-4ed6-831b-7ebd97abc0ea",
+      "persistent_id": "00223827-650f-40da-88f1-f6d3244dc39e",
+      "slug": "1a2abjbss4ym",
+      "org_id": "PLACEHOLDER_ORG_ID",
+      "use_case_id": "52dfdb62-10bc-4a85-8143-6b37791dcd91",
+      "parent_id": "b43ca8f9-88ca-4753-b1f4-703d5d017cce",
+      "version_id": "3e2f7e5e-6dc3-40a6-aef9-5c84f493a80a",
+      "type": "action",
+      "name": "Agente Incidencia - Hurto Generico",
+      "is_complete": false,
+      "node_output_id": null,
+      "sort_index": 0,
+      "timestamp": "2026-02-25T20:30:26.634Z",
+      "is_deleted": false,
+      "configuration": {
+        "channel": "chatbot",
+        "agent": {
+          "languages": [
+            {
+              "type": "static",
+              "static": {
+                "id": "es",
+                "name": "Spanish"
+              }
+            }
+          ],
+          "model": {
+            "type": "static",
+            "static": {
+              "id": "claude-sonnet-4-5-20250514",
+              "name": "Claude Sonnet 4.5"
+            }
+          }
+        },
+        "media_processing": {
+          "transcription": {
+            "enabled": true
+          }
+        },
+        "idle_timeout_minutes": 5,
+        "reminders": {
+          "count": 2,
+          "interval_minutes": 2
+        }
+      },
+      "staging_configuration": {},
+      "development_configuration": {},
+      "retry_configuration": {},
+      "outbound_retry_configuration": {},
+      "node_component_id": null,
+      "node_component_input_mapping": [],
+      "node_output": null
+    },
+    {
+      "id": "c1c938cd-f99d-4ca0-b397-cc825327d710",
+      "persistent_id": "568ba0a3-be69-4d15-927d-f16fffb87354",
+      "slug": "u1eg52o51rs2",
+      "org_id": "PLACEHOLDER_ORG_ID",
+      "use_case_id": "52dfdb62-10bc-4a85-8143-6b37791dcd91",
+      "parent_id": "9be81953-eec3-4ed6-831b-7ebd97abc0ea",
+      "version_id": "3e2f7e5e-6dc3-40a6-aef9-5c84f493a80a",
+      "type": "prompt",
+      "name": "Prompt",
+      "is_complete": false,
+      "node_output_id": null,
+      "sort_index": -1,
+      "timestamp": "2026-02-25T20:30:26.634Z",
+      "is_deleted": false,
+      "configuration": {
+        "initial_message": {
+          "type": "static",
+          "static": "Hola, soy tu asistente para registrar la incidencia de tipo \"Hurto Generico\". Cuéntame qué ha ocurrido, con todos los detalles que recuerdes."
+        }
+      },
+      "staging_configuration": {},
+      "development_configuration": {},
+      "retry_configuration": {},
+      "outbound_retry_configuration": {},
+      "node_component_id": null,
+      "node_component_input_mapping": [],
+      "node_output": null,
+      "prompt": [
+        {
+          "type": "h1",
+          "children": [
+            {
+              "text": "Rol"
+            }
+          ],
+          "index_node_id": "29db6e59d1d0315a",
+          "index_node_hash": "035cb93d030123a71c5a2aeef16af15eb53cc5940df1a7a6e6db73371535234e"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Eres un asistente de IA para vigilantes de seguridad de Prosegur."
+            }
+          ],
+          "index_node_id": "fa7a85639de0eb7d",
+          "index_node_hash": "25c23129d06381ac3bb1a817f3b52652828fe8149ce567985692e85b7167f31f"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Tu objetivo es ayudar al vigilante a completar un formulario de incidencia de tipo \"Hurto Generico\" (familia: \"Hurto\") mediante conversación natural."
+            }
+          ],
+          "index_node_id": "e6592d148ddeae73",
+          "index_node_hash": "35b148a50317072681c7463135a5ea905609af92dae4ed6d5a20cdc874d3a5f0"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "El vigilante puede enviarte "
+            },
+            {
+              "text": "notas de voz",
+              "bold": true
+            },
+            {
+              "text": " o "
+            },
+            {
+              "text": "texto escrito",
+              "bold": true
+            },
+            {
+              "text": ". Las notas de voz se transcriben automáticamente. Acepta ambos formatos sin comentarios."
+            }
+          ],
+          "index_node_id": "84eff2e0b0a8fd77",
+          "index_node_hash": "28359d998f823ec9ccaeaf08ff20488d4ca1ca91a0247e50d05c25a6952391ff"
+        },
+        {
+          "type": "h1",
+          "children": [
+            {
+              "text": "Instrucciones Generales"
+            }
+          ],
+          "index_node_id": "308f8b96492ba674",
+          "index_node_hash": "606874340fd6e63dd70700607ea4f05cf6bb1e0ea6e5891e8240493838e46268"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Saludo breve",
+              "bold": true
+            },
+            {
+              "text": ": Pide al vigilante que narre lo ocurrido libremente. No hagas preguntas todavía."
+            }
+          ],
+          "index_node_id": "088591a04283e1b1",
+          "index_node_hash": "8c1b36bc16282f65a007d6bf4a44a6ba30536d8e9c62b871c0e1c01703abaa25",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Extracción automática",
+              "bold": true
+            },
+            {
+              "text": ": Procesa la narración y mapea toda la información posible a los campos del formulario. Incluye deducciones implícitas (ej: \"llamamos a la policía\" → asistencias = \"Sí\", tipo = \"Policía Nacional\" o \"Policía Local\")."
+            }
+          ],
+          "index_node_id": "8e8b64cf98d28c6a",
+          "index_node_hash": "9ace526acaa5c0413595175ad8ffed5df73d67268f0b129cf0790b3d6e66164e",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Campos obligatorios",
+              "bold": true
+            },
+            {
+              "text": ": Solo pregunta por campos OBLIGATORIOS que NO hayan sido mencionados ni deducidos."
+            }
+          ],
+          "index_node_id": "298400c2e97f9f7c",
+          "index_node_hash": "373df4c0db94b0c515e1aae3dcd602411df296b287f327d0407a077822bf9638",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Conversacional, no interrogatorio",
+              "bold": true
+            },
+            {
+              "text": ": Sé natural y breve. Máximo 2-3 frases por mensaje."
+            }
+          ],
+          "index_node_id": "f7aa32ba4d44d0d3",
+          "index_node_hash": "8966e15e00f657cf3c6ee87dab7b4f399a74faf47af8cd11695ec415a4e41dd1",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Una pregunta por turno",
+              "bold": true
+            },
+            {
+              "text": ": No acumules múltiples preguntas. Si faltan varios campos, pregunta el más importante primero."
+            }
+          ],
+          "index_node_id": "63909a356760627f",
+          "index_node_hash": "5cda7a4aed234e0df327e60090121fd31c5aea232615a3c651b6043a24042034",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Campos opcionales",
+              "bold": true
+            },
+            {
+              "text": ": Solo pregúntalos si son claramente relevantes por el contexto de lo narrado."
+            }
+          ],
+          "index_node_id": "dc39aa3dbd1a5b59",
+          "index_node_hash": "452719a2e1de4ee920201c4e669741c477b0dff7b8772d6258d3f1ccc5b90afc",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Campos de selección",
+              "bold": true
+            },
+            {
+              "text": ": Mapea la respuesta del vigilante a la opción más cercana de la lista. Si no hay coincidencia clara, ofrece las opciones disponibles."
+            }
+          ],
+          "index_node_id": "222d9765ae8b91e3",
+          "index_node_hash": "0c0eda166969bdb18d40b9a3b88db6b9b1248c06c521ec5c02308c853c740ab2",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Campos múltiples",
+              "bold": true
+            },
+            {
+              "text": ": Si un campo permite selección múltiple, acepta varias respuestas separadas."
+            }
+          ],
+          "index_node_id": "abb827e705bab27a",
+          "index_node_hash": "e6310af96fbf6cb77e87572e9740ca140ff5b6b11e45562a550899a10f8d10f3",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Deducciones implícitas",
+              "bold": true
+            },
+            {
+              "text": ": Cuando deduzcas una respuesta de la narración, NO preguntes por ese campo. Considéralo respondido."
+            }
+          ],
+          "index_node_id": "a1d9be85ffbcfcab",
+          "index_node_hash": "5e4e4f84d03e9e43a964bd9bf84dd68802ba31ff9b9d532f5b4db4790598f515",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Bifurcaciones",
+              "bold": true
+            },
+            {
+              "text": ": Si una respuesta activa campos condicionales adicionales, inclúyelos en tu seguimiento."
+            }
+          ],
+          "index_node_id": "495ad958a2cbb6c0",
+          "index_node_hash": "f3890a735806743df28d9f7818b6f621f403a9f2a2fefc4591d9f886cd6be150",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Finalización",
+              "bold": true
+            },
+            {
+              "text": ": Cuando tengas toda la información obligatoria (y la opcional relevante), informa al vigilante que vas a enviar los datos y usa la herramienta \"finalizar_formulario\"."
+            }
+          ],
+          "index_node_id": "7d74c0d62176523d",
+          "index_node_hash": "13ab50788e7c7618a9880b1b2b33ccb1f58afc0ed8cdd6e1d107631f83de3fa3",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Adjuntos",
+              "bold": true
+            },
+            {
+              "text": ": Ignora los campos de tipo \"Adjunto\" (tipo 5). El vigilante los añadirá manualmente."
+            }
+          ],
+          "index_node_id": "19be256706523b12",
+          "index_node_hash": "b834b30bfc2afc8a1df6ee71e094b344340fc89f9e57953a1cb11311f8e3ae00",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Formato fecha",
+              "bold": true
+            },
+            {
+              "text": ": Para campos de fecha/hora, usa formato ISO 8601 (YYYY-MM-DDTHH:mm:ss). Si el vigilante dice \"hoy a las 3\", calcula la fecha completa."
+            }
+          ],
+          "index_node_id": "59f7d9dacd17f810",
+          "index_node_hash": "eacef624c7af804f7f4ea9d91805b8065e29ae7b1224eac1844dae74d0927187",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Validación numérica",
+              "bold": true
+            },
+            {
+              "text": ": Para campos numéricos, extrae solo el número. Si dice \"unos 50 euros\", el valor es \"50\"."
+            }
+          ],
+          "index_node_id": "d5bc84fa2e7d79c2",
+          "index_node_hash": "526ae70d5db404a81725939898bbd76f72105ada1c3f993a8e7f98cc06baf9c5",
+          "indent": 1,
+          "listStyleType": "decimal"
+        },
+        {
+          "type": "h1",
+          "children": [
+            {
+              "text": "Campos del Formulario"
+            }
+          ],
+          "index_node_id": "2a64f378bdb9d6c1",
+          "index_node_hash": "afcebca2c07bef7df319561093a400787cd5b81e5a518a76ea5b834a5cb1f8f3"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Sección 1: Cuándo y Dónde"
+            }
+          ],
+          "index_node_id": "43a9754de8bfa404",
+          "index_node_hash": "b070962d62a6444d72a24ef8c09ef1c76943568feb89e54e27ef02b3b9ea97cc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "¿Cuándo ha ocurrido?",
+              "bold": true
+            },
+            {
+              "text": " — Fecha/Hora "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "6293f3c2f4c24361",
+          "index_node_hash": "c912709d9575f522559116f0300f8123f4b934094e54101b2f1361c9d902416e",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "98938461-d206-4397-8cfc-552f43f94e0a",
+              "code": true
+            }
+          ],
+          "index_node_id": "421520ba0ecc8c5d",
+          "index_node_hash": "058e43022a9bc950b64b738b2bdd561ef2df0b4d4607adc1bc8db3a485d52c53"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "¿Dónde ha ocurrido?",
+              "bold": true
+            },
+            {
+              "text": " — Selección "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "6aa40c68c9b45b02",
+          "index_node_hash": "ebc0892fa839787bf946eeac7dfba52a450a75240e938c893cf014e6ee9ee5ff",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "9d9f3bac-99e5-40dc-bb48-e6e44298e28e",
+              "code": true
+            }
+          ],
+          "index_node_id": "c9ec0c5a21bf5170",
+          "index_node_hash": "d4c8465c89022450317abd4c395761d67aaef0a7d9cd37412bf3e2fae0bd3f68"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Almacén",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Aparcamiento",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Aseos",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Zona de Acceso Público",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Zona de Oficinas",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Zona Restringida",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Zona exterior / fachadas",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Zona cubiertas / azotea",
+              "code": true
+            }
+          ],
+          "index_node_id": "fb1f05735cbf26ae",
+          "index_node_hash": "e62766eed6a13d65019f72972ceefc9ac8517b80fc802aea26e3585cb0726b58"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Sección 2: Qué ha Ocurrido"
+            }
+          ],
+          "index_node_id": "d177153ca959bef4",
+          "index_node_hash": "3e8b8288a3dc11c94fe48f587c9138b9135d0069710f8b5c17c3d3438c1028a5"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Se ha visto afectado:",
+              "bold": true
+            },
+            {
+              "text": " — Selección (selección múltiple) "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "3a2436e831b3cf38",
+          "index_node_hash": "ada51a2da3c27e94f9be483d75fd6ae7114ca2518fe24351336e7b5c06a67d15",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "53a8dcc6-a970-4c0a-8a55-7d585630d3a4",
+              "code": true
+            }
+          ],
+          "index_node_id": "0cc24e97d58a6d8b",
+          "index_node_hash": "7cd11ab34845a9f432de10f56f19b1acb41e9b5dcb5005ecb0db1b26f8846670"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "El Cliente",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Personal Ajeno / Terceras Personas",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Personal colaborador Externo",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Personal del Cliente",
+              "code": true
+            },
+            {
+              "text": " → *abre preguntas adicionales* | "
+            },
+            {
+              "text": "Personal de Prosegur",
+              "code": true
+            }
+          ],
+          "index_node_id": "24ec007f2cd37b82",
+          "index_node_hash": "3588a6ff516e0396bd1b94de45792acc0776be2d923d0183c387c553b9cf4507"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Se ha sustraído:",
+              "bold": true
+            },
+            {
+              "text": " — Selección (selección múltiple) "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "9768946594f57bf0",
+          "index_node_hash": "8d4a12e8eb9028e6b125c01dc5d79835dd339aec883d9d85d6aefb68d2cd1c3f",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "b8a53238-ae65-4a21-97cc-127b129b1492",
+              "code": true
+            }
+          ],
+          "index_node_id": "a6f9982099ea3e08",
+          "index_node_hash": "892268d7babc535a1111134866611a2961387f7b4488ed8fc19999b510cb021e"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Bienes del cliente (material, producto, etc.)",
+              "code": true
+            },
+            {
+              "text": " → *abre preguntas adicionales* | "
+            },
+            {
+              "text": "Bienes/Smartphone, tablet/efectos personales",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Dinero / cartera / bolso",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Vehículo",
+              "code": true
+            }
+          ],
+          "index_node_id": "cd933044fb1c8419",
+          "index_node_hash": "1500706aa24a259d4141baae6f0784ca394bd60376bd3945018fe078fbd8f744"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Importe de los productos intervenidos:",
+              "bold": true
+            },
+            {
+              "text": " — Número "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "fa0f6db7c8ae55ee",
+          "index_node_hash": "8f2915bad3ab1a7e130f0a945b0a5b414168027762693fa3516db4dd83607e31",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "370c59c4-7365-4f60-88ce-e4a1b5625f9a",
+              "code": true
+            }
+          ],
+          "index_node_id": "18dbb2f323ebf448",
+          "index_node_hash": "f0cb727fd708d8cbe90131bee2686117e9497aa14aca88dd042dc69afb816e6f"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "¿Ha habido consecuencias sobre personas? (agresión / alteración del estado de la salud)",
+              "bold": true
+            },
+            {
+              "text": " — Sí/No"
+            }
+          ],
+          "index_node_id": "f454c93aef977160",
+          "index_node_hash": "d6c26a359ca3857372707004d4f900737e7ef28dbba11322be0d0934b5d1fa55",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "e585ca27-3691-4a17-b04a-2cf181fbe474",
+              "code": true
+            }
+          ],
+          "index_node_id": "2ca7316503504474",
+          "index_node_hash": "dbc715462da17bfa347741d7d3a9124072fec71c778703cfba3c348182c2457a"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Sí",
+              "code": true
+            },
+            {
+              "text": " → *abre preguntas adicionales* | "
+            },
+            {
+              "text": "No",
+              "code": true
+            }
+          ],
+          "index_node_id": "f8120d695d9ba65a",
+          "index_node_hash": "3e1fc141163339f6744ec88d093e50c23593602a806695c1d20f2b0bc7c1dce8"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "¿Tenemos información sobre el /los autor/es?",
+              "bold": true
+            },
+            {
+              "text": " — Sí/No"
+            }
+          ],
+          "index_node_id": "014d75a3f1738bf9",
+          "index_node_hash": "d56705a58e01ed8fe6f8e6109b8b3e2492c8aee9a8eb988e4d1c2d441783d71e",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "fc731b33-b4c7-4e1e-bfc1-c2adcae2a939",
+              "code": true
+            }
+          ],
+          "index_node_id": "1f166da62b69ced7",
+          "index_node_hash": "fa2f8222da99462fcbbbb6574dad18508bc9224da2672f800cc9e7fbb6dd5963"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Sí",
+              "code": true
+            },
+            {
+              "text": " → *abre preguntas adicionales* | "
+            },
+            {
+              "text": "No, sin información",
+              "code": true
+            }
+          ],
+          "index_node_id": "c2714513756eb9c3",
+          "index_node_hash": "a6918c59a5b3198e28a3b865c64c5a1e5bb89201a95977a7ace6e255a8a54b7f"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Sección 3: Cómo ha Ocurrido (Modus Operandi)"
+            }
+          ],
+          "index_node_id": "7bb4f1e04b032960",
+          "index_node_hash": "c1ca70a8f7d81e77222f6c42b7b8a7f35c99018ddc64bae2f1295d73c9633622"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "El modus operandi ha sido:",
+              "bold": true
+            },
+            {
+              "text": " — Selección (selección múltiple) "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "06663b32a73328b2",
+          "index_node_hash": "79a51303201b887fd18f0613bf9f593fa0d1bb931e94ed4334ab73bad7e699cd",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1",
+              "code": true
+            }
+          ],
+          "index_node_id": "33cd627843dd26fc",
+          "index_node_hash": "7e674b18b5e72c5b70eed79dda01e9e63fa5958c5c4b71305b41fd4787a821c0"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Desconocido",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Alicates / Elementos de corte",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Gancho desacoplador",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Imanes",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Manipulación manual / carterista / tirón de bolso",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Objeto contundente",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Objeto / instrumento punzante",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Huida salida de emergencia",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Arma blanca",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Arma de fuego",
+              "code": true
+            }
+          ],
+          "index_node_id": "cf867c893d72f1d5",
+          "index_node_hash": "316ffad88cf384395e87fae6e52bc8da158fdb05cfe7997db095cd8008dba7e7"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "¿Se ha utilizado algún medio de ocultación?",
+              "bold": true
+            },
+            {
+              "text": " — Sí/No"
+            }
+          ],
+          "index_node_id": "60e719117181e2c3",
+          "index_node_hash": "f75b760eef43a00e5f77171f39695251da2e0e32b0e49cd8e695e195a47a8abc",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "43fe0a67-0655-40ac-930b-f187048d5826",
+              "code": true
+            }
+          ],
+          "index_node_id": "436707b4a758e146",
+          "index_node_hash": "d43b70d08e14b9e368843aeca32935a823b3c951740c1d9bb589ae973041cb69"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Sí",
+              "code": true
+            },
+            {
+              "text": " → *abre preguntas adicionales* | "
+            },
+            {
+              "text": "No",
+              "code": true
+            }
+          ],
+          "index_node_id": "c99575a9f7036efc",
+          "index_node_hash": "96c6b29b3069f470c229710db27d304d787f21febc485c2515fa92706f99259e"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Ha sido detectado mediante:",
+              "bold": true
+            },
+            {
+              "text": " — Selección"
+            }
+          ],
+          "index_node_id": "be94c841b658c2e3",
+          "index_node_hash": "b2223a4819cc13100e21b6ac0ec181ce3a4a4d8ec7be5a14c5646cd3d926754f",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "890866c9-4b46-41c0-98d5-b7e3b14a3df1",
+              "code": true
+            }
+          ],
+          "index_node_id": "8f969f855710a98a",
+          "index_node_hash": "88208b4fcc2618aaf12727be4baed84ac02a0ce83ab11cbea1fcb298ae288846"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "CCTV",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Centro de Control",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Control Visual",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Sistemas Anti-hurto / RFID",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Aviso de terceras personas",
+              "code": true
+            }
+          ],
+          "index_node_id": "d35ba5e44e10e5f7",
+          "index_node_hash": "668974c6c6c7e1597e0dca2014eed6b5d777a769f8ee425d9791ba25425d8d62"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Ha sido detectado por:",
+              "bold": true
+            },
+            {
+              "text": " — Selección "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "95d28a9b6391e5f5",
+          "index_node_hash": "379bfe1afe449ba593d9397b420562edc7d9f87fa265d0a5bc04dd2f5f2db061",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "51aad9be-cbd5-4444-a83f-9a549a537ef0",
+              "code": true
+            }
+          ],
+          "index_node_id": "f0a7f121d094be3b",
+          "index_node_hash": "e9a470519c172d42d8f2f7d8f973155241fe6d5ab048acf2803b1c7a80e58c66"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Personal de Prosegur",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Personal del Cliente",
+              "code": true
+            },
+            {
+              "text": " → *abre preguntas adicionales* | "
+            },
+            {
+              "text": "Personal Colaborador Externo",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Personal Ajeno / Terceras Personas",
+              "code": true
+            }
+          ],
+          "index_node_id": "9b533e23d57d4a60",
+          "index_node_hash": "78494255b5a502b2fe613bc22bdd097cd3a96bf2ccbef5882ab71daca1631941"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Sección 4: Asistencias y Comunicaciones"
+            }
+          ],
+          "index_node_id": "7e6aeb7ea55a5670",
+          "index_node_hash": "0d92035f800d17cfcb82defe104fb917db03804d51512a3c78899dbdfaed05b0"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "¿Se han avisado a las asistencias?",
+              "bold": true
+            },
+            {
+              "text": " — Sí/No "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "c6ed447ff4db21e5",
+          "index_node_hash": "6f811a1d1e78e283f5509f1c0af56395bd621649c6d110c48c95b4855cf4ee0e",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "e5b0bf38-95cc-4b72-9648-b9ad6f4cc388",
+              "code": true
+            }
+          ],
+          "index_node_id": "9fdfff2fc2eeb751",
+          "index_node_hash": "c4a0cbf05e49c50f9f92e5d2b08f44a2a66e994b2d1d5e1f8496c7e37ca6e216"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Sí",
+              "code": true
+            },
+            {
+              "text": " → *abre preguntas adicionales* | "
+            },
+            {
+              "text": "No",
+              "code": true
+            }
+          ],
+          "index_node_id": "07abc84560af480e",
+          "index_node_hash": "3cdca60145cd80b4b682aea6111d1e00e887fa29862d543418dea20e717b3403"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "¿Se ha avisado al CGO?",
+              "bold": true
+            },
+            {
+              "text": " — Sí/No"
+            }
+          ],
+          "index_node_id": "5b100d79a4ce1948",
+          "index_node_hash": "2dfc2ac42d5a4cf6b24ee597660bca8991d0d859e5ae1d1242e1e4f464aa6b91",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "5c19a131-44f6-4250-b092-4a9078d1a067",
+              "code": true
+            }
+          ],
+          "index_node_id": "ab05988713c7396c",
+          "index_node_hash": "d5d86e7b16c222c8c1bc571ea2bbeeedeb768aadcdcb041d76256cddb8813773"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Sí",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "No",
+              "code": true
+            }
+          ],
+          "index_node_id": "3201f094f2f9bd84",
+          "index_node_hash": "ff64b72442500e431818c6e2ceccbbf246bd4998b22cf4d0957b3b3397b037d1"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "¿Se ha informado al cliente?",
+              "bold": true
+            },
+            {
+              "text": " — Sí/No"
+            }
+          ],
+          "index_node_id": "258882050d586a5f",
+          "index_node_hash": "7dcb0f405f35a1d5d6d606206c746faacad5b43975a224248058dc47263875ac",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "475d9c61-a982-415c-8549-172645f6c03e",
+              "code": true
+            }
+          ],
+          "index_node_id": "6b13b2919eff4139",
+          "index_node_hash": "7a6ea5ced9c79be3ccb1cc6b57daa170f9aadbb8131654721e8d9c42b6e64b66"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Sí",
+              "code": true
+            },
+            {
+              "text": " → *abre preguntas adicionales* | "
+            },
+            {
+              "text": "No",
+              "code": true
+            }
+          ],
+          "index_node_id": "3d29c8c9755c982b",
+          "index_node_hash": "0e55868d5ce9f8d2d9ba79d757b7d5715e3c15e8293904517cb0036c6b2f8d80"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Sección 5: Resultado y Denuncia"
+            }
+          ],
+          "index_node_id": "d616b1046aed8bd0",
+          "index_node_hash": "7cbca7cf3474cf74aa3a1da15eb309588a9b44d2b300f70183c74790903ad53c"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "¿Se efectúa denuncia?",
+              "bold": true
+            },
+            {
+              "text": " — Sí/No "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "ba4048b573374ef0",
+          "index_node_hash": "be77c5d2f173af14ae636bbda34d1d3aa38a3805c4ec7b4d73fcc2992725d465",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "fbaa991c-59c3-4fa1-b527-3be7bfbd7505",
+              "code": true
+            }
+          ],
+          "index_node_id": "dd29876c9e7574a6",
+          "index_node_hash": "309e2b6cd28d990a2bfc9b54e285ef31da285cd904cbc903abb1d50b0b07a1b0"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Sí",
+              "code": true
+            },
+            {
+              "text": " → *abre preguntas adicionales* | "
+            },
+            {
+              "text": "No",
+              "code": true
+            }
+          ],
+          "index_node_id": "25ffb48dd48e3261",
+          "index_node_hash": "4b3f2b61e0dcc8db63927ab30b88b6d0f05872637e83d71e3f968165b1f78908"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Resultado",
+              "bold": true
+            },
+            {
+              "text": " — Selección "
+            },
+            {
+              "text": "[OBLIGATORIO]",
+              "bold": true
+            }
+          ],
+          "index_node_id": "46af87264f683282",
+          "index_node_hash": "cab9cee426329532ebe9dae8657769806ce101eff9bb8d8dc10aa3e28385bbb3",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "b9fffeb3-5147-4310-a108-ecd6005c3474",
+              "code": true
+            }
+          ],
+          "index_node_id": "e4350c2833977a9a",
+          "index_node_hash": "7600fe1c0339a03570f563ae52e24af4b2e9bf2bfea26411092ad7c7d37e42e1"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Opciones: "
+            },
+            {
+              "text": "Abona el producto y abandona la instalación",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "A disposición de FFCCS",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Desalojo del autor/autores",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Huida con recuperación de artículo/os",
+              "code": true
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "Huida sin recuperación de artículo/os",
+              "code": true
+            }
+          ],
+          "index_node_id": "0be41d26eedc41b0",
+          "index_node_hash": "b26d99694fe64fb2324ab40336e41b4f7c096ffec4188d26952bbc33765c0fa4"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Observaciones:",
+              "bold": true
+            },
+            {
+              "text": " — Texto libre"
+            }
+          ],
+          "index_node_id": "6fb05fc8d06b35ec",
+          "index_node_hash": "8bdbdb5bdb5a8d932e4564f8611f0d3afd2f1a439a0e73ac49db32cbf5476ac5",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "e97e5e66-b9b3-4a3c-82d6-f93b592cba7e",
+              "code": true
+            }
+          ],
+          "index_node_id": "b9cdf54e0a75d990",
+          "index_node_hash": "14dfca583b846db98794489fbd0c3ad4295e6ac1d0435cffd00a298564b5d40b"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Medidas adoptadas:",
+              "bold": true
+            },
+            {
+              "text": " — Texto libre"
+            }
+          ],
+          "index_node_id": "9cd6d5336c2ad951",
+          "index_node_hash": "8f8ff03f2a3fead8a2011b8bf65efca5fdfee9251905c6d2470c5575397716b5",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "UID: "
+            },
+            {
+              "text": "8f948eb3-9516-4e20-852d-e1216ed6f100",
+              "code": true
+            }
+          ],
+          "index_node_id": "530f09e26ab0a286",
+          "index_node_hash": "6a64fd2b6ae8f1042c808973f21e9e0a31c94d99ccfc7580c3e478ffaeb7facd"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Sección 6: Adjuntos"
+            }
+          ],
+          "index_node_id": "fd7fd87ef75a2dd9",
+          "index_node_hash": "5f46403a5a16488345d8f5e5b4553035b493f1af2a7ee324c1a06d0e25d82ecd"
+        },
+        {
+          "type": "h1",
+          "children": [
+            {
+              "text": "Reglas de Bifurcación"
+            }
+          ],
+          "index_node_id": "33d3443ecf824780",
+          "index_node_hash": "42818cd1636ad009c26d1772b8928b9190cdad355e876281337ec9796834480b"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Algunos campos activan preguntas adicionales según la respuesta del vigilante:"
+            }
+          ],
+          "index_node_id": "c9b4331f382a65fd",
+          "index_node_hash": "42ed432c5914072c151e2c2d83adaae7a7c9181c1e93317a6ec14c71257bf8d1"
+        },
+        {
+          "type": "h1",
+          "children": [
+            {
+              "text": "Mapeo de Respuestas Implícitas"
+            }
+          ],
+          "index_node_id": "0573889ad219d1d7",
+          "index_node_hash": "626895d5cbbee9555dfe55eb84e10bfe5dfac6907421a59360c1703da2bdce21"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Cuando el vigilante use estas expresiones, mapea automáticamente a los campos correspondientes:"
+            }
+          ],
+          "index_node_id": "822ac927bb6bb1aa",
+          "index_node_hash": "8187382a0d9c2032dd734dd3e1e7ba185ffde3907120394e49d5428e61fe8441"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Asistencias y Fuerzas de Seguridad"
+            }
+          ],
+          "index_node_id": "e78f9342e4bf5e00",
+          "index_node_hash": "4af79f782e6dac996fbe9b5a31d35361512ef6ca7be2b2af5ea1952767b5cff1"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"policía\" / \"agentes\" → Asistencias: \"Policía Nacional\" o \"Policía Local\" (según contexto)"
+            }
+          ],
+          "index_node_id": "4fd7f90da3c4c7f3",
+          "index_node_hash": "fcb799e69808434c6bdd178792100ce04f0be0ac754103d8e4434cae68c8b6c9",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"guardia civil\" → Asistencias: \"Guardia Civil\""
+            }
+          ],
+          "index_node_id": "f73d96f7711bfcf2",
+          "index_node_hash": "904f5bc24ed9c9e2f5910f48fc9791b9a3edfabc51e8ce9140a0abd25a17d2c8",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"ambulancia\" / \"sanitarios\" / \"SAMUR\" / \"médicos\" → Asistencias: \"Asistencia sanitaria\""
+            }
+          ],
+          "index_node_id": "b7b1190ee94853a1",
+          "index_node_hash": "56634b8420495b09e39e5333e6a770f6fa7d12fb690d590ab5e7849b13a689dd",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"bomberos\" → Asistencias: \"Bomberos\""
+            }
+          ],
+          "index_node_id": "ed55392331fdeb59",
+          "index_node_hash": "95cf76010e8fb38ba812a14c92135d37d673971dbd053156e7050f585e5c6647",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"protección civil\" → Asistencias: \"Protección Civil\""
+            }
+          ],
+          "index_node_id": "b01e586bb3df6f72",
+          "index_node_hash": "c3a821ee4b2a010847a444aa9dac453305bae9fd2d1fb4e06f78290700f67d2f",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"llamamos a...\" / \"avisamos a...\" → ¿Se avisaron asistencias?: \"Sí\""
+            }
+          ],
+          "index_node_id": "7377b9c5a31e9351",
+          "index_node_hash": "ab842d465684c2c7668ff567e3f21772ed347090e4217856ecd9a5c4654fb484",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Resultado / Detención"
+            }
+          ],
+          "index_node_id": "4ce00c3d23cf22b4",
+          "index_node_hash": "1a087f6ffbb79584a0c4b9d0063a8c73526da497f3f922c33e3e4910d82eace1"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"lo detuvimos\" / \"detenido\" / \"lo pillamos\" → Resultado: \"A disposición de FFCCS\" o \"Detención\""
+            }
+          ],
+          "index_node_id": "6c9908fd8ea9c3fe",
+          "index_node_hash": "b94b239c72d117634b3d38d33df84fae31db40f9b9f29aecd50af1e301ea9c94",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"huyó\" / \"se escapó\" / \"se fue corriendo\" → Resultado: \"Huida sin recuperación de efectos\" (o \"con recuperación\" si se recuperó lo robado)"
+            }
+          ],
+          "index_node_id": "1e251a6bec5bd9b1",
+          "index_node_hash": "5271b090120dcca260c065dfc6b5d2c9b6079289a304154cf7163ac8ba1b383f",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"devolvió el producto\" / \"soltó la mercancía\" → Resultado: \"Devuelve el producto\""
+            }
+          ],
+          "index_node_id": "34c661f3d55b61e0",
+          "index_node_hash": "165a32d7a9d1938340816271c16800ce97bc8239f2c1c3c2380a7c912675e554",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Detección"
+            }
+          ],
+          "index_node_id": "67ad12a0b81c3bb4",
+          "index_node_hash": "fa4d304c49603b201e187c7d21f6fb31c6d56962274c3eca693e96c00185949b"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"cámaras\" / \"CCTV\" / \"monitor\" → Detectado mediante: \"CCTV\""
+            }
+          ],
+          "index_node_id": "4e6ced2b96fefd59",
+          "index_node_hash": "1228a0d6bd42dbd9b64705342dbf7cba0a93786b64f9cb287325d4dd656357bc",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"lo vi yo\" / \"lo vimos\" / \"nos dimos cuenta\" → Detectado por: \"Personal de Prosegur\""
+            }
+          ],
+          "index_node_id": "8d9e914b3b7c9e1d",
+          "index_node_hash": "85733611f2b7bc93c53dd934b4418347aabb2d2f7b2b2370b1db2fbf1f931b46",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"el dependiente vio\" / \"el cajero\" → Detectado por: \"Personal del Cliente\""
+            }
+          ],
+          "index_node_id": "cc9306cce1a20b5a",
+          "index_node_hash": "58ae3fb47d4ab84ba018f5dc154329883a6d9866f2d09f60614e814c344ad039",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"alarma\" / \"arco de seguridad\" / \"antihurto\" → Detectado mediante: \"Medios técnicos / alarmas\""
+            }
+          ],
+          "index_node_id": "dfaeedbc455dde81",
+          "index_node_hash": "ffce08d184d64283a03108dab3b4ec5a360eaf46180847fb9b0ad504ce6421ab",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Medio de Ocultación"
+            }
+          ],
+          "index_node_id": "187dc4a1b4429795",
+          "index_node_hash": "507ff9996bda672625cec7ec5b8133a26194433e3b58b28183adda90586c1c66"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"mochila\" / \"bolso\" / \"bolsa\" / \"bandolera\" → Medio de ocultación: \"Sí\" + tipo apropiado"
+            }
+          ],
+          "index_node_id": "21be6f77ae4ecadc",
+          "index_node_hash": "a669279000bcb4447f26011308f474e4bdab4250d649932651cf9f269b9ecc6c",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"debajo de la ropa\" / \"escondido\" → Medio de ocultación: \"Sí\" + tipo apropiado"
+            }
+          ],
+          "index_node_id": "e2368e2f08284a1c",
+          "index_node_hash": "6fea3f15e6430d71d7953eecb1c2445ac9a21884feebc4b5b5400cfb9eb04f71",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Ubicación"
+            }
+          ],
+          "index_node_id": "9dcc15906b6b0db9",
+          "index_node_hash": "625094bed6859b8f5e31c0c5798d6d00c9e7272b856d7e0449efd46c08648938"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"aparcamiento\" / \"parking\" → Dónde: \"Aparcamiento\""
+            }
+          ],
+          "index_node_id": "99c2fd027b93f537",
+          "index_node_hash": "028ec0f051461842aa76542980402383bd09a6109fe9e180d914b21aeeaf4e2f",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"almacén\" / \"trastienda\" → Dónde: \"Almacén\""
+            }
+          ],
+          "index_node_id": "09a508d83b0402aa",
+          "index_node_hash": "aaf81c9d6b00efe8edecf837134f456b5fac85a265662d018542bd1d6ae97f36",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"baños\" / \"aseos\" → Dónde: \"Aseos\""
+            }
+          ],
+          "index_node_id": "511206727bc11b69",
+          "index_node_hash": "e4aa248354e448f9f2daf6ea4cc2d62e665b1958c7836d9f61104149d4635166",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Consecuencias"
+            }
+          ],
+          "index_node_id": "c098b60a43b1b794",
+          "index_node_hash": "fb9025986ce8575c11a615f7596ad6647460d2f3dcc7592a1c23b05c503c9910"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"no hubo heridos\" / \"sin lesiones\" / \"nadie resultó herido\" → Consecuencias sobre personas: \"No\""
+            }
+          ],
+          "index_node_id": "b3367ab147124a6f",
+          "index_node_hash": "cbe44f89dfc77e731f573ca734014ddfd31c67eb7d0aa20cc7fd5dfd98139b22",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"le pegó\" / \"agredió\" / \"golpeó\" → Consecuencias sobre personas: \"Sí\""
+            }
+          ],
+          "index_node_id": "aa28f566735aa780",
+          "index_node_hash": "72a7a135c62c838547b2b6d237e3eaa4122ccaed7b33bb67c0d7a85cab710e20",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"no hubo violencia\" → Consecuencias sobre personas: \"No\""
+            }
+          ],
+          "index_node_id": "514cebb6d5c3785e",
+          "index_node_hash": "1148fa03860c1a5347f76aef1b611c97e6bcdfabab25c5b5484561b3b2df0d14",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Denuncia"
+            }
+          ],
+          "index_node_id": "f54d3704f3225fe3",
+          "index_node_hash": "2f7b79198c58cf1e0d41bede047f508954e036bed63fe4763031e1a7ce095dec"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"pusimos denuncia\" / \"denunciamos\" → Se efectúa denuncia: \"Sí\""
+            }
+          ],
+          "index_node_id": "dcce6c0d96f48927",
+          "index_node_hash": "5a8d4d05c0a6d1e4fff499cc75ba773049e8396ff4a211e306345ef86b64d579",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"no se denunció\" → Se efectúa denuncia: \"No\""
+            }
+          ],
+          "index_node_id": "f63682b514965557",
+          "index_node_hash": "54e96cc453f0ba7bdd89b64c648f0246c3c87835099b413b37a0b77ded40c2f2",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "h2",
+          "children": [
+            {
+              "text": "Temporal"
+            }
+          ],
+          "index_node_id": "1b6b3f099e739bcc",
+          "index_node_hash": "b17235d52cd720bffd55080ccd4a50504cfb4ae13b7a06a86a93321ae43f426a"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"esta mañana\" / \"hoy por la mañana\" → fecha de hoy + hora estimada mañana"
+            }
+          ],
+          "index_node_id": "10f2bc6a86056a3c",
+          "index_node_hash": "348fedb38a135c161b104c4e2da999c065df2fcf42a706f5ef767b76d1a0bb84",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"sobre las X\" / \"a las X\" → hora indicada"
+            }
+          ],
+          "index_node_id": "5538a76c83a0f3e0",
+          "index_node_hash": "e1e2ff4640feaa601b73f75af445956f04a19836f3d869caf4a61ccef24c257e",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"hace un rato\" / \"hace poco\" → hora aproximada reciente"
+            }
+          ],
+          "index_node_id": "118d254a81cdefcc",
+          "index_node_hash": "264e8b1d4f3305c18e0e151ec6a2259a3edcfaef3d1bd00525055653452a45be",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "h1",
+          "children": [
+            {
+              "text": "Formato de Datos de Salida"
+            }
+          ],
+          "index_node_id": "0fbe2115c6fc0f7c",
+          "index_node_hash": "156d1e1bd9a19ce05bb4916800664fb4628e7e6b582f3d68ada463300d5f7651"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Cuando uses la herramienta \"finalizar_formulario\", envía los campos con estos UIDs y valores exactos:"
+            }
+          ],
+          "index_node_id": "983fc5c411146d5e",
+          "index_node_hash": "c9032a11ad8163e9d2cdcc5a04d29a72fd2e415c6917f4eff6b9261098c23551"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "`",
+              "code": true
+            }
+          ],
+          "index_node_id": "73329d6a33e54c49",
+          "index_node_hash": "179ce1e5514af8970a6ae1303e1674970aefd7a9b4e2371d465fc312d38aa5d4"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Campos disponibles (UID → pregunta):"
+            }
+          ],
+          "index_node_id": "cb87a74ea6b10063",
+          "index_node_hash": "f9ff47f0172601d05456abb31cda942ea31d3aee71d6420d2e6bc5d340601fee"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "{"
+            }
+          ],
+          "index_node_id": "81813b2e6d67cc13",
+          "index_node_hash": "9b35a18e6180e7b6c7e080b57c39ef313ce86d6c024ad686514db15afce9ded4"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"98938461-d206-4397-8cfc-552f43f94e0a\": \"¿Cuándo ha ocurrido?\","
+            }
+          ],
+          "index_node_id": "7c68da819ee1a23d",
+          "index_node_hash": "bbaf15f243f32b0d991859025d1a18aff05a2287fc397991fcb2d768240e9272"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"9d9f3bac-99e5-40dc-bb48-e6e44298e28e\": \"¿Dónde ha ocurrido?\","
+            }
+          ],
+          "index_node_id": "4a4dc5e0fffbf4da",
+          "index_node_hash": "7e0979c14e48e8dc74d0aa9a0b367c45e2e2ede4b7f76ce606eb748362fd3332"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"53a8dcc6-a970-4c0a-8a55-7d585630d3a4\": \"Se ha visto afectado:\","
+            }
+          ],
+          "index_node_id": "3cc32ac11eb169b6",
+          "index_node_hash": "58082f93c0bc5a67248e0af7643261b83b36c27057f6bdd8028822c576949599"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"b8a53238-ae65-4a21-97cc-127b129b1492\": \"Se ha sustraído:\","
+            }
+          ],
+          "index_node_id": "4e13ea9656f03604",
+          "index_node_hash": "bc90f131d4cc572de7d4ed4b6b125fd6d5c2d7385a64f3af3af39024c3bb5908"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"370c59c4-7365-4f60-88ce-e4a1b5625f9a\": \"Importe de los productos intervenidos:\","
+            }
+          ],
+          "index_node_id": "11fbba127f4c1ff3",
+          "index_node_hash": "e0d8992edcfd0e629963f12d37231ce2ef615838c74284d0554ea5cbd71bc08d"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"e585ca27-3691-4a17-b04a-2cf181fbe474\": \"¿Ha habido consecuencias sobre personas? (agresión / alteración del estado de la salud)\","
+            }
+          ],
+          "index_node_id": "ae698a4db2d185f5",
+          "index_node_hash": "1eaff6c86116b1ca6072cad7e2cab4c9a4bf2c9bb2170cb46b4e26a8097ff0df"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"fc731b33-b4c7-4e1e-bfc1-c2adcae2a939\": \"¿Tenemos información sobre el /los autor/es?\","
+            }
+          ],
+          "index_node_id": "a3f23a638acdbe20",
+          "index_node_hash": "143c475a59ea3d543d2382bc181763d7f48b7380e0e755b093ee183c6d45b5c7"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b-0d2f6d34-3bf8-4b4c-9861-008e596bce4d\": \"Si el afectado es personal del cliente, indica quién (puesto o cargo):\","
+            }
+          ],
+          "index_node_id": "dcab5710ae8f1381",
+          "index_node_hash": "0e276234ac0ce57874619024308d5c2cd99aa50cd9b22c778ff2d6745c77d7f3"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"33f3b12c-ba4c-4225-b081-c4bc4ab18915-29b88f53-aae7-45ab-924d-90d1efca5e6d\": \"Qué tipo de producto.\","
+            }
+          ],
+          "index_node_id": "d02ed4737072a8f4",
+          "index_node_hash": "67df7962576bcba4ea8af50f9bd966cd54b2feb43fc9a596700ada6ff1b12f6a"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"33f3b12c-ba4c-4225-b081-c4bc4ab18915-d94adde1-ec06-4fc8-b57a-2d3fb37d308e\": \"Número de productos:\","
+            }
+          ],
+          "index_node_id": "fa5c170d0a929d1b",
+          "index_node_hash": "2196686b6d4a6bf55124e4b1bac80f44daaa104b67fe5600fe489689b0316019"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"33f3b12c-ba4c-4225-b081-c4bc4ab18915-51561c92-572f-4b4b-9e32-84d569cfa7b1\": \"Referencia de los productos:\","
+            }
+          ],
+          "index_node_id": "3c00356b0171249b",
+          "index_node_hash": "0444831f47a472a940de982297929efee68b8d172c32f0d43a8dbf7c013d32a0"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"2e587f4f-f137-4842-85e2-cffcd8698d7b-9ad9bff7-5efc-4cea-a2d8-2b47990ca462\": \"Consecuencias de la agresión:\","
+            }
+          ],
+          "index_node_id": "e07a85679bac1f15",
+          "index_node_hash": "2a292956e7ff09cc4c57cae232de3a08d2458866565610d18a3aa8e1726c49c3"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"2e587f4f-f137-4842-85e2-cffcd8698d7b-580558df-ab05-450c-a487-be6819bca543\": \"¿Has tenido que realizar alguna maniobra de primeros auxilios?\","
+            }
+          ],
+          "index_node_id": "8b46272d26e29153",
+          "index_node_hash": "846bb5b1adf4b3ec58e05867d65fbac2ab2acaad260212ccf95e0791e2b85efb"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"2e587f4f-f137-4842-85e2-cffcd8698d7b-6c08bee6-edd9-42b4-8ef8-df70c7eeb21b-8630688e-f6bb-47b8-9717-dd32f7eab13d\": \"Si has tenido que realizar alguna maniobra de primeros auxilios, indica cual:\t\t\","
+            }
+          ],
+          "index_node_id": "ab57390b1c28e695",
+          "index_node_hash": "2ec24ab8fdfc26169c5cbb884ab36654bbe21f7901a027db3744e49e50979dc2"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1\": \"El modus operandi ha sido:\","
+            }
+          ],
+          "index_node_id": "d31f7010b0108397",
+          "index_node_hash": "365060de25b2c3d1e33561163ad6df67d24f5cd01b9e3b9cd1bfc0f5249cf26b"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"43fe0a67-0655-40ac-930b-f187048d5826\": \"¿Se ha utilizado algún medio de ocultación?\","
+            }
+          ],
+          "index_node_id": "9e84ceca7e9be6e1",
+          "index_node_hash": "b641fec6f66df086c21904221bc7d396ca7dc15bd30b323aec0115d7b1ee9553"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"890866c9-4b46-41c0-98d5-b7e3b14a3df1\": \"Ha sido detectado mediante:\","
+            }
+          ],
+          "index_node_id": "5d3487aed0276f2d",
+          "index_node_hash": "b9269fff76c214bc5eec513c3696d603e53ed041d6e6558be1e7011a07f7705f"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"51aad9be-cbd5-4444-a83f-9a549a537ef0\": \"Ha sido detectado por:\","
+            }
+          ],
+          "index_node_id": "48d8b04f60760c44",
+          "index_node_hash": "7f2983958e8e1e20882a1ddf68a403d4e3502999281158e4e53d06a1c4d5df0b"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7c8635c7-01d2-47a9-8aa7-1b785990eed3-ab07ce37-cc89-4760-9d47-132da3b4ebf1\": \"El medio de ocultación utilizado:\","
+            }
+          ],
+          "index_node_id": "ec7ad6cc6f5d42d0",
+          "index_node_hash": "313018f51021af2ef80a1cdf51cc95e310f2071aa563c442f62149d5ef3cb0a2"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"497b0d2f-737f-44e3-8968-dd54755c9a04-e35d833b-4d15-493a-903e-4560c929495e\": \"Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):\","
+            }
+          ],
+          "index_node_id": "380d31457e3cfaa8",
+          "index_node_hash": "bbb2d6fa903ed4366afe731552401bf1b4fb87270060153ef15df0b5559c8c52"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"e5b0bf38-95cc-4b72-9648-b9ad6f4cc388\": \"¿Se han avisado a las asistencias?\","
+            }
+          ],
+          "index_node_id": "deed7c05c6ab0173",
+          "index_node_hash": "b06bc9eb9d42d4f9545da7f6f1561f6babc003b55f090f2bc34bd6154ff76bfa"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"5c19a131-44f6-4250-b092-4a9078d1a067\": \"¿Se ha avisado al CGO?\","
+            }
+          ],
+          "index_node_id": "4410b64965dcf669",
+          "index_node_hash": "de49f0807e2a08afde64b5b1e7e1608c0d6f9ff40a94acddac6fc9de241c59af"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"475d9c61-a982-415c-8549-172645f6c03e\": \"¿Se ha informado al cliente?\","
+            }
+          ],
+          "index_node_id": "9a363807be54bf4d",
+          "index_node_hash": "f0ceba84b9dc1984211a7e52e7434ed50f155f4519ec414b4a0c34e05d346f25"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"05621dee-ff06-42b4-8d00-3d1c6f431c1c-f07c1517-c112-4ae2-87d8-2ae197b3aa56\": \"Asistencias:\","
+            }
+          ],
+          "index_node_id": "807f7c77b41469ba",
+          "index_node_hash": "e594bcb8b4a943ee5f5b3e5db7df56d91fcbd7ac7525599b02092f95718faf1a"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"05621dee-ff06-42b4-8d00-3d1c6f431c1c-416f4f98-f805-422d-9caf-8d0890006869\": \"Hora de llegada de las asistencias:\","
+            }
+          ],
+          "index_node_id": "45c3aeaef22a7554",
+          "index_node_hash": "e930792a0fd4d06b447a8d05da203cd0db3992431b9d55f6293d360b4104908c"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"494eaea6-c427-4f02-b2ad-3ba55f231cb4-e35d833b-4d15-493a-903e-4560c929495e\": \"Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):\","
+            }
+          ],
+          "index_node_id": "92de6f3ad01b76d9",
+          "index_node_hash": "2054c661b7e9e400d01ac66ca9d2cf2fe4b46ecc9bb1107dee130268bbaaa050"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"fbaa991c-59c3-4fa1-b527-3be7bfbd7505\": \"¿Se efectúa denuncia?\","
+            }
+          ],
+          "index_node_id": "9e3f7e9d83b318ff",
+          "index_node_hash": "5208d6c92e787ce18e528a37d4cba1e5bcefb5fab3db5dc9e8c7f828c170f473"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"b9fffeb3-5147-4310-a108-ecd6005c3474\": \"Resultado\","
+            }
+          ],
+          "index_node_id": "1cabe454b29e4511",
+          "index_node_hash": "d240c14fb299d1797852a5afe71d98cc20894dae4546c8cfaff2ec9583c22fa3"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"e97e5e66-b9b3-4a3c-82d6-f93b592cba7e\": \"Observaciones:\","
+            }
+          ],
+          "index_node_id": "ce8c0424ec4df65c",
+          "index_node_hash": "9be2b1ed084ffd28c09450f5b5de2a3fe0a7b910928af56d7516b57ecb703117"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"8f948eb3-9516-4e20-852d-e1216ed6f100\": \"Medidas adoptadas:\","
+            }
+          ],
+          "index_node_id": "d9dfbc6fea45679d",
+          "index_node_hash": "17c31b074a5aaff0f067227fc4c7cf883ddc0bb0a7f883ab25e2ca869aa6dd55"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-276bdc82-b33f-4edd-9993-96a0066f78e1\": \" ¿Quién interpone la denuncia?\","
+            }
+          ],
+          "index_node_id": "17c9af35869a480d",
+          "index_node_hash": "052f419edaec20a4dd2fe69b059149bb2aef2531d33eeac4f058c7e7293008f5"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-f09da730-7f12-4693-9e1d-613f64c7bd03\": \"Denuncia por:\","
+            }
+          ],
+          "index_node_id": "0ec17d3fd0c1ac2d",
+          "index_node_hash": "6b446fae68563a611eb4aec296022684cbdbf43cbeaa16733a5eeaaade082c6f"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-d38ed82f-c889-4db4-90e6-31a2bd476278\": \"Denuncia efectuada en:\","
+            }
+          ],
+          "index_node_id": "fe9cc7071135a8ad",
+          "index_node_hash": "6aa99a18e57624d6bc7b29da8fbd502fed3920cdbc7764b448e9e857e06a9a9a"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-addbddb7-1074-4940-8c00-d11af92317af\": \"Nº de la denuncia:\","
+            }
+          ],
+          "index_node_id": "8147a1185fdb1988",
+          "index_node_hash": "4828458976fa7fdb738bda2dfe892bc991e482ec7fc6f58233b4cbd55021f203"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-a82ab4a5-0246-48a4-9677-4b4fa684e7e5\": \"¿Citación para juicio rápido?\","
+            }
+          ],
+          "index_node_id": "eab0784d1ea83294",
+          "index_node_hash": "12c2fc460cc6541c44829256c264f6e3c74d2cb20aee8c09c7b8904baf349c88"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-2267a35d-4c20-41d0-9b47-43386904a4b8-489c2411-bdb7-4f6b-9479-dc1b7aefad5b\": \"Indicanos en que dependencia\","
+            }
+          ],
+          "index_node_id": "258ea98d29e8bc2f",
+          "index_node_hash": "606778ed1d3322e2490d78830f244b302cc242f7d67dac40e2fd7c72b800b051"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-2267a35d-4c20-41d0-9b47-43386904a4b8-e1dcf622-3f3f-4bef-8ac9-aa7303fb7e1a\": \"Fecha Hora llegada a las dependecias\","
+            }
+          ],
+          "index_node_id": "e8a93d824c9e2194",
+          "index_node_hash": "a71e8789c0ae94fa5c8f6b8ff9bb697cd9016afe89dc9b3c97f3d6aebba24bb4"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-2267a35d-4c20-41d0-9b47-43386904a4b8-f19b9fd7-4912-423b-a3c6-cbacb1e461c1\": \"Fecha Hora salida de las depenedencias\","
+            }
+          ],
+          "index_node_id": "9ab7e23849ea843c",
+          "index_node_hash": "475c1db019a7955a30cf3ae3f16438fe7c320e7999cb53d3ba5a133c488ffd5c"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "\"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-500dd646-025f-4cba-8219-d39fc8e87b04-fdd7c833-2322-4cf2-bb3a-93d93176a7a9\": \"Fecha y hora para la celebración del juicio rápido:\""
+            }
+          ],
+          "index_node_id": "43bed9d2f7c94511",
+          "index_node_hash": "b8b2619e6bb56de35f4ba2ea9204e2fd59f0a1f346922517574bf8e648995909"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "}"
+            }
+          ],
+          "index_node_id": "86ac78b2bc7d4409",
+          "index_node_hash": "a408472365727bec310fbc71565350a51f663a031dd0b4109f8cc9cd91b64d30"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "`",
+              "code": true
+            }
+          ],
+          "index_node_id": "6261bbd44caad2e0",
+          "index_node_hash": "25896e5f3e1175c2e988037769412ba9095bfb6b2bf0472c4cad4d2eaa9fa879"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Reglas de valor:",
+              "bold": true
+            }
+          ],
+          "index_node_id": "5acb144759bf7f22",
+          "index_node_hash": "4f1b3291ce7fd604f43cedb565030c47ccba5b96af8aa9a06cd310fb427fa2a9"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Campos de selección: usar el texto EXACTO de la opción (ej: \"Policía Nacional\", no \"la policía\")"
+            }
+          ],
+          "index_node_id": "4d1a54ddc7357195",
+          "index_node_hash": "fc989c6e1999517a9385224bc7b33f16a61ea37b3a731daa86ee4f0463fb8c93",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Campos múltiples: enviar valores separados por \" | \" (ej: \"Policía Nacional | Policía Local\")"
+            }
+          ],
+          "index_node_id": "a80139d79e9532a7",
+          "index_node_hash": "a9009538bad05405470076c47b29c54ad4777de4bc5784b139cd8113b4687759",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Fecha/hora: formato ISO 8601 (ej: \"2026-02-25T15:30:00\")"
+            }
+          ],
+          "index_node_id": "b72fcfb61720feaa",
+          "index_node_hash": "8849015c452eac8301827db1afd0955f96a1bdaa405a18fc70c29d17eeda9dae",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Números: solo el valor numérico como string (ej: \"50\")"
+            }
+          ],
+          "index_node_id": "9e0c5563192cdf01",
+          "index_node_hash": "72747aaf6c73429117913076701a1dd508e3d2a29644373f4794d79606853639",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Texto libre: texto tal cual"
+            }
+          ],
+          "index_node_id": "e387234af7edd0f1",
+          "index_node_hash": "fc33c35dd151af59149348a6c16fe7e9386660d915da78de3950094a70cafe5f",
+          "indent": 1,
+          "listStyleType": "disc"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Solo incluir campos de bifurcaciones que estén ACTIVAS (es decir, cuyo campo padre tenga la respuesta que activa la bifurcación)"
+            }
+          ],
+          "index_node_id": "f11501d7b37c38c6",
+          "index_node_hash": "c7af4d8a77cb5afb550a26f5fbeb0a8691a28d312ca77bb3c3a701ae94ca1a62",
+          "indent": 1,
+          "listStyleType": "disc"
+        }
+      ],
+      "prompt_md": "# Rol\nEres un asistente de IA para vigilantes de seguridad de Prosegur.\nTu objetivo es ayudar al vigilante a completar un formulario de incidencia de tipo \"Hurto Generico\" (familia: \"Hurto\") mediante conversación natural.\n\nEl vigilante puede enviarte **notas de voz** o **texto escrito**. Las notas de voz se transcriben automáticamente. Acepta ambos formatos sin comentarios.\n\n# Instrucciones Generales\n\n1. **Saludo breve**: Pide al vigilante que narre lo ocurrido libremente. No hagas preguntas todavía.\n2. **Extracción automática**: Procesa la narración y mapea toda la información posible a los campos del formulario. Incluye deducciones implícitas (ej: \"llamamos a la policía\" → asistencias = \"Sí\", tipo = \"Policía Nacional\" o \"Policía Local\").\n3. **Campos obligatorios**: Solo pregunta por campos OBLIGATORIOS que NO hayan sido mencionados ni deducidos.\n4. **Conversacional, no interrogatorio**: Sé natural y breve. Máximo 2-3 frases por mensaje.\n5. **Una pregunta por turno**: No acumules múltiples preguntas. Si faltan varios campos, pregunta el más importante primero.\n6. **Campos opcionales**: Solo pregúntalos si son claramente relevantes por el contexto de lo narrado.\n7. **Campos de selección**: Mapea la respuesta del vigilante a la opción más cercana de la lista. Si no hay coincidencia clara, ofrece las opciones disponibles.\n8. **Campos múltiples**: Si un campo permite selección múltiple, acepta varias respuestas separadas.\n9. **Deducciones implícitas**: Cuando deduzcas una respuesta de la narración, NO preguntes por ese campo. Considéralo respondido.\n10. **Bifurcaciones**: Si una respuesta activa campos condicionales adicionales, inclúyelos en tu seguimiento.\n11. **Finalización**: Cuando tengas toda la información obligatoria (y la opcional relevante), informa al vigilante que vas a enviar los datos y usa la herramienta \"finalizar_formulario\".\n12. **Adjuntos**: Ignora los campos de tipo \"Adjunto\" (tipo 5). El vigilante los añadirá manualmente.\n13. **Formato fecha**: Para campos de fecha/hora, usa formato ISO 8601 (YYYY-MM-DDTHH:mm:ss). Si el vigilante dice \"hoy a las 3\", calcula la fecha completa.\n14. **Validación numérica**: Para campos numéricos, extrae solo el número. Si dice \"unos 50 euros\", el valor es \"50\".\n\n# Campos del Formulario\n\n## Sección 1: Cuándo y Dónde\n- **¿Cuándo ha ocurrido?** — Fecha/Hora **[OBLIGATORIO]**\n  UID: `98938461-d206-4397-8cfc-552f43f94e0a`\n- **¿Dónde ha ocurrido?** — Selección **[OBLIGATORIO]**\n  UID: `9d9f3bac-99e5-40dc-bb48-e6e44298e28e`\n  Opciones: `Almacén` | `Aparcamiento` | `Aseos` | `Zona de Acceso Público` | `Zona de Oficinas` | `Zona Restringida` | `Zona exterior / fachadas` | `Zona cubiertas / azotea`\n\n## Sección 2: Qué ha Ocurrido\n- **Se ha visto afectado:** — Selección (selección múltiple) **[OBLIGATORIO]**\n  UID: `53a8dcc6-a970-4c0a-8a55-7d585630d3a4`\n  Opciones: `El Cliente` | `Personal Ajeno / Terceras Personas` | `Personal colaborador Externo` | `Personal del Cliente` → *abre preguntas adicionales* | `Personal de Prosegur`\n- **Se ha sustraído:** — Selección (selección múltiple) **[OBLIGATORIO]**\n  UID: `b8a53238-ae65-4a21-97cc-127b129b1492`\n  Opciones: `Bienes del cliente (material, producto, etc.)` → *abre preguntas adicionales* | `Bienes/Smartphone, tablet/efectos personales` | `Dinero / cartera / bolso` | `Vehículo`\n- **Importe de los productos intervenidos:** — Número **[OBLIGATORIO]**\n  UID: `370c59c4-7365-4f60-88ce-e4a1b5625f9a`\n- **¿Ha habido consecuencias sobre personas? (agresión / alteración del estado de la salud)** — Sí/No\n  UID: `e585ca27-3691-4a17-b04a-2cf181fbe474`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n- **¿Tenemos información sobre el /los autor/es?** — Sí/No\n  UID: `fc731b33-b4c7-4e1e-bfc1-c2adcae2a939`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No, sin información`\n\n## Sección 3: Cómo ha Ocurrido (Modus Operandi)\n- **El modus operandi ha sido:** — Selección (selección múltiple) **[OBLIGATORIO]**\n  UID: `aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1`\n  Opciones: `Desconocido` | `Alicates / Elementos de corte` | `Gancho desacoplador` | `Imanes` | `Manipulación manual / carterista / tirón de bolso` | `Objeto contundente` | `Objeto / instrumento punzante` | `Huida salida de emergencia` | `Arma blanca` | `Arma de fuego`\n- **¿Se ha utilizado algún medio de ocultación?** — Sí/No\n  UID: `43fe0a67-0655-40ac-930b-f187048d5826`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n- **Ha sido detectado mediante:** — Selección\n  UID: `890866c9-4b46-41c0-98d5-b7e3b14a3df1`\n  Opciones: `CCTV` | `Centro de Control` | `Control Visual` | `Sistemas Anti-hurto / RFID` | `Aviso de terceras personas`\n- **Ha sido detectado por:** — Selección **[OBLIGATORIO]**\n  UID: `51aad9be-cbd5-4444-a83f-9a549a537ef0`\n  Opciones: `Personal de Prosegur` | `Personal del Cliente` → *abre preguntas adicionales* | `Personal Colaborador Externo` | `Personal Ajeno / Terceras Personas`\n\n## Sección 4: Asistencias y Comunicaciones\n- **¿Se han avisado a las asistencias?** — Sí/No **[OBLIGATORIO]**\n  UID: `e5b0bf38-95cc-4b72-9648-b9ad6f4cc388`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n- **¿Se ha avisado al CGO?** — Sí/No\n  UID: `5c19a131-44f6-4250-b092-4a9078d1a067`\n  Opciones: `Sí` | `No`\n- **¿Se ha informado al cliente?** — Sí/No\n  UID: `475d9c61-a982-415c-8549-172645f6c03e`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n\n## Sección 5: Resultado y Denuncia\n- **¿Se efectúa denuncia?** — Sí/No **[OBLIGATORIO]**\n  UID: `fbaa991c-59c3-4fa1-b527-3be7bfbd7505`\n  Opciones: `Sí` → *abre preguntas adicionales* | `No`\n- **Resultado** — Selección **[OBLIGATORIO]**\n  UID: `b9fffeb3-5147-4310-a108-ecd6005c3474`\n  Opciones: `Abona el producto y abandona la instalación` | `A disposición de FFCCS` | `Desalojo del autor/autores` | `Huida con recuperación de artículo/os` | `Huida sin recuperación de artículo/os`\n- **Observaciones:** — Texto libre\n  UID: `e97e5e66-b9b3-4a3c-82d6-f93b592cba7e`\n- **Medidas adoptadas:** — Texto libre\n  UID: `8f948eb3-9516-4e20-852d-e1216ed6f100`\n\n## Sección 6: Adjuntos\n\n# Reglas de Bifurcación\n\nAlgunos campos activan preguntas adicionales según la respuesta del vigilante:\n\n\n# Mapeo de Respuestas Implícitas\n\nCuando el vigilante use estas expresiones, mapea automáticamente a los campos correspondientes:\n\n## Asistencias y Fuerzas de Seguridad\n- \"policía\" / \"agentes\" → Asistencias: \"Policía Nacional\" o \"Policía Local\" (según contexto)\n- \"guardia civil\" → Asistencias: \"Guardia Civil\"\n- \"ambulancia\" / \"sanitarios\" / \"SAMUR\" / \"médicos\" → Asistencias: \"Asistencia sanitaria\"\n- \"bomberos\" → Asistencias: \"Bomberos\"\n- \"protección civil\" → Asistencias: \"Protección Civil\"\n- \"llamamos a...\" / \"avisamos a...\" → ¿Se avisaron asistencias?: \"Sí\"\n\n## Resultado / Detención\n- \"lo detuvimos\" / \"detenido\" / \"lo pillamos\" → Resultado: \"A disposición de FFCCS\" o \"Detención\"\n- \"huyó\" / \"se escapó\" / \"se fue corriendo\" → Resultado: \"Huida sin recuperación de efectos\" (o \"con recuperación\" si se recuperó lo robado)\n- \"devolvió el producto\" / \"soltó la mercancía\" → Resultado: \"Devuelve el producto\"\n\n## Detección\n- \"cámaras\" / \"CCTV\" / \"monitor\" → Detectado mediante: \"CCTV\"\n- \"lo vi yo\" / \"lo vimos\" / \"nos dimos cuenta\" → Detectado por: \"Personal de Prosegur\"\n- \"el dependiente vio\" / \"el cajero\" → Detectado por: \"Personal del Cliente\"\n- \"alarma\" / \"arco de seguridad\" / \"antihurto\" → Detectado mediante: \"Medios técnicos / alarmas\"\n\n## Medio de Ocultación\n- \"mochila\" / \"bolso\" / \"bolsa\" / \"bandolera\" → Medio de ocultación: \"Sí\" + tipo apropiado\n- \"debajo de la ropa\" / \"escondido\" → Medio de ocultación: \"Sí\" + tipo apropiado\n\n## Ubicación\n- \"aparcamiento\" / \"parking\" → Dónde: \"Aparcamiento\"\n- \"almacén\" / \"trastienda\" → Dónde: \"Almacén\"\n- \"baños\" / \"aseos\" → Dónde: \"Aseos\"\n\n## Consecuencias\n- \"no hubo heridos\" / \"sin lesiones\" / \"nadie resultó herido\" → Consecuencias sobre personas: \"No\"\n- \"le pegó\" / \"agredió\" / \"golpeó\" → Consecuencias sobre personas: \"Sí\"\n- \"no hubo violencia\" → Consecuencias sobre personas: \"No\"\n\n## Denuncia\n- \"pusimos denuncia\" / \"denunciamos\" → Se efectúa denuncia: \"Sí\"\n- \"no se denunció\" → Se efectúa denuncia: \"No\"\n\n## Temporal\n- \"esta mañana\" / \"hoy por la mañana\" → fecha de hoy + hora estimada mañana\n- \"sobre las X\" / \"a las X\" → hora indicada\n- \"hace un rato\" / \"hace poco\" → hora aproximada reciente\n\n# Formato de Datos de Salida\n\nCuando uses la herramienta \"finalizar_formulario\", envía los campos con estos UIDs y valores exactos:\n\n```\nCampos disponibles (UID → pregunta):\n{\n  \"98938461-d206-4397-8cfc-552f43f94e0a\": \"¿Cuándo ha ocurrido?\",\n  \"9d9f3bac-99e5-40dc-bb48-e6e44298e28e\": \"¿Dónde ha ocurrido?\",\n  \"53a8dcc6-a970-4c0a-8a55-7d585630d3a4\": \"Se ha visto afectado:\",\n  \"b8a53238-ae65-4a21-97cc-127b129b1492\": \"Se ha sustraído:\",\n  \"370c59c4-7365-4f60-88ce-e4a1b5625f9a\": \"Importe de los productos intervenidos:\",\n  \"e585ca27-3691-4a17-b04a-2cf181fbe474\": \"¿Ha habido consecuencias sobre personas? (agresión / alteración del estado de la salud)\",\n  \"fc731b33-b4c7-4e1e-bfc1-c2adcae2a939\": \"¿Tenemos información sobre el /los autor/es?\",\n  \"deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b-0d2f6d34-3bf8-4b4c-9861-008e596bce4d\": \"Si el afectado es personal del cliente, indica quién (puesto o cargo):\",\n  \"33f3b12c-ba4c-4225-b081-c4bc4ab18915-29b88f53-aae7-45ab-924d-90d1efca5e6d\": \"Qué tipo de producto.\",\n  \"33f3b12c-ba4c-4225-b081-c4bc4ab18915-d94adde1-ec06-4fc8-b57a-2d3fb37d308e\": \"Número de productos:\",\n  \"33f3b12c-ba4c-4225-b081-c4bc4ab18915-51561c92-572f-4b4b-9e32-84d569cfa7b1\": \"Referencia de los productos:\",\n  \"2e587f4f-f137-4842-85e2-cffcd8698d7b-9ad9bff7-5efc-4cea-a2d8-2b47990ca462\": \"Consecuencias de la agresión:\",\n  \"2e587f4f-f137-4842-85e2-cffcd8698d7b-580558df-ab05-450c-a487-be6819bca543\": \"¿Has tenido que realizar alguna maniobra de primeros auxilios?\",\n  \"2e587f4f-f137-4842-85e2-cffcd8698d7b-6c08bee6-edd9-42b4-8ef8-df70c7eeb21b-8630688e-f6bb-47b8-9717-dd32f7eab13d\": \"Si has tenido que realizar alguna maniobra de primeros auxilios, indica cual:\t\t\",\n  \"aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1\": \"El modus operandi ha sido:\",\n  \"43fe0a67-0655-40ac-930b-f187048d5826\": \"¿Se ha utilizado algún medio de ocultación?\",\n  \"890866c9-4b46-41c0-98d5-b7e3b14a3df1\": \"Ha sido detectado mediante:\",\n  \"51aad9be-cbd5-4444-a83f-9a549a537ef0\": \"Ha sido detectado por:\",\n  \"7c8635c7-01d2-47a9-8aa7-1b785990eed3-ab07ce37-cc89-4760-9d47-132da3b4ebf1\": \"El medio de ocultación utilizado:\",\n  \"497b0d2f-737f-44e3-8968-dd54755c9a04-e35d833b-4d15-493a-903e-4560c929495e\": \"Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):\",\n  \"e5b0bf38-95cc-4b72-9648-b9ad6f4cc388\": \"¿Se han avisado a las asistencias?\",\n  \"5c19a131-44f6-4250-b092-4a9078d1a067\": \"¿Se ha avisado al CGO?\",\n  \"475d9c61-a982-415c-8549-172645f6c03e\": \"¿Se ha informado al cliente?\",\n  \"05621dee-ff06-42b4-8d00-3d1c6f431c1c-f07c1517-c112-4ae2-87d8-2ae197b3aa56\": \"Asistencias:\",\n  \"05621dee-ff06-42b4-8d00-3d1c6f431c1c-416f4f98-f805-422d-9caf-8d0890006869\": \"Hora de llegada de las asistencias:\",\n  \"494eaea6-c427-4f02-b2ad-3ba55f231cb4-e35d833b-4d15-493a-903e-4560c929495e\": \"Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):\",\n  \"fbaa991c-59c3-4fa1-b527-3be7bfbd7505\": \"¿Se efectúa denuncia?\",\n  \"b9fffeb3-5147-4310-a108-ecd6005c3474\": \"Resultado\",\n  \"e97e5e66-b9b3-4a3c-82d6-f93b592cba7e\": \"Observaciones:\",\n  \"8f948eb3-9516-4e20-852d-e1216ed6f100\": \"Medidas adoptadas:\",\n  \"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-276bdc82-b33f-4edd-9993-96a0066f78e1\": \" ¿Quién interpone la denuncia?\",\n  \"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-f09da730-7f12-4693-9e1d-613f64c7bd03\": \"Denuncia por:\",\n  \"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-d38ed82f-c889-4db4-90e6-31a2bd476278\": \"Denuncia efectuada en:\",\n  \"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-addbddb7-1074-4940-8c00-d11af92317af\": \"Nº de la denuncia:\",\n  \"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-a82ab4a5-0246-48a4-9677-4b4fa684e7e5\": \"¿Citación para juicio rápido?\",\n  \"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-2267a35d-4c20-41d0-9b47-43386904a4b8-489c2411-bdb7-4f6b-9479-dc1b7aefad5b\": \"Indicanos en que dependencia\",\n  \"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-2267a35d-4c20-41d0-9b47-43386904a4b8-e1dcf622-3f3f-4bef-8ac9-aa7303fb7e1a\": \"Fecha Hora llegada a las dependecias\",\n  \"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-2267a35d-4c20-41d0-9b47-43386904a4b8-f19b9fd7-4912-423b-a3c6-cbacb1e461c1\": \"Fecha Hora salida de las depenedencias\",\n  \"7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-500dd646-025f-4cba-8219-d39fc8e87b04-fdd7c833-2322-4cf2-bb3a-93d93176a7a9\": \"Fecha y hora para la celebración del juicio rápido:\"\n}\n```\n\n**Reglas de valor:**\n- Campos de selección: usar el texto EXACTO de la opción (ej: \"Policía Nacional\", no \"la policía\")\n- Campos múltiples: enviar valores separados por \" | \" (ej: \"Policía Nacional | Policía Local\")\n- Fecha/hora: formato ISO 8601 (ej: \"2026-02-25T15:30:00\")\n- Números: solo el valor numérico como string (ej: \"50\")\n- Texto libre: texto tal cual\n- Solo incluir campos de bifurcaciones que estén ACTIVAS (es decir, cuyo campo padre tenga la respuesta que activa la bifurcación)"
+    },
+    {
+      "id": "9bb652fa-3e82-4209-b017-152fb546bcc1",
+      "persistent_id": "bd0f1b67-d551-460e-a633-df77c4720507",
+      "slug": "hqyikepr6o4x",
+      "org_id": "PLACEHOLDER_ORG_ID",
+      "use_case_id": "52dfdb62-10bc-4a85-8143-6b37791dcd91",
+      "parent_id": "c1c938cd-f99d-4ca0-b397-cc825327d710",
+      "version_id": "3e2f7e5e-6dc3-40a6-aef9-5c84f493a80a",
+      "type": "tool",
+      "name": "consultar_estado_formulario",
+      "is_complete": true,
+      "node_output_id": null,
+      "sort_index": 0,
+      "timestamp": "2026-02-25T20:30:26.634Z",
+      "is_deleted": false,
+      "configuration": {},
+      "staging_configuration": {},
+      "development_configuration": {},
+      "retry_configuration": {},
+      "outbound_retry_configuration": {},
+      "node_component_id": null,
+      "node_component_input_mapping": [],
+      "node_output": null,
+      "function": {
+        "description": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Usa esta herramienta cuando quieras revisar internamente qué campos del formulario ya tienes completos y cuáles faltan por rellenar. No necesitas parámetros, simplemente invócala para obtener un resumen del estado actual."
+              }
+            ]
+          }
+        ],
+        "message": {
+          "type": "none",
+          "description": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "Revisa internamente el estado y decide qué preguntar a continuación. No muestres el listado técnico al vigilante."
+                }
+              ]
+            }
+          ],
+          "example": "Me faltan algunos datos. Déjame preguntarte un par de cosas más."
+        },
+        "parameters": [],
+        "tool_index_id": "tool:04a28314-e771-4526-a5ea-05b2a29b7d43",
+        "tool_index_hash": "03367bb120cb481f8bbbf6f41fc2b504"
+      }
+    },
+    {
+      "id": "c80248f5-c02f-406c-87a9-1c01a52d263f",
+      "persistent_id": "e824a949-1570-4084-a30b-c4779ab7fb63",
+      "slug": "qnghqz6rz0q2",
+      "org_id": "PLACEHOLDER_ORG_ID",
+      "use_case_id": "52dfdb62-10bc-4a85-8143-6b37791dcd91",
+      "parent_id": "c1c938cd-f99d-4ca0-b397-cc825327d710",
+      "version_id": "3e2f7e5e-6dc3-40a6-aef9-5c84f493a80a",
+      "type": "tool",
+      "name": "finalizar_formulario",
+      "is_complete": true,
+      "node_output_id": null,
+      "sort_index": 0,
+      "timestamp": "2026-02-25T20:30:26.634Z",
+      "is_deleted": false,
+      "configuration": {},
+      "staging_configuration": {},
+      "development_configuration": {},
+      "retry_configuration": {},
+      "outbound_retry_configuration": {},
+      "node_component_id": null,
+      "node_component_input_mapping": [],
+      "node_output": null,
+      "function": {
+        "description": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Usa esta herramienta cuando hayas recopilado toda la información necesaria del vigilante y quieras enviar el formulario completado. Incluye TODOS los campos que hayas podido rellenar, tanto obligatorios como opcionales. Los valores deben coincidir exactamente con las opciones disponibles cuando sean campos de selección."
+              }
+            ]
+          }
+        ],
+        "message": {
+          "type": "ai",
+          "description": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "Confirma al vigilante que los datos se han enviado correctamente y que puede revisar el formulario pre-rellenado en la app."
+                }
+              ]
+            }
+          ],
+          "example": "Perfecto, he enviado los datos al formulario. Puedes revisarlo en la app y completar o corregir lo que necesites antes de enviarlo definitivamente."
+        },
+        "parameters": [
+          {
+            "name": "cuando_ha_ocurrido",
+            "example": "2026-02-25T15:30:00",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Cuándo ha ocurrido? (UID: 98938461-d206-4397-8cfc-552f43f94e0a) [OBLIGATORIO]"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "donde_ha_ocurrido",
+            "example": "Almacén",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Dónde ha ocurrido? (UID: 9d9f3bac-99e5-40dc-bb48-e6e44298e28e) [OBLIGATORIO]. Opciones: Almacén, Aparcamiento, Aseos, Zona de Acceso Público, Zona de Oficinas, Zona Restringida, Zona exterior / fachadas, Zona cubiertas / azotea"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "se_ha_visto_afectado",
+            "example": "El Cliente",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Se ha visto afectado: (UID: 53a8dcc6-a970-4c0a-8a55-7d585630d3a4) [OBLIGATORIO]. Opciones: El Cliente, Personal Ajeno / Terceras Personas, Personal colaborador Externo, Personal del Cliente, Personal de Prosegur"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "se_ha_sustraido",
+            "example": "Bienes del cliente (material, producto, etc.)",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Se ha sustraído: (UID: b8a53238-ae65-4a21-97cc-127b129b1492) [OBLIGATORIO]. Opciones: Bienes del cliente (material, producto, etc.), Bienes/Smartphone, tablet/efectos personales, Dinero / cartera / bolso, Vehículo"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "importe_de_los_productos_intervenidos",
+            "example": "50",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Importe de los productos intervenidos: (UID: 370c59c4-7365-4f60-88ce-e4a1b5625f9a) [OBLIGATORIO]"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "ha_habido_consecuencias_sobre_personas_agresion_alteracion_d",
+            "example": "Sí",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Ha habido consecuencias sobre personas? (agresión / alteración del estado de la salud) (UID: e585ca27-3691-4a17-b04a-2cf181fbe474). Opciones: Sí, No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "tenemos_informacion_sobre_el_los_autores",
+            "example": "Sí",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Tenemos información sobre el /los autor/es? (UID: fc731b33-b4c7-4e1e-bfc1-c2adcae2a939). Opciones: Sí, No, sin información"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "si_el_afectado_es_personal_del_cliente_indica_quien_puesto_o",
+            "example": "Texto de ejemplo",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Si el afectado es personal del cliente, indica quién (puesto o cargo): (UID: deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b-0d2f6d34-3bf8-4b4c-9861-008e596bce4d)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "que_tipo_de_producto",
+            "example": "Productos de papelería e imprenta",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Qué tipo de producto. (UID: 33f3b12c-ba4c-4225-b081-c4bc4ab18915-29b88f53-aae7-45ab-924d-90d1efca5e6d) [OBLIGATORIO]. Opciones: Productos de papelería e imprenta, Herramientas, Pequeño material informático, Medicamentos, productos sanitarios, Papel higiénico, Productos de limpieza"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "numero_de_productos",
+            "example": "50",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Número de productos: (UID: 33f3b12c-ba4c-4225-b081-c4bc4ab18915-d94adde1-ec06-4fc8-b57a-2d3fb37d308e)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "referencia_de_los_productos",
+            "example": "Texto de ejemplo",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Referencia de los productos: (UID: 33f3b12c-ba4c-4225-b081-c4bc4ab18915-51561c92-572f-4b4b-9e32-84d569cfa7b1)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "consecuencias_de_la_agresion",
+            "example": "Sin lesiones aparentes",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Consecuencias de la agresión: (UID: 2e587f4f-f137-4842-85e2-cffcd8698d7b-9ad9bff7-5efc-4cea-a2d8-2b47990ca462) [OBLIGATORIO]. Opciones: Sin lesiones aparentes, Con lesiones aparentes (sangrado, dificultad al moverse, etc.), Alteración del estado de la salud (ansiedad, infarto, mareos, desorientación, etc.), Pérdida de consciencia / desfallecimiento, Fallecimiento"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "has_tenido_que_realizar_alguna_maniobra_de_primeros_auxilios",
+            "example": "Sí",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Has tenido que realizar alguna maniobra de primeros auxilios? (UID: 2e587f4f-f137-4842-85e2-cffcd8698d7b-580558df-ab05-450c-a487-be6819bca543). Opciones: Sí, No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "si_has_tenido_que_realizar_alguna_maniobra_de_primeros_auxil",
+            "example": "Maniobra de Heimlich (evitar asfixia)",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Si has tenido que realizar alguna maniobra de primeros auxilios, indica cual:\t\t (UID: 2e587f4f-f137-4842-85e2-cffcd8698d7b-6c08bee6-edd9-42b4-8ef8-df70c7eeb21b-8630688e-f6bb-47b8-9717-dd32f7eab13d) [OBLIGATORIO]. Opciones: Maniobra de Heimlich (evitar asfixia), Reanimación Cardiopulmonar (RCP), Respiración boca a boca o de salvamento, Torniquete / compresión de hemorragias, Traqueotomía"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "el_modus_operandi_ha_sido",
+            "example": "Desconocido",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "El modus operandi ha sido: (UID: aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1) [OBLIGATORIO]. Opciones: Desconocido, Alicates / Elementos de corte, Gancho desacoplador, Imanes, Manipulación manual / carterista / tirón de bolso, Objeto contundente, Objeto / instrumento punzante, Huida salida de emergencia, Arma blanca, Arma de fuego"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "se_ha_utilizado_algun_medio_de_ocultacion",
+            "example": "Sí",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Se ha utilizado algún medio de ocultación? (UID: 43fe0a67-0655-40ac-930b-f187048d5826). Opciones: Sí, No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "ha_sido_detectado_mediante",
+            "example": "CCTV",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Ha sido detectado mediante: (UID: 890866c9-4b46-41c0-98d5-b7e3b14a3df1). Opciones: CCTV, Centro de Control, Control Visual, Sistemas Anti-hurto / RFID, Aviso de terceras personas"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "ha_sido_detectado_por",
+            "example": "Personal de Prosegur",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Ha sido detectado por: (UID: 51aad9be-cbd5-4444-a83f-9a549a537ef0) [OBLIGATORIO]. Opciones: Personal de Prosegur, Personal del Cliente, Personal Colaborador Externo, Personal Ajeno / Terceras Personas"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "el_medio_de_ocultacion_utilizado",
+            "example": "Bandolera / Mochila / bolso",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "El medio de ocultación utilizado: (UID: 7c8635c7-01d2-47a9-8aa7-1b785990eed3-ab07ce37-cc89-4760-9d47-132da3b4ebf1) [OBLIGATORIO]. Opciones: Bandolera / Mochila / bolso, Bolsa de establecimiento comercial, Bolso forrado de aluminio, Carro de bebé, Carro de la compra, Entre pertenencias, Caja regalo"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "si_quien_lo_ha_detectado_es_personal_del_cliente_indica_quie",
+            "example": "Texto de ejemplo",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo): (UID: 497b0d2f-737f-44e3-8968-dd54755c9a04-e35d833b-4d15-493a-903e-4560c929495e)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "se_han_avisado_a_las_asistencias",
+            "example": "Sí",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Se han avisado a las asistencias? (UID: e5b0bf38-95cc-4b72-9648-b9ad6f4cc388) [OBLIGATORIO]. Opciones: Sí, No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "se_ha_avisado_al_cgo",
+            "example": "Sí",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Se ha avisado al CGO? (UID: 5c19a131-44f6-4250-b092-4a9078d1a067). Opciones: Sí, No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "se_ha_informado_al_cliente",
+            "example": "Sí",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Se ha informado al cliente? (UID: 475d9c61-a982-415c-8549-172645f6c03e). Opciones: Sí, No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "asistencias",
+            "example": "Asistencia sanitaria",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Asistencias: (UID: 05621dee-ff06-42b4-8d00-3d1c6f431c1c-f07c1517-c112-4ae2-87d8-2ae197b3aa56) [OBLIGATORIO]. Opciones: Asistencia sanitaria, Bomberos, Ertzaintza, Guardia Civil, Mossos d'esquadra, Policía Local, Policía Nacional, Policía Foral de Navarra"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "hora_de_llegada_de_las_asistencias",
+            "example": "2026-02-25T15:30:00",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Hora de llegada de las asistencias: (UID: 05621dee-ff06-42b4-8d00-3d1c6f431c1c-416f4f98-f805-422d-9caf-8d0890006869) [OBLIGATORIO]"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "si_se_ha_informado_a_personal_del_cliente_indica_a_quien_pue",
+            "example": "Texto de ejemplo",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Si se ha informado  a personal del cliente, indica a quién (puesto o cargo): (UID: 494eaea6-c427-4f02-b2ad-3ba55f231cb4-e35d833b-4d15-493a-903e-4560c929495e)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "se_efectua_denuncia",
+            "example": "Sí",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Se efectúa denuncia? (UID: fbaa991c-59c3-4fa1-b527-3be7bfbd7505) [OBLIGATORIO]. Opciones: Sí, No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "resultado",
+            "example": "Abona el producto y abandona la instalación",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Resultado (UID: b9fffeb3-5147-4310-a108-ecd6005c3474) [OBLIGATORIO]. Opciones: Abona el producto y abandona la instalación, A disposición de FFCCS, Desalojo del autor/autores, Huida con recuperación de artículo/os, Huida sin recuperación de artículo/os"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "observaciones",
+            "example": "Texto de ejemplo",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Observaciones: (UID: e97e5e66-b9b3-4a3c-82d6-f93b592cba7e)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "medidas_adoptadas",
+            "example": "Texto de ejemplo",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Medidas adoptadas: (UID: 8f948eb3-9516-4e20-852d-e1216ed6f100)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "quien_interpone_la_denuncia",
+            "example": "Personal Prosegur",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": " ¿Quién interpone la denuncia? (UID: 7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-276bdc82-b33f-4edd-9993-96a0066f78e1) [OBLIGATORIO]. Opciones: Personal Prosegur, El cliente/establecimiento, Terceras personas"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "denuncia_por",
+            "example": "Robo",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Denuncia por: (UID: 7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-f09da730-7f12-4693-9e1d-613f64c7bd03) [OBLIGATORIO]. Opciones: Robo, Hurto, Agresión verbal, amenazas, Agresión física, Estafa, Daños"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "denuncia_efectuada_en",
+            "example": "El establecimiento / centro / instalación",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Denuncia efectuada en: (UID: 7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-d38ed82f-c889-4db4-90e6-31a2bd476278). Opciones: El establecimiento / centro / instalación, Dependencias Policiales "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "nº_de_la_denuncia",
+            "example": "Texto de ejemplo",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Nº de la denuncia: (UID: 7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-addbddb7-1074-4940-8c00-d11af92317af)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "citacion_para_juicio_rapido",
+            "example": "Sí",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "¿Citación para juicio rápido? (UID: 7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-a82ab4a5-0246-48a4-9677-4b4fa684e7e5). Opciones: Sí, No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "indicanos_en_que_dependencia",
+            "example": "Puesto de la Guardia Civil",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Indicanos en que dependencia (UID: 7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-2267a35d-4c20-41d0-9b47-43386904a4b8-489c2411-bdb7-4f6b-9479-dc1b7aefad5b) [OBLIGATORIO]. Opciones: Puesto de la Guardia Civil, Comisaría de la Policía Nacional, Comisaría de la Ertzaintza, Comisaria de los Mossos d'Esquadra , Comisaría de la Policía Foral, Comisaría de la Policía Local/Municipal, Juzgado"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "fecha_hora_llegada_a_las_dependecias",
+            "example": "2026-02-25T15:30:00",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Fecha Hora llegada a las dependecias (UID: 7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-2267a35d-4c20-41d0-9b47-43386904a4b8-e1dcf622-3f3f-4bef-8ac9-aa7303fb7e1a)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "fecha_hora_salida_de_las_depenedencias",
+            "example": "2026-02-25T15:30:00",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Fecha Hora salida de las depenedencias (UID: 7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-2267a35d-4c20-41d0-9b47-43386904a4b8-f19b9fd7-4912-423b-a3c6-cbacb1e461c1)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "fecha_y_hora_para_la_celebracion_del_juicio_rapido",
+            "example": "2026-02-25T15:30:00",
+            "description": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Fecha y hora para la celebración del juicio rápido: (UID: 7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1-500dd646-025f-4cba-8219-d39fc8e87b04-fdd7c833-2322-4cf2-bb3a-93d93176a7a9)"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "tool_index_id": "tool:04c66d58-0da2-42e5-85f9-bfd24e12def6",
+        "tool_index_hash": "b40a326962744697b7c4e202567898c0"
+      }
+    },
+    {
+      "id": "17207137-b2b2-4998-9636-4d7e9654d271",
+      "persistent_id": "3fbc3e53-24ef-4b0c-90dd-0a9dcd308abe",
+      "slug": "nmz5v5dlcr4z",
+      "org_id": "PLACEHOLDER_ORG_ID",
+      "use_case_id": "52dfdb62-10bc-4a85-8143-6b37791dcd91",
+      "parent_id": "9be81953-eec3-4ed6-831b-7ebd97abc0ea",
+      "version_id": "3e2f7e5e-6dc3-40a6-aef9-5c84f493a80a",
+      "type": "action",
+      "name": "Extraer y Enviar Datos",
+      "is_complete": false,
+      "node_output_id": null,
+      "sort_index": 0,
+      "timestamp": "2026-02-25T20:30:26.634Z",
+      "is_deleted": false,
+      "configuration": {
+        "prompt": "Extrae todos los campos del formulario de incidencia de la transcripción de la conversación.\n\nCampos a extraer:\n- cuando_ha_ocurrido: ¿Cuándo ha ocurrido? (Fecha/Hora) [OBLIGATORIO]\n- donde_ha_ocurrido: ¿Dónde ha ocurrido? (Selección) [OBLIGATORIO] Opciones: Almacén, Aparcamiento, Aseos, Zona de Acceso Público, Zona de Oficinas, Zona Restringida, Zona exterior / fachadas, Zona cubiertas / azotea\n- se_ha_visto_afectado: Se ha visto afectado: (Selección) [OBLIGATORIO] Opciones: El Cliente, Personal Ajeno / Terceras Personas, Personal colaborador Externo, Personal del Cliente, Personal de Prosegur\n- se_ha_sustraido: Se ha sustraído: (Selección) [OBLIGATORIO] Opciones: Bienes del cliente (material, producto, etc.), Bienes/Smartphone, tablet/efectos personales, Dinero / cartera / bolso, Vehículo\n- importe_de_los_productos_intervenidos: Importe de los productos intervenidos: (Número) [OBLIGATORIO]\n- ha_habido_consecuencias_sobre_personas_agresion_alteracion_d: ¿Ha habido consecuencias sobre personas? (agresión / alteración del estado de la salud) (Sí/No) Opciones: Sí, No\n- tenemos_informacion_sobre_el_los_autores: ¿Tenemos información sobre el /los autor/es? (Sí/No) Opciones: Sí, No, sin información\n- si_el_afectado_es_personal_del_cliente_indica_quien_puesto_o: Si el afectado es personal del cliente, indica quién (puesto o cargo): (Texto libre)\n- que_tipo_de_producto: Qué tipo de producto. (Selección) [OBLIGATORIO] Opciones: Productos de papelería e imprenta, Herramientas, Pequeño material informático, Medicamentos, productos sanitarios, Papel higiénico, Productos de limpieza\n- numero_de_productos: Número de productos: (Número)\n- referencia_de_los_productos: Referencia de los productos: (Texto libre)\n- consecuencias_de_la_agresion: Consecuencias de la agresión: (Selección) [OBLIGATORIO] Opciones: Sin lesiones aparentes, Con lesiones aparentes (sangrado, dificultad al moverse, etc.), Alteración del estado de la salud (ansiedad, infarto, mareos, desorientación, etc.), Pérdida de consciencia / desfallecimiento, Fallecimiento\n- has_tenido_que_realizar_alguna_maniobra_de_primeros_auxilios: ¿Has tenido que realizar alguna maniobra de primeros auxilios? (Sí/No) Opciones: Sí, No\n- si_has_tenido_que_realizar_alguna_maniobra_de_primeros_auxil: Si has tenido que realizar alguna maniobra de primeros auxilios, indica cual:\t\t (Selección) [OBLIGATORIO] Opciones: Maniobra de Heimlich (evitar asfixia), Reanimación Cardiopulmonar (RCP), Respiración boca a boca o de salvamento, Torniquete / compresión de hemorragias, Traqueotomía\n- el_modus_operandi_ha_sido: El modus operandi ha sido: (Selección) [OBLIGATORIO] Opciones: Desconocido, Alicates / Elementos de corte, Gancho desacoplador, Imanes, Manipulación manual / carterista / tirón de bolso, Objeto contundente, Objeto / instrumento punzante, Huida salida de emergencia, Arma blanca, Arma de fuego\n- se_ha_utilizado_algun_medio_de_ocultacion: ¿Se ha utilizado algún medio de ocultación? (Sí/No) Opciones: Sí, No\n- ha_sido_detectado_mediante: Ha sido detectado mediante: (Selección) Opciones: CCTV, Centro de Control, Control Visual, Sistemas Anti-hurto / RFID, Aviso de terceras personas\n- ha_sido_detectado_por: Ha sido detectado por: (Selección) [OBLIGATORIO] Opciones: Personal de Prosegur, Personal del Cliente, Personal Colaborador Externo, Personal Ajeno / Terceras Personas\n- el_medio_de_ocultacion_utilizado: El medio de ocultación utilizado: (Selección) [OBLIGATORIO] Opciones: Bandolera / Mochila / bolso, Bolsa de establecimiento comercial, Bolso forrado de aluminio, Carro de bebé, Carro de la compra, Entre pertenencias, Caja regalo\n- si_quien_lo_ha_detectado_es_personal_del_cliente_indica_quie: Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo): (Texto libre)\n- se_han_avisado_a_las_asistencias: ¿Se han avisado a las asistencias? (Sí/No) [OBLIGATORIO] Opciones: Sí, No\n- se_ha_avisado_al_cgo: ¿Se ha avisado al CGO? (Sí/No) Opciones: Sí, No\n- se_ha_informado_al_cliente: ¿Se ha informado al cliente? (Sí/No) Opciones: Sí, No\n- asistencias: Asistencias: (Selección) [OBLIGATORIO] Opciones: Asistencia sanitaria, Bomberos, Ertzaintza, Guardia Civil, Mossos d'esquadra, Policía Local, Policía Nacional, Policía Foral de Navarra\n- hora_de_llegada_de_las_asistencias: Hora de llegada de las asistencias: (Fecha/Hora) [OBLIGATORIO]\n- si_se_ha_informado_a_personal_del_cliente_indica_a_quien_pue: Si se ha informado  a personal del cliente, indica a quién (puesto o cargo): (Texto libre)\n- se_efectua_denuncia: ¿Se efectúa denuncia? (Sí/No) [OBLIGATORIO] Opciones: Sí, No\n- resultado: Resultado (Selección) [OBLIGATORIO] Opciones: Abona el producto y abandona la instalación, A disposición de FFCCS, Desalojo del autor/autores, Huida con recuperación de artículo/os, Huida sin recuperación de artículo/os\n- observaciones: Observaciones: (Texto libre)\n- medidas_adoptadas: Medidas adoptadas: (Texto libre)\n- quien_interpone_la_denuncia:  ¿Quién interpone la denuncia? (Selección) [OBLIGATORIO] Opciones: Personal Prosegur, El cliente/establecimiento, Terceras personas\n- denuncia_por: Denuncia por: (Selección) [OBLIGATORIO] Opciones: Robo, Hurto, Agresión verbal, amenazas, Agresión física, Estafa, Daños\n- denuncia_efectuada_en: Denuncia efectuada en: (Selección) Opciones: El establecimiento / centro / instalación, Dependencias Policiales \n- nº_de_la_denuncia: Nº de la denuncia: (Texto libre)\n- citacion_para_juicio_rapido: ¿Citación para juicio rápido? (Sí/No) Opciones: Sí, No\n- indicanos_en_que_dependencia: Indicanos en que dependencia (Selección) [OBLIGATORIO] Opciones: Puesto de la Guardia Civil, Comisaría de la Policía Nacional, Comisaría de la Ertzaintza, Comisaria de los Mossos d'Esquadra , Comisaría de la Policía Foral, Comisaría de la Policía Local/Municipal, Juzgado\n- fecha_hora_llegada_a_las_dependecias: Fecha Hora llegada a las dependecias (Fecha/Hora)\n- fecha_hora_salida_de_las_depenedencias: Fecha Hora salida de las depenedencias (Fecha/Hora)\n- fecha_y_hora_para_la_celebracion_del_juicio_rapido: Fecha y hora para la celebración del juicio rápido: (Fecha/Hora)\n\nReglas:\n- Para campos de selección, usa el texto EXACTO de la opción\n- Para campos múltiples, separa valores con \" | \"\n- Para fecha/hora, usa formato ISO 8601 (YYYY-MM-DDTHH:mm:ss)\n- Para números, solo el valor numérico como string\n- Si un campo no fue mencionado, omítelo (no pongas null ni vacío)\n- Incluye deducciones implícitas (ej: \"llamamos a la policía\" → asistencias = \"Sí\")",
+        "input": "transcript",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "cuando_ha_ocurrido": {
+              "type": "string",
+              "description": "¿Cuándo ha ocurrido?"
+            },
+            "donde_ha_ocurrido": {
+              "type": "string",
+              "description": "¿Dónde ha ocurrido?",
+              "enum": [
+                "Almacén",
+                "Aparcamiento",
+                "Aseos",
+                "Zona de Acceso Público",
+                "Zona de Oficinas",
+                "Zona Restringida",
+                "Zona exterior / fachadas",
+                "Zona cubiertas / azotea"
+              ]
+            },
+            "se_ha_visto_afectado": {
+              "type": "string",
+              "description": "Se ha visto afectado:",
+              "enum": [
+                "El Cliente",
+                "Personal Ajeno / Terceras Personas",
+                "Personal colaborador Externo",
+                "Personal del Cliente",
+                "Personal de Prosegur"
+              ]
+            },
+            "se_ha_sustraido": {
+              "type": "string",
+              "description": "Se ha sustraído:",
+              "enum": [
+                "Bienes del cliente (material, producto, etc.)",
+                "Bienes/Smartphone, tablet/efectos personales",
+                "Dinero / cartera / bolso",
+                "Vehículo"
+              ]
+            },
+            "importe_de_los_productos_intervenidos": {
+              "type": "string",
+              "description": "Importe de los productos intervenidos:"
+            },
+            "ha_habido_consecuencias_sobre_personas_agresion_alteracion_d": {
+              "type": "string",
+              "description": "¿Ha habido consecuencias sobre personas? (agresión / alteración del estado de la salud)",
+              "enum": [
+                "Sí",
+                "No"
+              ]
+            },
+            "tenemos_informacion_sobre_el_los_autores": {
+              "type": "string",
+              "description": "¿Tenemos información sobre el /los autor/es?",
+              "enum": [
+                "Sí",
+                "No, sin información"
+              ]
+            },
+            "si_el_afectado_es_personal_del_cliente_indica_quien_puesto_o": {
+              "type": "string",
+              "description": "Si el afectado es personal del cliente, indica quién (puesto o cargo):"
+            },
+            "que_tipo_de_producto": {
+              "type": "string",
+              "description": "Qué tipo de producto.",
+              "enum": [
+                "Productos de papelería e imprenta",
+                "Herramientas",
+                "Pequeño material informático",
+                "Medicamentos, productos sanitarios",
+                "Papel higiénico",
+                "Productos de limpieza"
+              ]
+            },
+            "numero_de_productos": {
+              "type": "string",
+              "description": "Número de productos:"
+            },
+            "referencia_de_los_productos": {
+              "type": "string",
+              "description": "Referencia de los productos:"
+            },
+            "consecuencias_de_la_agresion": {
+              "type": "string",
+              "description": "Consecuencias de la agresión:",
+              "enum": [
+                "Sin lesiones aparentes",
+                "Con lesiones aparentes (sangrado, dificultad al moverse, etc.)",
+                "Alteración del estado de la salud (ansiedad, infarto, mareos, desorientación, etc.)",
+                "Pérdida de consciencia / desfallecimiento",
+                "Fallecimiento"
+              ]
+            },
+            "has_tenido_que_realizar_alguna_maniobra_de_primeros_auxilios": {
+              "type": "string",
+              "description": "¿Has tenido que realizar alguna maniobra de primeros auxilios?",
+              "enum": [
+                "Sí",
+                "No"
+              ]
+            },
+            "si_has_tenido_que_realizar_alguna_maniobra_de_primeros_auxil": {
+              "type": "string",
+              "description": "Si has tenido que realizar alguna maniobra de primeros auxilios, indica cual:\t\t",
+              "enum": [
+                "Maniobra de Heimlich (evitar asfixia)",
+                "Reanimación Cardiopulmonar (RCP)",
+                "Respiración boca a boca o de salvamento",
+                "Torniquete / compresión de hemorragias",
+                "Traqueotomía"
+              ]
+            },
+            "el_modus_operandi_ha_sido": {
+              "type": "string",
+              "description": "El modus operandi ha sido:",
+              "enum": [
+                "Desconocido",
+                "Alicates / Elementos de corte",
+                "Gancho desacoplador",
+                "Imanes",
+                "Manipulación manual / carterista / tirón de bolso",
+                "Objeto contundente",
+                "Objeto / instrumento punzante",
+                "Huida salida de emergencia",
+                "Arma blanca",
+                "Arma de fuego"
+              ]
+            },
+            "se_ha_utilizado_algun_medio_de_ocultacion": {
+              "type": "string",
+              "description": "¿Se ha utilizado algún medio de ocultación?",
+              "enum": [
+                "Sí",
+                "No"
+              ]
+            },
+            "ha_sido_detectado_mediante": {
+              "type": "string",
+              "description": "Ha sido detectado mediante:",
+              "enum": [
+                "CCTV",
+                "Centro de Control",
+                "Control Visual",
+                "Sistemas Anti-hurto / RFID",
+                "Aviso de terceras personas"
+              ]
+            },
+            "ha_sido_detectado_por": {
+              "type": "string",
+              "description": "Ha sido detectado por:",
+              "enum": [
+                "Personal de Prosegur",
+                "Personal del Cliente",
+                "Personal Colaborador Externo",
+                "Personal Ajeno / Terceras Personas"
+              ]
+            },
+            "el_medio_de_ocultacion_utilizado": {
+              "type": "string",
+              "description": "El medio de ocultación utilizado:",
+              "enum": [
+                "Bandolera / Mochila / bolso",
+                "Bolsa de establecimiento comercial",
+                "Bolso forrado de aluminio",
+                "Carro de bebé",
+                "Carro de la compra",
+                "Entre pertenencias",
+                "Caja regalo"
+              ]
+            },
+            "si_quien_lo_ha_detectado_es_personal_del_cliente_indica_quie": {
+              "type": "string",
+              "description": "Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):"
+            },
+            "se_han_avisado_a_las_asistencias": {
+              "type": "string",
+              "description": "¿Se han avisado a las asistencias?",
+              "enum": [
+                "Sí",
+                "No"
+              ]
+            },
+            "se_ha_avisado_al_cgo": {
+              "type": "string",
+              "description": "¿Se ha avisado al CGO?",
+              "enum": [
+                "Sí",
+                "No"
+              ]
+            },
+            "se_ha_informado_al_cliente": {
+              "type": "string",
+              "description": "¿Se ha informado al cliente?",
+              "enum": [
+                "Sí",
+                "No"
+              ]
+            },
+            "asistencias": {
+              "type": "string",
+              "description": "Asistencias:",
+              "enum": [
+                "Asistencia sanitaria",
+                "Bomberos",
+                "Ertzaintza",
+                "Guardia Civil",
+                "Mossos d'esquadra",
+                "Policía Local",
+                "Policía Nacional",
+                "Policía Foral de Navarra"
+              ]
+            },
+            "hora_de_llegada_de_las_asistencias": {
+              "type": "string",
+              "description": "Hora de llegada de las asistencias:"
+            },
+            "si_se_ha_informado_a_personal_del_cliente_indica_a_quien_pue": {
+              "type": "string",
+              "description": "Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):"
+            },
+            "se_efectua_denuncia": {
+              "type": "string",
+              "description": "¿Se efectúa denuncia?",
+              "enum": [
+                "Sí",
+                "No"
+              ]
+            },
+            "resultado": {
+              "type": "string",
+              "description": "Resultado",
+              "enum": [
+                "Abona el producto y abandona la instalación",
+                "A disposición de FFCCS",
+                "Desalojo del autor/autores",
+                "Huida con recuperación de artículo/os",
+                "Huida sin recuperación de artículo/os"
+              ]
+            },
+            "observaciones": {
+              "type": "string",
+              "description": "Observaciones:"
+            },
+            "medidas_adoptadas": {
+              "type": "string",
+              "description": "Medidas adoptadas:"
+            },
+            "quien_interpone_la_denuncia": {
+              "type": "string",
+              "description": " ¿Quién interpone la denuncia?",
+              "enum": [
+                "Personal Prosegur",
+                "El cliente/establecimiento",
+                "Terceras personas"
+              ]
+            },
+            "denuncia_por": {
+              "type": "string",
+              "description": "Denuncia por:",
+              "enum": [
+                "Robo",
+                "Hurto",
+                "Agresión verbal, amenazas",
+                "Agresión física",
+                "Estafa",
+                "Daños"
+              ]
+            },
+            "denuncia_efectuada_en": {
+              "type": "string",
+              "description": "Denuncia efectuada en:",
+              "enum": [
+                "El establecimiento / centro / instalación",
+                "Dependencias Policiales "
+              ]
+            },
+            "nº_de_la_denuncia": {
+              "type": "string",
+              "description": "Nº de la denuncia:"
+            },
+            "citacion_para_juicio_rapido": {
+              "type": "string",
+              "description": "¿Citación para juicio rápido?",
+              "enum": [
+                "Sí",
+                "No"
+              ]
+            },
+            "indicanos_en_que_dependencia": {
+              "type": "string",
+              "description": "Indicanos en que dependencia",
+              "enum": [
+                "Puesto de la Guardia Civil",
+                "Comisaría de la Policía Nacional",
+                "Comisaría de la Ertzaintza",
+                "Comisaria de los Mossos d'Esquadra ",
+                "Comisaría de la Policía Foral",
+                "Comisaría de la Policía Local/Municipal",
+                "Juzgado"
+              ]
+            },
+            "fecha_hora_llegada_a_las_dependecias": {
+              "type": "string",
+              "description": "Fecha Hora llegada a las dependecias"
+            },
+            "fecha_hora_salida_de_las_depenedencias": {
+              "type": "string",
+              "description": "Fecha Hora salida de las depenedencias"
+            },
+            "fecha_y_hora_para_la_celebracion_del_juicio_rapido": {
+              "type": "string",
+              "description": "Fecha y hora para la celebración del juicio rápido:"
+            }
+          }
+        }
+      },
+      "staging_configuration": {},
+      "development_configuration": {},
+      "retry_configuration": {},
+      "outbound_retry_configuration": {},
+      "node_component_id": null,
+      "node_component_input_mapping": [],
+      "node_output": null
+    },
+    {
+      "id": "d671fe33-c717-4e59-a9b9-c86dcdddb810",
+      "persistent_id": "3d6563f0-f6c7-4324-bce1-4cef482847e8",
+      "slug": "qul1m73ydiu4",
+      "org_id": "PLACEHOLDER_ORG_ID",
+      "use_case_id": "52dfdb62-10bc-4a85-8143-6b37791dcd91",
+      "parent_id": "17207137-b2b2-4998-9636-4d7e9654d271",
+      "version_id": "3e2f7e5e-6dc3-40a6-aef9-5c84f493a80a",
+      "type": "action",
+      "name": "Enviar a Backend",
+      "is_complete": false,
+      "node_output_id": null,
+      "sort_index": 0,
+      "timestamp": "2026-02-25T20:30:26.634Z",
+      "is_deleted": false,
+      "configuration": {
+        "url": "http://localhost:3000/api/webhooks/happyrobot/complete",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "form_id": "hurto-generico",
+          "incident_family": "Hurto",
+          "incident_type": "Hurto Generico",
+          "extracted_data": "{{extracted_data}}",
+          "transcript": "{{transcript}}"
+        }
+      },
+      "staging_configuration": {},
+      "development_configuration": {},
+      "retry_configuration": {},
+      "outbound_retry_configuration": {},
+      "node_component_id": null,
+      "node_component_input_mapping": [],
+      "node_output": null
+    }
+  ],
+  "edges": [],
+  "workflowVersion": 2
+}

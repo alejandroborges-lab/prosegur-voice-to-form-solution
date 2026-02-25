@@ -1,0 +1,842 @@
+[
+    {
+        "SectionGuid": "9d79ed29-aa4b-4911-949b-e973d5337d57",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "98938461-d206-4397-8cfc-552f43f94e0a",
+                "Question": "¿Cuándo ha ocurrido?",
+                "FieldType": "1",
+                "Mandatory": true
+            },
+            {
+                "FieldGuid": "d53be4e8-1101-495a-9e93-a56069455748",
+                "Question": "¿En qué planta ha sucedido/detectado?",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Planta 0"
+                    },
+                    {
+                        "Value": "Planta 1"
+                    },
+                    {
+                        "Value": "Planta 2"
+                    },
+                    {
+                        "Value": "Planta 3"
+                    },
+                    {
+                        "Value": "Planta 4"
+                    },
+                    {
+                        "Value": "Planta 5"
+                    },
+                    {
+                        "Value": "Sótano - 1"
+                    },
+                    {
+                        "Value": "Sótano -2"
+                    },
+                    {
+                        "Value": "Sótano -3"
+                    },
+                    {
+                        "Value": "Sótano -4"
+                    },
+                    {
+                        "Value": "Exterior"
+                    },
+                    {
+                        "Value": "Cubiertas"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "36489222-5735-42bf-91ee-0d1a057cb1f2",
+                "Question": "¿En qué zona?",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Locales de Alimentación"
+                    },
+                    {
+                        "Value": "Locales de Calzado y Complementos"
+                    },
+                    {
+                        "Value": "Locales de Cultura, Multimedia y  Tecnología"
+                    },
+                    {
+                        "Value": "Locales de Decoración, Hogar"
+                    },
+                    {
+                        "Value": "Locales de Juguetes"
+                    },
+                    {
+                        "Value": "Locales de Moda "
+                    },
+                    {
+                        "Value": "Locales de Moda Deportiva"
+                    },
+                    {
+                        "Value": "Locales de Ocio"
+                    },
+                    {
+                        "Value": "Locales de Restauración"
+                    },
+                    {
+                        "Value": "Locales de Salud, Belleza, Imagen Personal"
+                    },
+                    {
+                        "Value": "Locales de Servicios"
+                    },
+                    {
+                        "Value": "Zonas comunes"
+                    },
+                    {
+                        "Value": "Zona Aseos"
+                    },
+                    {
+                        "Value": "Zona Oficinas"
+                    },
+                    {
+                        "Value": "Zona exterior"
+                    },
+                    {
+                        "Value": "Zona SAS"
+                    },
+                    {
+                        "Value": "Zona Aparcamiento"
+                    },
+                    {
+                        "Value": "Salas Técnicas"
+                    },
+                    {
+                        "Value": "Zona cubiertas/azotea"
+                    },
+                    {
+                        "Value": "Zona residuos"
+                    },
+                    {
+                        "Value": "Zona muelles"
+                    },
+                    {
+                        "Value": "Vías de evacuación /Salidas de emergencia"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "25800da0-02c0-4f3b-805b-60eef30d1ffe",
+                "Question": "Nº de local y Rótulo de Local o Zona",
+                "FieldType": "4",
+                "Mandatory": true
+            }
+        ]
+    },
+    {
+        "SectionGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "53a8dcc6-a970-4c0a-8a55-7d585630d3a4",
+                "Question": "Se ha visto afectado:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "El Cliente"
+                    },
+                    {
+                        "Value": "Personal Ajeno / Terceras Personas"
+                    },
+                    {
+                        "Value": "Personal colaborador Externo"
+                    },
+                    {
+                        "Value": "Personal del Cliente",
+                        "ForkGuid": "deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b"
+                    },
+                    {
+                        "Value": "Personal de Prosegur"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "b8a53238-ae65-4a21-97cc-127b129b1492",
+                "Question": "Se ha sustraído:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Bienes del cliente (material, producto, etc.)"
+                    },
+                    {
+                        "Value": "Bienes/Smartphone, tablet/efectos personales"
+                    },
+                    {
+                        "Value": "Dinero / cartera / bolso"
+                    },
+                    {
+                        "Value": "Material de trabajo"
+                    },
+                    {
+                        "Value": "Vehículo"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "370c59c4-7365-4f60-88ce-e4a1b5625f9a",
+                "Question": "Importe aproximado de lo sustraído:",
+                "FieldType": "6",
+                "Mandatory": true
+            },
+            {
+                "FieldGuid": "e585ca27-3691-4a17-b04a-2cf181fbe474",
+                "Question": "¿Ha habido consecuencias sobre personas? (agresión / alteración del estado de la salud)",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "2e587f4f-f137-4842-85e2-cffcd8698d7b"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "fc731b33-b4c7-4e1e-bfc1-c2adcae2a939",
+                "Question": "¿Tenemos información sobre el /los autor/es?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "ce80cd88-56e1-4d10-9304-064245eab808"
+                    },
+                    {
+                        "Value": "No, sin información"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "deee9cc6-92e1-4fd6-b0e1-e1588afc1a9b",
+        "SectionParentGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "0d2f6d34-3bf8-4b4c-9861-008e596bce4d",
+                "Question": "Si el afectado es personal del cliente, indica quién (puesto o cargo):",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "33f3b12c-ba4c-4225-b081-c4bc4ab18915",
+        "SectionParentGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "29b88f53-aae7-45ab-924d-90d1efca5e6d",
+                "Question": "Sección-Familia-Universo:",
+                "FieldType": "2",
+                "Options": [
+                    {
+                        "Value": "A"
+                    },
+                    {
+                        "Value": "B"
+                    },
+                    {
+                        "Value": "C"
+                    },
+                    {
+                        "Value": "D"
+                    },
+                    {
+                        "Value": "E"
+                    },
+                    {
+                        "Value": "F"
+                    },
+                    {
+                        "Value": "G"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "d94adde1-ec06-4fc8-b57a-2d3fb37d308e",
+                "Question": "Número de productos:",
+                "FieldType": "6"
+            },
+            {
+                "FieldGuid": "51561c92-572f-4b4b-9e32-84d569cfa7b1",
+                "Question": "Referencia de los productos:",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "2e587f4f-f137-4842-85e2-cffcd8698d7b",
+        "SectionParentGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "9ad9bff7-5efc-4cea-a2d8-2b47990ca462",
+                "Question": "Consecuencias de la agresión:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Sin lesiones aparentes"
+                    },
+                    {
+                        "Value": "Con lesiones aparentes (sangrado, dificultad al moverse, etc.)"
+                    },
+                    {
+                        "Value": "Alteración del estado de la salud (ansiedad, infarto, mareos, desorientación, etc.)"
+                    },
+                    {
+                        "Value": "Pérdida de consciencia / desfallecimiento"
+                    },
+                    {
+                        "Value": "Fallecimiento"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "580558df-ab05-450c-a487-be6819bca543",
+                "Question": "¿Has tenido que realizar alguna maniobra de primeros auxilios?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "6c08bee6-edd9-42b4-8ef8-df70c7eeb21b"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "ce80cd88-56e1-4d10-9304-064245eab808",
+        "SectionParentGuid": "5b56d918-ee76-405e-b5bb-901ccd1ab109"
+    },
+    {
+        "SectionGuid": "6c08bee6-edd9-42b4-8ef8-df70c7eeb21b",
+        "SectionParentGuid": "2e587f4f-f137-4842-85e2-cffcd8698d7b",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "8630688e-f6bb-47b8-9717-dd32f7eab13d",
+                "Question": "Si has tenido que realizar alguna maniobra de primeros auxilios, indica cual:\t\t",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Maniobra de Heimlich (evitar asfixia)"
+                    },
+                    {
+                        "Value": "Reanimación Cardiopulmonar (RCP)"
+                    },
+                    {
+                        "Value": "Respiración boca a boca o de salvamento"
+                    },
+                    {
+                        "Value": "Torniquete / compresión de hemorragias"
+                    },
+                    {
+                        "Value": "Traqueotomía"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "c7189a34-4be7-4e55-9e98-54c18febb9b6",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "aae9b07a-9c10-4dbf-acfa-4ec180f0b7d1",
+                "Question": "El modus operandi ha sido:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Desconocido"
+                    },
+                    {
+                        "Value": "Alicates / Elementos de corte"
+                    },
+                    {
+                        "Value": "Gancho desacoplador"
+                    },
+                    {
+                        "Value": "Imanes"
+                    },
+                    {
+                        "Value": "Manipulación manual / carterista / tirón de bolso"
+                    },
+                    {
+                        "Value": "Objeto contundente"
+                    },
+                    {
+                        "Value": "Objeto / instrumento punzante"
+                    },
+                    {
+                        "Value": "Huida salida de emergencia"
+                    },
+                    {
+                        "Value": "Arma blanca"
+                    },
+                    {
+                        "Value": "Arma de fuego"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "43fe0a67-0655-40ac-930b-f187048d5826",
+                "Question": "¿Se ha utilizado algún medio de ocultación?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "7c8635c7-01d2-47a9-8aa7-1b785990eed3"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "248a083f-19ce-4f9e-99f5-21d13c608824",
+                "Question": "Ha sido detectado mediante:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "CCTV"
+                    },
+                    {
+                        "Value": "Centro de Control"
+                    },
+                    {
+                        "Value": "Control Visual"
+                    },
+                    {
+                        "Value": "Sistemas Anti-hurto / RFID"
+                    },
+                    {
+                        "Value": "Aviso de terceras personas"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "51aad9be-cbd5-4444-a83f-9a549a537ef0",
+                "Question": "Ha sido detectado por:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Personal de Prosegur"
+                    },
+                    {
+                        "Value": "Personal del Cliente",
+                        "ForkGuid": "497b0d2f-737f-44e3-8968-dd54755c9a04"
+                    },
+                    {
+                        "Value": "Personal Colaborador Externo"
+                    },
+                    {
+                        "Value": "Personal Ajeno / Terceras Personas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "7c8635c7-01d2-47a9-8aa7-1b785990eed3",
+        "SectionParentGuid": "c7189a34-4be7-4e55-9e98-54c18febb9b6",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "ab07ce37-cc89-4760-9d47-132da3b4ebf1",
+                "Question": "El medio de ocultación utilizado:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Bandolera / Mochila / bolso"
+                    },
+                    {
+                        "Value": "Bolsa de establecimiento comercial"
+                    },
+                    {
+                        "Value": "Bolso forrado de aluminio"
+                    },
+                    {
+                        "Value": "Carro de bebé"
+                    },
+                    {
+                        "Value": "Carro de la compra"
+                    },
+                    {
+                        "Value": "Entre pertenencias"
+                    },
+                    {
+                        "Value": "Caja regalo"
+                    }
+                ],
+                "Multiple": true
+            }
+        ]
+    },
+    {
+        "SectionGuid": "497b0d2f-737f-44e3-8968-dd54755c9a04",
+        "SectionParentGuid": "c7189a34-4be7-4e55-9e98-54c18febb9b6",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "e35d833b-4d15-493a-903e-4560c929495e",
+                "Question": "Si quien lo ha detectado es personal del cliente, indica quién (puesto o cargo):",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "331fb9d3-3a2a-4e27-94f4-78a4f36cda22",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "e5b0bf38-95cc-4b72-9648-b9ad6f4cc388",
+                "Question": "¿Se han avisado a las asistencias?",
+                "FieldType": "3",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "05621dee-ff06-42b4-8d00-3d1c6f431c1c"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "5c19a131-44f6-4250-b092-4a9078d1a067",
+                "Question": "¿Se ha avisado al CGO?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "475d9c61-a982-415c-8549-172645f6c03e",
+                "Question": "¿Se ha informado al cliente?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "494eaea6-c427-4f02-b2ad-3ba55f231cb4"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "05621dee-ff06-42b4-8d00-3d1c6f431c1c",
+        "SectionParentGuid": "331fb9d3-3a2a-4e27-94f4-78a4f36cda22",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "f07c1517-c112-4ae2-87d8-2ae197b3aa56",
+                "Question": "Asistencias:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Asistencia sanitaria"
+                    },
+                    {
+                        "Value": "Bomberos"
+                    },
+                    {
+                        "Value": "Ertzaintza"
+                    },
+                    {
+                        "Value": "Guardia Civil"
+                    },
+                    {
+                        "Value": "Mossos d'esquadra"
+                    },
+                    {
+                        "Value": "Policía Local"
+                    },
+                    {
+                        "Value": "Policía Nacional"
+                    },
+                    {
+                        "Value": "Policía Foral de Navarra"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "416f4f98-f805-422d-9caf-8d0890006869",
+                "Question": "Hora de llegada de las asistencias:",
+                "FieldType": "1",
+                "Mandatory": true
+            }
+        ]
+    },
+    {
+        "SectionGuid": "494eaea6-c427-4f02-b2ad-3ba55f231cb4",
+        "SectionParentGuid": "331fb9d3-3a2a-4e27-94f4-78a4f36cda22",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "e35d833b-4d15-493a-903e-4560c929495e",
+                "Question": "Si se ha informado  a personal del cliente, indica a quién (puesto o cargo):",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "3599c5ec-690d-4198-ac02-82f0c440a9bf",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "fbaa991c-59c3-4fa1-b527-3be7bfbd7505",
+                "Question": "¿Se efectúa denuncia?",
+                "FieldType": "3",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "1683931a-4f56-4765-be1f-89100eed60ed",
+                "Question": "Resultado:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Abona el producto y abandona la instalación"
+                    },
+                    {
+                        "Value": "A disposición de FFCCS"
+                    },
+                    {
+                        "Value": "Desalojo del autor/autores"
+                    },
+                    {
+                        "Value": "Huida con recuperación de artículo/os"
+                    },
+                    {
+                        "Value": "Huida sin recuperación de artículo/os"
+                    },
+                    {
+                        "Value": "Detención"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "e97e5e66-b9b3-4a3c-82d6-f93b592cba7e",
+                "Question": "Observaciones:",
+                "FieldType": "4"
+            },
+            {
+                "FieldGuid": "8f948eb3-9516-4e20-852d-e1216ed6f100",
+                "Question": "Medidas adoptadas:",
+                "FieldType": "4"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1",
+        "SectionParentGuid": "3599c5ec-690d-4198-ac02-82f0c440a9bf",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "276bdc82-b33f-4edd-9993-96a0066f78e1",
+                "Question": " ¿Quién interpone la denuncia?",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Personal Prosegur"
+                    },
+                    {
+                        "Value": "El cliente/establecimiento"
+                    },
+                    {
+                        "Value": "Terceras personas"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "f09da730-7f12-4693-9e1d-613f64c7bd03",
+                "Question": "Denuncia por:",
+                "FieldType": "2",
+                "Mandatory": true,
+                "Options": [
+                    {
+                        "Value": "Robo"
+                    },
+                    {
+                        "Value": "Hurto"
+                    },
+                    {
+                        "Value": "Agresión verbal, amenazas"
+                    },
+                    {
+                        "Value": "Agresión física"
+                    },
+                    {
+                        "Value": "Estafa"
+                    },
+                    {
+                        "Value": "Daños"
+                    }
+                ],
+                "Multiple": true
+            },
+            {
+                "FieldGuid": "d38ed82f-c889-4db4-90e6-31a2bd476278",
+                "Question": "Denuncia efectuada en:",
+                "FieldType": "2",
+                "Options": [
+                    {
+                        "Value": "El establecimiento / centro / instalación"
+                    },
+                    {
+                        "Value": "Dependencias Policiales ",
+                        "ForkGuid": "674a6d65-fbd9-4069-a465-f0fdc0d7e7d7"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "addbddb7-1074-4940-8c00-d11af92317af",
+                "Question": "Nº de la denuncia:",
+                "FieldType": "4"
+            },
+            {
+                "FieldGuid": "a82ab4a5-0246-48a4-9677-4b4fa684e7e5",
+                "Question": "¿Citación para juicio rápido?",
+                "FieldType": "3",
+                "Options": [
+                    {
+                        "Value": "Sí",
+                        "ForkGuid": "500dd646-025f-4cba-8219-d39fc8e87b04"
+                    },
+                    {
+                        "Value": "No"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "SectionGuid": "500dd646-025f-4cba-8219-d39fc8e87b04",
+        "SectionParentGuid": "7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "fdd7c833-2322-4cf2-bb3a-93d93176a7a9",
+                "Question": "Fecha y hora para la celebración del juicio rápido:",
+                "FieldType": "1"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "674a6d65-fbd9-4069-a465-f0fdc0d7e7d7",
+        "SectionParentGuid": "7f26541c-a35a-4a4a-a97e-a6eb3f4ce6d1",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "d37b2e93-a50f-426a-8af4-3abfadc1dca6",
+                "Question": "Dependencia Policial",
+                "FieldType": "2",
+                "Options": [
+                    {
+                        "Value": "Puesto de la Guardia Civil"
+                    },
+                    {
+                        "Value": "Comisaría de la Policía Nacional"
+                    },
+                    {
+                        "Value": "Comisaría de la Ertzaintza"
+                    },
+                    {
+                        "Value": "Comisaria de los Mossos d'Esquadra "
+                    },
+                    {
+                        "Value": "Comisaría de la Policía Foral"
+                    },
+                    {
+                        "Value": "Comisaría de la Policía Local/Municipal"
+                    },
+                    {
+                        "Value": "Juzgado"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "83704f3d-0dfc-4c3f-b349-8f9367dc955f",
+                "Question": "Denuncia interpuesta en calidad de:",
+                "FieldType": "2",
+                "Options": [
+                    {
+                        "Value": "Denunciante"
+                    },
+                    {
+                        "Value": "Denunciado "
+                    },
+                    {
+                        "Value": "Denunciante / Denunciado"
+                    },
+                    {
+                        "Value": "Testigo"
+                    },
+                    {
+                        "Value": "Representante Legal"
+                    },
+                    {
+                        "Value": "Representante Legal y testigo"
+                    }
+                ]
+            },
+            {
+                "FieldGuid": "4f3009e9-b17d-4201-8685-678e6fed0774",
+                "Question": "Fecha Hora llegada a la comisaría",
+                "FieldType": "1"
+            },
+            {
+                "FieldGuid": "b4ee98f9-3d7d-4dea-b3d0-6050f7089f69",
+                "Question": "Fecha Hora salida comisaria",
+                "FieldType": "1"
+            }
+        ]
+    },
+    {
+        "SectionGuid": "8fdef39d-ccc9-46a7-b625-8f0f4f88664e",
+        "DForm_Fields": [
+            {
+                "FieldGuid": "b1d059c6-b00c-433e-bdc5-4d6afab21d6f",
+                "Question": "Añade fotografías / adjuntos para completar el informe",
+                "FieldType": "5",
+                "Mandatory": true
+            }
+        ]
+    }
+]
