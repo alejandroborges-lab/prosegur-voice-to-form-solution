@@ -79,7 +79,7 @@ export default function TestPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Test de Conversacion</h1>
+      <h1 className="text-2xl font-bold mb-6">Test de Agente de Voz</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Input */}
@@ -100,13 +100,13 @@ export default function TestPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Narracion del vigilante</label>
+            <label className="block text-sm font-medium mb-1">Narracion del vigilante (simula transcripcion de voz)</label>
             <textarea
               value={narration}
               onChange={(e) => setNarration(e.target.value)}
               rows={8}
               className="w-full border rounded-lg px-3 py-2 text-sm"
-              placeholder="Escribe la narracion del vigilante aqui..."
+              placeholder="Escribe aqui lo que diria el vigilante por telefono..."
             />
           </div>
 

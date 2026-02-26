@@ -81,9 +81,9 @@ export default function DashboardPage() {
               href="/test"
               className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors"
             >
-              <div className="font-medium">Probar Conversacion</div>
+              <div className="font-medium">Probar Agente de Voz</div>
               <div className="text-sm text-gray-500">
-                Simula una conversacion con el agente usando datos de ejemplo
+                Simula una conversacion de voz con el agente usando narraciones de ejemplo
               </div>
             </a>
             <a

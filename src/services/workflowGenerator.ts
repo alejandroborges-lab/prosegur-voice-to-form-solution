@@ -63,18 +63,18 @@ const AI_AGENT_INTEGRATION = {
   agent_specific: true,
 };
 
-// Outbound Voice Agent event is used as the structural template.
-// After importing, change the agent channel to "Chatbot" in the
-// HappyRobot UI (Settings → Agent → Channel).
+// Inbound Voice Agent event — guards call in via webcall.
+// Uses the Outbound Voice Agent event_id as structural template
+// (the actual channel/direction is configured in HappyRobot UI).
 const AGENT_EVENT = {
   id: '0192e5dc-090a-7f57-87a0-76308ed6ef28',
-  name: 'Outbound Voice Agent',
+  name: 'Inbound Voice Agent',
   integration_id: AI_AGENT_INTEGRATION.id,
   type: 1,
-  description: 'Create outbound call',
+  description: 'Handle inbound voice call',
   is_instant: false,
   has_cron_trigger: false,
-  activity_name: 'OutboundVoiceAgent',
+  activity_name: 'InboundVoiceAgent',
   task_queue: '',
   timeout_seconds: 600,
   retry_policy: {
@@ -273,7 +273,7 @@ interface PromptNode extends BaseNode {
   prompt_md: string;
   initial_message: ParagraphBlock[];
   model: { type: string; static: { id: string; name: string } };
-  inbound_prompt: ParagraphBlock[] | null;
+  inbound_prompt: PromptBlock[] | null;
   inbound_prompt_md: string | null;
   receiving_initial_message: ParagraphBlock[] | null;
 }
@@ -364,11 +364,15 @@ export class WorkflowGenerator {
     const statusTool = this.createStatusTool(promptNode.id);
     nodes.push(statusTool);
 
-    // Node 5: Tool "finalizar_formulario" (tool, child of prompt)
+    // Node 5: Tool "actualizar_formulario" (tool, child of prompt — real-time updates)
+    const updateTool = this.createUpdateTool(promptNode.id);
+    nodes.push(updateTool);
+
+    // Node 6: Tool "finalizar_formulario" (tool, child of prompt)
     const submitTool = this.createSubmitTool(promptNode.id, form);
     nodes.push(submitTool);
 
-    // Node 6: AI Extract (action, child of agent, sort 0)
+    // Node 7: AI Extract (action, child of agent, sort 0)
     const extractNode = this.createExtractNode(
       agentNode.id,
       agentNode.persistent_id,
@@ -510,9 +514,28 @@ export class WorkflowGenerator {
               static: { id: 'es', name: 'Spanish' },
             },
           ],
+          voices: [
+            {
+              type: 'static',
+              static: { id: 'pablo-el', name: 'Pablo' },
+            },
+          ],
         },
-        transcription_context: [this.makeParagraph('')],
-        keyterms: [],
+        voice_speed: 1.0,
+        voice_gain: 1.0,
+        transcription_context: [
+          this.makeParagraph(
+            'Conversación con un vigilante de seguridad de Prosegur reportando una incidencia de hurto. Puede mencionar nombres de tiendas, zonas del centro comercial, tipos de productos, y terminología policial española.'
+          ),
+        ],
+        keyterms: [
+          [this.makeParagraph('Prosegur')],
+          [this.makeParagraph('CCTV')],
+          [this.makeParagraph('FFCCS')],
+          [this.makeParagraph('CGO')],
+        ],
+        denoised_stt: true,
+        numerals: true,
       },
       staging_configuration: {},
       development_configuration: {},
@@ -558,16 +581,17 @@ export class WorkflowGenerator {
       node_component_input_mapping: [],
       node_output: null,
       // Prompt-specific fields
+      // For inbound voice: prompt goes in inbound_prompt, greeting in receiving_initial_message
       prompt: promptBlocks,
       prompt_md: prompt.agentPrompt,
-      initial_message: [this.makeParagraph(prompt.initialMessage)],
+      initial_message: [this.makeParagraph('')],
       model: {
         type: 'static',
-        static: { id: 'claude-sonnet-4-5-20250514', name: 'Claude Sonnet 4.5' },
+        static: { id: 'gpt-4.1', name: 'GPT-4.1' },
       },
-      inbound_prompt: null,
-      inbound_prompt_md: null,
-      receiving_initial_message: null,
+      inbound_prompt: promptBlocks,
+      inbound_prompt_md: prompt.agentPrompt,
+      receiving_initial_message: [this.makeParagraph(prompt.initialMessage)],
     };
   }
 
@@ -614,6 +638,65 @@ export class WorkflowGenerator {
             'Me faltan algunos datos. Déjame preguntarte un par de cosas más.',
         },
         parameters: [],
+        tool_index_id: `tool:${persistentId}`,
+        tool_index_hash: this.generateRandomHex(64),
+      },
+    };
+  }
+
+  private createUpdateTool(promptNodeId: string): ToolNode {
+    const persistentId = uuidv4();
+
+    return {
+      id: uuidv4(),
+      persistent_id: persistentId,
+      slug: this.generateSlug(),
+      org_id: this.orgId,
+      use_case_id: this.useCaseId,
+      parent_id: promptNodeId,
+      version_id: this.versionId,
+      type: 'tool',
+      name: 'actualizar_formulario',
+      is_complete: true,
+      node_output_id: null,
+      sort_index: 0,
+      timestamp: this.timestamp,
+      is_deleted: false,
+      configuration: {},
+      staging_configuration: {},
+      development_configuration: {},
+      retry_configuration: {},
+      outbound_retry_configuration: {},
+      node_component_id: null,
+      node_component_input_mapping: [],
+      node_output: null,
+      function: {
+        description: [
+          this.makeParagraph(
+            'Usa esta herramienta para enviar actualizaciones parciales del formulario en tiempo real mientras conversas con el vigilante. Llámala cada vez que extraigas 2-3 campos nuevos de la conversación, sin esperar a tener todos los datos. Esto permite que el formulario se vaya rellenando en tiempo real.'
+          ),
+        ],
+        message: {
+          type: 'none',
+          description: [
+            this.makeParagraph(
+              'Envía los campos parciales al sistema y continúa la conversación con el vigilante. No informes al vigilante de esta actualización técnica.'
+            ),
+          ],
+          example:
+            'Perfecto, sigo tomando nota. Cuéntame más detalles.',
+        },
+        parameters: [
+          {
+            name: 'campos',
+            example: '{"98938461-d206-4397-8cfc-552f43f94e0a": "2026-02-25T15:30:00", "9d9f3bac-99e5-40dc-bb48-e6e44298e28e": "Aparcamiento"}',
+            description: [
+              this.makeParagraph(
+                'JSON con los campos extraídos hasta el momento. Clave = UID del campo, Valor = valor extraído. Solo incluye campos que tengas confirmados.'
+              ),
+            ],
+          },
+        ],
         tool_index_id: `tool:${persistentId}`,
         tool_index_hash: this.generateRandomHex(64),
       },
@@ -767,7 +850,7 @@ export class WorkflowGenerator {
         json_schema: schemaBlocks,
         model: {
           type: 'static',
-          static: { id: 'claude-sonnet-4-5-20250514', name: 'Claude Sonnet 4.5' },
+          static: { id: 'gpt-4.1', name: 'GPT-4.1' },
         },
       },
       staging_configuration: {},

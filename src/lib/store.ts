@@ -82,6 +82,36 @@ class InMemoryStore {
   }
 
   /**
+   * Merge partial field updates into an existing incident (for real-time updates).
+   * New fields are added; existing fields are updated with new values.
+   */
+  mergeIncidentFields(
+    id: string,
+    newFields: FormFieldValue[],
+    completionPercentage?: number
+  ): Incident | undefined {
+    const incident = this.incidents.get(id);
+    if (!incident) return undefined;
+
+    // Merge: update existing fields, add new ones
+    for (const newField of newFields) {
+      const existingIndex = incident.fields.findIndex((f) => f.uid === newField.uid);
+      if (existingIndex >= 0) {
+        incident.fields[existingIndex] = newField;
+      } else {
+        incident.fields.push(newField);
+      }
+    }
+
+    if (completionPercentage !== undefined) {
+      incident.completionPercentage = completionPercentage;
+    }
+    incident.updatedAt = now();
+
+    return incident;
+  }
+
+  /**
    * Mark an incident as submitted.
    */
   submitIncident(id: string): Incident | undefined {
