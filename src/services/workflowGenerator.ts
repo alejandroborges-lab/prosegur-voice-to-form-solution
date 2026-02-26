@@ -8,7 +8,7 @@
 // ============================================================
 
 import { v4 as uuidv4 } from 'uuid';
-import { ProcessedForm, ProcessedField, FieldType } from '@/types/form';
+import { ProcessedForm } from '@/types/form';
 import { GeneratedPrompt } from './promptGenerator';
 
 // -----------------------------------------------------------
@@ -369,7 +369,7 @@ export class WorkflowGenerator {
     nodes.push(updateTool);
 
     // Node 6: Tool "finalizar_formulario" (tool, child of prompt)
-    const submitTool = this.createSubmitTool(promptNode.id, form);
+    const submitTool = this.createSubmitTool(promptNode.id);
     nodes.push(submitTool);
 
     // Node 7: AI Extract (action, child of agent, sort 0)
@@ -673,7 +673,7 @@ export class WorkflowGenerator {
       function: {
         description: [
           this.makeParagraph(
-            'Usa esta herramienta para enviar actualizaciones parciales del formulario en tiempo real mientras conversas con el vigilante. Llámala cada vez que extraigas 2-3 campos nuevos de la conversación, sin esperar a tener todos los datos. Esto permite que el formulario se vaya rellenando en tiempo real.'
+            'Envía actualizaciones parciales del formulario en tiempo real. Llámala cada 2-3 campos nuevos. SOLO usa el parámetro "campos", NO añadas ningún otro parámetro. Máximo 3 campos por llamada.'
           ),
         ],
         message: {
@@ -703,23 +703,8 @@ export class WorkflowGenerator {
     };
   }
 
-  private createSubmitTool(
-    promptNodeId: string,
-    form: ProcessedForm
-  ): ToolNode {
+  private createSubmitTool(promptNodeId: string): ToolNode {
     const persistentId = uuidv4();
-
-    const parameters: ToolParameter[] = form.allFields
-      .filter((f) => f.fieldType !== FieldType.Attachment)
-      .map((f) => ({
-        name: this.fieldToParamName(f),
-        example: this.getFieldExample(f),
-        description: [
-          this.makeParagraph(
-            `${f.question} (UID: ${f.uid})${f.mandatory ? ' [OBLIGATORIO]' : ''}${f.options.length > 0 ? `. Opciones: ${f.options.map((o) => o.value).join(', ')}` : ''}`
-          ),
-        ],
-      }));
 
     return {
       id: uuidv4(),
@@ -760,7 +745,17 @@ export class WorkflowGenerator {
           example:
             'Perfecto, he enviado los datos al formulario. Puedes revisarlo en la app y completar o corregir lo que necesites antes de enviarlo definitivamente.',
         },
-        parameters,
+        parameters: [
+          {
+            name: 'campos',
+            example: '{"98938461-d206-4397-8cfc-552f43f94e0a": "2026-02-25T15:30:00", "9d9f3bac-99e5-40dc-bb48-e6e44298e28e": "Aparcamiento"}',
+            description: [
+              this.makeParagraph(
+                'JSON con TODOS los campos recopilados del formulario. Clave = UID del campo, Valor = valor extraído. Incluye todos los campos obligatorios y opcionales que hayas podido rellenar.'
+              ),
+            ],
+          },
+        ],
         tool_index_id: `tool:${persistentId}`,
         tool_index_hash: this.generateRandomHex(64),
       },
@@ -1000,38 +995,6 @@ export class WorkflowGenerator {
       type: 'object',
       properties,
     };
-  }
-
-  private fieldToParamName(field: ProcessedField): string {
-    return field.question
-      .replace(/[¿?¡!:.,;()\/]/g, '')
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, '_')
-      .replace(/á/g, 'a')
-      .replace(/é/g, 'e')
-      .replace(/í/g, 'i')
-      .replace(/ó/g, 'o')
-      .replace(/ú/g, 'u')
-      .replace(/ñ/g, 'n')
-      .substring(0, 60);
-  }
-
-  private getFieldExample(field: ProcessedField): string {
-    switch (field.fieldType) {
-      case FieldType.DateTime:
-        return '2026-02-25T15:30:00';
-      case FieldType.Number:
-        return '50';
-      case FieldType.Boolean:
-        return field.options[0]?.value || 'Sí';
-      case FieldType.Dropdown:
-        return field.options[0]?.value || 'Opción';
-      case FieldType.FreeText:
-        return 'Texto de ejemplo';
-      default:
-        return '';
-    }
   }
 
   // -----------------------------------------------------------

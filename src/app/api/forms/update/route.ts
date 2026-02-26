@@ -7,33 +7,102 @@ import { store } from '@/lib/store';
 /**
  * POST /api/forms/update
  * Receives partial field updates in real-time during the voice conversation.
- * The voice agent calls "actualizar_formulario" which triggers this endpoint.
- * Fields are merged with existing data (not replaced).
+ * The voice agent calls "actualizar_formulario" / "finalizar_formulario" which triggers this endpoint.
+ *
+ * Accepts multiple body formats for robustness:
+ * 1. { form_id, campos: {...} }                    — standard
+ * 2. { form_id, campos: '{"uid":"val"}' }          — campos as JSON string
+ * 3. { campos: {...} }                             — no form_id (defaults to hurto-generico)
+ * 4. { "uid1": "val1", "uid2": "val2" }            — flat UIDs at root level
+ * 5. Entire body is a JSON string                  — double-encoded
  */
 export async function POST(request: NextRequest) {
-  const body = await request.json() as {
-    session_id?: string;
-    incident_id?: string;
-    form_id: string;
-    guard_id?: string;
-    center_id?: string;
-    incident_family?: string;
-    incident_type?: string;
-    campos: Record<string, string | string[] | null>;
-  };
+  let body: Record<string, unknown>;
 
-  if (!body.form_id || !body.campos) {
+  try {
+    body = await request.json();
+  } catch {
     return NextResponse.json(
-      { error: 'form_id and campos are required' },
+      { error: 'Invalid JSON body' },
+      { status: 400 }
+    );
+  }
+
+  // Log incoming request for debugging
+  console.log('[forms/update] Raw body:', JSON.stringify(body).slice(0, 500));
+
+  // Extract form_id (default to hurto-generico if not provided)
+  const formId = (body.form_id as string) || 'hurto-generico';
+
+  // Extract campos — try multiple strategies
+  let campos: Record<string, string | string[] | null> | undefined;
+
+  // Strategy 1: campos field exists
+  if (body.campos) {
+    if (typeof body.campos === 'string') {
+      // campos is a JSON string — parse it
+      try {
+        campos = JSON.parse(body.campos);
+      } catch {
+        // Maybe it's double-encoded
+        try {
+          campos = JSON.parse(JSON.parse(`"${body.campos.replace(/"/g, '\\"')}"`));
+        } catch {
+          console.log('[forms/update] Failed to parse campos string:', (body.campos as string).slice(0, 200));
+        }
+      }
+    } else if (typeof body.campos === 'object') {
+      campos = body.campos as Record<string, string | string[] | null>;
+    }
+  }
+
+  // Strategy 2: Look for UIDs at root level (flat format)
+  if (!campos || Object.keys(campos).length === 0) {
+    const uidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
+    const flatCampos: Record<string, string> = {};
+    for (const [key, value] of Object.entries(body)) {
+      if (uidPattern.test(key) && typeof value === 'string') {
+        flatCampos[key] = value;
+      }
+    }
+    if (Object.keys(flatCampos).length > 0) {
+      campos = flatCampos;
+      console.log('[forms/update] Found UIDs at root level:', Object.keys(flatCampos).length);
+    }
+  }
+
+  // Strategy 3: Check if there's a nested object with _message (GPT adds this sometimes)
+  if (!campos) {
+    for (const value of Object.values(body)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        const obj = value as Record<string, unknown>;
+        const uidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-/;
+        const hasUids = Object.keys(obj).some(k => uidPattern.test(k));
+        if (hasUids) {
+          campos = obj as Record<string, string>;
+          console.log('[forms/update] Found UIDs in nested object');
+          break;
+        }
+      }
+    }
+  }
+
+  if (!campos || Object.keys(campos).length === 0) {
+    console.log('[forms/update] No campos found. Body keys:', Object.keys(body));
+    return NextResponse.json(
+      {
+        error: 'No campos found in request. Send { "form_id": "hurto-generico", "campos": { "uid": "value" } }',
+        received_keys: Object.keys(body),
+      },
       { status: 400 }
     );
   }
 
   // Load and process form
-  const rawForm = loadFormDefinition(body.form_id);
+  const rawForm = loadFormDefinition(formId);
   if (!rawForm) {
     return NextResponse.json(
-      { error: `Form not found: ${body.form_id}` },
+      { error: `Form not found: ${formId}` },
       { status: 404 }
     );
   }
@@ -41,23 +110,26 @@ export async function POST(request: NextRequest) {
   const processed = processForm(rawForm);
 
   // Map the partial extracted data
-  const mappingResult = mapExtractedData(processed, body.campos);
+  const mappingResult = mapExtractedData(processed, campos);
 
   // Find or create incident
-  let incident = body.incident_id
-    ? store.getIncident(body.incident_id)
-    : body.session_id
-      ? store.findBySessionId(body.session_id)
+  const sessionId = body.session_id as string | undefined;
+  const incidentId = body.incident_id as string | undefined;
+
+  let incident = incidentId
+    ? store.getIncident(incidentId)
+    : sessionId
+      ? store.findBySessionId(sessionId)
       : undefined;
 
   if (!incident) {
     incident = store.createIncident({
-      formId: body.form_id,
-      guardId: body.guard_id || 'unknown',
-      centerId: body.center_id || 'unknown',
-      incidentFamily: body.incident_family || 'Hurto',
-      incidentType: body.incident_type || body.form_id,
-      happyRobotSessionId: body.session_id,
+      formId,
+      guardId: (body.guard_id as string) || 'unknown',
+      centerId: (body.center_id as string) || 'unknown',
+      incidentFamily: (body.incident_family as string) || 'Hurto',
+      incidentType: (body.incident_type as string) || formId,
+      happyRobotSessionId: sessionId,
     });
   }
 
@@ -67,6 +139,8 @@ export async function POST(request: NextRequest) {
     mappingResult.fields,
     mappingResult.completionPercentage
   );
+
+  console.log(`[forms/update] OK: incident=${incident.id}, fields_updated=${mappingResult.filledCount}, total=${incident.fields.length}`);
 
   return NextResponse.json({
     success: true,
