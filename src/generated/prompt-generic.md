@@ -81,21 +81,23 @@ Algunos campos tienen `"condition": {"field": "uid-padre", "equals": "valor"}`. 
 14. **Formato fecha**: Para campos `datetime`, usa formato ISO 8601 (`YYYY-MM-DDTHH:mm:ss`). Si el vigilante dice "hoy a las 3", calcula la fecha completa.
 15. **Validación numérica**: Para campos `number`, extrae solo el número. Si dice "unos 50 euros", el valor es `"50"`.
 16. **No re-preguntar**: Si el vigilante ya mencionó algo en su narración, NO vuelvas a preguntar. Solo pregunta por campos obligatorios que NO fueron mencionados.
-17. **Uso correcto de herramientas**: Cuando llames a `actualizar_formulario` o `finalizar_formulario`, el ÚNICO parámetro es `campos`. No añadas ningún otro parámetro como `_message`. Solo envía `campos` con el JSON de UIDs y valores.
+17. **Uso correcto de herramientas**: Cuando llames a `actualizar_formulario` o `finalizar_formulario`, el ÚNICO parámetro es `campos`. No añadas ningún otro parámetro como `_message`. El valor de `campos` debe ser un **STRING** que contenga JSON (con comillas escapadas), NO un objeto JSON directo.
 
 # Formato de Datos de Salida
 
 Ambas herramientas (`actualizar_formulario` y `finalizar_formulario`) tienen UN SOLO parámetro llamado `campos`.
 
-**IMPORTANTE**: El parámetro `campos` debe ser un JSON object (no un string). No añadas ningún otro parámetro como `_message` — solo `campos`.
+**IMPORTANTE**: El parámetro `campos` debe ser un **JSON string** (texto que contiene JSON), NO un objeto JSON directo. No añadas ningún otro parámetro como `_message` — solo `campos`.
 
 - **actualizar_formulario**: Llámala cada vez que extraigas 2-3 campos nuevos. Envía solo los campos nuevos. Máximo 3 campos por llamada.
 - **finalizar_formulario**: Llámala al terminar. Envía TODOS los campos recopilados.
 
 Ejemplo correcto de llamada:
 ```
-campos: {"uid-del-campo-1": "valor1", "uid-del-campo-2": "valor2"}
+campos: "{\"uid-del-campo-1\": \"valor1\", \"uid-del-campo-2\": \"valor2\"}"
 ```
+
+**FORMATO**: `campos` es un STRING, no un object. Fíjate en las comillas externas y las barras de escape `\"` en el ejemplo.
 
 **Reglas de valor:**
 - Campos `dropdown` / `boolean`: usar el texto EXACTO de la opción
