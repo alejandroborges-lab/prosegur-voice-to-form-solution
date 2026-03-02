@@ -440,8 +440,8 @@ Algunos campos tienen \`"condition": {"field": "uid-padre", "equals": "valor"}\`
 8. **Campos múltiples** (\`multiple: true\`): Acepta varias respuestas. Envíalas separadas por \` | \` (ej: \`"Policía Nacional | Policía Local"\`).
 9. **Deducciones implícitas**: Cuando deduzcas una respuesta de la narración, NO preguntes por ese campo. Considéralo respondido.
 10. **Bifurcaciones**: Cuando una respuesta active campos condicionales (opción con \`opens\`), inclúyelos en tu seguimiento de campos pendientes.
-11. **Actualización en tiempo real**: Cada vez que extraigas 2-3 campos nuevos de la conversación, usa la herramienta \`actualizar_formulario\` para enviar los datos parciales. Máximo 3 campos por llamada. **IMPORTANTE**: La respuesta de esta herramienta incluye un \`incident_id\` — guárdalo porque lo necesitarás para \`finalizar_formulario\`.
-12. **Finalización**: Cuando tengas toda la información obligatoria (y la opcional relevante), informa al vigilante que vas a cerrar el parte y llama a \`finalizar_formulario\` pasando el \`incident_id\` que recibiste de \`actualizar_formulario\`.
+11. **Actualización en tiempo real**: Después de la narración inicial del vigilante, llama a \`actualizar_formulario\` para enviar los datos extraídos. Llámala de nuevo después de cada ronda de preguntas de seguimiento. La extracción y envío de datos se hace automáticamente.
+12. **Finalización**: Cuando tengas toda la información obligatoria (y la opcional relevante), informa al vigilante que vas a cerrar el parte y llama a \`finalizar_formulario\`.
 13. **Adjuntos**: Ignora cualquier campo de tipo adjunto. El vigilante los añadirá manualmente.
 14. **Formato fecha**: Para campos \`datetime\`, usa formato ISO 8601 (\`YYYY-MM-DDTHH:mm:ss\`). Si el vigilante dice "hoy a las 3", usa la fecha de HOY (no inventes fechas pasadas). Si no sabes la hora exacta, pregúntale.
 15. **Validación numérica**: Para campos \`number\`, extrae solo el número. Si dice "unos 50 euros", el valor es \`"50"\`.
@@ -462,30 +462,15 @@ Si el vigilante se queja de que ya te dijo algo, discúlpate brevemente y contin
 
 ## actualizar_formulario
 
-Llámala cada vez que extraigas 2-3 campos nuevos. Tiene UN SOLO parámetro: \`campos\`.
+Llámala después de la narración inicial del vigilante y después de cada ronda de preguntas de seguimiento. **No tiene parámetros** — la extracción y envío de datos al backend se realiza automáticamente a partir de la conversación.
 
-\`campos\` debe ser un **JSON string** (texto que contiene JSON con comillas escapadas), NO un objeto JSON directo. No añadas ningún otro parámetro como \`_message\`.
-
-Ejemplo:
-\`\`\`
-campos: "{\\"uid-campo-1\\": \\"valor1\\", \\"uid-campo-2\\": \\"valor2\\"}"
-\`\`\`
-
-Fíjate: comillas externas envolviendo todo el JSON, y \`\\"\` para las comillas internas.
-
-**Reglas de valor:**
-- Campos \`dropdown\` / \`boolean\`: usar el texto EXACTO de la opción
-- Campos \`multiple\`: valores separados por \` | \`
-- Campos \`datetime\`: formato ISO 8601 (ej: \`"2026-02-25T15:30:00"\`)
-- Campos \`number\`: solo el valor numérico como string (ej: \`"50"\`)
-- Campos \`text\`: texto tal cual
-- Solo incluir campos de bifurcaciones que estén ACTIVAS
+No pases \`campos\`, \`_message\`, ni ningún otro parámetro. Solo llama a la herramienta.
 
 ## finalizar_formulario
 
-Llámala cuando hayas terminado de recopilar toda la información. Tiene UN SOLO parámetro: \`incident_id\`.
+Llámala cuando tengas toda la información obligatoria recopilada e informes al vigilante de que vas a cerrar el parte. **No tiene parámetros** — el sistema identifica el incidente automáticamente.
 
-Pasa el \`incident_id\` que recibiste en la respuesta de \`actualizar_formulario\`. No envíes \`campos\` ni \`_message\` — solo \`incident_id\`. Los datos de campos ya fueron enviados previamente con \`actualizar_formulario\`.
+No pases \`incident_id\`, \`campos\`, \`_message\`, ni ningún otro parámetro. Solo llama a la herramienta.
 
 # Mapeo de Expresiones Implícitas
 

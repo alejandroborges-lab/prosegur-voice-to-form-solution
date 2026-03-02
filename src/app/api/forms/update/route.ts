@@ -10,11 +10,12 @@ import { store } from '@/lib/store';
  * The voice agent calls "actualizar_formulario" / "finalizar_formulario" which triggers this endpoint.
  *
  * Accepts multiple body formats for robustness:
- * 1. { form_id, campos: {...} }                    — standard
+ * 1. { form_id, campos: {...} }                    — standard (object with uid keys)
  * 2. { form_id, campos: '{"uid":"val"}' }          — campos as JSON string
- * 3. { campos: {...} }                             — no form_id (defaults to hurto-generico)
- * 4. { "uid1": "val1", "uid2": "val2" }            — flat UIDs at root level
- * 5. Entire body is a JSON string                  — double-encoded
+ * 3. { form_id, campos: [{uid,value},...] }        — array format (from AI Extract)
+ * 4. { campos: {...} }                             — no form_id (defaults to hurto-generico)
+ * 5. { "uid1": "val1", "uid2": "val2" }            — flat UIDs at root level
+ * 6. Entire body is a JSON string                  — double-encoded
  */
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>;
@@ -50,6 +51,18 @@ export async function POST(request: NextRequest) {
         } catch {
           console.log('[forms/update] Failed to parse campos string:', (body.campos as string).slice(0, 200));
         }
+      }
+    } else if (Array.isArray(body.campos)) {
+      // campos is an array of {uid, value} objects (from AI Extract node)
+      const arrayCampos: Record<string, string> = {};
+      for (const item of body.campos as Array<{ uid?: string; value?: string }>) {
+        if (item.uid && typeof item.value === 'string') {
+          arrayCampos[item.uid] = item.value;
+        }
+      }
+      if (Object.keys(arrayCampos).length > 0) {
+        campos = arrayCampos;
+        console.log('[forms/update] Parsed campos from array format:', Object.keys(arrayCampos).length);
       }
     } else if (typeof body.campos === 'object') {
       campos = body.campos as Record<string, string | string[] | null>;
