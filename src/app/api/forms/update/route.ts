@@ -133,21 +133,28 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  // Merge partial fields (don't replace all)
-  store.mergeIncidentFields(
-    incident.id,
-    mappingResult.fields,
-    mappingResult.completionPercentage
-  );
+  // Merge partial fields (don't replace all, don't set percentage yet)
+  store.mergeIncidentFields(incident.id, mappingResult.fields);
 
-  console.log(`[forms/update] OK: incident=${incident.id}, fields_updated=${mappingResult.filledCount}, total=${incident.fields.length}`);
+  // Recalculate completion based on ALL accumulated fields (not just this batch)
+  const updatedIncident = store.getIncident(incident.id)!;
+  const allFieldsRecord: Record<string, string> = {};
+  for (const f of updatedIncident.fields) {
+    allFieldsRecord[f.uid] = f.value;
+  }
+  const totalMapping = mapExtractedData(processed, allFieldsRecord);
+
+  // Update with correct total completion percentage
+  store.mergeIncidentFields(incident.id, [], totalMapping.completionPercentage);
+
+  console.log(`[forms/update] OK: incident=${incident.id}, fields_updated=${mappingResult.filledCount}, total=${updatedIncident.fields.length}, completion=${totalMapping.completionPercentage}%`);
 
   return NextResponse.json({
     success: true,
     incident_id: incident.id,
     fields_updated: mappingResult.filledCount,
-    total_fields_so_far: incident.fields.length,
-    completion_percentage: mappingResult.completionPercentage,
+    total_fields_so_far: updatedIncident.fields.length,
+    completion_percentage: totalMapping.completionPercentage,
     warnings: mappingResult.warnings,
   });
 }
