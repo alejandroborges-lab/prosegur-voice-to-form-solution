@@ -10,8 +10,10 @@ import { store } from '@/lib/store';
  * Does NOT receive field data — all fields were already sent via "actualizar_formulario".
  * This endpoint marks the incident as completed and returns the final state.
  *
- * Accepts optional: { incident_id?, form_id? }
- * If no incident_id, finds the most recent in-progress incident for the form.
+ * Lookup priority:
+ * 1. incident_id — exact match
+ * 2. session_id — HappyRobot session (unique per call, safe for concurrency)
+ * 3. form_id — fallback: most recent in-progress for this form (NOT safe for concurrency)
  */
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown> = {};
@@ -25,17 +27,24 @@ export async function POST(request: NextRequest) {
   console.log('[forms/finalize] Body:', JSON.stringify(body).slice(0, 300));
 
   const incidentId = body.incident_id as string | undefined;
+  const sessionId = body.session_id as string | undefined;
   const formId = (body.form_id as string) || 'hurto-generico';
 
-  // Find incident
+  // Find incident: by incident_id > session_id > most recent in-progress
   let incident = incidentId
     ? store.getIncident(incidentId)
     : undefined;
 
-  // If not found by ID, find most recent in-progress for this form
+  if (!incident && sessionId) {
+    incident = store.findBySessionId(sessionId);
+  }
+
   if (!incident) {
     const incidents = store.listIncidents({ status: 'in_progress', formId });
-    incident = incidents[0]; // Already sorted by newest first
+    incident = incidents[0];
+    if (incident) {
+      console.log('[forms/finalize] WARNING: using fallback (most recent in-progress). Pass session_id for concurrency safety.');
+    }
   }
 
   if (!incident) {
