@@ -16,6 +16,7 @@ import { store } from '@/lib/store';
  * 4. { campos: {...} }                             — no form_id (defaults to hurto-generico)
  * 5. { "uid1": "val1", "uid2": "val2" }            — flat UIDs at root level
  * 6. Entire body is a JSON string                  — double-encoded
+ * 7. { response: { campos: [...] }, prompt, ... }  — full HappyRobot Extract output
  */
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>;
@@ -38,24 +39,27 @@ export async function POST(request: NextRequest) {
   // Extract campos — try multiple strategies
   let campos: Record<string, string | string[] | null> | undefined;
 
-  // Strategy 1: campos field exists
-  if (body.campos) {
-    if (typeof body.campos === 'string') {
+  // Strategy 0: HappyRobot Extract sends full output with campos inside response
+  const camposSource = body.campos ?? (body.response as Record<string, unknown> | undefined)?.campos;
+
+  // Strategy 1: campos field exists (at root or inside response)
+  if (camposSource) {
+    if (typeof camposSource === 'string') {
       // campos is a JSON string — parse it
       try {
-        campos = JSON.parse(body.campos);
+        campos = JSON.parse(camposSource);
       } catch {
         // Maybe it's double-encoded
         try {
-          campos = JSON.parse(JSON.parse(`"${body.campos.replace(/"/g, '\\"')}"`));
+          campos = JSON.parse(JSON.parse(`"${camposSource.replace(/"/g, '\\"')}"`));
         } catch {
-          console.log('[forms/update] Failed to parse campos string:', (body.campos as string).slice(0, 200));
+          console.log('[forms/update] Failed to parse campos string:', camposSource.slice(0, 200));
         }
       }
-    } else if (Array.isArray(body.campos)) {
+    } else if (Array.isArray(camposSource)) {
       // campos is an array of {uid, value} objects (from AI Extract node)
       const arrayCampos: Record<string, string> = {};
-      for (const item of body.campos as Array<{ uid?: string; value?: string }>) {
+      for (const item of camposSource as Array<{ uid?: string; value?: string }>) {
         if (item.uid && typeof item.value === 'string') {
           arrayCampos[item.uid] = item.value;
         }
@@ -64,8 +68,8 @@ export async function POST(request: NextRequest) {
         campos = arrayCampos;
         console.log('[forms/update] Parsed campos from array format:', Object.keys(arrayCampos).length);
       }
-    } else if (typeof body.campos === 'object') {
-      campos = body.campos as Record<string, string | string[] | null>;
+    } else if (typeof camposSource === 'object') {
+      campos = camposSource as Record<string, string | string[] | null>;
     }
   }
 
