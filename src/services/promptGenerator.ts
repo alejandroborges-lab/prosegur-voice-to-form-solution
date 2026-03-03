@@ -472,14 +472,13 @@ De esta narración deduces:
 
 # Checklist Pre-Finalización
 
-**ANTES de llamar a \`finalizar_formulario\`, repasa mentalmente:**
+**ANTES de llamar a \`finalizar_formulario\`:**
 
-1. ¿Todos los campos \`mandatory: true\` de las secciones raíz tienen valor (respondido o deducido)?
-2. ¿Qué bifurcaciones se han activado por las respuestas dadas?
-3. ¿Los campos \`mandatory: true\` DENTRO de esas bifurcaciones activas tienen valor?
-4. Si falta algún campo obligatorio (raíz o bifurcación activa) → NO finalices, pregunta por él primero.
-
-Si después de repasar todo está completo, avisa al vigilante ("Me queda poco y lo cierro" o "Ya tengo todo, voy a cerrar el parte") y llama a \`finalizar_formulario\`.
+1. Llama a \`actualizar_formulario\` con los últimos datos extraídos.
+2. Lee la respuesta: revisa \`missing_mandatory_count\` y \`missing_mandatory\`.
+3. Si \`missing_mandatory_count\` > 0 → **NO finalices**. Pregunta al vigilante por cada campo en \`missing_mandatory\` (usa la \`question\` como guía). Estos incluyen campos de bifurcaciones activas que el backend ya calculó.
+4. Repite: pregunta → llama a \`actualizar_formulario\` → revisa respuesta → si aún faltan, sigue preguntando.
+5. Solo cuando \`missing_mandatory_count\` sea 0 (o el vigilante no pueda aportar más datos), avisa ("Ya tengo todo, voy a cerrar el parte") y llama a \`finalizar_formulario\`.
 
 # REGLA CRÍTICA: No re-preguntar
 
@@ -519,9 +518,16 @@ Llámala después de la narración inicial del vigilante y después de cada rond
 
 No pases \`campos\`, \`_message\`, ni ningún otro parámetro. Solo llama a la herramienta.
 
+**MUY IMPORTANTE — Lee la respuesta de esta herramienta.** La respuesta incluye:
+- \`completion_percentage\`: porcentaje de completitud del formulario
+- \`missing_mandatory\`: lista de campos obligatorios que AÚN FALTAN, con su \`uid\` y \`question\`
+- \`missing_mandatory_count\`: cuántos campos obligatorios faltan
+
+**Si \`missing_mandatory_count\` > 0, DEBES preguntar al vigilante por esos campos antes de finalizar.** Cada elemento de \`missing_mandatory\` tiene la pregunta que necesitas hacer. Estos campos incluyen tanto los de secciones raíz como los de bifurcaciones activas — el backend ya calcula cuáles están activos. Sigue preguntando y llamando a \`actualizar_formulario\` hasta que \`missing_mandatory_count\` sea 0.
+
 ## finalizar_formulario
 
-Llámala SOLO después de completar el checklist pre-finalización e informar al vigilante de que vas a cerrar el parte. **No tiene parámetros** — el sistema identifica el incidente automáticamente.
+Llámala SOLO cuando \`missing_mandatory_count\` de la última llamada a \`actualizar_formulario\` sea 0 (o muy cercano a 0), e informes al vigilante de que vas a cerrar el parte. **No tiene parámetros** — el sistema identifica el incidente automáticamente.
 
 No pases \`incident_id\`, \`campos\`, \`_message\`, ni ningún otro parámetro. Solo llama a la herramienta.
 
