@@ -38,9 +38,11 @@ export async function POST(request: NextRequest) {
 
   // Extract campos — try multiple strategies
   let campos: Record<string, string | string[] | null> | undefined;
+  let camposStrategy = 'none'; // DEBUG: track which strategy found campos
 
   // Strategy 0: HappyRobot Extract sends full output with campos inside response
   const camposSource = body.campos ?? (body.response as Record<string, unknown> | undefined)?.campos;
+  const camposOrigin = body.campos ? 'root' : (body.response as Record<string, unknown> | undefined)?.campos ? 'response' : 'missing';
 
   // Strategy 1: campos field exists (at root or inside response)
   if (camposSource) {
@@ -66,10 +68,12 @@ export async function POST(request: NextRequest) {
       }
       if (Object.keys(arrayCampos).length > 0) {
         campos = arrayCampos;
+        camposStrategy = 'array';
         console.log('[forms/update] Parsed campos from array format:', Object.keys(arrayCampos).length);
       }
     } else if (typeof camposSource === 'object') {
       campos = camposSource as Record<string, string | string[] | null>;
+      camposStrategy = 'object';
     }
   }
 
@@ -84,6 +88,7 @@ export async function POST(request: NextRequest) {
     }
     if (Object.keys(flatCampos).length > 0) {
       campos = flatCampos;
+      camposStrategy = 'flat-uids';
       console.log('[forms/update] Found UIDs at root level:', Object.keys(flatCampos).length);
     }
   }
@@ -97,6 +102,7 @@ export async function POST(request: NextRequest) {
         const hasUids = Object.keys(obj).some(k => uidPattern.test(k));
         if (hasUids) {
           campos = obj as Record<string, string>;
+          camposStrategy = 'nested-object';
           console.log('[forms/update] Found UIDs in nested object');
           break;
         }
@@ -110,6 +116,10 @@ export async function POST(request: NextRequest) {
       {
         error: 'No campos found in request. Send { "form_id": "hurto-generico", "campos": { "uid": "value" } }',
         received_keys: Object.keys(body),
+        _debug: {
+          campos_origin: camposOrigin,
+          body_sample: JSON.stringify(body).slice(0, 300),
+        },
       },
       { status: 400 }
     );
@@ -173,5 +183,14 @@ export async function POST(request: NextRequest) {
     total_fields_so_far: updatedIncident.fields.length,
     completion_percentage: totalMapping.completionPercentage,
     warnings: mappingResult.warnings,
+    // DEBUG: temporary — remove after diagnosing HappyRobot webhook format
+    _debug: {
+      body_keys: Object.keys(body),
+      campos_origin: camposOrigin,
+      campos_strategy: camposStrategy,
+      campos_type: camposSource ? (Array.isArray(camposSource) ? 'array' : typeof camposSource) : 'undefined',
+      campos_keys_sample: campos ? Object.keys(campos).slice(0, 3) : [],
+      campos_count: campos ? Object.keys(campos).length : 0,
+    },
   });
 }
