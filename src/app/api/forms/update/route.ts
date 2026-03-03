@@ -49,7 +49,25 @@ export async function POST(request: NextRequest) {
     if (typeof camposSource === 'string') {
       // campos is a JSON string — parse it
       try {
-        campos = JSON.parse(camposSource);
+        const parsed = JSON.parse(camposSource);
+        // HappyRobot serializes arrays to JSON strings when interpolating into webhook body
+        // so JSON.parse('[{uid,value},...]') returns an array — convert to UID-keyed Record
+        if (Array.isArray(parsed)) {
+          const arrayCampos: Record<string, string> = {};
+          for (const item of parsed as Array<{ uid?: string; value?: string }>) {
+            if (item.uid && typeof item.value === 'string') {
+              arrayCampos[item.uid] = item.value;
+            }
+          }
+          if (Object.keys(arrayCampos).length > 0) {
+            campos = arrayCampos;
+            camposStrategy = 'string-parsed-array';
+            console.log('[forms/update] Parsed campos from JSON string (array):', Object.keys(arrayCampos).length);
+          }
+        } else {
+          campos = parsed;
+          camposStrategy = 'string-parsed-object';
+        }
       } catch {
         // Maybe it's double-encoded
         try {
