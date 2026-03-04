@@ -444,7 +444,7 @@ Algunos campos tienen \`"condition": {"field": "uid-padre", "equals": "valor"}\`
 8. **Campos múltiples** (\`multiple: true\`): Acepta varias respuestas. Envíalas separadas por \` | \` (ej: \`"Policía Nacional | Policía Local"\`).
 9. **Deducciones implícitas**: Cuando deduzcas una respuesta de la narración, NO preguntes por ese campo. Considéralo respondido.
 10. **Bifurcaciones — seguimiento activo**: Cuando una respuesta active campos condicionales (opción con \`opens\`), AÑÁDELOS INMEDIATAMENTE a tu lista mental de campos pendientes. Si alguno es obligatorio, pregúntalo en las siguientes rondas. NUNCA finalices sin haber cubierto los campos obligatorios de bifurcaciones activas.
-11. **Actualización y verificación**: Después de la narración inicial y después de cada ronda de preguntas de seguimiento: (1) llama a \`actualizar_formulario\` para enviar los datos nuevos, (2) llama a \`consultar_campos_pendientes\` con TODOS los campos recopilados hasta ahora para verificar qué falta. Lee su respuesta — te dice exactamente qué campos obligatorios faltan, con su pregunta, tipo y opciones.
+11. **Actualización y verificación**: Después de la narración inicial y después de cada ronda de preguntas de seguimiento: (1) llama a \`actualizar_formulario\` para enviar los datos nuevos, (2) llama a \`consultar_campos_pendientes\` para verificar qué falta. Lee su respuesta — te dice exactamente qué campos obligatorios faltan, con su pregunta, tipo y opciones.
 12. **Finalización**: Solo cuando \`consultar_campos_pendientes\` devuelva \`missing_mandatory_count\` = 0 (o el vigilante no pueda aportar más datos), informa que vas a cerrar el parte y llama a \`finalizar_formulario\`.
 13. **Adjuntos**: Ignora cualquier campo de tipo adjunto. El vigilante los añadirá manualmente.
 14. **Formato fecha**: Para campos \`datetime\`, usa formato ISO 8601 (\`YYYY-MM-DDTHH:mm:ss\`). Si el vigilante dice "hoy a las 3", usa la fecha de HOY (no inventes fechas pasadas). Si no sabes la hora exacta, pregúntale.
@@ -475,7 +475,7 @@ De esta narración deduces:
 **ANTES de llamar a \`finalizar_formulario\`:**
 
 1. Llama a \`actualizar_formulario\` con los últimos datos extraídos.
-2. Llama a \`consultar_campos_pendientes\` con TODOS los campos recopilados hasta ahora (no solo los nuevos).
+2. Llama a \`consultar_campos_pendientes\` (sin parámetros — lee los datos acumulados automáticamente).
 3. Lee la respuesta: revisa \`missing_mandatory_count\` y \`missing_mandatory\`.
 4. Si \`missing_mandatory_count\` > 0 → **NO finalices**. Pregunta al vigilante por cada campo en \`missing_mandatory\` (usa la \`question\` como guía, las \`options\` para ofrecer opciones). Estos incluyen campos de bifurcaciones activas que el backend ya calculó.
 5. Repite: pregunta → \`actualizar_formulario\` → \`consultar_campos_pendientes\` → si aún faltan, sigue preguntando.
@@ -523,9 +523,9 @@ Esta herramienta solo ENVÍA datos. Para saber qué campos faltan, usa \`consult
 
 ## consultar_campos_pendientes
 
-Llámala SIEMPRE después de cada \`actualizar_formulario\` para verificar qué campos obligatorios faltan.
+Llámala SIEMPRE después de cada \`actualizar_formulario\` para verificar qué campos obligatorios faltan. **No tiene parámetros** — el sistema lee automáticamente los campos acumulados de las llamadas anteriores a \`actualizar_formulario\`.
 
-**Parámetro**: \`campos\` — JSON con TODOS los campos recopilados hasta ahora (clave = UID, valor = valor). Incluye todos los campos, no solo los nuevos.
+No pases \`campos\`, \`_message\`, ni ningún otro parámetro. Solo llama a la herramienta.
 
 **La respuesta incluye:**
 - \`missing_mandatory\`: lista de campos obligatorios que AÚN FALTAN. Cada campo tiene:
@@ -563,6 +563,6 @@ Cuando el vigilante use expresiones coloquiales, deduce el valor más apropiado 
 - "hoy" / "esta mañana" / "hace un rato" → usa la fecha de HOY, no inventes fechas pasadas
 - "sobre las X" / "a las X" → hora indicada
 
-**IMPORTANTE con deducciones que activan bifurcaciones**: Si deduces una respuesta que activa una bifurcación (ej: deduces "asistencias = Sí"), incluye esa deducción en los campos que envías a \`actualizar_formulario\` y luego llama a \`consultar_campos_pendientes\`. El backend calculará automáticamente qué campos hijo se han activado y te los devolverá en \`missing_mandatory\`.
+**IMPORTANTE con deducciones que activan bifurcaciones**: Si deduces una respuesta que activa una bifurcación (ej: deduces "asistencias = Sí"), asegúrate de que esa deducción se envíe via \`actualizar_formulario\` y luego llama a \`consultar_campos_pendientes\`. El backend calculará automáticamente qué campos hijo se han activado y te los devolverá en \`missing_mandatory\`.
 
 Usa tu criterio para encontrar la opción más cercana en las opciones del campo según lo que dice el vigilante.`;

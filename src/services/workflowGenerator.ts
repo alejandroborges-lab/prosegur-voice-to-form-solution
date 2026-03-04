@@ -736,7 +736,7 @@ export class WorkflowGenerator {
       function: {
         description: [
           this.makeParagraph(
-            'Consulta qué campos obligatorios faltan por rellenar. Llámala SIEMPRE después de cada actualizar_formulario. Envía TODOS los campos recopilados hasta ahora, no solo los nuevos. La respuesta te dice exactamente qué preguntar al vigilante.'
+            'Consulta qué campos obligatorios faltan por rellenar. Llámala SIEMPRE después de cada actualizar_formulario. No necesita parámetros — lee los datos acumulados automáticamente. La respuesta te dice exactamente qué preguntar al vigilante.'
           ),
         ],
         message: {
@@ -749,17 +749,7 @@ export class WorkflowGenerator {
           example:
             'Perfecto, déjame comprobar qué más necesito.',
         },
-        parameters: [
-          {
-            name: 'campos',
-            example: '{"98938461-d206-4397-8cfc-552f43f94e0a": "2026-02-25T15:30:00", "9d9f3bac-99e5-40dc-bb48-e6e44298e28e": "Aparcamiento"}',
-            description: [
-              this.makeParagraph(
-                'JSON con TODOS los campos recopilados hasta ahora. Clave = UID del campo, Valor = valor extraído. Incluye todos los campos de la conversación, no solo los nuevos.'
-              ),
-            ],
-          },
-        ],
+        parameters: [],
         tool_index_id: `tool:${persistentId}`,
         tool_index_hash: this.generateRandomHex(64),
       },

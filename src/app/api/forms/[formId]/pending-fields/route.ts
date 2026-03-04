@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { loadFormDefinition } from '@/lib/formLoader';
 import { processForm } from '@/services/formProcessor';
 import { mapExtractedData } from '@/services/formMapper';
+import { store } from '@/lib/store';
 import { FieldType, ProcessedField, ProcessedForm, ProcessedSection } from '@/types/form';
 
 /**
@@ -21,12 +22,14 @@ interface PendingField {
 /**
  * POST /api/forms/[formId]/pending-fields
  *
- * Stateless intelligence endpoint — OUR layer, never replaced by Prosegur.
- * Receives the campos the agent has collected so far and returns which
- * mandatory fields are still missing, with full context (type, options,
- * fork conditions) so the agent can ask them correctly.
+ * Intelligence endpoint — OUR layer, never replaced by Prosegur.
+ * Reads accumulated fields from the store (populated by actualizar_formulario)
+ * and returns which mandatory fields are still missing, with full context
+ * (type, options, fork conditions) so the agent can ask them correctly.
  *
- * Input:  { "campos": { "uid1": "value1", "uid2": "value2" } }
+ * No parameters required — the agent just calls this tool.
+ * Lookup: session_id > incident_id > most recent in-progress for this form.
+ *
  * Output: { missing_mandatory, missing_mandatory_count, completion_percentage, ... }
  */
 export async function POST(
@@ -39,19 +42,7 @@ export async function POST(
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json(
-      { error: 'Invalid JSON body' },
-      { status: 400 }
-    );
-  }
-
-  // Extract campos
-  const campos = body.campos as Record<string, string | string[] | null> | undefined;
-  if (!campos || typeof campos !== 'object') {
-    return NextResponse.json(
-      { error: 'Missing "campos" object. Send { "campos": { "uid": "value" } }' },
-      { status: 400 }
-    );
+    // Body might be empty — that's OK
   }
 
   // Load and process form
@@ -63,6 +54,46 @@ export async function POST(
     );
   }
 
+  // Find incident: by session_id > incident_id > most recent in-progress
+  const sessionId = body.session_id as string | undefined;
+  const incidentId = body.incident_id as string | undefined;
+
+  let incident = incidentId
+    ? store.getIncident(incidentId)
+    : undefined;
+
+  if (!incident && sessionId) {
+    incident = store.findBySessionId(sessionId);
+  }
+
+  if (!incident) {
+    const incidents = store.listIncidents({ status: 'in_progress', formId });
+    incident = incidents[0];
+  }
+
+  if (!incident) {
+    // No incident yet — return all mandatory fields as missing
+    const processed = processForm(rawForm);
+    const mappingResult = mapExtractedData(processed, {});
+    const missingMandatory: PendingField[] = mappingResult.missingMandatory.map(
+      (m) => enrichField(m.uid, processed)
+    );
+
+    return NextResponse.json({
+      missing_mandatory: missingMandatory,
+      missing_mandatory_count: missingMandatory.length,
+      completion_percentage: 0,
+      filled_count: 0,
+      total_active_fields: mappingResult.totalActiveFields,
+    });
+  }
+
+  // Build campos from accumulated incident fields
+  const campos: Record<string, string> = {};
+  for (const f of incident.fields) {
+    campos[f.uid] = f.value;
+  }
+
   const processed = processForm(rawForm);
   const mappingResult = mapExtractedData(processed, campos);
 
@@ -70,6 +101,8 @@ export async function POST(
   const missingMandatory: PendingField[] = mappingResult.missingMandatory.map(
     (m) => enrichField(m.uid, processed)
   );
+
+  console.log(`[pending-fields] incident=${incident.id}, filled=${mappingResult.filledCount}, missing=${missingMandatory.length}, completion=${mappingResult.completionPercentage}%`);
 
   return NextResponse.json({
     missing_mandatory: missingMandatory,
@@ -82,7 +115,6 @@ export async function POST(
 
 /**
  * Enrich a missing field UID with type, options, and fork condition.
- * Mirrors the logic from /api/prosegur/forms/[formId]/agent but for a single field.
  */
 function enrichField(uid: string, form: ProcessedForm): PendingField {
   const field = form.fieldMap.get(uid);
@@ -118,7 +150,7 @@ function enrichField(uid: string, form: ProcessedForm): PendingField {
     }
   }
 
-  // Add condition (for fork fields — find the parent that triggers this field's section)
+  // Add condition (for fork fields)
   const condition = findCondition(field, form);
   if (condition) {
     result.condition = condition;
@@ -127,20 +159,15 @@ function enrichField(uid: string, form: ProcessedForm): PendingField {
   return result;
 }
 
-/**
- * Find the condition (parent field + value) that activates this field's section.
- */
 function findCondition(
   field: ProcessedField,
   form: ProcessedForm
 ): { field: string; equals: string } | undefined {
-  // Root fields have no condition
   if (field.forkDepth === 0) return undefined;
 
   const section = form.sectionMap.get(field.sectionGuid);
   if (!section?.triggeredBy) return undefined;
 
-  // Find the parent field's UID
   const parentField = form.allFields.find(
     f => f.fieldGuid === section.triggeredBy!.fieldGuid
   );
@@ -152,9 +179,6 @@ function findCondition(
   };
 }
 
-/**
- * Recursively collect all non-attachment field UIDs from a section.
- */
 function collectAllFieldUids(section: ProcessedSection): string[] {
   const uids: string[] = [];
   for (const field of section.fields) {
