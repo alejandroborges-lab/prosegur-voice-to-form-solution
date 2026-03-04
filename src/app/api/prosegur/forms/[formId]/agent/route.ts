@@ -1,29 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { loadFormDefinition } from '@/lib/formLoader';
 import { processForm } from '@/services/formProcessor';
+import { EnrichedField, collectAllFieldUids, friendlyType } from '@/services/fieldEnricher';
 import { FORM_NAMES } from '@/types/incident';
-import { FieldType, FIELD_TYPE_LABELS, ProcessedForm, ProcessedSection, ProcessedField } from '@/types/form';
-
-/**
- * Agent-friendly field format with computed UIDs and fork conditions.
- */
-interface AgentField {
-  uid: string;
-  question: string;
-  type: string;
-  mandatory: boolean;
-  multiple?: boolean;
-  options?: (string | { value: string; opens: string[] })[];
-  /** Present only for fields inside a fork — tells the agent when this field is active */
-  condition?: { field: string; equals: string };
-}
+import { FieldType, ProcessedForm, ProcessedSection, ProcessedField } from '@/types/form';
 
 interface AgentFormResponse {
   formId: string;
   name: string;
   totalFields: number;
   mandatoryFields: number;
-  fields: AgentField[];
+  fields: EnrichedField[];
 }
 
 /**
@@ -67,8 +54,8 @@ export async function GET(
  * Walks the section tree, emitting root fields first, then fork fields
  * with their conditions.
  */
-function buildAgentFields(form: ProcessedForm): AgentField[] {
-  const fields: AgentField[] = [];
+function buildAgentFields(form: ProcessedForm): EnrichedField[] {
+  const fields: EnrichedField[] = [];
 
   for (const section of form.rootSections) {
     emitSection(section, fields, undefined);
@@ -82,13 +69,13 @@ function buildAgentFields(form: ProcessedForm): AgentField[] {
  */
 function emitSection(
   section: ProcessedSection,
-  out: AgentField[],
+  out: EnrichedField[],
   condition: { field: string; equals: string } | undefined
 ): void {
   for (const field of section.fields) {
     if (field.fieldType === FieldType.Attachment) continue;
 
-    const agentField: AgentField = {
+    const agentField: EnrichedField = {
       uid: field.uid,
       question: field.question,
       type: friendlyType(field.fieldType),
@@ -152,35 +139,3 @@ function collectForkChildUids(field: ProcessedField): Map<string, string[]> {
   return result;
 }
 
-/**
- * Recursively collect all non-attachment field UIDs from a section and its child forks.
- */
-function collectAllFieldUids(section: ProcessedSection): string[] {
-  const uids: string[] = [];
-
-  for (const field of section.fields) {
-    if (field.fieldType === FieldType.Attachment) continue;
-    uids.push(field.uid);
-
-    // Also collect from nested forks
-    for (const option of field.options) {
-      if (option.forkSection && !option.forkSection.isEmpty) {
-        uids.push(...collectAllFieldUids(option.forkSection));
-      }
-    }
-  }
-
-  return uids;
-}
-
-function friendlyType(fieldType: FieldType): string {
-  const map: Record<string, string> = {
-    '1': 'datetime',
-    '2': 'dropdown',
-    '3': 'boolean',
-    '4': 'text',
-    '5': 'attachment',
-    '6': 'number',
-  };
-  return map[fieldType] || fieldType;
-}

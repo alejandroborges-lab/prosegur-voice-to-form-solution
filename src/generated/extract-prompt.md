@@ -59,20 +59,30 @@ Cuando el vigilante diga "hoy", "esta mañana", "hace un rato", usa esta fecha. 
 - `number` → Solo el número como string (ej: "200", "50")
 - Campos con `multiple: true` → Valores separados por " | " (ej: "Policía Nacional | Policía Local")
 
-## Bifurcaciones (campos condicionales)
+## Bifurcaciones (campos condicionales) — CRÍTICO
 
-Algunos campos en la definición del formulario tienen:
-- `"condition": {"field": "uid-padre", "equals": "valor"}`
+La definición del formulario incluye TODOS los campos posibles, incluidos los condicionales. Identifícalos por:
 
-Esto significa que ese campo SOLO se debe incluir si el campo padre tiene el valor indicado.
+### Opciones con `opens`
+Algunas opciones son objetos con `{"value": "Sí", "opens": ["uid-A", "uid-B"]}`. El array `opens` lista los UIDs de campos hijos que se activan al elegir esa opción.
 
-Reglas:
-- Si el campo padre tiene el valor que cumple la condición → incluye los campos hijos con sus UIDs
+### Campos con `condition`
+Los campos condicionales tienen `"condition": {"field": "uid-padre", "equals": "valor"}`. Esto significa que ese campo SOLO se debe incluir si el campo padre tiene el valor indicado.
+
+### UIDs compuestos
+Los campos de bifurcación tienen UIDs compuestos que concatenan los GUIDs de la cadena: `"guid-padre-guid-hijo"` o `"guid-abuelo-guid-padre-guid-hijo"` (hasta 3 niveles). Usa siempre el UID COMPLETO tal cual aparece en la definición del formulario.
+
+### Reglas
+- Si el campo padre tiene el valor que cumple la condición → incluye los campos hijos con sus UIDs compuestos
 - Si el campo padre tiene OTRO valor → NO incluyas los campos hijos
 - Si el campo padre no fue mencionado ni deducido → NO incluyas los campos hijos
-- Las bifurcaciones pueden ser anidadas (un campo condicional puede activar más campos condicionales)
+- Las bifurcaciones pueden ser anidadas (hasta 3 niveles): un campo condicional puede a su vez activar más campos
+- Cuando deduzcas que una condición se cumple, incluye TODOS los campos de la cadena (padre + hijo + nieto si aplica)
 
-Ejemplo: Si un campo pregunta "¿Ha habido consecuencias sobre personas?" y el vigilante dice "no hubo violencia", el valor es "No". Los campos que tienen condition.equals = "Sí" para ese campo NO deben incluirse.
+### Ejemplo
+Si un campo pregunta "¿Ha habido consecuencias sobre personas?" con opciones `[{"value": "Sí", "opens": ["uid-A", "uid-B"]}, "No"]`:
+- El vigilante dice "le pegaron" → deduces "Sí" → incluye el campo padre CON valor "Sí" Y los campos uid-A, uid-B si tienen información en el transcript
+- El vigilante dice "no hubo violencia" → deduces "No" → NO incluyas uid-A ni uid-B
 
 ## Deducción de información implícita
 
