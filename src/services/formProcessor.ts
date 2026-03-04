@@ -16,17 +16,26 @@ import {
 } from '@/types/form';
 
 /** UID strategy: how to compute a field's unique ID within the fork chain */
-export type UidStrategy = (sectionChain: string[], fieldGuid: string) => string;
+export type UidStrategy = (triggerChain: string[], fieldGuid: string) => string;
 
-/** Default UID strategy: concatenate section chain + field GUID with hyphens */
-export const defaultUidStrategy: UidStrategy = (sectionChain, fieldGuid) => {
-  if (sectionChain.length <= 1) {
+/**
+ * Default UID strategy: concatenate triggering FieldGuids + leaf FieldGuid.
+ * Matches Prosegur's POPS submission format where fork field UIDs are built
+ * by concatenating the FieldGuids of each ancestor field that triggered
+ * a bifurcation, followed by the leaf field's own FieldGuid.
+ *
+ * Examples:
+ *   Root field:          fieldGuid
+ *   Fork level 1:        triggerFieldGuid-childFieldGuid
+ *   Fork level 2:        trigger1FieldGuid-trigger2FieldGuid-childFieldGuid
+ */
+export const defaultUidStrategy: UidStrategy = (triggerChain, fieldGuid) => {
+  if (triggerChain.length === 0) {
     // Root section field — just the field GUID
     return fieldGuid;
   }
-  // Fork field — concatenate fork section GUIDs (skip root) + field GUID
-  const forkChain = sectionChain.slice(1);
-  return [...forkChain, fieldGuid].join('-');
+  // Fork field — concatenate triggering FieldGuids + this field's GUID
+  return [...triggerChain, fieldGuid].join('-');
 };
 
 export class FormProcessor {
@@ -128,15 +137,16 @@ export class FormProcessor {
 
   /**
    * Recursively process a section and its fork children.
+   * @param triggerChain — chain of FieldGuids of the fields that triggered each
+   *   fork level to reach this section. Empty for root sections.
    */
   private processSection(
     rawSection: RawFormSection,
     rawSectionMap: Map<string, RawFormSection>,
     forkTriggerMap: Map<string, { fieldGuid: string; optionValue: string; parentSectionGuid: string }>,
-    parentChain: string[],
+    triggerChain: string[],
     depth: number
   ): ProcessedSection {
-    const sectionChain = [...parentChain, rawSection.SectionGuid];
     const trigger = forkTriggerMap.get(rawSection.SectionGuid);
 
     const processedSection: ProcessedSection = {
@@ -158,7 +168,7 @@ export class FormProcessor {
         const processedField = this.processField(
           rawField,
           rawSection.SectionGuid,
-          sectionChain,
+          triggerChain,
           depth,
           rawSectionMap,
           forkTriggerMap
@@ -183,7 +193,7 @@ export class FormProcessor {
                 forkRaw,
                 rawSectionMap,
                 forkTriggerMap,
-                sectionChain,
+                [...triggerChain, rawField.FieldGuid],
                 depth + 1
               );
               processedSection.childForks.push(childFork);
@@ -203,15 +213,15 @@ export class FormProcessor {
   private processField(
     rawField: RawFormField,
     sectionGuid: string,
-    sectionChain: string[],
+    triggerChain: string[],
     depth: number,
     rawSectionMap: Map<string, RawFormSection>,
     forkTriggerMap: Map<string, { fieldGuid: string; optionValue: string; parentSectionGuid: string }>
   ): ProcessedField {
-    const uid = this.uidStrategy(sectionChain, rawField.FieldGuid);
+    const uid = this.uidStrategy(triggerChain, rawField.FieldGuid);
 
     const options: ProcessedOption[] = (rawField.Options ?? []).map((opt) =>
-      this.processOption(opt, rawSectionMap, forkTriggerMap, sectionChain, depth)
+      this.processOption(opt, rawSectionMap, forkTriggerMap, triggerChain, depth)
     );
 
     return {
@@ -224,7 +234,7 @@ export class FormProcessor {
       sectionGuid,
       uid,
       forkDepth: depth,
-      sectionChain: [...sectionChain],
+      sectionChain: [...triggerChain],
     };
   }
 
@@ -257,10 +267,11 @@ export class FormProcessor {
    * Create an orphaned section placeholder.
    */
   private createOrphanSection(rawSection: RawFormSection): ProcessedSection {
-    const sectionChain = [rawSection.SectionGuid];
+    // Orphaned sections have no known trigger chain
+    const triggerChain: string[] = [];
 
     const fields: ProcessedField[] = (rawSection.DForm_Fields ?? []).map((rawField) => {
-      const uid = this.uidStrategy(sectionChain, rawField.FieldGuid);
+      const uid = this.uidStrategy(triggerChain, rawField.FieldGuid);
       const field: ProcessedField = {
         fieldGuid: rawField.FieldGuid,
         question: rawField.Question,
@@ -274,7 +285,7 @@ export class FormProcessor {
         sectionGuid: rawSection.SectionGuid,
         uid,
         forkDepth: 0,
-        sectionChain: [...sectionChain],
+        sectionChain: [...triggerChain],
       };
       return field;
     });

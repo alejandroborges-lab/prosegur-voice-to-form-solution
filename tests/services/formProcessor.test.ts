@@ -252,12 +252,15 @@ describe('FormProcessor', () => {
       ];
 
       const processed = processForm(raw);
-      // Both instances should have different UIDs
+      // Both forks are triggered by the same field, so duplicate FieldGuids
+      // produce the same UID — this is correct because only one fork branch
+      // is active at a time (mutually exclusive options).
       const dupeFields = processed.allFields.filter(
         (f) => f.fieldGuid === 'duplicate-field'
       );
       expect(dupeFields.length).toBe(2);
-      expect(dupeFields[0].uid).not.toBe(dupeFields[1].uid);
+      expect(dupeFields[0].uid).toBe('trigger-field-duplicate-field');
+      expect(dupeFields[1].uid).toBe('trigger-field-duplicate-field');
     });
   });
 });
