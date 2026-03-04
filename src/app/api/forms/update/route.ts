@@ -194,12 +194,6 @@ export async function POST(request: NextRequest) {
 
   console.log(`[forms/update] OK: incident=${incident.id}, fields_updated=${mappingResult.filledCount}, total=${updatedIncident.fields.length}, completion=${totalMapping.completionPercentage}%`);
 
-  // Build missing mandatory list with human-readable questions for the agent
-  const missingMandatory = totalMapping.missingMandatory.map(f => ({
-    uid: f.uid,
-    question: f.question,
-  }));
-
   return NextResponse.json({
     success: true,
     incident_id: incident.id,
@@ -207,8 +201,5 @@ export async function POST(request: NextRequest) {
     total_fields_so_far: updatedIncident.fields.length,
     completion_percentage: totalMapping.completionPercentage,
     warnings: mappingResult.warnings,
-    // Missing mandatory fields — the agent MUST ask these before finalizing
-    missing_mandatory: missingMandatory,
-    missing_mandatory_count: missingMandatory.length,
   });
 }

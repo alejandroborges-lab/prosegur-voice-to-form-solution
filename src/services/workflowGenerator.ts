@@ -368,11 +368,15 @@ export class WorkflowGenerator {
     const updateTool = this.createUpdateTool(promptNode.id);
     nodes.push(updateTool);
 
-    // Node 6: Tool "finalizar_formulario" (tool, child of prompt)
+    // Node 6: Tool "consultar_campos_pendientes" (tool, child of prompt — our intelligence layer)
+    const pendingFieldsTool = this.createPendingFieldsTool(promptNode.id);
+    nodes.push(pendingFieldsTool);
+
+    // Node 7: Tool "finalizar_formulario" (tool, child of prompt)
     const submitTool = this.createSubmitTool(promptNode.id);
     nodes.push(submitTool);
 
-    // Node 7: AI Extract (action, child of agent, sort 0)
+    // Node 8: AI Extract (action, child of agent, sort 0)
     const extractNode = this.createExtractNode(
       agentNode.id,
       agentNode.persistent_id,
@@ -693,6 +697,65 @@ export class WorkflowGenerator {
             description: [
               this.makeParagraph(
                 'JSON con los campos extraídos hasta el momento. Clave = UID del campo, Valor = valor extraído. Solo incluye campos que tengas confirmados.'
+              ),
+            ],
+          },
+        ],
+        tool_index_id: `tool:${persistentId}`,
+        tool_index_hash: this.generateRandomHex(64),
+      },
+    };
+  }
+
+  private createPendingFieldsTool(promptNodeId: string): ToolNode {
+    const persistentId = uuidv4();
+
+    return {
+      id: uuidv4(),
+      persistent_id: persistentId,
+      slug: this.generateSlug(),
+      org_id: this.orgId,
+      use_case_id: this.useCaseId,
+      parent_id: promptNodeId,
+      version_id: this.versionId,
+      type: 'tool',
+      name: 'consultar_campos_pendientes',
+      is_complete: true,
+      node_output_id: null,
+      sort_index: 0,
+      timestamp: this.timestamp,
+      is_deleted: false,
+      configuration: {},
+      staging_configuration: {},
+      development_configuration: {},
+      retry_configuration: {},
+      outbound_retry_configuration: {},
+      node_component_id: null,
+      node_component_input_mapping: [],
+      node_output: null,
+      function: {
+        description: [
+          this.makeParagraph(
+            'Consulta qué campos obligatorios faltan por rellenar. Llámala SIEMPRE después de cada actualizar_formulario. Envía TODOS los campos recopilados hasta ahora, no solo los nuevos. La respuesta te dice exactamente qué preguntar al vigilante.'
+          ),
+        ],
+        message: {
+          type: 'none',
+          description: [
+            this.makeParagraph(
+              'Revisa internamente qué campos faltan y decide qué preguntar a continuación. No muestres información técnica al vigilante.'
+            ),
+          ],
+          example:
+            'Perfecto, déjame comprobar qué más necesito.',
+        },
+        parameters: [
+          {
+            name: 'campos',
+            example: '{"98938461-d206-4397-8cfc-552f43f94e0a": "2026-02-25T15:30:00", "9d9f3bac-99e5-40dc-bb48-e6e44298e28e": "Aparcamiento"}',
+            description: [
+              this.makeParagraph(
+                'JSON con TODOS los campos recopilados hasta ahora. Clave = UID del campo, Valor = valor extraído. Incluye todos los campos de la conversación, no solo los nuevos.'
               ),
             ],
           },
