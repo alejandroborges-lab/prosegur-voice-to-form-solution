@@ -204,6 +204,18 @@ export class FormProcessor {
     }
 
     this.sectionMap.set(rawSection.SectionGuid, processedSection);
+
+    // Link processed fork sections back to the options that trigger them.
+    // This must happen AFTER child fork sections are processed above,
+    // because processOption() runs before the fork sections exist in sectionMap.
+    for (const field of processedSection.fields) {
+      for (const option of field.options) {
+        if (option.forkSectionGuid && !option.forkSection) {
+          option.forkSection = this.sectionMap.get(option.forkSectionGuid);
+        }
+      }
+    }
+
     return processedSection;
   }
 
