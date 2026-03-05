@@ -33,9 +33,9 @@ interface ProcessedFormData {
 }
 
 const FORMS = [
-  { id: 'hurto-generico', name: 'Hurto Generico' },
-  { id: 'hurto-recuperacion', name: 'Hurto con Recuperacion' },
-  { id: 'hurto-centro-comercial', name: 'Hurto en Centro Comercial' },
+  { id: 'hurto-generico', name: 'Hurto Generico', icon: '1' },
+  { id: 'hurto-recuperacion', name: 'Hurto con Recuperacion', icon: '2' },
+  { id: 'hurto-centro-comercial', name: 'Hurto en Centro Comercial', icon: '3' },
 ];
 
 export default function FormsPage() {
@@ -83,47 +83,66 @@ export default function FormsPage() {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6">Formularios</h1>
+    <div className="animate-fade-in">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Formularios</h1>
+        <p className="text-gray-500 mt-1">Estructura y configuracion de formularios de incidencia</p>
+      </div>
 
-      <div className="flex gap-3 mb-6">
+      {/* Form Selector */}
+      <div className="flex gap-3 mb-8">
         {FORMS.map((form) => (
           <button
             key={form.id}
             onClick={() => loadForm(form.id)}
-            className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
+            className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all ${
               selectedForm === form.id
-                ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white text-gray-700 hover:bg-gray-50'
+                ? 'bg-gray-900 text-white shadow-lg shadow-gray-900/20'
+                : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 hover:shadow-sm'
             }`}
           >
+            <span className={`w-6 h-6 rounded-lg text-xs flex items-center justify-center font-bold ${
+              selectedForm === form.id ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'
+            }`}>
+              {form.icon}
+            </span>
             {form.name}
           </button>
         ))}
       </div>
 
-      {loading && <p className="text-gray-500">Cargando formulario...</p>}
+      {loading && (
+        <div className="glass-card p-12 text-center">
+          <div className="inline-block w-8 h-8 border-2 border-gray-200 border-t-blue-600 rounded-full animate-spin" />
+          <p className="text-gray-400 mt-3 text-sm">Cargando formulario...</p>
+        </div>
+      )}
 
       {formData && selectedForm && (
         <div className="space-y-6">
-          {/* Stats */}
+          {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <MiniStat label="Secciones" value={formData.stats.totalSections} />
-            <MiniStat label="Raiz" value={formData.stats.rootSections} />
-            <MiniStat label="Bifurcaciones" value={formData.stats.forkSections} />
-            <MiniStat label="Profundidad max" value={formData.stats.maxForkDepth} />
-            <MiniStat label="Total campos" value={formData.stats.totalFields} />
-            <MiniStat label="Obligatorios" value={formData.stats.mandatoryFields} />
-            <MiniStat label="Forks vacios" value={formData.stats.emptyForks} />
-            <MiniStat label="Huerfanos" value={formData.stats.orphanedSections} />
+            <MiniStat label="Secciones" value={formData.stats.totalSections} accent="blue" />
+            <MiniStat label="Raiz" value={formData.stats.rootSections} accent="gray" />
+            <MiniStat label="Bifurcaciones" value={formData.stats.forkSections} accent="violet" />
+            <MiniStat label="Profundidad max" value={formData.stats.maxForkDepth} accent="amber" />
+            <MiniStat label="Total campos" value={formData.stats.totalFields} accent="blue" />
+            <MiniStat label="Obligatorios" value={formData.stats.mandatoryFields} accent="red" />
+            <MiniStat label="Forks vacios" value={formData.stats.emptyForks} accent="gray" />
+            <MiniStat label="Huerfanos" value={formData.stats.orphanedSections} accent="amber" />
           </div>
 
           {/* Actions */}
           <div className="flex gap-3">
             <button
               onClick={() => loadPrompt(selectedForm)}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm"
+              className="flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 text-sm font-semibold transition-all shadow-sm shadow-emerald-600/20"
             >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
               Ver Prompt Generado
             </button>
             <button
@@ -146,75 +165,119 @@ export default function FormsPage() {
                 a.click();
                 URL.revokeObjectURL(url);
               }}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm"
+              className="flex items-center gap-2 px-5 py-2.5 bg-violet-600 text-white rounded-xl hover:bg-violet-700 text-sm font-semibold transition-all shadow-sm shadow-violet-600/20"
             >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
               Descargar Workflow JSON
             </button>
           </div>
 
           {/* Prompt Preview */}
           {promptPreview && (
-            <div className="bg-white rounded-lg border p-6">
-              <h2 className="text-lg font-semibold mb-4">Prompt del Agente</h2>
-              <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-xs max-h-96">
+            <div className="glass-card overflow-hidden">
+              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <h2 className="text-base font-semibold text-gray-900">Prompt del Agente</h2>
+                </div>
+                <button
+                  onClick={() => setPromptPreview(null)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <pre className="bg-gray-900 text-gray-300 p-5 overflow-auto text-xs max-h-96 leading-relaxed">
                 {promptPreview}
               </pre>
             </div>
           )}
 
           {/* Fields Table */}
-          <div className="bg-white rounded-lg border overflow-hidden">
-            <h2 className="text-lg font-semibold px-4 py-3 border-b">
-              Campos ({formData.allFields.length})
-            </h2>
+          <div className="glass-card overflow-hidden">
+            <div className="flex items-center gap-2 px-5 py-4 border-b border-gray-100">
+              <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+                <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                </svg>
+              </div>
+              <h2 className="text-base font-semibold text-gray-900">Campos</h2>
+              <span className="text-xs font-medium text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full">
+                {formData.allFields.length}
+              </span>
+            </div>
             <div className="overflow-auto max-h-[600px]">
-              <table className="w-full">
-                <thead className="bg-gray-50 border-b sticky top-0">
+              <table className="data-table">
+                <thead>
                   <tr>
-                    <th className="text-left px-3 py-2 text-xs font-medium text-gray-500">Nivel</th>
-                    <th className="text-left px-3 py-2 text-xs font-medium text-gray-500">Pregunta</th>
-                    <th className="text-left px-3 py-2 text-xs font-medium text-gray-500">Tipo</th>
-                    <th className="text-left px-3 py-2 text-xs font-medium text-gray-500">Oblig.</th>
-                    <th className="text-left px-3 py-2 text-xs font-medium text-gray-500">Multi</th>
-                    <th className="text-left px-3 py-2 text-xs font-medium text-gray-500">Opciones</th>
-                    <th className="text-left px-3 py-2 text-xs font-medium text-gray-500">UID</th>
+                    <th style={{ width: '60px' }}>Nivel</th>
+                    <th>Pregunta</th>
+                    <th style={{ width: '90px' }}>Tipo</th>
+                    <th style={{ width: '60px' }}>Oblig.</th>
+                    <th style={{ width: '55px' }}>Multi</th>
+                    <th>Opciones</th>
+                    <th style={{ width: '180px' }}>UID</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y text-sm">
+                <tbody>
                   {formData.allFields.map((field) => (
-                    <tr
-                      key={field.uid}
-                      className={`hover:bg-gray-50 ${field.forkDepth > 0 ? 'bg-blue-50/30' : ''}`}
-                    >
-                      <td className="px-3 py-2 text-xs">
-                        {'  '.repeat(field.forkDepth)}
-                        {field.forkDepth > 0 ? `L${field.forkDepth}` : 'R'}
+                    <tr key={field.uid}>
+                      <td className="text-xs text-center">
+                        {field.forkDepth > 0 ? (
+                          <span className="inline-flex items-center gap-1">
+                            <span className="text-blue-400">{'  '.repeat(field.forkDepth)}</span>
+                            <span className="bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-semibold">
+                              L{field.forkDepth}
+                            </span>
+                          </span>
+                        ) : (
+                          <span className="bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded font-semibold">R</span>
+                        )}
                       </td>
-                      <td className="px-3 py-2">
-                        <span style={{ paddingLeft: `${field.forkDepth * 16}px` }}>
+                      <td className="text-sm">
+                        <span style={{ paddingLeft: `${field.forkDepth * 20}px` }} className="text-gray-800">
+                          {field.forkDepth > 0 && (
+                            <span className="text-blue-300 mr-1.5">{'└'.repeat(1)}</span>
+                          )}
                           {field.question}
                         </span>
                       </td>
-                      <td className="px-3 py-2 text-xs">
-                        {FIELD_TYPE_LABELS[field.fieldType] || field.fieldType}
+                      <td>
+                        <span className="text-[11px] font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded-md">
+                          {FIELD_TYPE_LABELS[field.fieldType] || field.fieldType}
+                        </span>
                       </td>
-                      <td className="px-3 py-2 text-xs">
+                      <td className="text-center">
                         {field.mandatory ? (
-                          <span className="text-red-600 font-bold">Si</span>
+                          <span className="inline-block w-5 h-5 rounded-full bg-red-50 text-red-500 text-[10px] font-bold leading-5 text-center">!</span>
                         ) : (
-                          <span className="text-gray-400">No</span>
+                          <span className="text-gray-300 text-xs">—</span>
                         )}
                       </td>
-                      <td className="px-3 py-2 text-xs">
-                        {field.multiple ? 'Si' : ''}
+                      <td className="text-center">
+                        {field.multiple ? (
+                          <span className="text-blue-500 text-xs font-semibold">Si</span>
+                        ) : (
+                          <span className="text-gray-300 text-xs">—</span>
+                        )}
                       </td>
-                      <td className="px-3 py-2 text-xs text-gray-500 max-w-xs truncate">
-                        {field.options.length > 0
-                          ? field.options.join(', ')
-                          : '-'}
+                      <td className="text-xs text-gray-500 max-w-xs">
+                        {field.options.length > 0 ? (
+                          <span className="line-clamp-2">{field.options.join(' · ')}</span>
+                        ) : (
+                          <span className="text-gray-300">—</span>
+                        )}
                       </td>
-                      <td className="px-3 py-2 text-xs font-mono text-gray-400 max-w-[200px] truncate">
-                        {field.uid}
+                      <td className="text-[11px] font-mono text-gray-400 max-w-[180px]">
+                        <span className="break-all">{field.uid}</span>
                       </td>
                     </tr>
                   ))}
@@ -228,11 +291,19 @@ export default function FormsPage() {
   );
 }
 
-function MiniStat({ label, value }: { label: string; value: number }) {
+function MiniStat({ label, value, accent }: { label: string; value: number; accent: string }) {
+  const accentColors: Record<string, string> = {
+    blue: 'text-blue-600',
+    violet: 'text-violet-600',
+    amber: 'text-amber-600',
+    red: 'text-red-600',
+    gray: 'text-gray-700',
+  };
+
   return (
-    <div className="bg-white rounded-lg border px-3 py-2">
-      <div className="text-xs text-gray-500">{label}</div>
-      <div className="text-xl font-bold">{value}</div>
+    <div className="stat-card stat-blue p-4 card-hover">
+      <div className="text-[11px] font-medium text-gray-400 uppercase tracking-wider">{label}</div>
+      <div className={`text-2xl font-bold mt-0.5 ${accentColors[accent] || 'text-gray-700'}`}>{value}</div>
     </div>
   );
 }
