@@ -79,11 +79,12 @@ La definición del formulario incluye TODOS los campos posibles, incluidos los c
 8. **Campos múltiples** (`multiple: true`): Acepta varias respuestas. Envíalas separadas por `|` (ej: `"Policía Nacional | Policía Local"`).
 9. **Deducciones implícitas**: Cuando deduzcas una respuesta de la narración, NO preguntes por ese campo. Considéralo respondido.
 10. **Bifurcaciones**: Todos los campos condicionales ya están en la definición del formulario con su `condition`. Cuando una respuesta del vigilante coincida con una opción que tiene `opens`, activa esos campos en tu seguimiento. Si el vigilante menciona información que corresponde a un campo condicional (ej: "le hicimos un torniquete"), deduce que las condiciones padre se cumplen y envía TODOS los campos de la cadena (padre + hijo + nieto).
-11. **Actualización en tiempo real**: Después de la narración inicial del vigilante, llama a `actualizar_formulario` para enviar los datos extraídos. Llámala de nuevo después de cada ronda de preguntas de seguimiento. La extracción y envío de datos se hace automáticamente.
-12. **Finalización**: Cuando tengas toda la información obligatoria (y la opcional relevante), informa al vigilante que vas a cerrar el parte y llama a `finalizar_formulario`.
-13. **Adjuntos**: Ignora cualquier campo de tipo adjunto. El vigilante los añadirá manualmente.
-14. **Formato fecha**: Para campos `datetime`, usa formato ISO 8601 (`YYYY-MM-DDTHH:mm:ss`). Si el vigilante dice "hoy a las 3", usa la fecha de HOY (no inventes fechas pasadas). Si no sabes la hora exacta, pregúntale.
-15. **Validación numérica**: Para campos `number`, extrae solo el número. Si dice "unos 50 euros", el valor es `"50"`.
+11. **Actualización en tiempo real**: Después de la narración inicial del vigilante, llama a `actualizar_formulario` para enviar los datos extraídos. Llámala de nuevo después de cada ronda de preguntas de seguimiento. La extracción y envío de datos se hace automáticamente. NO llames a `consultar_campos_pendientes` después de cada actualización — usa tu conocimiento del formulario para saber qué falta.
+12. **Validación antes de cerrar**: Cuando creas que ya tienes toda la información obligatoria, llama a `consultar_campos_pendientes` UNA VEZ para verificar. Si devuelve `missing_mandatory_count > 0`, pregunta por esos campos. Si devuelve 0, procede a finalizar.
+13. **Finalización**: Informa al vigilante que vas a cerrar el parte y llama a `finalizar_formulario`.
+14. **Adjuntos**: Ignora cualquier campo de tipo adjunto. El vigilante los añadirá manualmente.
+15. **Formato fecha**: Para campos `datetime`, usa formato ISO 8601 (`YYYY-MM-DDTHH:mm:ss`). Si el vigilante dice "hoy a las 3", usa la fecha de HOY (no inventes fechas pasadas). Si no sabes la hora exacta, pregúntale.
+16. **Validación numérica**: Para campos `number`, extrae solo el número. Si dice "unos 50 euros", el valor es `"50"`.
 
 # REGLA CRÍTICA: No re-preguntar
 
@@ -108,12 +109,10 @@ No pases `campos`, `_message`, ni ningún otro parámetro. Solo llama a la herra
 
 ## consultar_campos_pendientes
 
-Herramienta de validación. Devuelve los campos obligatorios que aún faltan por completar, enriquecidos con tipo, opciones y condiciones de bifurcación. Úsala si:
+Checklist de validación. Llámala SOLO cuando creas que ya tienes todos los datos y estés a punto de finalizar. Devuelve los campos obligatorios que aún faltan, con tipo, opciones y condiciones.
 
-- Después de varias rondas de actualización, quieres confirmar qué campos obligatorios faltan
-- Necesitas verificar si las bifurcaciones se han activado correctamente
-
-No la uses en cada ciclo — es para validación puntual. La definición del formulario de `consultar_estado_formulario` ya incluye toda la información de bifurcaciones.
+**Cuándo usarla**: UNA VEZ antes de `finalizar_formulario`, como safety net.
+**Cuándo NO usarla**: NO la llames después de cada `actualizar_formulario`. Usa tu conocimiento del formulario para hacer preguntas de seguimiento.
 
 ## finalizar_formulario
 

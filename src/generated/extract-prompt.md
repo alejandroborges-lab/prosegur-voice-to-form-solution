@@ -72,17 +72,27 @@ Los campos condicionales tienen `"condition": {"field": "uid-padre", "equals": "
 ### UIDs compuestos
 Los campos de bifurcación tienen UIDs compuestos que concatenan los GUIDs de la cadena: `"guid-padre-guid-hijo"` o `"guid-abuelo-guid-padre-guid-hijo"` (hasta 3 niveles). Usa siempre el UID COMPLETO tal cual aparece en la definición del formulario.
 
-### Reglas
-- Si el campo padre tiene el valor que cumple la condición → incluye los campos hijos con sus UIDs compuestos
-- Si el campo padre tiene OTRO valor → NO incluyas los campos hijos
-- Si el campo padre no fue mencionado ni deducido → NO incluyas los campos hijos
-- Las bifurcaciones pueden ser anidadas (hasta 3 niveles): un campo condicional puede a su vez activar más campos
-- Cuando deduzcas que una condición se cumple, incluye TODOS los campos de la cadena (padre + hijo + nieto si aplica)
+### Algoritmo OBLIGATORIO — sigue estos pasos en orden
 
-### Ejemplo
-Si un campo pregunta "¿Ha habido consecuencias sobre personas?" con opciones `[{"value": "Sí", "opens": ["uid-A", "uid-B"]}, "No"]`:
-- El vigilante dice "le pegaron" → deduces "Sí" → incluye el campo padre CON valor "Sí" Y los campos uid-A, uid-B si tienen información en el transcript
-- El vigilante dice "no hubo violencia" → deduces "No" → NO incluyas uid-A ni uid-B
+**Paso 1**: Extrae todos los campos raíz (sin `condition`) que puedas rellenar del transcript.
+
+**Paso 2 — CRÍTICO**: Para CADA campo que acabas de extraer, revisa si su valor coincide con una opción que tiene `opens`. Si es así, busca en la definición del formulario los campos hijos (los que tienen `condition.field` apuntando a ese padre y `condition.equals` igual al valor que extrajiste). Para cada hijo:
+- Si hay información en el transcript (explícita o deducible) → extráelo con su UID compuesto
+- Si no hay información → no lo incluyas (pero el padre SÍ debe estar)
+
+**Paso 3**: Repite el paso 2 para los campos hijos que acabas de extraer (pueden tener sus propios `opens` → nietos).
+
+### Ejemplo concreto
+
+El vigilante dice: "le pegó un empujón a mi compañero pero sin lesiones, y se lo metió en la mochila"
+
+Del transcript deduces:
+1. Campo "¿Consecuencias sobre personas?" → "Sí" (por "le pegó un empujón")
+2. **Paso 2**: "Sí" tiene `opens` → busca campos con `condition.equals = "Sí"` → encuentra "Consecuencias de la agresión" → "Sin lesiones aparentes" (por "sin lesiones") → **INCLUYE con UID compuesto**
+3. Campo "¿Medio de ocultación?" → "Sí" (por "mochila")
+4. **Paso 2**: "Sí" tiene `opens` → busca campos con `condition.equals = "Sí"` → encuentra "Tipo de ocultación" → "Bandolera / Mochila / bolso" (por "mochila") → **INCLUYE con UID compuesto**
+
+Resultado: debes devolver 4 campos (2 padres + 2 hijos), NO solo los 2 padres.
 
 ## Deducción de información implícita
 
@@ -112,15 +122,20 @@ El vigilante habla de forma coloquial. Deduce las opciones EXACTAS del formulari
 - "un cliente nos avisó" / "alguien nos dijo" → detectado mediante: "Aviso de terceras personas"
 
 ### Ocultación
-- "mochila" / "bolso" / "bolsa" / "debajo de la ropa" → medio de ocultación: "Sí"
+- "mochila" / "bolso" / "bolsa" / "debajo de la ropa" → medio de ocultación: "Sí" **Y TAMBIÉN** tipo de ocultación: busca la opción más cercana (ej: "mochila" → "Bandolera / Mochila / bolso"). Incluye AMBOS campos (padre + hijo con UID compuesto).
 
 ### Denuncia
-- "pusimos denuncia" / "denunciamos" → denuncia: "Sí"
+- "pusimos denuncia" / "denunciamos" → denuncia: "Sí" **Y TAMBIÉN** busca en el transcript quién denunció y por qué delito → incluye campos hijos si hay información
 - "no se denunció" / "no se ha puesto denuncia" → denuncia: "No"
 
 ### Consecuencias
 - "no hubo violencia" / "sin consecuencias" / "nadie resultó herido" → consecuencias sobre personas: "No"
-- "le pegó" / "agredió" / "golpeó" / "forcejeo" → consecuencias sobre personas: "Sí"
+- "le pegó" / "agredió" / "golpeó" / "forcejeo" → consecuencias sobre personas: "Sí" **Y TAMBIÉN** tipo de consecuencia: busca la opción más cercana (ej: "empujón sin lesiones" → "Sin lesiones aparentes"). Incluye AMBOS campos (padre + hijo con UID compuesto).
+
+### Asistencias (FORK)
+- "policía" / "policía nacional" → asistencias: "Sí" **Y TAMBIÉN** tipo: "Policía Nacional" (no "Policía Local" a menos que lo diga). Incluye AMBOS campos.
+- Si menciona hora de llegada → incluye también el campo hijo "Hora de llegada" con UID compuesto
+- "doce menos cuarto" = 11:45, "doce y cuarto" = 12:15. Pon atención a "menos" vs "y".
 
 ### Quién fue afectado
 - Si robaron un producto de la tienda → "El Cliente" (la tienda/empresa es el cliente)
