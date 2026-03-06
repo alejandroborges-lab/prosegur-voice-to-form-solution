@@ -126,6 +126,19 @@ class InMemoryStore {
   }
 
   /**
+   * Store HTML observations for an incident.
+   */
+  setObservations(id: string, observations: string): Incident | undefined {
+    const incident = this.incidents.get(id);
+    if (!incident) return undefined;
+
+    incident.observations = observations;
+    incident.updatedAt = now();
+
+    return incident;
+  }
+
+  /**
    * Mark an incident as errored.
    */
   errorIncident(id: string, errorMessage: string): Incident | undefined {

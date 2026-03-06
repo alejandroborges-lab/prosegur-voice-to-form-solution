@@ -40,6 +40,8 @@ export interface Incident {
   submittedAt?: string;
   /** Error message if status is 'error' */
   errorMessage?: string;
+  /** HTML observations report from final extract node */
+  observations?: string;
 }
 
 /** Summary stats for the dashboard */

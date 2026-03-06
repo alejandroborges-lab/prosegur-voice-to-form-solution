@@ -171,3 +171,35 @@ body {
   color: white;
   background: rgba(255, 255, 255, 0.12);
 }
+
+/* Observations report HTML styling */
+.observations-report h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.observations-report h3:first-child {
+  margin-top: 0;
+}
+.observations-report p {
+  font-size: 0.875rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0.25rem 0;
+}
+.observations-report ul {
+  margin: 0.25rem 0;
+  padding-left: 1.25rem;
+}
+.observations-report li {
+  font-size: 0.875rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0.125rem 0;
+}
+.observations-report strong {
+  color: #374151;
+  font-weight: 600;
+}
