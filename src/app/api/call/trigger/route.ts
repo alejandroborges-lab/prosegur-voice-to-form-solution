@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const HAPPYROBOT_WEBHOOK = 'https://workflows.platform.happyrobot.ai/hooks/a7iuex42x3sj/d8yqiqsas05z';
+const HAPPYROBOT_WEBHOOK = 'https://workflows.platform.happyrobot.ai/hooks/a7iuex42x3sj';
 
 /**
  * POST /api/call/trigger
