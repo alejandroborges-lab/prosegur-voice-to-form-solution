@@ -54,20 +54,16 @@ export default function TestPage() {
     <div className="min-h-[80vh] flex flex-col items-center justify-center animate-fade-in">
 
       {/* Branding */}
-      <div className="flex items-center gap-4 mb-10">
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-[#E30613] text-white font-bold text-lg tracking-tight shadow-sm">
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
-          </svg>
-          Prosegur
-        </div>
-        <span className="text-gray-300 text-xl font-light">×</span>
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-gray-900 text-white font-bold text-lg tracking-tight shadow-sm">
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-          </svg>
-          HappyRobot
-        </div>
+      <div className="flex items-center gap-5 mb-10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/prosegur-logo.png" alt="Prosegur" className="h-10 object-contain" />
+        <span className="text-gray-300 text-2xl font-light">×</span>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://media.licdn.com/dms/image/v2/D4E0BAQHA7jbVAxkZXQ/company-logo_200_200/B4EZgXYt9RHIAI-/0/1752739012753/happyrobot_logo?e=2147483647&v=beta&t=6jliVKze_M0JQK7GNCM56j6vNspdotc24RCDViTAqjc"
+          alt="HappyRobot"
+          className="h-10 w-10 rounded-xl object-cover"
+        />
       </div>
 
       {/* Card */}
@@ -184,7 +180,7 @@ export default function TestPage() {
             <button
               onClick={handleCall}
               disabled={state === 'loading' || !phone.trim()}
-              className="w-full py-3.5 rounded-xl bg-[#E30613] hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-white font-bold text-base transition-all shadow-sm shadow-red-600/20 flex items-center justify-center gap-2.5"
+              className="w-full py-3.5 rounded-xl bg-[#FFD203] hover:bg-yellow-400 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-gray-900 font-bold text-base transition-all shadow-sm shadow-yellow-400/30 flex items-center justify-center gap-2.5"
             >
               {state === 'loading' ? (
                 <>
