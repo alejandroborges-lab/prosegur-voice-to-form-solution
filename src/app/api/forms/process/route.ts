@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
   let rawForm: RawFormDefinition | null = null;
 
   if (body.form_id) {
-    rawForm = loadFormDefinition(body.form_id);
+    rawForm = await loadFormDefinition(body.form_id);
     if (!rawForm) {
       return NextResponse.json(
         { error: `Form not found: ${body.form_id}` },

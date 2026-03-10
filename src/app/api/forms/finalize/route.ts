@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
   }
 
   // Recalculate completion based on ALL accumulated fields
-  const rawForm = loadFormDefinition(incident.formId);
+  const rawForm = await loadFormDefinition(incident.formId);
   if (rawForm) {
     const processed = processForm(rawForm);
     const allFieldsRecord: Record<string, string> = {};

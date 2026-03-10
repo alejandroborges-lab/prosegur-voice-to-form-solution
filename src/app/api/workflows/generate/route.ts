@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const rawForm = loadFormDefinition(body.form_id);
+  const rawForm = await loadFormDefinition(body.form_id);
   if (!rawForm) {
     return NextResponse.json(
       { error: `Form not found: ${body.form_id}` },

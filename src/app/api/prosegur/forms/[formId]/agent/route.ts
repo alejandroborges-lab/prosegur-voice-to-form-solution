@@ -26,7 +26,7 @@ export async function GET(
   { params }: { params: Promise<{ formId: string }> }
 ) {
   const { formId } = await params;
-  const rawForm = loadFormDefinition(formId);
+  const rawForm = await loadFormDefinition(formId);
 
   if (!rawForm) {
     return NextResponse.json(

@@ -1,84 +1,59 @@
 'use client';
 
 import { useState } from 'react';
-import { FIELD_TYPE_LABELS } from '@/types/form';
 
-interface FormField {
+interface AgentField {
   uid: string;
   question: string;
-  fieldType: string;
+  type: string;
   mandatory: boolean;
-  multiple: boolean;
-  options: string[];
-  forkDepth: number;
-  sectionGuid: string;
+  multiple?: boolean;
+  options?: (string | { value: string; opens: string[] })[];
+  condition?: { field: string; equals: string };
 }
 
-interface FormStats {
-  totalSections: number;
-  rootSections: number;
-  forkSections: number;
-  emptyForks: number;
-  orphanedSections: number;
+interface AgentFormResponse {
+  formId: string;
+  name: string;
   totalFields: number;
   mandatoryFields: number;
-  maxForkDepth: number;
+  fields: AgentField[];
 }
 
-interface ProcessedFormData {
-  stats: FormStats;
-  allFields: FormField[];
-  mandatoryFields: { uid: string; question: string }[];
-  orphanedSections: { sectionGuid: string; parentSectionGuid: string | null; fieldCount: number }[];
-}
-
-const FORMS = [
-  { id: 'hurto-generico', name: 'Hurto Generico', icon: '1' },
-  { id: 'hurto-recuperacion', name: 'Hurto con Recuperacion', icon: '2' },
-  { id: 'hurto-centro-comercial', name: 'Hurto en Centro Comercial', icon: '3' },
-];
+type ViewMode = 'fields' | 'json';
 
 export default function FormsPage() {
-  const [selectedForm, setSelectedForm] = useState<string | null>(null);
-  const [formData, setFormData] = useState<ProcessedFormData | null>(null);
+  const [formIdInput, setFormIdInput] = useState('');
+  const [submittedId, setSubmittedId] = useState<string | null>(null);
+  const [formData, setFormData] = useState<AgentFormResponse | null>(null);
   const [loading, setLoading] = useState(false);
-  const [promptPreview, setPromptPreview] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<ViewMode>('fields');
 
-  const loadForm = async (formId: string) => {
-    setSelectedForm(formId);
+  const loadForm = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const id = formIdInput.trim();
+    if (!id) return;
+
+    setSubmittedId(id);
     setLoading(true);
-    setPromptPreview(null);
+    setError(null);
+    setFormData(null);
 
     try {
-      const res = await fetch('/api/forms/process', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ form_id: formId }),
-      });
-      const data = await res.json();
+      const res = await fetch(`/api/prosegur/forms/${id}/agent`);
+      if (!res.ok) {
+        const err = await res.json();
+        setError(err.error || `Error ${res.status}`);
+        return;
+      }
+      const data: AgentFormResponse = await res.json();
       setFormData(data);
-    } catch (err) {
-      console.error('Error loading form:', err);
+      setViewMode('fields');
+    } catch {
+      setError('Error de conexión con el servidor');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const loadPrompt = async (formId: string) => {
-    try {
-      const res = await fetch('/api/prompts/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          form_id: formId,
-          incident_type: FORMS.find((f) => f.id === formId)?.name || formId,
-          incident_family: 'Hurto',
-        }),
-      });
-      const data = await res.json();
-      setPromptPreview(data.agent_prompt);
-    } catch (err) {
-      console.error('Error loading prompt:', err);
     }
   };
 
@@ -87,203 +62,177 @@ export default function FormsPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900">Formularios</h1>
-        <p className="text-gray-500 mt-1">Estructura y configuracion de formularios de incidencia</p>
+        <p className="text-gray-500 mt-1">Consulta la definición de cualquier formulario Prosegur por su ID</p>
       </div>
 
-      {/* Form Selector */}
-      <div className="flex gap-3 mb-8">
-        {FORMS.map((form) => (
-          <button
-            key={form.id}
-            onClick={() => loadForm(form.id)}
-            className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all ${
-              selectedForm === form.id
-                ? 'bg-gray-900 text-white shadow-lg shadow-gray-900/20'
-                : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 hover:shadow-sm'
-            }`}
-          >
-            <span className={`w-6 h-6 rounded-lg text-xs flex items-center justify-center font-bold ${
-              selectedForm === form.id ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'
-            }`}>
-              {form.icon}
-            </span>
-            {form.name}
-          </button>
-        ))}
-      </div>
+      {/* Input */}
+      <form onSubmit={loadForm} className="flex gap-3 mb-8">
+        <div className="flex-1 max-w-xs">
+          <input
+            type="text"
+            value={formIdInput}
+            onChange={(e) => setFormIdInput(e.target.value)}
+            placeholder="ID del formulario (ej: 76)"
+            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={loading || !formIdInput.trim()}
+          className="flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-semibold hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
+        >
+          {loading ? (
+            <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          ) : (
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          )}
+          Consultar
+        </button>
+      </form>
 
-      {loading && (
-        <div className="glass-card p-12 text-center">
-          <div className="inline-block w-8 h-8 border-2 border-gray-200 border-t-blue-600 rounded-full animate-spin" />
-          <p className="text-gray-400 mt-3 text-sm">Cargando formulario...</p>
+      {/* Error */}
+      {error && (
+        <div className="mb-6 px-4 py-3 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm">
+          Formulario <strong>{submittedId}</strong> no encontrado: {error}
         </div>
       )}
 
-      {formData && selectedForm && (
+      {/* Results */}
+      {formData && (
         <div className="space-y-6">
-          {/* Stats Grid */}
+          {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <MiniStat label="Secciones" value={formData.stats.totalSections} accent="blue" />
-            <MiniStat label="Raiz" value={formData.stats.rootSections} accent="gray" />
-            <MiniStat label="Bifurcaciones" value={formData.stats.forkSections} accent="violet" />
-            <MiniStat label="Profundidad max" value={formData.stats.maxForkDepth} accent="amber" />
-            <MiniStat label="Total campos" value={formData.stats.totalFields} accent="blue" />
-            <MiniStat label="Obligatorios" value={formData.stats.mandatoryFields} accent="red" />
-            <MiniStat label="Forks vacios" value={formData.stats.emptyForks} accent="gray" />
-            <MiniStat label="Huerfanos" value={formData.stats.orphanedSections} accent="amber" />
+            <MiniStat label="Form ID" value={formData.formId} accent="gray" />
+            <MiniStat label="Total campos" value={formData.totalFields} accent="blue" />
+            <MiniStat label="Obligatorios" value={formData.mandatoryFields} accent="red" />
+            <MiniStat label="Opcionales" value={formData.totalFields - formData.mandatoryFields} accent="gray" />
           </div>
 
-          {/* Actions */}
-          <div className="flex gap-3">
-            <button
-              onClick={() => loadPrompt(selectedForm)}
-              className="flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 text-sm font-semibold transition-all shadow-sm shadow-emerald-600/20"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              Ver Prompt Generado
-            </button>
-            <button
-              onClick={async () => {
-                const res = await fetch('/api/workflows/generate', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    form_id: selectedForm,
-                    incident_type: FORMS.find((f) => f.id === selectedForm)?.name || selectedForm,
-                    incident_family: 'Hurto',
-                  }),
-                });
-                const workflow = await res.json();
-                const blob = new Blob([JSON.stringify(workflow, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `workflow-${selectedForm}.json`;
-                a.click();
-                URL.revokeObjectURL(url);
-              }}
-              className="flex items-center gap-2 px-5 py-2.5 bg-violet-600 text-white rounded-xl hover:bg-violet-700 text-sm font-semibold transition-all shadow-sm shadow-violet-600/20"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Descargar Workflow JSON
-            </button>
-          </div>
-
-          {/* Prompt Preview */}
-          {promptPreview && (
-            <div className="glass-card overflow-hidden">
-              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
-                    <svg className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                  </div>
-                  <h2 className="text-base font-semibold text-gray-900">Prompt del Agente</h2>
-                </div>
-                <button
-                  onClick={() => setPromptPreview(null)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          {/* View toggle + panel */}
+          <div className="glass-card overflow-hidden">
+            {/* Tab header */}
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
+                </div>
+                <h2 className="text-base font-semibold text-gray-900">{formData.name || `Formulario ${formData.formId}`}</h2>
+                <span className="text-xs font-medium text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full">
+                  {formData.fields.length} campos
+                </span>
+              </div>
+              <div className="flex rounded-lg border border-gray-200 overflow-hidden text-sm font-medium">
+                <button
+                  onClick={() => setViewMode('fields')}
+                  className={`px-3 py-1.5 transition-colors ${viewMode === 'fields' ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-50'}`}
+                >
+                  Preguntas
+                </button>
+                <button
+                  onClick={() => setViewMode('json')}
+                  className={`px-3 py-1.5 transition-colors ${viewMode === 'json' ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-50'}`}
+                >
+                  JSON raw
                 </button>
               </div>
-              <pre className="bg-gray-900 text-gray-300 p-5 overflow-auto text-xs max-h-96 leading-relaxed">
-                {promptPreview}
-              </pre>
             </div>
-          )}
 
-          {/* Fields Table */}
-          <div className="glass-card overflow-hidden">
-            <div className="flex items-center gap-2 px-5 py-4 border-b border-gray-100">
-              <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
-                <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-                </svg>
-              </div>
-              <h2 className="text-base font-semibold text-gray-900">Campos</h2>
-              <span className="text-xs font-medium text-gray-400 bg-gray-100 px-2.5 py-0.5 rounded-full">
-                {formData.allFields.length}
-              </span>
-            </div>
-            <div className="overflow-auto max-h-[600px]">
-              <table className="data-table">
-                <thead>
-                  <tr>
-                    <th style={{ width: '60px' }}>Nivel</th>
-                    <th>Pregunta</th>
-                    <th style={{ width: '90px' }}>Tipo</th>
-                    <th style={{ width: '60px' }}>Oblig.</th>
-                    <th style={{ width: '55px' }}>Multi</th>
-                    <th>Opciones</th>
-                    <th style={{ width: '180px' }}>UID</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {formData.allFields.map((field) => (
-                    <tr key={field.uid}>
-                      <td className="text-xs text-center">
-                        {field.forkDepth > 0 ? (
-                          <span className="inline-flex items-center gap-1">
-                            <span className="text-blue-400">{'  '.repeat(field.forkDepth)}</span>
-                            <span className="bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-semibold">
-                              L{field.forkDepth}
-                            </span>
-                          </span>
-                        ) : (
-                          <span className="bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded font-semibold">R</span>
-                        )}
-                      </td>
-                      <td className="text-sm">
-                        <span style={{ paddingLeft: `${field.forkDepth * 20}px` }} className="text-gray-800">
-                          {field.forkDepth > 0 && (
-                            <span className="text-blue-300 mr-1.5">{'└'.repeat(1)}</span>
-                          )}
-                          {field.question}
-                        </span>
-                      </td>
-                      <td>
-                        <span className="text-[11px] font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded-md">
-                          {FIELD_TYPE_LABELS[field.fieldType] || field.fieldType}
-                        </span>
-                      </td>
-                      <td className="text-center">
-                        {field.mandatory ? (
-                          <span className="inline-block w-5 h-5 rounded-full bg-red-50 text-red-500 text-[10px] font-bold leading-5 text-center">!</span>
-                        ) : (
-                          <span className="text-gray-300 text-xs">—</span>
-                        )}
-                      </td>
-                      <td className="text-center">
-                        {field.multiple ? (
-                          <span className="text-blue-500 text-xs font-semibold">Si</span>
-                        ) : (
-                          <span className="text-gray-300 text-xs">—</span>
-                        )}
-                      </td>
-                      <td className="text-xs text-gray-500 max-w-xs">
-                        {field.options.length > 0 ? (
-                          <span className="line-clamp-2">{field.options.join(' · ')}</span>
-                        ) : (
-                          <span className="text-gray-300">—</span>
-                        )}
-                      </td>
-                      <td className="text-[11px] font-mono text-gray-400 max-w-[180px]">
-                        <span className="break-all">{field.uid}</span>
-                      </td>
+            {/* Fields table */}
+            {viewMode === 'fields' && (
+              <div className="overflow-auto max-h-[640px]">
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th style={{ width: '70px' }}>Nivel</th>
+                      <th>Pregunta</th>
+                      <th style={{ width: '90px' }}>Tipo</th>
+                      <th style={{ width: '60px' }}>Oblig.</th>
+                      <th style={{ width: '55px' }}>Multi</th>
+                      <th>Opciones</th>
+                      <th style={{ width: '180px' }}>UID</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {formData.fields.map((field) => {
+                      const depth = field.condition ? 1 : 0;
+                      const optionLabels = (field.options || []).map((o) =>
+                        typeof o === 'string' ? o : `${o.value} →`
+                      );
+                      return (
+                        <tr key={field.uid}>
+                          <td className="text-xs text-center">
+                            {depth > 0 ? (
+                              <span className="bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-semibold">L{depth}</span>
+                            ) : (
+                              <span className="bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded font-semibold">R</span>
+                            )}
+                          </td>
+                          <td className="text-sm">
+                            <span style={{ paddingLeft: `${depth * 20}px` }} className="text-gray-800">
+                              {depth > 0 && <span className="text-blue-300 mr-1.5">└</span>}
+                              {field.question}
+                            </span>
+                            {field.condition && (
+                              <div style={{ paddingLeft: `${depth * 20 + 14}px` }} className="text-[10px] text-blue-400 mt-0.5">
+                                si &quot;{field.condition.equals}&quot;
+                              </div>
+                            )}
+                          </td>
+                          <td>
+                            <span className="text-[11px] font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded-md">
+                              {field.type}
+                            </span>
+                          </td>
+                          <td className="text-center">
+                            {field.mandatory ? (
+                              <span className="inline-block w-5 h-5 rounded-full bg-red-50 text-red-500 text-[10px] font-bold leading-5 text-center">!</span>
+                            ) : (
+                              <span className="text-gray-300 text-xs">—</span>
+                            )}
+                          </td>
+                          <td className="text-center">
+                            {field.multiple ? (
+                              <span className="text-blue-500 text-xs font-semibold">Si</span>
+                            ) : (
+                              <span className="text-gray-300 text-xs">—</span>
+                            )}
+                          </td>
+                          <td className="text-xs text-gray-500 max-w-xs">
+                            {optionLabels.length > 0 ? (
+                              <span className="line-clamp-2">{optionLabels.join(' · ')}</span>
+                            ) : (
+                              <span className="text-gray-300">—</span>
+                            )}
+                          </td>
+                          <td className="text-[11px] font-mono text-gray-400 max-w-[180px]">
+                            <span className="break-all">{field.uid}</span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {/* JSON raw */}
+            {viewMode === 'json' && (
+              <div className="relative">
+                <button
+                  onClick={() => navigator.clipboard.writeText(JSON.stringify(formData, null, 2))}
+                  className="absolute top-3 right-3 px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-gray-300 text-xs rounded-lg transition-colors z-10"
+                >
+                  Copiar
+                </button>
+                <pre className="bg-gray-900 text-gray-300 p-5 overflow-auto text-xs max-h-[640px] leading-relaxed">
+                  {JSON.stringify(formData, null, 2)}
+                </pre>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -291,7 +240,7 @@ export default function FormsPage() {
   );
 }
 
-function MiniStat({ label, value, accent }: { label: string; value: number; accent: string }) {
+function MiniStat({ label, value, accent }: { label: string; value: number | string; accent: string }) {
   const accentColors: Record<string, string> = {
     blue: 'text-blue-600',
     violet: 'text-violet-600',
