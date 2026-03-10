@@ -56,7 +56,7 @@ export default function TestPage() {
       {/* Branding */}
       <div className="flex items-center gap-5 mb-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/prosegur-logo.png" alt="Prosegur" className="h-10 object-contain" />
+        <img src="/prosegur-logo.png" alt="Prosegur" className="h-10 w-10 rounded-xl object-cover" />
         <span className="text-gray-300 text-2xl font-light">×</span>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
