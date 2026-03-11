@@ -3,7 +3,7 @@
 // Stores incidents and session data (not persisted across restarts)
 // ============================================================
 
-import { Incident, IncidentStats } from '@/types/incident';
+import { Incident, IncidentStats, CallAnalytics } from '@/types/incident';
 import { FormFieldValue } from '@/types/form';
 import { generateId, now } from './utils';
 
@@ -133,6 +133,19 @@ class InMemoryStore {
     if (!incident) return undefined;
 
     incident.observations = observations;
+    incident.updatedAt = now();
+
+    return incident;
+  }
+
+  /**
+   * Store call analytics for an incident.
+   */
+  setAnalytics(id: string, analytics: CallAnalytics): Incident | undefined {
+    const incident = this.incidents.get(id);
+    if (!incident) return undefined;
+
+    incident.analytics = analytics;
     incident.updatedAt = now();
 
     return incident;

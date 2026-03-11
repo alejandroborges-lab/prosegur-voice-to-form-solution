@@ -42,6 +42,20 @@ export interface Incident {
   errorMessage?: string;
   /** HTML observations report from final extract node */
   observations?: string;
+  /** Call analytics extracted by AI */
+  analytics?: CallAnalytics;
+}
+
+/** Analytics metrics extracted from the call transcript */
+export interface CallAnalytics {
+  severity: 'low' | 'medium' | 'high' | 'critical';
+  summary: string;
+  incident_category: 'theft' | 'assault' | 'vandalism' | 'intrusion' | 'other';
+  police_involved: boolean;
+  injuries_reported: boolean;
+  estimated_value: number;
+  guard_sentiment: 'calm' | 'stressed' | 'urgent';
+  reask_count: number;
 }
 
 /** Summary stats for the dashboard */
