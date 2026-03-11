@@ -15,16 +15,10 @@ export async function POST(request: NextRequest) {
     incident_family: string;
   };
 
-  const form = new FormData();
-  form.append('guard_id', body.guard_id);
-  form.append('center_id', body.center_id);
-  form.append('phone_number', body.phone_number);
-  form.append('incident_type', body.incident_type);
-  form.append('incident_family', body.incident_family);
-
   const res = await fetch(HAPPYROBOT_WEBHOOK, {
     method: 'POST',
-    body: form,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
   });
 
   const text = await res.text();
