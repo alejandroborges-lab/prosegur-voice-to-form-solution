@@ -4,19 +4,23 @@ import { processForm } from '@/services/formProcessor';
 import { mapExtractedData } from '@/services/formMapper';
 import { enrichField, EnrichedField } from '@/services/fieldEnricher';
 import { store } from '@/lib/store';
+import { isExtracting, waitForExtraction } from '@/services/transcriptExtractor';
 
 /**
  * POST /api/forms/[formId]/pending-fields
  *
  * Intelligence endpoint — OUR layer, never replaced by Prosegur.
- * Reads accumulated fields from the store (populated by actualizar_formulario)
- * and returns which mandatory fields are still missing, with full context
- * (type, options, fork conditions) so the agent can ask them correctly.
+ * Reads accumulated fields from the store (populated by actualizar_formulario
+ * or by the async transcript extractor) and returns which mandatory fields
+ * are still missing, with full context so the agent can ask them correctly.
+ *
+ * If there's an in-flight GPT extraction (from sync-transcript), this endpoint
+ * waits for it to complete before responding, so the agent gets accurate data.
  *
  * No parameters required — the agent just calls this tool.
  * Lookup: session_id > incident_id > most recent in-progress for this form.
  *
- * Output: { missing_mandatory, missing_mandatory_count, completion_percentage, ... }
+ * Output: { processing, missing_mandatory, missing_mandatory_count, completion_percentage, ... }
  */
 export async function POST(
   request: NextRequest,
@@ -66,12 +70,21 @@ export async function POST(
     );
 
     return NextResponse.json({
+      processing: false,
       missing_mandatory: missingMandatory,
       missing_mandatory_count: missingMandatory.length,
       completion_percentage: 0,
       filled_count: 0,
       total_active_fields: mappingResult.totalActiveFields,
     });
+  }
+
+  // If there's an in-flight extraction, wait for it to complete
+  if (isExtracting(incident.id)) {
+    console.log(`[pending-fields] Waiting for in-flight extraction for incident=${incident.id}...`);
+    await waitForExtraction(incident.id);
+    // Refresh incident after extraction completed
+    incident = store.getIncident(incident.id)!;
   }
 
   // Build campos from accumulated incident fields
@@ -91,6 +104,7 @@ export async function POST(
   console.log(`[pending-fields] incident=${incident.id}, filled=${mappingResult.filledCount}, missing=${missingMandatory.length}, completion=${mappingResult.completionPercentage}%`);
 
   return NextResponse.json({
+    processing: false,
     missing_mandatory: missingMandatory,
     missing_mandatory_count: missingMandatory.length,
     completion_percentage: mappingResult.completionPercentage,
