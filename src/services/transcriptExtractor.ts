@@ -4,6 +4,9 @@
 // Receives a transcript, calls GPT in the background to extract
 // form fields, and stores them. Tracks in-flight promises so
 // pending-fields can wait for processing to complete.
+//
+// Debouncing: if multiple sync-transcript calls arrive quickly,
+// only the LAST one is processed (newest transcript = superset).
 // ============================================================
 
 import OpenAI from 'openai';
@@ -25,10 +28,17 @@ function getOpenAI(): OpenAI {
 const EXTRACT_MODEL = 'gpt-4.1';
 
 // ============================================================
-// In-flight promise tracking per incident
+// In-flight extraction tracking per incident
+// Uses a version counter to prevent stale deletions.
 // ============================================================
 
-const inflightExtractions = new Map<string, Promise<void>>();
+interface ExtractionState {
+  promise: Promise<void>;
+  version: number;
+}
+
+const inflightExtractions = new Map<string, ExtractionState>();
+const extractionVersions = new Map<string, number>();
 
 /** Check if there's an extraction in progress for this incident */
 export function isExtracting(incidentId: string): boolean {
@@ -37,17 +47,17 @@ export function isExtracting(incidentId: string): boolean {
 
 /** Wait for any in-flight extraction to complete for this incident */
 export async function waitForExtraction(incidentId: string, timeoutMs = 15000): Promise<boolean> {
-  const promise = inflightExtractions.get(incidentId);
-  if (!promise) return false; // nothing in flight
+  const state = inflightExtractions.get(incidentId);
+  if (!state) return false;
 
   try {
     await Promise.race([
-      promise,
+      state.promise,
       new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeoutMs)),
     ]);
-    return true; // completed
+    return true;
   } catch {
-    return true; // timed out but still finished waiting
+    return true;
   }
 }
 
@@ -196,7 +206,7 @@ ${formDefinition}`;
 }
 
 // ============================================================
-// Main entry point — fire & forget
+// Main entry point — fire & forget with debounce
 // ============================================================
 
 export function launchExtraction(
@@ -205,10 +215,24 @@ export function launchExtraction(
   transcript: string,
   formId: string
 ): void {
+  // Increment version — this is the "generation" of this extraction
+  const currentVersion = (extractionVersions.get(incidentId) || 0) + 1;
+  extractionVersions.set(incidentId, currentVersion);
+
   const startTime = Date.now();
-  console.log(`[transcript-extractor] Launching extraction for incident=${incidentId}`);
+  console.log(`[transcript-extractor] Launching extraction v${currentVersion} for incident=${incidentId}, transcript_length=${transcript.length}`);
 
   const promise = (async () => {
+    // Small delay to debounce rapid calls — if a newer version arrives
+    // within 500ms, this one will abort
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Check if we're still the latest version
+    if (extractionVersions.get(incidentId) !== currentVersion) {
+      console.log(`[transcript-extractor] v${currentVersion} skipped (superseded by v${extractionVersions.get(incidentId)})`);
+      return;
+    }
+
     try {
       // Load form
       const rawForm = await loadFormDefinition(formId);
@@ -220,8 +244,20 @@ export function launchExtraction(
       const processed = processForm(rawForm);
       const formDefinition = buildFormDefinitionForPrompt(processed);
 
+      // Check again before expensive GPT call
+      if (extractionVersions.get(incidentId) !== currentVersion) {
+        console.log(`[transcript-extractor] v${currentVersion} skipped before GPT call`);
+        return;
+      }
+
       // Call GPT
       const campos = await callGPTExtract(transcript, formDefinition);
+
+      // Check AGAIN after GPT — a newer extraction may have started
+      if (extractionVersions.get(incidentId) !== currentVersion) {
+        console.log(`[transcript-extractor] v${currentVersion} result discarded (superseded)`);
+        return;
+      }
 
       if (campos.length === 0) {
         console.log('[transcript-extractor] No fields extracted');
@@ -247,14 +283,17 @@ export function launchExtraction(
         store.mergeIncidentFields(incidentId, [], totalMapping.completionPercentage);
 
         const elapsed = Date.now() - startTime;
-        console.log(`[transcript-extractor] Done in ${elapsed}ms: ${campos.length} fields extracted, completion=${totalMapping.completionPercentage}%`);
+        console.log(`[transcript-extractor] v${currentVersion} done in ${elapsed}ms: ${campos.length} fields, completion=${totalMapping.completionPercentage}%`);
       }
     } catch (err) {
-      console.error('[transcript-extractor] Error:', err);
+      console.error(`[transcript-extractor] v${currentVersion} error:`, err);
     } finally {
-      inflightExtractions.delete(incidentId);
+      // Only clean up if we're still the active version
+      if (extractionVersions.get(incidentId) === currentVersion) {
+        inflightExtractions.delete(incidentId);
+      }
     }
   })();
 
-  inflightExtractions.set(incidentId, promise);
+  inflightExtractions.set(incidentId, { promise, version: currentVersion });
 }

@@ -20,28 +20,33 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
   }
 
-  console.log('[incidents/analytics] Body keys:', Object.keys(body));
+  console.log('[incidents/analytics] Body:', JSON.stringify(body).slice(0, 500));
+
+  // HappyRobot extract may wrap values in a response object
+  const src = (typeof body.response === 'object' && body.response !== null)
+    ? { ...body, ...(body.response as Record<string, unknown>) }
+    : body;
 
   // Validate required analytics fields
   const validSeverities = ['low', 'medium', 'high', 'critical'];
   const validCategories = ['theft', 'assault', 'vandalism', 'intrusion', 'other'];
   const validSentiments = ['calm', 'stressed', 'urgent'];
 
-  const severity = body.severity as string;
-  const summary = body.summary as string;
-  const incident_category = body.incident_category as string;
+  const severity = String(src.severity || '').trim().toLowerCase();
+  const summary = String(src.summary || '').trim();
+  const incident_category = String(src.incident_category || '').trim().toLowerCase();
 
   if (!severity || !validSeverities.includes(severity)) {
-    return NextResponse.json({ error: `Invalid severity. Must be one of: ${validSeverities.join(', ')}` }, { status: 400 });
+    return NextResponse.json({ error: `Invalid severity "${severity}". Must be one of: ${validSeverities.join(', ')}` }, { status: 400 });
   }
-  if (!summary || typeof summary !== 'string') {
+  if (!summary) {
     return NextResponse.json({ error: 'Missing summary field' }, { status: 400 });
   }
   if (!incident_category || !validCategories.includes(incident_category)) {
-    return NextResponse.json({ error: `Invalid incident_category. Must be one of: ${validCategories.join(', ')}` }, { status: 400 });
+    return NextResponse.json({ error: `Invalid incident_category "${incident_category}". Must be one of: ${validCategories.join(', ')}` }, { status: 400 });
   }
 
-  const guard_sentiment = (body.guard_sentiment as string) || 'calm';
+  const guard_sentiment = String(src.guard_sentiment || 'calm').trim().toLowerCase();
   if (!validSentiments.includes(guard_sentiment)) {
     return NextResponse.json({ error: `Invalid guard_sentiment. Must be one of: ${validSentiments.join(', ')}` }, { status: 400 });
   }
@@ -50,11 +55,11 @@ export async function POST(request: NextRequest) {
     severity: severity as CallAnalytics['severity'],
     summary,
     incident_category: incident_category as CallAnalytics['incident_category'],
-    police_involved: body.police_involved === true || body.police_involved === 'true',
-    injuries_reported: body.injuries_reported === true || body.injuries_reported === 'true',
-    estimated_value: Number(body.estimated_value) || 0,
+    police_involved: src.police_involved === true || String(src.police_involved) === 'true',
+    injuries_reported: src.injuries_reported === true || String(src.injuries_reported) === 'true',
+    estimated_value: Number(src.estimated_value) || 0,
     guard_sentiment: guard_sentiment as CallAnalytics['guard_sentiment'],
-    reask_count: Number(body.reask_count) || 0,
+    reask_count: Number(src.reask_count) || 0,
   };
 
   // Find incident: by incident_id > session_id > most recent
